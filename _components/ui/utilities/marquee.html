@@ -1,0 +1,87 @@
+<!-- [START] HTML Marquee -->
+<div class="space-y-5">
+	<div class="flex gap-20 overflow-hidden border-y border-y-slate-900 py-5">
+		<ul
+			class="animate-scrollToRight flex min-w-full shrink-0 justify-around gap-20 text-2xl"
+		>
+			<li>Software engineers</li>
+			<li>DevOps</li>
+			<li>Full Stack Javascript Engineer</li>
+			<li>QA Engineer</li>
+			<li>Software engineers</li>
+			<li>DevOps</li>
+			<li>Full Stack Javascript Engineer</li>
+			<li>QA Engineer</li>
+		</ul>
+		<!-- Mirrors the content above -->
+		<ul
+			class="animate-scrollToRight flex min-w-full shrink-0 justify-around gap-20 text-2xl"
+			aria-hidden="true"
+		>
+			<li>Software engineers</li>
+			<li>DevOps</li>
+			<li>Full Stack Javascript Engineer</li>
+			<li>QA Engineer</li>
+			<li>Software engineers</li>
+			<li>DevOps</li>
+			<li>Full Stack Javascript Engineer</li>
+			<li>QA Engineer</li>
+		</ul>
+	</div>
+	<div class="flex gap-20 overflow-hidden border-y border-y-slate-900 py-5">
+		<ul
+			class="animate-scrollToLeft flex min-w-full shrink-0 justify-around gap-20 text-2xl"
+		>
+			<li>Software engineers</li>
+			<li>DevOps</li>
+			<li>Full Stack Javascript Engineer</li>
+			<li>QA Engineer</li>
+			<li>Software engineers</li>
+			<li>DevOps</li>
+			<li>Full Stack Javascript Engineer</li>
+			<li>QA Engineer</li>
+		</ul>
+		<!-- Mirrors the content above -->
+		<ul
+			class="animate-scrollToLeft flex min-w-full shrink-0 justify-around gap-20 text-2xl"
+			aria-hidden="true"
+		>
+			<li>Software engineers</li>
+			<li>DevOps</li>
+			<li>Full Stack Javascript Engineer</li>
+			<li>QA Engineer</li>
+			<li>Software engineers</li>
+			<li>DevOps</li>
+			<li>Full Stack Javascript Engineer</li>
+			<li>QA Engineer</li>
+		</ul>
+	</div>
+</div>
+<!-- [END] HTML Marquee -->
+
+<!-- CSS  -->
+<style>
+	/* Animations */
+	:root {
+		--animate-scrollToLeft: scrollToLeftAnimation 30s infinite linear;
+		--animate-scrollToRight: scrollToRightAnimation 30s infinite linear reverse;
+	}
+
+	@keyframes scrollToLeftAnimation {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(calc(-100% - 20px));
+		}
+	}
+
+	@keyframes scrollToRightAnimation {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(calc(-100% - 20px));
+		}
+	}
+</style>

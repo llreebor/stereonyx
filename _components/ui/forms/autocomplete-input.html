@@ -1,0 +1,138 @@
+<!-- ============================== Default ============================== -->
+<!-- [START] HTML Input -->
+<!-- Autocomplete Input  group wrapper (use .error or .success class for validation errors) -->
+<div class="group relative" id="autocomplete-root">
+	<!-- Input -->
+	<input
+		type="text"
+		id="autocomplete-input"
+		class="input-field autocomplete-input"
+		placeholder="Search country..."
+		autocomplete="off"
+		aria-autocomplete="list"
+		aria-controls="autocomplete-list"
+		aria-expanded="false"
+	/>
+
+	<!-- Dropdown -->
+	<div id="autocomplete-dropdown" class="autocomplete-dropdown">
+		<!-- Results -->
+		<ul id="autocomplete-list" role="listbox" class="autocomplete-list"></ul>
+
+		<!-- Empty state — кастомизируй как хочешь -->
+		<div id="autocomplete-empty" class="hidden px-4 py-2 text-sm text-gray-400">
+			No countries found
+		</div>
+	</div>
+</div>
+<!-- [END] HTML Input -->
+
+<!-- [START] CSS Input -->
+<style>
+	/* Autocomplete Input */
+	.autocomplete-input {
+		@apply group-[.error]:border-error group-[.success]:border-success hover:border-primary focus:border-primary placeholder:text-primary/50 order-2 w-full rounded border border-gray-200 px-3 py-2 text-sm transition outline-none disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400;
+	}
+	.autocomplete-list {
+		@apply max-h-48 overflow-y-auto;
+	}
+	.autocomplete-list-item {
+		@apply cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100;
+	}
+	.autocomplete-dropdown {
+		@apply absolute top-full left-0 z-50 mt-1 hidden w-full overflow-hidden rounded border border-gray-200 bg-white [.is-open]:block;
+	}
+</style>
+<!-- [END] CSS Input -->
+
+<!-- [START] JavaScript Input -->
+<script>
+	const COUNTRIES = [
+		"Ukraine",
+		"Germany",
+		"France",
+		"United States",
+		"United Kingdom",
+		"Canada",
+		"Japan",
+		"Australia",
+		"Brazil",
+		"Poland",
+	]
+
+	function initAutocomplete() {
+		const input = document.getElementById("autocomplete-input")
+		const dropdown = document.getElementById("autocomplete-dropdown")
+		const list = document.getElementById("autocomplete-list")
+		const empty = document.getElementById("autocomplete-empty")
+
+		if (!input || !dropdown || !list || !empty) return
+
+		function openDropdown() {
+			dropdown.classList.add("is-open")
+			input.setAttribute("aria-expanded", "true")
+		}
+
+		function closeDropdown() {
+			dropdown.classList.remove("is-open")
+			input.setAttribute("aria-expanded", "false")
+		}
+
+		function renderResults(query) {
+			const filtered = COUNTRIES.filter((country) =>
+				country.toLowerCase().includes(query.toLowerCase()),
+			)
+
+			list.innerHTML = ""
+
+			if (filtered.length === 0) {
+				list.classList.add("hidden")
+				empty.classList.remove("hidden")
+				return
+			}
+
+			list.classList.remove("hidden")
+			empty.classList.add("hidden")
+
+			filtered.forEach((country) => {
+				const li = document.createElement("li")
+				li.setAttribute("role", "option")
+				li.className = "autocomplete-list-item"
+				li.textContent = country
+
+				li.addEventListener("mousedown", function (e) {
+					e.preventDefault() // не даём blur на input сработать раньше
+					input.value = country
+					closeDropdown()
+				})
+
+				list.appendChild(li)
+			})
+		}
+
+		input.addEventListener("input", function () {
+			const query = this.value.trim()
+			if (query.length === 0) {
+				closeDropdown()
+				return
+			}
+			renderResults(query)
+			openDropdown()
+		})
+
+		input.addEventListener("focus", function () {
+			const query = this.value.trim()
+			if (query.length > 0) {
+				renderResults(query)
+				openDropdown()
+			}
+		})
+
+		input.addEventListener("blur", function () {
+			closeDropdown()
+		})
+	}
+
+	initAutocomplete()
+</script>
+<!-- [END] JavaScript Input -->

@@ -1,0 +1,303 @@
+<!-- [START] HTML Range Input -->
+<div class="range-slider-wrapper">
+	<div
+		class="s-hints flex text-xs font-semibold text-gray-500"
+		id="hints"
+	></div>
+	<div class="relative">
+		<div
+			class="s-track relative mt-2 h-2 w-full cursor-pointer touch-none rounded-full border border-gray-100 bg-gray-50"
+			id="track"
+		>
+			<div
+				class="s-fill bg-primary border-primary absolute -top-px -bottom-px -left-px rounded-full"
+				id="fill"
+			></div>
+			<div class="s-divider" id="divider"></div>
+			<div
+				class="s-thumb border-primary absolute top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 transform cursor-grab rounded-full border-[1.5px] bg-white"
+				id="thumb"
+			></div>
+			<div
+				class="s-bubble pointer-events-none absolute top-6 left-1/2 flex hidden h-9.5 w-12 -translate-x-1/2 items-center justify-center rounded-lg bg-slate-900 text-sm font-semibold text-white"
+				id="bubble"
+			>
+				0
+			</div>
+		</div>
+	</div>
+
+	<input type="hidden" id="hiddenInput" value="0" />
+</div>
+<!-- [END] HTML Range Input -->
+
+<!-- [START] CSS Range Input -->
+<style>
+	/* Range Slider */
+	.s-thumb {
+		@apply absolute top-1/2 z-30 h-5 w-5 -translate-y-1/2 cursor-grab rounded-full border-2 border-[#6C63FF] bg-white shadow-md active:cursor-grabbing;
+	}
+	.s-thumb.active {
+		@apply cursor-grabbing shadow-md;
+	}
+	.s-bubble {
+		@apply bg-primary absolute top-0 left-1/2 z-10 flex -translate-x-1/2 items-center justify-center rounded-md px-3 py-1 text-sm font-medium whitespace-nowrap text-white opacity-100;
+	}
+	.s-hints {
+		@apply relative z-10 pb-6;
+	}
+	.s-hint {
+		@apply absolute z-20 -translate-x-1/2 text-xs font-semibold whitespace-nowrap text-gray-500;
+	}
+	.s-zone-label {
+		@apply pointer-events-none absolute -top-5.5 text-xs font-medium whitespace-nowrap text-gray-400;
+	}
+</style>
+<!-- [END] CSS Range Input -->
+
+<!-- [START] JavaScript Range Input -->
+<script>
+	class RangeInput {
+		constructor(opts = {}) {
+			this.track = document.getElementById(opts.trackId)
+			this.fill = document.getElementById(opts.fillId)
+			this.divider = document.getElementById(opts.dividerId)
+			this.thumb = document.getElementById(opts.thumbId)
+			this.bubble = document.getElementById(opts.bubbleId)
+			this.hints = document.getElementById(opts.hintsId)
+			this.hidden = document.getElementById(opts.hiddenId)
+			this.display = document.getElementById(opts.displayId)
+
+			if (!this.track || !this.thumb) {
+				console.warn("RangeInput: track or thumb element not found")
+				return
+			}
+
+			this.min = Number(opts.min ?? 0)
+			this.max = Number(opts.max ?? 1000)
+			this.step = Number(opts.step ?? 100)
+			this.splitPct = Number(opts.splitPct ?? 100) // теперь по умолчанию 100
+
+			this.value = this._snap(Number(opts.initial ?? this.min))
+
+			this._rafId = null
+			this._active = false
+			this._pid = null
+
+			this._onTrackDown = this._onTrackDown.bind(this)
+			this._onThumbDown = this._onThumbDown.bind(this)
+			this._onMove = this._onMove.bind(this)
+			this._onUp = this._onUp.bind(this)
+
+			this.track.addEventListener("pointerdown", this._onTrackDown, {
+				passive: false,
+			})
+			this.thumb.addEventListener("pointerdown", this._onThumbDown, {
+				passive: false,
+			})
+
+			document.addEventListener("pointermove", this._onMove, { passive: false })
+			document.addEventListener("pointerup", this._onUp)
+			document.addEventListener("pointercancel", this._onUp)
+
+			this._buildHints()
+			this._render()
+		}
+
+		_snap(v) {
+			const s = Math.round(v / this.step) * this.step
+			return Math.max(this.min, Math.min(this.max, s))
+		}
+
+		_valToPct(v) {
+			if (v >= this.max) return 100
+			if (v <= this.min) return 0
+			const p = (v - this.min) / (this.max - this.min)
+			return p * this.splitPct // теперь без Math.min(100, ...)
+		}
+
+		_pctToVal(pct) {
+			if (pct >= this.splitPct) return this.max
+			if (pct <= 0) return this.min
+
+			const v = (pct / this.splitPct) * (this.max - this.min) + this.min
+			return this._snap(v)
+		}
+
+		_fromX(clientX) {
+			const r = this.track.getBoundingClientRect()
+			let pct = ((clientX - r.left) / r.width) * 100
+			pct = Math.max(0, Math.min(100, pct))
+			return this._pctToVal(pct)
+		}
+
+		_label(v) {
+			return String(Math.round(v))
+		}
+
+		_render() {
+			const pct = this._valToPct(this.value)
+
+			// Fill идёт до splitPct (или до 100%)
+			if (this.fill) {
+				this.fill.style.width = Math.min(pct, this.splitPct) + "%"
+			}
+
+			// Thumb и Bubble всегда могут быть до 100%
+			if (this.thumb) {
+				this.thumb.style.left = pct + "%"
+			}
+			if (this.bubble) {
+				this.bubble.style.left = pct + "%"
+				this.bubble.textContent = this._label(this.value)
+				this.bubble.style.display = this.value > this.min ? "flex" : "none"
+			}
+
+			if (this.divider) {
+				this.divider.style.left = this.splitPct + "%"
+			}
+
+			if (this.hidden) {
+				this.hidden.value = String(this.value)
+			}
+
+			if (this.display) {
+				this.display.textContent = this._label(this.value)
+			}
+		}
+
+		_buildHints() {
+			if (!this.hints) return
+			this.hints.innerHTML = ""
+
+			const marks = [this.min, this.max]
+
+			// Добавляем промежуточные метки, если диапазон большой
+			if (this.max - this.min > 1000) {
+				for (let i = 1; i < 5; i++) {
+					marks.splice(
+						1,
+						0,
+						Math.round(this.min + ((this.max - this.min) * i) / 5),
+					)
+				}
+			}
+
+			marks.forEach((v) => {
+				const el = document.createElement("span")
+				el.className = "s-hint"
+				el.textContent = String(v)
+				el.style.left = this._valToPct(v) + "%"
+				this.hints.appendChild(el)
+			})
+		}
+
+		_cancelAnim() {
+			if (this._rafId !== null) {
+				cancelAnimationFrame(this._rafId)
+				this._rafId = null
+			}
+		}
+
+		_smoothTo(target) {
+			this._cancelAnim()
+			const targetPct = this._valToPct(target)
+			let curPct = this._valToPct(this.value)
+
+			const tick = () => {
+				const diff = targetPct - curPct
+				if (Math.abs(diff) < 0.5) {
+					this.value = target
+					this._render()
+					this._rafId = null
+					return
+				}
+				curPct += diff * 0.22
+				this._renderAtPct(curPct) // используем отдельный метод для анимации
+				this._rafId = requestAnimationFrame(tick)
+			}
+
+			this._rafId = requestAnimationFrame(tick)
+		}
+
+		_renderAtPct(pct) {
+			if (this.fill) this.fill.style.width = Math.min(pct, this.splitPct) + "%"
+			if (this.thumb) this.thumb.style.left = pct + "%"
+			if (this.bubble) this.bubble.style.left = pct + "%"
+		}
+
+		_onTrackDown(e) {
+			if (this.thumb?.contains(e.target) || this.bubble?.contains(e.target))
+				return
+
+			e.preventDefault()
+			e.stopPropagation()
+			this._cancelAnim()
+
+			const newValue = this._fromX(e.clientX)
+			this._smoothTo(newValue)
+		}
+
+		_onThumbDown(e) {
+			if (!e.isPrimary) return
+			e.preventDefault()
+			e.stopPropagation()
+			this._cancelAnim()
+
+			try {
+				this.thumb.setPointerCapture(e.pointerId)
+			} catch (_) {}
+
+			this._active = true
+			this._pid = e.pointerId
+			this.thumb.classList.add("active")
+		}
+
+		_onMove(e) {
+			if (!this._active || this._pid !== e.pointerId) return
+			if (e.buttons === 0 && e.pressure === 0) {
+				this._onUp(e)
+				return
+			}
+
+			e.preventDefault()
+			this.value = this._fromX(e.clientX)
+			this._render()
+		}
+
+		_onUp() {
+			if (!this._active) return
+			this._active = false
+			this._pid = null
+			if (this.thumb) this.thumb.classList.remove("active")
+		}
+
+		setValue(v) {
+			this._cancelAnim()
+			this.value = this._snap(Number(v))
+			this._render()
+		}
+
+		getValue() {
+			return this.value
+		}
+	}
+
+	// Range
+	new RangeInput({
+		trackId: "track",
+		fillId: "fill",
+		dividerId: "divider",
+		thumbId: "thumb",
+		bubbleId: "bubble",
+		hintsId: "hints",
+		hiddenId: "hiddenInput",
+		displayId: "valueDisplay",
+		min: 0,
+		max: 1000,
+		step: 100,
+		splitPct: 100,
+		initial: 0,
+	})
+</script>
+<!-- [END] JavaScript Range Input -->

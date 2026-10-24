@@ -1,0 +1,536 @@
+<!-- [START] HTML Calendar -->
+<!-- Calendar -->
+<div class="max-w-fit select-none">
+	<div class="mb-4 flex items-center justify-between">
+		<button
+			id="prevYear"
+			class="rounded p-2 hover:bg-gray-200 disabled:opacity-30"
+		>
+			«
+		</button>
+		<button
+			id="prevMonth"
+			class="rounded p-2 hover:bg-gray-200 disabled:opacity-30"
+		>
+			←
+		</button>
+		<div id="currentMonth" class="text-lg font-semibold"></div>
+		<button id="nextMonth" class="rounded p-2 hover:bg-gray-200">→</button>
+		<button id="nextYear" class="rounded p-2 hover:bg-gray-200">»</button>
+	</div>
+
+	<div
+		class="mb-2 grid grid-cols-7 text-center text-sm font-medium text-gray-600"
+	>
+		<div>Mon</div>
+		<div>Tue</div>
+		<div>Wed</div>
+		<div>Thu</div>
+		<div>Fri</div>
+		<div>Sat</div>
+		<div>Sun</div>
+	</div>
+
+	<div id="calendarDays" class="grid grid-cols-7 text-center"></div>
+</div>
+<!-- [END] HTML Calendar -->
+
+<!-- [START] CSS Calendar -->
+<style>
+	/* Calendar */
+	.calendar-day {
+		@apply flex size-10 cursor-pointer items-center justify-center p-2;
+	}
+	.calendar-day.today {
+		@apply border-primary border;
+	}
+	.calendar-day.selected {
+		@apply bg-primary! rounded-none text-white;
+	}
+	.calendar-day.in-range {
+		@apply bg-primary/20 hover:bg-primary/60 rounded-none;
+	}
+	.calendar-day.preview-range {
+		@apply bg-primary/20 hover:bg-primary text-white;
+	}
+	.calendar-day.booked {
+		@apply cursor-not-allowed bg-gray-200 text-gray-400 opacity-50 hover:bg-gray-200;
+	}
+	.calendar-day.inactive {
+		@apply cursor-pointer bg-gray-200 opacity-50 hover:bg-gray-200;
+	}
+	.calendar-day:focus {
+		@apply outline-none;
+	}
+	.calendar-day.empty {
+		@apply cursor-default text-transparent;
+	}
+</style>
+<!-- [END] CSS Calendar -->
+
+<!-- [START] JavaScript Calendar -->
+<script>
+	class Calendar {
+		constructor(options) {
+			this.container = document.getElementById(options.containerId)
+			this.monthDisplay = document.getElementById(options.monthDisplayId)
+			this.prevMonthBtn = document.getElementById(options.prevBtnId)
+			this.nextMonthBtn = document.getElementById(options.nextBtnId)
+			this.prevYearBtn = document.getElementById(options.prevYearBtnId)
+			this.nextYearBtn = document.getElementById(options.nextYearBtnId)
+			this.bookedDates = options.bookedDates || {}
+			this.bookedRanges = options.bookedRanges || []
+			this.showAdjacentMonths = options.showAdjacentMonths || false
+			this.selectionMode = options.selectionMode || "single"
+			this.onDateSelect = options.onDateSelect || function () {}
+
+			this.today = new Date()
+			this.currentYear = this.today.getFullYear()
+			this.currentMonth = this.today.getMonth()
+			this.selectedDate =
+				this.selectionMode === "single" ? null : { start: null, end: null }
+			this.previewEnd = null
+
+			this.init()
+		}
+
+		formatDate(y, m, d) {
+			return `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`
+		}
+
+		parseDate(str) {
+			const [y, m, d] = str.split("-").map(Number)
+			return new Date(y, m - 1, d)
+		}
+
+		isDateInRange(dateStr, start, end) {
+			if (!start || !end) return false
+			const d = this.parseDate(dateStr)
+			return d >= this.parseDate(start) && d <= this.parseDate(end)
+		}
+
+		isDateBooked(dateStr) {
+			return (
+				this.bookedDates[dateStr] ||
+				this.bookedRanges.some((r) =>
+					this.isDateInRange(dateStr, r.start, r.end),
+				)
+			)
+		}
+
+		hasBookedDatesInRange(start, end) {
+			const startDate = this.parseDate(start)
+			const endDate = this.parseDate(end)
+			const currentDate = new Date(startDate)
+			while (currentDate <= endDate) {
+				const dateStr = this.formatDate(
+					currentDate.getFullYear(),
+					currentDate.getMonth(),
+					currentDate.getDate(),
+				)
+				if (this.isDateBooked(dateStr)) {
+					console.log(`Booked date found: ${dateStr}`)
+					return true
+				}
+				currentDate.setDate(currentDate.getDate() + 1)
+			}
+			return false
+		}
+
+		clearDateClasses() {
+			this.container.querySelectorAll(".calendar-day").forEach((cell) => {
+				cell.classList.remove("selected", "in-range", "preview-range")
+			})
+		}
+
+		handleClick(e, dateStr) {
+			console.log("Handling click on", dateStr)
+			console.log("Current selected before:", JSON.stringify(this.selectedDate))
+			if (this.selectionMode === "single") {
+				if (!this.isDateBooked(dateStr)) {
+					this.selectedDate = dateStr
+					this.onDateSelect(dateStr)
+				}
+			} else {
+				const newDate = this.parseDate(dateStr)
+				if (!this.selectedDate.start) {
+					if (!this.isDateBooked(dateStr)) {
+						this.selectedDate = { start: dateStr, end: null }
+					}
+				} else if (!this.selectedDate.end) {
+					const startDate = this.parseDate(this.selectedDate.start)
+					const minDate =
+						startDate < newDate ? this.selectedDate.start : dateStr
+					const maxDate =
+						startDate < newDate ? dateStr : this.selectedDate.start
+					if (this.hasBookedDatesInRange(minDate, maxDate)) {
+						console.log("Range contains booked dates, resetting selection")
+						alert("Cannot select range with booked dates!")
+						this.clearDateClasses()
+						this.selectedDate = { start: null, end: null }
+					} else {
+						this.selectedDate = { start: minDate, end: maxDate }
+						this.onDateSelect({ start: minDate, end: maxDate })
+						// Удаляем preview-range после выбора конечной даты
+						this.container.querySelectorAll(".calendar-day").forEach((cell) => {
+							cell.classList.remove("preview-range")
+						})
+					}
+				} else {
+					if (!this.isDateBooked(dateStr)) {
+						this.selectedDate = { start: dateStr, end: null }
+					}
+				}
+			}
+			console.log("Current selected after:", JSON.stringify(this.selectedDate))
+			this.previewEnd = null
+			this.updateDisplay()
+		}
+
+		handleKeyPress(e, dateStr) {
+			console.log("Handling keypress on", dateStr)
+			console.log("Current selected before:", JSON.stringify(this.selectedDate))
+			if (this.selectionMode === "single") {
+				if (!this.isDateBooked(dateStr)) {
+					this.selectedDate = dateStr
+					this.onDateSelect(dateStr)
+				}
+			} else {
+				const newDate = this.parseDate(dateStr)
+				if (!this.selectedDate.start) {
+					if (!this.isDateBooked(dateStr)) {
+						this.selectedDate = { start: dateStr, end: null }
+					}
+				} else if (!this.selectedDate.end) {
+					const startDate = this.parseDate(this.selectedDate.start)
+					const minDate =
+						startDate < newDate ? this.selectedDate.start : dateStr
+					const maxDate =
+						startDate < newDate ? dateStr : this.selectedDate.start
+					if (this.hasBookedDatesInRange(minDate, maxDate)) {
+						console.log("Range contains booked dates, resetting selection")
+						alert("Cannot select range with booked dates!")
+						this.clearDateClasses()
+						this.selectedDate = { start: null, end: null }
+					} else {
+						this.selectedDate = { start: minDate, end: maxDate }
+						this.onDateSelect({ start: minDate, end: maxDate })
+						// Удаляем preview-range после выбора конечной даты
+						this.container.querySelectorAll(".calendar-day").forEach((cell) => {
+							cell.classList.remove("preview-range")
+						})
+					}
+				} else {
+					if (!this.isDateBooked(dateStr)) {
+						this.selectedDate = { start: dateStr, end: null }
+					}
+				}
+			}
+			console.log("Current selected after:", JSON.stringify(this.selectedDate))
+			this.previewEnd = null
+			this.updateDisplay()
+		}
+
+		handleMouseOver(e, dateStr) {
+			if (
+				this.selectionMode === "range" &&
+				this.selectedDate.start &&
+				!this.selectedDate.end
+			) {
+				this.previewEnd = dateStr
+				this.updatePreview()
+			}
+		}
+
+		handleMouseOut(e, dateStr) {
+			if (
+				this.selectionMode === "range" &&
+				this.selectedDate.start &&
+				!this.selectedDate.end
+			) {
+				this.previewEnd = null
+				this.updatePreview()
+			}
+		}
+
+		initializeCalendar() {
+			const year = this.currentYear
+			const month = this.currentMonth
+			this.monthDisplay.textContent = new Date(year, month).toLocaleDateString(
+				"en-US",
+				{
+					month: "long",
+					year: "numeric",
+				},
+			)
+			this.prevMonthBtn.disabled =
+				year <= this.today.getFullYear() && month <= this.today.getMonth()
+			this.prevYearBtn.disabled = year <= this.today.getFullYear()
+			this.container.innerHTML = ""
+
+			const firstDay = new Date(year, month, 1).getDay()
+			const daysInMonth = new Date(year, month + 1, 0).getDate()
+			const shift = firstDay === 0 ? 6 : firstDay - 1
+
+			// Previous month days
+			const prevMonthDays = new Date(year, month, 0).getDate()
+			const prevMonth = month === 0 ? 11 : month - 1
+			const prevYear = month === 0 ? year - 1 : year
+			if (this.showAdjacentMonths) {
+				for (let i = shift; i > 0; i--) {
+					const day = prevMonthDays - i + 1
+					const dateStr = this.formatDate(prevYear, prevMonth, day)
+					const cell = document.createElement("div")
+					cell.textContent = day
+					cell.className = "calendar-day inactive"
+					cell.tabIndex = 0
+					if (this.isDateBooked(dateStr)) cell.classList.add("booked")
+					else cell.dataset.date = dateStr
+					this.container.appendChild(cell)
+				}
+			} else {
+				for (let i = 0; i < shift; i++) {
+					const cell = document.createElement("div")
+					cell.className = "calendar-day empty"
+					this.container.appendChild(cell)
+				}
+			}
+
+			// Current month days
+			for (let day = 1; day <= daysInMonth; day++) {
+				const dateStr = this.formatDate(year, month, day)
+				const cell = document.createElement("div")
+				cell.textContent = day
+				cell.className = "calendar-day"
+				cell.tabIndex = 0
+				if (
+					year === this.today.getFullYear() &&
+					month === this.today.getMonth() &&
+					day === this.today.getDate()
+				) {
+					cell.classList.add("today")
+				}
+				if (this.isDateBooked(dateStr)) cell.classList.add("booked")
+				else cell.dataset.date = dateStr
+				this.container.appendChild(cell)
+			}
+
+			// Next month days
+			const nextMonth = month === 11 ? 0 : month + 1
+			const nextYear = month === 11 ? year + 1 : year
+			if (this.showAdjacentMonths) {
+				const totalCells = shift + daysInMonth
+				const rem = Math.ceil(totalCells / 7) * 7 - totalCells
+				for (let day = 1; day <= rem; day++) {
+					const dateStr = this.formatDate(nextYear, nextMonth, day)
+					const cell = document.createElement("div")
+					cell.textContent = day
+					cell.className = "calendar-day inactive"
+					cell.tabIndex = 0
+					if (this.isDateBooked(dateStr)) cell.classList.add("booked")
+					else cell.dataset.date = dateStr
+					this.container.appendChild(cell)
+				}
+			}
+
+			this.updateDisplay()
+		}
+
+		updateDisplay() {
+			const cells = this.container.querySelectorAll(".calendar-day")
+			cells.forEach((cell) => {
+				const dateStr = cell.dataset.date
+				if (!dateStr) return
+
+				cell.classList.remove("selected", "in-range")
+				if (this.isDateBooked(dateStr)) return // Не выделяем забронированные
+				if (this.selectionMode === "single") {
+					if (this.selectedDate === dateStr) cell.classList.add("selected")
+				} else {
+					if (
+						this.selectedDate.start === dateStr ||
+						this.selectedDate.end === dateStr
+					) {
+						cell.classList.add("selected")
+					} else if (
+						this.selectedDate.start &&
+						this.selectedDate.end &&
+						this.isDateInRange(
+							dateStr,
+							this.selectedDate.start,
+							this.selectedDate.end,
+						)
+					) {
+						if (!this.isDateBooked(dateStr)) {
+							cell.classList.add("in-range")
+						}
+					}
+				}
+			})
+		}
+
+		updatePreview() {
+			const cells = this.container.querySelectorAll(".calendar-day")
+			cells.forEach((cell) => {
+				const dateStr = cell.dataset.date
+				if (!dateStr) return
+
+				cell.classList.remove("preview-range", "in-range") // Удаляем оба класса перед обновлением
+				if (this.isDateBooked(dateStr)) return // Не показываем для забронированных
+				if (
+					this.selectionMode === "range" &&
+					this.selectedDate.start &&
+					!this.selectedDate.end &&
+					this.previewEnd
+				) {
+					const startDate = this.parseDate(this.selectedDate.start)
+					const previewDate = this.parseDate(this.previewEnd)
+					if (
+						startDate <= previewDate &&
+						this.isDateInRange(
+							dateStr,
+							this.selectedDate.start,
+							this.previewEnd,
+						)
+					) {
+						cell.classList.add("in-range") // Показываем in-range для дат в диапазоне
+					} else if (
+						startDate > previewDate &&
+						this.isDateInRange(
+							dateStr,
+							this.previewEnd,
+							this.selectedDate.start,
+						)
+					) {
+						cell.classList.add("in-range") // Показываем in-range для обратного порядка
+					}
+					if (
+						this.isDateInRange(
+							dateStr,
+							this.selectedDate.start,
+							this.previewEnd,
+						) ||
+						(startDate > previewDate &&
+							this.isDateInRange(
+								dateStr,
+								this.previewEnd,
+								this.selectedDate.start,
+							))
+					) {
+						cell.classList.add("preview-range") // Добавляем preview-range поверх in-range
+					}
+				}
+			})
+		}
+
+		nextMonth() {
+			this.currentMonth = this.currentMonth === 11 ? 0 : this.currentMonth + 1
+			if (this.currentMonth === 0) this.currentYear++
+			this.previewEnd = null
+			this.initializeCalendar()
+		}
+
+		prevMonth() {
+			this.currentMonth = this.currentMonth === 0 ? 11 : this.currentMonth - 1
+			if (this.currentMonth === 11) this.currentYear--
+			this.previewEnd = null
+			this.initializeCalendar()
+		}
+
+		nextYear() {
+			this.currentYear++
+			this.previewEnd = null
+			this.initializeCalendar()
+		}
+
+		prevYear() {
+			if (this.currentYear > this.today.getFullYear()) {
+				this.currentYear--
+				this.previewEnd = null
+				this.initializeCalendar()
+			}
+		}
+
+		getSelectedDate() {
+			return this.selectedDate
+		}
+
+		init() {
+			this.prevMonthBtn.addEventListener("click", () => this.prevMonth())
+			this.nextMonthBtn.addEventListener("click", () => this.nextMonth())
+			this.prevYearBtn.addEventListener("click", () => this.prevYear())
+			this.nextYearBtn.addEventListener("click", () => this.nextYear())
+
+			this.container.addEventListener("click", (e) => {
+				const cell = e.target.closest(".calendar-day")
+				if (
+					cell &&
+					!cell.classList.contains("booked") &&
+					!cell.classList.contains("empty") &&
+					cell.dataset.date
+				) {
+					this.handleClick(e, cell.dataset.date)
+				}
+			})
+
+			this.container.addEventListener("keypress", (e) => {
+				const cell = e.target.closest(".calendar-day")
+				if (
+					cell &&
+					!cell.classList.contains("booked") &&
+					!cell.classList.contains("empty") &&
+					cell.dataset.date &&
+					(e.key === "Enter" || e.key === " ")
+				) {
+					e.preventDefault()
+					this.handleKeyPress(e, cell.dataset.date)
+				}
+			})
+
+			this.container.addEventListener("mouseover", (e) => {
+				const cell = e.target.closest(".calendar-day")
+				if (
+					cell &&
+					!cell.classList.contains("booked") &&
+					!cell.classList.contains("empty") &&
+					cell.dataset.date
+				) {
+					this.handleMouseOver(e, cell.dataset.date)
+				}
+			})
+
+			this.container.addEventListener("mouseout", (e) => {
+				const cell = e.target.closest(".calendar-day")
+				if (
+					cell &&
+					!cell.classList.contains("booked") &&
+					!cell.classList.contains("empty") &&
+					cell.dataset.date
+				) {
+					this.handleMouseOut(e, cell.dataset.date)
+				}
+			})
+
+			this.initializeCalendar()
+		}
+	}
+
+	// Example initialization
+	new Calendar({
+		containerId: "calendarDays",
+		monthDisplayId: "currentMonth",
+		prevBtnId: "prevMonth",
+		nextBtnId: "nextMonth",
+		prevYearBtnId: "prevYear",
+		nextYearBtnId: "nextYear",
+		bookedDates: {
+			"2025-09-16": { status: "booked", client: "John Doe" },
+			"2025-09-22": { status: "booked", client: "Jane Smith" },
+		},
+		bookedRanges: [{ start: "2025-08-25", end: "2025-08-27" }],
+		showAdjacentMonths: false,
+		selectionMode: "range", // single or range
+		onDateSelect: (sel) => console.log("Selected:", sel),
+	})
+</script>
+<!-- [END] JavaScript Calendar -->

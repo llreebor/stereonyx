@@ -1,0 +1,27 @@
+<!-- [START] HTML Toggle -->
+<label class="toggle-group">
+	<!-- Hidden checkbox -->
+	<input type="checkbox" class="peer sr-only" />
+
+	<!-- Toggle track -->
+	<div class="toggle-track"></div>
+
+	<!-- Toggle knob -->
+	<span class="toggle-circle"></span>
+</label>
+<!-- [END] HTML Toggle  -->
+
+<!-- [START] CSS Toggle -->
+<style>
+	/* Toggle Input */
+	.toggle-group {
+		@apply relative inline-flex cursor-pointer items-center;
+	}
+	.toggle-track {
+		@apply peer-checked:bg-primary h-6 w-11 rounded-full bg-gray-200 transition-colors;
+	}
+	.toggle-circle {
+		@apply absolute top-0.5 left-0.5 h-5 w-5 rounded-full border border-gray-300 bg-white transition-transform peer-checked:translate-x-5 peer-checked:border-white;
+	}
+</style>
+<!-- [END] CSS Toggle -->

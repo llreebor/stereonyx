@@ -1,0 +1,194 @@
+<!-- [START] HTML Form  -->
+<form
+	novalidate
+	class="example-form border-primary mx-auto max-w-150 space-y-5 rounded-2xl border p-6"
+>
+	<!-- [START] HTML Input -->
+	<!-- Input group wrapper (use .error or .success class for validation errors) -->
+	<div class="input-group group">
+		<!-- Label -->
+		<label for="email" class="input-label">Email</label>
+
+		<!-- Input field -->
+		<input
+			id="email"
+			name="email"
+			type="text"
+			placeholder="Some placeholder..."
+			class="input-field"
+		/>
+
+		<!-- Error message (only visible when .error is applied on parent group) -->
+		<p class="input-error-message">Error message</p>
+	</div>
+	<!-- [END] HTML Input -->
+
+	<!-- [START] HTML Select  -->
+	<!-- Input group wrapper (use .error or .success class for validation errors) -->
+	<div class="input-group select-group group">
+		<!-- Label -->
+		<label for="select" class="input-label">Country</label>
+
+		<!-- Input field -->
+		<select id="select" name="country" class="native-select">
+			<option value="">Select Placeholder</option>
+			<option value="select-value-1">Select Value 1</option>
+			<option value="select-value-2">Select Value 2</option>
+			<option value="select-value-3">Select Value 3</option>
+			<option value="select-value-4">Select Value 4</option>
+		</select>
+
+		<!-- Error message (only visible when .error is applied on parent group) -->
+		<p class="input-error-message">Error message</p>
+	</div>
+	<!-- [END] HTML Select  -->
+
+	<!-- [START] HTML Input -->
+	<!-- Input group wrapper (use .error or .success class for validation errors) -->
+	<div class="input-group group">
+		<!-- Label -->
+		<label for="message" class="input-label">Message</label>
+
+		<!-- Input field -->
+		<textarea
+			id="message"
+			name="message"
+			type="text"
+			placeholder="Some placeholder..."
+			class="input-field min-h-[120px] resize-none"
+		></textarea>
+
+		<!-- Error message (only visible when .error is applied on parent group) -->
+		<p class="input-error-message">Error message</p>
+	</div>
+	<!-- [END] HTML Input -->
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<!-- [END] HTML Form  -->
+
+<!-- [START] JavaScript Form  -->
+<script>
+	function setupFormValidation(formClass) {
+		const form = document.querySelector(formClass)
+		const submitBtn = form.querySelector('button[type="submit"]')
+		let hasSubmitted = false
+
+		// Function to check validity and update button state
+		function updateButtonState() {
+			let hasErrors = false
+
+			form.querySelectorAll(".input-group").forEach((group) => {
+				const input = group.querySelector("input, select, textarea")
+				if (!input) return
+
+				const value = input.value.trim()
+				let valid = true
+
+				if (value === "") {
+					valid = false
+				} else if (input.id === "email" || input.type === "email") {
+					const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+					if (!emailRegex.test(value)) {
+						valid = false
+					}
+				}
+
+				if (!valid) {
+					hasErrors = true
+				}
+			})
+
+			// Only disable if form has been submitted and still has errors
+			submitBtn.disabled = hasSubmitted && hasErrors
+		}
+
+		// Initial button state (enabled)
+		submitBtn.disabled = false
+
+		form.addEventListener("submit", function (event) {
+			event.preventDefault()
+
+			let isValid = true
+
+			form.querySelectorAll(".input-group").forEach((group) => {
+				group.classList.remove("error")
+			})
+
+			form.querySelectorAll(".input-group").forEach((group) => {
+				const input = group.querySelector("input, select, textarea")
+				if (!input) return
+
+				const value = input.value.trim()
+				let valid = true
+				let errorMessage = ""
+
+				if (value === "") {
+					valid = false
+					errorMessage = "This field is required"
+				} else if (input.id === "email" || input.type === "email") {
+					const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+					if (!emailRegex.test(value)) {
+						valid = false
+						errorMessage = "Enter a valid email"
+					}
+				}
+
+				if (!valid) {
+					group.classList.add("error")
+					const errorEl = group.querySelector(".input-error-message")
+					if (errorEl) {
+						errorEl.textContent = errorMessage
+					}
+					isValid = false
+				}
+			})
+
+			if (isValid) {
+				const formData = {}
+				form.querySelectorAll("input, select, textarea").forEach((el) => {
+					if (el.name) {
+						formData[el.name] = el.value.trim()
+					}
+				})
+
+				// TODO: Form Submission Logic
+				alert("Form successfully submitted.")
+				console.log("Form values:", formData)
+
+				// Reset Form
+				resetAllCustomSelects()
+				form.reset()
+
+				// Reset submission flag and enable button
+				hasSubmitted = false
+				updateButtonState()
+			} else {
+				console.log("Form contains errors. Please fix them and try again.")
+				hasSubmitted = true
+				updateButtonState()
+			}
+		})
+
+		// Remove error state and update button on input/change
+		form.querySelectorAll("input, select, textarea").forEach((input) => {
+			input.addEventListener("input", function () {
+				const group = this.closest(".input-group, .select-group")
+				if (group) {
+					group.classList.remove("error")
+				}
+				updateButtonState()
+			})
+			input.addEventListener("change", function () {
+				const group = this.closest(".input-group, .select-group")
+				if (group) {
+					group.classList.remove("error")
+				}
+				updateButtonState()
+			})
+		})
+	}
+
+	setupFormValidation(".example-form")
+</script>
+<!-- [END] JavaScript Form  -->

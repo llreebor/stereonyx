@@ -1,0 +1,259 @@
+<!-- [START] HTML Sheet -->
+<div>
+	<button data-sheet="sheet" class="sheet-trigger btn btn-primary">
+		Sheet Trigger
+	</button>
+	<!-- Country Selection Sheet  -->
+	<div id="sheet" class="sheet-wrapper">
+		<!-- Content -->
+		<div class="sheet-content">
+			<!-- Grabber -->
+			<button class="sheet-grabber">
+				<img src="./images/icons/grabber.svg" alt="grabber icon" />
+			</button>
+
+			<!-- Title & Close -->
+			<div class="flex gap-3 px-4">
+				<button class="sheet-close-btn ml-auto">X</button>
+			</div>
+
+			<!-- Scroll Content -->
+			<div class="sheet-scroll-content">CONTENT</div>
+		</div>
+	</div>
+</div>
+<!-- [END] HTML Sheet -->
+
+<!-- [START] CSS Sheet -->
+<style>
+	/* Sheet */
+	.sheet-wrapper {
+		@apply pointer-events-none invisible fixed inset-0 z-50 flex items-end justify-end bg-transparent transition-colors [.is-visible]:pointer-events-auto [.is-visible]:visible [.is-visible]:bg-black/50;
+	}
+	.sheet-wrapper.is-visible .sheet-content {
+		@apply translate-y-0;
+	}
+	.sheet-content {
+		@apply relative z-30 flex h-2/3 w-full translate-y-full flex-col rounded-t-lg bg-white p-4 transition-transform duration-300 ease-out;
+	}
+	.sheet-grabber {
+		@apply flex cursor-grab touch-none items-center justify-center;
+	}
+	.sheet-close-btn {
+		@apply absolute top-4 right-4 flex size-10 shrink-0 items-center justify-center rounded-lg border border-gray-100 bg-white hover:bg-gray-50;
+	}
+	.sheet-scroll-content {
+		@apply mt-2 h-full min-h-0 flex-1 overflow-auto;
+	}
+</style>
+<!-- [END] CSS Sheet -->
+
+<!-- [START] JavaScript Sheet -->
+<script>
+	// Sheets
+	class BottomSheet {
+		constructor() {
+			this.active = null
+			this.isClosing = false
+
+			document.addEventListener("click", (e) => {
+				const trigger = e.target.closest("[data-sheet]")
+				if (trigger) {
+					this.open(trigger.dataset.sheet)
+					return
+				}
+
+				if (e.target.closest(".sheet-close-btn")) {
+					this.close()
+					return
+				}
+
+				if (this.active && e.target.classList.contains("sheet-wrapper")) {
+					this.close()
+				}
+			})
+
+			document.querySelectorAll(".sheet-wrapper").forEach((wrapper) => {
+				const grabber = wrapper.querySelector(".sheet-grabber")
+				const content = wrapper.querySelector(".sheet-content")
+				if (grabber && content) this._initDrag(grabber, content, wrapper)
+			})
+
+			// Handle sheet option selection
+			document.addEventListener("click", (e) => {
+				const option = e.target.closest(".sheet-select-option")
+				if (!option) return
+
+				const sheet = option.closest(".sheet-wrapper")
+				if (!sheet) return
+
+				const sheetId = sheet.id
+				const trigger = document.querySelector(`[data-sheet="${sheetId}"]`)
+
+				console.log("sheet:", sheetId, "trigger:", trigger) // debug
+
+				if (!trigger) return
+
+				const wrapper = trigger.closest(".select-wrapper")
+
+				const img = option.querySelector(".sheet-option-image")
+				const text = option.querySelector(".sheet-option-text")
+
+				console.log("img:", img, "text:", text) // debug
+
+				const triggerFlag = trigger.querySelector(".select-trigger-flag")
+				const triggerText = trigger.querySelector(".select-trigger-text")
+
+				if (triggerFlag && img) triggerFlag.src = img.src
+				if (triggerText && text)
+					triggerText.textContent = text.textContent.trim()
+
+				if (wrapper) {
+					let hiddenInput = wrapper.querySelector(
+						"input[type='hidden'].select-hidden-value",
+					)
+					if (!hiddenInput) {
+						hiddenInput = document.createElement("input")
+						hiddenInput.type = "hidden"
+						hiddenInput.classList.add("select-hidden-value")
+						hiddenInput.name = wrapper.dataset.name ?? "select_value"
+						wrapper.appendChild(hiddenInput)
+					}
+					hiddenInput.value = text?.textContent.trim() ?? ""
+				}
+
+				this.close()
+			})
+		}
+
+		open(id) {
+			if (window.innerWidth >= 1024) return
+			const wrapper = document.getElementById(id)
+			if (!wrapper) return
+			if (this.active && this.active !== wrapper) this._hide(this.active, true)
+			this.active = wrapper
+			this._show(wrapper)
+		}
+
+		close() {
+			if (!this.active || this.isClosing) return
+			this._hide(this.active)
+			this.active = null
+		}
+
+		_show(wrapper) {
+			this.isClosing = false
+			wrapper.classList.add("is-visible")
+			document.body.style.overflow = "hidden"
+		}
+
+		_hide(wrapper, instant = false) {
+			const content = wrapper.querySelector(".sheet-content")
+			if (!content) return
+
+			if (instant) {
+				content.style.transition = "none"
+				content.style.transform = ""
+				wrapper.classList.remove("is-visible")
+				document.body.style.overflow = ""
+				return
+			}
+
+			this.isClosing = true
+
+			// Animate content downward
+			content.style.transition =
+				"transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)"
+			content.style.transform = "translateY(100%)"
+
+			// Animate overlay simultaneously
+			wrapper.style.transition = "background-color 0.35s"
+			wrapper.style.backgroundColor = "transparent"
+
+			content.addEventListener(
+				"transitionend",
+				() => {
+					content.style.transition = ""
+					content.style.transform = ""
+					wrapper.style.transition = ""
+					wrapper.style.backgroundColor = ""
+					wrapper.classList.remove("is-visible")
+					document.body.style.overflow = ""
+					this.isClosing = false
+				},
+				{ once: true },
+			)
+		}
+
+		_initDrag(grabber, content, wrapper) {
+			let startY = 0,
+				delta = 0,
+				dragging = false
+
+			const onStart = (y) => {
+				if (this.active !== wrapper) return
+				dragging = true
+				startY = y
+				delta = 0
+				content.style.transition = "none"
+			}
+
+			const onMove = (y) => {
+				if (!dragging) return
+				delta = Math.max(0, y - startY)
+				content.style.transform = `translateY(${delta}px)`
+			}
+
+			const onEnd = () => {
+				if (!dragging) return
+				dragging = false
+				if (delta > content.offsetHeight * 0.3) {
+					this.close()
+				} else {
+					content.style.transition = ""
+					content.style.transform = ""
+				}
+			}
+
+			// Pointer events (desktop)
+			grabber.addEventListener("pointerdown", (e) => {
+				if (e.pointerType === "touch") return
+				onStart(e.clientY)
+				grabber.setPointerCapture(e.pointerId)
+			})
+			grabber.addEventListener("pointermove", (e) => {
+				if (e.pointerType === "touch") return
+				onMove(e.clientY)
+			})
+			grabber.addEventListener("pointerup", (e) => {
+				if (e.pointerType === "touch") return
+				onEnd()
+			})
+
+			// Touch events (mobile)
+			grabber.addEventListener(
+				"touchstart",
+				(e) => {
+					onStart(e.touches[0].clientY)
+				},
+				{ passive: true },
+			)
+
+			grabber.addEventListener(
+				"touchmove",
+				(e) => {
+					onMove(e.touches[0].clientY)
+				},
+				{ passive: true },
+			)
+
+			grabber.addEventListener("touchend", () => {
+				onEnd()
+			})
+		}
+	}
+
+	// Sheets
+	new BottomSheet()
+</script>
+<!-- [END] JavaScript Sheet -->

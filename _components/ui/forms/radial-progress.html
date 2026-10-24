@@ -1,0 +1,101 @@
+<!-- ============================== Default ============================== -->
+<!-- [START] HTML Radial Progress -->
+<div
+	id="demo-0"
+	data-value="24"
+	data-size="96"
+	data-stroke-width="3"
+	data-track-color="#e5e7eb"
+	data-fill-color="#374151"
+	data-text="40%"
+	data-text-color="#374151"
+	data-text-size="24"
+	class="radial-progress"
+></div>
+<!-- [END] HTML Radial Progress -->
+
+<!-- [START] CSS Radial Progress -->
+<style>
+	/* Radial Progress */
+	.radial-progress {
+		@apply relative inline-flex items-center justify-center [&_.fill]:fill-none [&_.track]:fill-none [&_svg]:block [&_svg]:-rotate-90;
+	}
+
+	/* label sits in the absolute centre */
+	.radial-progress-label {
+		@apply pointer-events-none absolute inset-0 flex items-center justify-center;
+	}
+</style>
+<!-- [END] CSS Radial Progress -->
+
+<!-- [START] JavaScript Radial Progress -->
+<script>
+	/**
+	 * renderProgress(el)
+	 * Reads data-* attributes from `el` and builds/rebuilds the SVG inside it.
+	 *
+	 * Attributes (all optional, defaults shown):
+	 *   data-value         = 0       — progress percentage 0–100
+	 *   data-size          = 80      — outer diameter in px
+	 *   data-stroke-width  = 8       — ring thickness in px
+	 *   data-track-color   = #e5e7eb — background ring colour
+	 *   data-fill-color    = #374151 — progress arc colour
+	 *   data-text          = ""      — label (leave empty to hide)
+	 *   data-text-color    = #374151 — label colour
+	 *   data-text-size     = 14      — label font-size in px
+	 */
+	function renderProgress(el) {
+		const value = parseFloat(el.dataset.value ?? 0)
+		const size = parseFloat(el.dataset.size ?? 80)
+		const sw = parseFloat(el.dataset.strokeWidth ?? 8)
+		const trackColor = el.dataset.trackColor ?? "#e5e7eb"
+		const fillColor = el.dataset.fillColor ?? "#374151"
+		const text = el.dataset.text ?? ""
+		const textColor = el.dataset.textColor ?? "#374151"
+		const textSize = parseFloat(el.dataset.textSize ?? 14)
+
+		const centre = size / 2
+		const radius = centre - sw / 2
+		const circ = 2 * Math.PI * radius
+		const offset = circ - (Math.min(Math.max(value, 0), 100) / 100) * circ
+
+		// set container dimensions
+		el.style.width = size + "px"
+		el.style.height = size + "px"
+
+		el.innerHTML = `
+        <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+          <!-- track -->
+          <circle
+            class="track"
+            cx="${centre}" cy="${centre}" r="${radius}"
+            stroke="${trackColor}" stroke-width="${sw}"
+          />
+          <!-- fill -->
+          <circle
+            class="fill"
+            cx="${centre}" cy="${centre}" r="${radius}"
+            stroke="${fillColor}" stroke-width="${sw}"
+            stroke-dasharray="${circ}"
+            stroke-dashoffset="${offset}"
+          />
+        </svg>
+        ${
+					text
+						? `
+        <span class="radial-progress-label" style="color:${textColor}; font-size:${textSize}px; font-weight:600; letter-spacing:-0.02em;">
+          ${text}
+        </span>`
+						: ""
+				}
+      `
+	}
+
+	/* ── Render all .radial-progress elements on load ── */
+	function renderAll() {
+		document.querySelectorAll(".radial-progress").forEach(renderProgress)
+	}
+
+	renderAll()
+</script>
+<!-- [END] JavaScript Radial Progress -->

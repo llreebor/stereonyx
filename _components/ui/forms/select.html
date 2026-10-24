@@ -1,0 +1,164 @@
+<!-- [START] HTML Select  -->
+<!-- Select -->
+<!-- Manage states by adding one of these classes to the el.select-group: .error | .disabled -->
+<div class="select select-group group/select relative">
+	<!-- Label -->
+	<label for="custom-select" class="select-label input-label">Year</label>
+
+	<!-- Hidden input for form submission -->
+	<input
+		type="hidden"
+		name="custom-select"
+		id="custom-select"
+		class="selected-value"
+	/>
+
+	<!-- Trigger button -->
+	<button
+		type="button"
+		class="select-trigger input-field"
+		aria-haspopup="listbox"
+		aria-expanded="false"
+	>
+		<span class="selected-option">Select year</span>
+		<svg
+			class="select-icon size-4"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 20 20"
+			fill="currentColor"
+		>
+			<path
+				fill-rule="evenodd"
+				d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.06z"
+				clip-rule="evenodd"
+			/>
+		</svg>
+	</button>
+
+	<!-- Error message -->
+	<p class="select-error">Please select a year</p>
+
+	<!-- Options list -->
+	<ul class="select-options" role="listbox">
+		<li role="option">
+			<button type="button" class="select-option">2024</button>
+		</li>
+		<li role="option">
+			<button type="button" class="select-option">2025</button>
+		</li>
+		<li role="option">
+			<button type="button" class="select-option">2026</button>
+		</li>
+		<li role="option">
+			<button type="button" class="select-option">2027</button>
+		</li>
+	</ul>
+</div>
+<!-- [END] HTML Select  -->
+
+<!-- [START] CSS Select  -->
+<style>
+	/* Select */
+	.select-group {
+		@apply relative [.disabled]:cursor-not-allowed;
+	}
+	.select-trigger {
+		@apply text-primary/50 flex w-full cursor-pointer items-center justify-between;
+
+		@variant hover {
+			@apply border-primary;
+		}
+		@variant focus {
+			@apply border-primary;
+		}
+	}
+	.select-label {
+		@apply order-0;
+	}
+	.selected-option {
+		@apply [.selected]:text-primary;
+	}
+	.select-icon {
+		@apply transition-transform group-[.active]/select:rotate-180;
+	}
+	.select-error {
+		@apply mt-1 hidden text-sm text-red-600 transition-all group-[.error]/select:block;
+	}
+	.select-options {
+		@apply absolute top-full z-10 mt-2 hidden w-full transform overflow-hidden rounded-md border border-gray-200 bg-white transition-all group-[.active]/select:block;
+	}
+	.select-option {
+		@apply w-full px-3 py-2 text-left text-sm hover:bg-gray-100;
+	}
+</style>
+<!-- [END] CSS Select  -->
+
+<!-- [START] JavaScript Select  -->
+<script>
+	// Select
+	function initializeCustomSelects() {
+		const selects = document.querySelectorAll(".select-group")
+
+		selects.forEach((select) => {
+			const trigger = select.querySelector(".select-trigger")
+			const display = select.querySelector(".selected-option")
+			const valueInput = select.querySelector(".selected-value")
+			const optionsContainer = select.querySelector(".select-options")
+			const options = select.querySelectorAll(".select-option")
+			const errorMsg = select.querySelector(".select-error")
+
+			if (!trigger || !display || !optionsContainer || !options.length)
+				return
+
+			// Toggle dropdown
+			trigger.addEventListener("click", (e) => {
+				if (select.classList.contains("disabled")) return // Prevent interaction if disabled
+				select.classList.toggle("active")
+				e.stopPropagation()
+				optionsContainer.classList.remove("hidden")
+				trigger.classList.toggle("active")
+			})
+
+			// Select option
+			options.forEach((option) => {
+				option.addEventListener("click", () => {
+					const selectedText = option.innerText
+					display.innerText = selectedText
+					valueInput.value = selectedText
+					display.classList.add("selected")
+					optionsContainer.classList.add("hidden")
+					trigger.classList.remove("active")
+
+					// Remove error, add success
+					select.classList.remove("error")
+					select.classList.add("success")
+					select.classList.remove("active")
+
+					// Hide error message
+					if (errorMsg) errorMsg.classList.add("hidden")
+				})
+			})
+
+			// Close dropdown when clicking outside
+			document.addEventListener("click", (e) => {
+				if (!select.contains(e.target)) {
+					optionsContainer.classList.add("hidden")
+					trigger.classList.remove("active")
+					select.classList.remove("active")
+				}
+			})
+
+			// Close dropdown on Escape key
+			document.addEventListener("keydown", (e) => {
+				if (e.key === "Escape") {
+					optionsContainer.classList.add("hidden")
+					trigger.classList.remove("active")
+					select.classList.remove("active")
+				}
+			})
+		})
+	}
+
+	initializeCustomSelects()
+</script>
+<!-- [END] JavaScript Select  -->

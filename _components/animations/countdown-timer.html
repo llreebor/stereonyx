@@ -1,0 +1,95 @@
+<!-- [START] HTML Countdown Timer -->
+<div class="countdown" data-countdown data-target="2026-05-11T23:59:59">
+	<div class="countdown-block">
+		<div class="countdown-number" data-ct-days>00</div>
+		<span class="countdown-label">days</span>
+	</div>
+
+	<span class="countdown-separator">:</span>
+
+	<div class="countdown-block">
+		<div class="countdown-number" data-ct-hours>00</div>
+		<span class="countdown-label">hours</span>
+	</div>
+
+	<span class="countdown-separator">:</span>
+
+	<div class="countdown-block">
+		<div class="countdown-number" data-ct-minutes>00</div>
+		<span class="countdown-label">minutes</span>
+	</div>
+
+	<span class="countdown-separator">:</span>
+
+	<div class="countdown-block">
+		<div class="countdown-number" data-ct-seconds>00</div>
+		<span class="countdown-label">seconds</span>
+	</div>
+</div>
+<!-- [END] HTML Countdown Timer -->
+<!-- [START] CSS Countdown Timer -->
+<style>
+	/* Countdown Timer */
+	.countdown {
+		@apply flex items-end gap-2;
+	}
+	.countdown-block {
+		@apply flex flex-col items-center;
+	}
+	.countdown-number {
+		@apply min-w-[64px] rounded-lg border border-gray-200 bg-white px-2 pt-2.5 pb-2 text-center text-3xl leading-none font-medium tabular-nums transition-colors duration-200;
+	}
+	.countdown-number--expired {
+		@apply border-red-200 text-red-700;
+	}
+	.countdown-label {
+		@apply mt-1.5 text-[11px] text-gray-400;
+	}
+	.countdown-separator {
+		@apply pb-5 text-2xl font-light text-gray-300;
+	}
+</style>
+<!-- [END] CSS Countdown Timer -->
+<!-- [START] JavaScript Countdown Timer -->
+<script>
+	function initializeCountdown() {
+		document.querySelectorAll("[data-countdown]").forEach((el) => {
+			const target = new Date(el.dataset.target).getTime()
+
+			const days = el.querySelector("[data-ct-days]")
+			const hours = el.querySelector("[data-ct-hours]")
+			const minutes = el.querySelector("[data-ct-minutes]")
+			const seconds = el.querySelector("[data-ct-seconds]")
+			const numbers = [days, hours, minutes, seconds]
+
+			function pad(n) {
+				return String(n).padStart(2, "0")
+			}
+
+			function tick() {
+				const diff = Math.max(0, Math.floor((target - Date.now()) / 1000))
+
+				if (days) days.textContent = pad(Math.floor(diff / 86400))
+				if (hours) hours.textContent = pad(Math.floor((diff % 86400) / 3600))
+				if (minutes) minutes.textContent = pad(Math.floor((diff % 3600) / 60))
+				if (seconds) seconds.textContent = pad(diff % 60)
+
+				numbers.forEach((numEl) => {
+					if (numEl)
+						numEl.classList.toggle("countdown-number--expired", diff === 0)
+				})
+
+				if (diff === 0) {
+					clearInterval(timer)
+					el.dispatchEvent(new CustomEvent("countdown:expired"))
+				}
+			}
+
+			const timer = setInterval(tick, 1000)
+			tick()
+		})
+	}
+
+	initializeCountdown()
+</script>
+<!-- [END] JavaScript Countdown Timer -->

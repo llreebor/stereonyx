@@ -1,0 +1,126 @@
+<!-- [START] HTML Accordion -->
+<div class="accordion">
+	<!-- Accrodion Item -->
+	<div class="accordion-item group">
+		<!-- Accrodion Trigger -->
+		<button type="button" class="accordion-trigger">
+			<span class="accordion-trigger-text">Accordion Trigger</span>
+			<!-- Icon -->
+			<div class="flex">
+				<!-- Arrow Icon -->
+				<svg
+					class="accordion-icon-img"
+					viewBox="0 0 13 8"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M6.50004 7.59904C6.36115 7.59904 6.22643 7.573 6.09587 7.52091C5.96532 7.46883 5.85698 7.39939 5.77087 7.31258L0.979207 2.52091C0.788235 2.32994 0.692749 2.08689 0.692749 1.79175C0.692749 1.49661 0.788235 1.25355 0.979207 1.06258C1.17018 0.871609 1.41324 0.776123 1.70837 0.776123C2.00351 0.776123 2.24657 0.871609 2.43754 1.06258L6.50004 5.12508L10.5625 1.06258C10.7535 0.871609 10.9966 0.776123 11.2917 0.776123C11.5868 0.776123 11.8299 0.871609 12.0209 1.06258C12.2118 1.25355 12.3073 1.49661 12.3073 1.79175C12.3073 2.08689 12.2118 2.32994 12.0209 2.52091L7.22921 7.31258C7.12504 7.41675 7.01219 7.49071 6.89067 7.53446C6.76914 7.57821 6.63893 7.59973 6.50004 7.59904Z"
+						class="fill-current"
+					/>
+				</svg>
+				<!-- Plus icon -->
+				<div class="w-3">
+					<span
+						class="bg-primary flex h-0.5 translate-y-0.5 rotate-90 transition-transform group-[.active]:rotate-0"
+					></span>
+					<span class="bg-primary flex h-0.5"></span>
+				</div>
+			</div>
+		</button>
+
+		<!-- Accrodion Content -->
+		<div class="accordion-content">
+			<div class="overflow-hidden">
+				<p class="p-4 text-left">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem,
+					minus? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+					Autem, minus?Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+					Autem, minus?Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+					Autem, minus?Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+					Autem, minus?Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+					Autem, minus?Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+					Autem, minus?
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [END] HTML Accordion -->
+
+<!-- [START] CSS Accordion -->
+<style>
+	/* Accordion */
+	.accordion {
+		@apply grid gap-4;
+	}
+	.accordion-item {
+		@apply border-primary/50 grid border;
+	}
+	.accordion-trigger {
+		@apply flex w-full cursor-pointer items-center justify-between p-2;
+	}
+	.accordion-trigger-text {
+		@apply text-primary font-medium;
+	}
+	.accordion-icon-img {
+		@apply h-2 w-4 transition-transform duration-300 group-[.active]:rotate-180;
+	}
+	.accordion-content {
+		@apply grid grid-rows-[0fr] transition-all duration-500 group-[.active]:grid-rows-[1fr];
+	}
+</style>
+<!-- [END] CSS Accordion -->
+
+<!-- [START] JavaScript Accordion -->
+<script>
+	// Initialize accordion functionality
+	function initializeAccordion() {
+		const accordions = document.querySelectorAll(".accordion")
+		if (!accordions.length) return
+
+		accordions.forEach((accordion) => {
+			const accordionItems = accordion.querySelectorAll(".accordion-item")
+
+			accordionItems.forEach((item) => {
+				const content = item.querySelector(".accordion-content")
+				const trigger = item.querySelector(".accordion-trigger")
+
+				if (!content || !trigger) return
+
+				trigger.setAttribute("aria-expanded", item.classList.contains("active"))
+				content.setAttribute("aria-hidden", !item.classList.contains("active"))
+			})
+
+			accordion.addEventListener("click", (event) => {
+				const trigger = event.target.closest(".accordion-trigger")
+				if (!trigger) return
+
+				const parent = trigger.closest(".accordion-item")
+				if (!parent) return
+
+				const content = parent.querySelector(".accordion-content")
+				if (!content) return
+
+				const isOpening = !parent.classList.contains("active")
+				parent.classList.toggle("active")
+				content.classList.toggle("active")
+
+				trigger.setAttribute("aria-expanded", isOpening)
+				content.setAttribute("aria-hidden", !isOpening)
+			})
+
+			accordion.addEventListener("keydown", (event) => {
+				if (event.key === "Enter" || event.key === " ") {
+					const trigger = event.target.closest(".accordion-trigger")
+					if (!trigger) return
+
+					event.preventDefault()
+					trigger.click()
+				}
+			})
+		})
+	}
+	initializeAccordion()
+</script>
+<!-- [END] JavaScript Accordion -->

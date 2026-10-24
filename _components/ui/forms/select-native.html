@@ -1,0 +1,325 @@
+<!-- [START] HTML Select  -->
+<!-- Input group wrapper (use .error class for validation errors) -->
+<div class="input-group select-group group">
+	<!-- Label -->
+	<label for="select" class="input-label">Country</label>
+
+	<!-- Input field -->
+	<select id="select" name="country" class="native-select">
+		<option value="">Select Placeholder</option>
+		<option value="select-value-1">Select Value 1</option>
+		<option value="select-value-2">Select Value 2</option>
+		<option value="select-value-3">Select Value 3</option>
+		<option value="select-value-4">Select Value 4</option>
+	</select>
+
+	<!-- Error message (only visible when .error is applied on parent group) -->
+	<p class="input-error-message">Error message</p>
+</div>
+<!-- [END] HTML Select  -->
+
+<!-- [START] CSS Select  -->
+<style>
+	/* Select */
+	.select-trigger {
+		@apply order-2 flex w-full cursor-pointer items-center justify-between;
+	}
+	.select-trigger[aria-expanded="true"] .select-icon {
+		@apply rotate-180;
+	}
+	.selected-text {
+		@apply text-primary/50 [.selected]:text-primary text-sm font-normal;
+	}
+	.select-icon {
+		@apply size-4 transition-transform;
+	}
+	.select-dropdown {
+		@apply absolute top-full z-10 mt-2 w-full transform overflow-hidden rounded-md border border-gray-200 bg-white transition-all group-[.active]/select:block;
+	}
+	.select-option {
+		@apply w-full px-3 py-2 text-left text-sm hover:bg-gray-100;
+	}
+	.select-option[aria-selected="true"] {
+		@apply w-full;
+	}
+	.input-group.error .native-select,
+	.input-group.error .select-trigger {
+		@apply border-error text-error;
+	}
+</style>
+<!-- [END] CSS Select  -->
+
+<!-- [START] JavaScript Select  -->
+<script>
+	class CustomSelect {
+		constructor(wrapper) {
+			this.wrapper = wrapper
+			this.select = wrapper.querySelector(".native-select")
+
+			if (!this.select) return
+
+			this.init()
+		}
+
+		init() {
+			// Don't enhance if disabled
+			if (this.select.disabled) return
+
+			// Hide native select
+			this.select.style.display = "none"
+
+			// Create custom UI
+			this.createCustomUI()
+
+			// Mark as enhanced
+			this.wrapper.classList.add("is-enhanced")
+
+			// Set up event listeners
+			this.bindEvents()
+		}
+
+		createCustomUI() {
+			// Create trigger button
+			this.trigger = document.createElement("button")
+			this.trigger.type = "button"
+			this.trigger.className = "input-field select-trigger"
+			this.trigger.setAttribute("aria-haspopup", "listbox")
+			this.trigger.setAttribute("aria-expanded", "false")
+
+			// Get selected option text
+			const selectedOption = this.select.options[this.select.selectedIndex]
+			const selectedText = selectedOption
+				? selectedOption.text
+				: "Placeholder..."
+
+			this.trigger.innerHTML = `
+            <span class="selected-text">${selectedText}</span>
+            <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+            </svg>
+        `
+
+			const selectedTextEl = this.trigger.querySelector(".selected-text")
+			this.toggleSelectedClass(selectedTextEl, this.select.value !== "")
+
+			// Create dropdown
+			this.dropdown = document.createElement("ul")
+			this.dropdown.className = "select-dropdown hidden"
+			this.dropdown.setAttribute("role", "listbox")
+
+			// Create options (skip placeholder)
+			Array.from(this.select.options).forEach((option, index) => {
+				if (option.value === "") return
+
+				const li = document.createElement("li")
+				li.setAttribute("role", "option")
+
+				const button = document.createElement("button")
+				button.type = "button"
+				button.className = "select-option"
+				button.textContent = option.text
+				button.dataset.value = option.value
+				button.dataset.index = index
+
+				if (option.selected) {
+					button.setAttribute("aria-selected", "true")
+				}
+
+				li.appendChild(button)
+				this.dropdown.appendChild(li)
+			})
+
+			// Insert into DOM
+			this.wrapper.appendChild(this.trigger)
+			this.wrapper.appendChild(this.dropdown)
+		}
+
+		bindEvents() {
+			// Toggle dropdown
+			this.trigger.addEventListener("click", (e) => {
+				e.stopPropagation()
+				this.toggle()
+			})
+
+			// Select option
+			this.dropdown.addEventListener("click", (e) => {
+				const option = e.target.closest(".select-option")
+				if (option) {
+					this.selectOption(option)
+				}
+			})
+
+			// Keyboard navigation
+			this.trigger.addEventListener("keydown", (e) => this.handleKeydown(e))
+			this.dropdown.addEventListener("keydown", (e) => this.handleKeydown(e))
+
+			// Sync native select changes
+			this.select.addEventListener("change", () => {
+				this.updateDisplay()
+			})
+
+			// Global outside click handler (added once per instance, but in production, centralize)
+			document.addEventListener("click", this.handleOutsideClick.bind(this))
+		}
+
+		// Centralized outside click handler
+		handleOutsideClick(e) {
+			if (!this.wrapper.contains(e.target)) {
+				this.close()
+			}
+		}
+
+		toggle() {
+			if (this.isOpen()) {
+				this.close()
+			} else {
+				this.open()
+			}
+		}
+
+		open() {
+			this.dropdown.classList.remove("hidden")
+			this.trigger.setAttribute("aria-expanded", "true")
+			// Auto-focus first option for better keyboard UX
+			const firstOption = this.dropdown.querySelector(".select-option")
+			if (firstOption && document.activeElement !== firstOption) {
+				firstOption.focus()
+			}
+		}
+
+		close() {
+			this.dropdown.classList.add("hidden")
+			this.trigger.setAttribute("aria-expanded", "false")
+		}
+
+		// Reset method: sets value back to placeholder (index 0) and updates UI
+		reset() {
+			this.select.selectedIndex = 0
+			this.updateDisplay()
+		}
+
+		isOpen() {
+			return this.trigger.getAttribute("aria-expanded") === "true"
+		}
+
+		selectOption(optionButton) {
+			const value = optionButton.dataset.value
+			const index = parseInt(optionButton.dataset.index) // Ensure numeric index
+
+			// Update native select
+			this.select.selectedIndex = index
+			this.select.dispatchEvent(new Event("change", { bubbles: true }))
+
+			// Update display
+			this.updateDisplay()
+
+			// Update aria-selected
+			this.dropdown.querySelectorAll(".select-option").forEach((opt) => {
+				opt.removeAttribute("aria-selected")
+			})
+			optionButton.setAttribute("aria-selected", "true")
+
+			// Remove error state
+			this.wrapper.classList.remove("error")
+
+			this.close()
+		}
+
+		updateDisplay() {
+			const selectedOption = this.select.options[this.select.selectedIndex]
+			const selectedText = selectedOption
+				? selectedOption.text
+				: "Placeholder..."
+			const selectedTextEl = this.trigger.querySelector(".selected-text")
+			selectedTextEl.textContent = selectedText
+
+			this.toggleSelectedClass(selectedTextEl, this.select.value !== "")
+		}
+
+		// Helper to toggle selected class (avoids duplication)
+		toggleSelectedClass(el, hasValue) {
+			if (hasValue) {
+				el.classList.add("selected")
+			} else {
+				el.classList.remove("selected")
+			}
+		}
+
+		handleKeydown(e) {
+			switch (e.key) {
+				case "Escape":
+					this.close()
+					this.trigger.focus()
+					e.preventDefault()
+					break
+				case "ArrowDown":
+					if (!this.isOpen()) {
+						this.open()
+					} else {
+						this.focusNextOption()
+					}
+					e.preventDefault()
+					break
+				case "ArrowUp":
+					if (this.isOpen()) {
+						this.focusPreviousOption()
+					}
+					e.preventDefault()
+					break
+				case "Enter":
+				case " ":
+					if (document.activeElement.classList.contains("select-option")) {
+						this.selectOption(document.activeElement)
+					} else if (!this.isOpen()) {
+						this.open()
+					}
+					e.preventDefault()
+					break
+			}
+		}
+
+		focusNextOption() {
+			const options = Array.from(
+				this.dropdown.querySelectorAll(".select-option"),
+			)
+			let currentIndex = options.indexOf(document.activeElement)
+			if (currentIndex === -1) currentIndex = -1 // No active
+			const nextIndex = currentIndex < options.length - 1 ? currentIndex + 1 : 0
+			options[nextIndex].focus()
+		}
+
+		focusPreviousOption() {
+			const options = Array.from(
+				this.dropdown.querySelectorAll(".select-option"),
+			)
+			let currentIndex = options.indexOf(document.activeElement)
+			if (currentIndex === -1) currentIndex = options.length // Treat as after last for wrap
+			const prevIndex = currentIndex > 0 ? currentIndex - 1 : options.length - 1
+			options[prevIndex].focus()
+		}
+	}
+
+	// Global array to store all instances for external access
+	const customSelects = []
+
+	// Initialize all custom selects and store instances
+	function initCustomSelects() {
+		document.querySelectorAll(".select-group").forEach((wrapper) => {
+			const instance = new CustomSelect(wrapper)
+			if (instance.select) {
+				// Only add if successfully initialized
+				customSelects.push(instance)
+			}
+		})
+	}
+
+	// Function to reset all custom selects (accessible to other functions in the file)
+	function resetAllCustomSelects() {
+		customSelects.forEach((instance) => {
+			instance.reset()
+		})
+	}
+
+	initCustomSelects()
+</script>
+<!-- [END] JavaScript Select  -->

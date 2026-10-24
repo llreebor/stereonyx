@@ -1,0 +1,117 @@
+<!-- [START] HTML Price Tabs -->
+<div class="price-toggle">
+	<div class="toggle-wrapper" role="tablist" aria-label="Pricing toggle">
+		<input
+			id="priceToggle"
+			type="checkbox"
+			class="sr-only"
+			aria-hidden="true"
+		/>
+
+		<div class="toggle-highlight" aria-hidden="true"></div>
+
+		<button
+			type="button"
+			class="toggle-option"
+			data-index="0"
+			aria-pressed="false"
+		>
+			<span class="toggle-text">Monthly</span>
+		</button>
+
+		<button
+			type="button"
+			class="toggle-option"
+			data-index="1"
+			aria-pressed="false"
+		>
+			<span class="toggle-text">Yearly</span>
+		</button>
+	</div>
+</div>
+<!-- [END] HTML Price Tabs -->
+
+<!-- [START] CSS Price Tabs -->
+<style>
+	/* Price Toggle */
+	.price-toggle {
+		@apply border-primary max-w-fit overflow-hidden rounded border p-1;
+	}
+	.toggle-wrapper {
+		@apply relative flex cursor-pointer items-center gap-4 overflow-hidden rounded bg-white;
+	}
+	.toggle-highlight {
+		@apply bg-primary absolute top-0 left-0 h-full translate-x-0 rounded transition-all duration-200 ease-in-out;
+	}
+	.toggle-option {
+		@apply z-10 cursor-pointer border-0 bg-transparent px-4 py-2;
+	}
+	.toggle-text {
+		@apply text-primary select-none;
+	}
+	.toggle-option.active .toggle-text {
+		@apply text-white;
+	}
+</style>
+<!-- [END] CSS Price Tabs -->
+
+<!-- [START] JavaScript Price Tabs -->
+<script>
+	// Initialize and manage the toggle switch functionality
+	function initializePriceToggle() {
+		const toggleInput = document.getElementById("priceToggle")
+		const wrapper = document.querySelector(".toggle-wrapper")
+		if (!toggleInput || !wrapper) return
+
+		const highlight = wrapper.querySelector(".toggle-highlight")
+		const options = Array.from(wrapper.querySelectorAll(".toggle-option"))
+		if (options.length < 2) return
+
+		// Update highlight position/size to match the active option
+		function updateHighlight() {
+			const index = toggleInput.checked ? 1 : 0
+			const active = options[index]
+			const { offsetWidth, offsetLeft, offsetHeight } = active
+
+			highlight.style.width = `${offsetWidth}px`
+			highlight.style.height = `${offsetHeight}px`
+			highlight.style.transform = `translateX(${offsetLeft}px)`
+			highlight.style.top = "0"
+		}
+
+		// Set active option by index (0 or 1)
+		function setActive(index) {
+			toggleInput.checked = index === 1
+			options.forEach((opt, i) => {
+				opt.classList.toggle("active", i === index)
+				opt.setAttribute("aria-pressed", i === index ? "true" : "false")
+			})
+			updateHighlight()
+		}
+
+		// Click on each option sets that option explicitly
+		options.forEach((btn, idx) => {
+			btn.addEventListener("click", (e) => {
+				e.preventDefault() // keep behaviour fully controlled by JS
+				setActive(idx)
+			})
+		})
+
+		// Click on wrapper but outside option buttons toggles state
+		wrapper.addEventListener("click", (e) => {
+			if (!e.target.closest(".toggle-option")) {
+				setActive(toggleInput.checked ? 0 : 1)
+			}
+		})
+
+		// Init on load and keep in sync on resize
+		window.addEventListener("load", () =>
+			setActive(toggleInput.checked ? 1 : 0),
+		)
+		window.addEventListener("resize", updateHighlight)
+	}
+
+	// Call the function to initialize the toggle switch
+	initializePriceToggle()
+</script>
+<!-- [END] JavaScript Price Tabs -->

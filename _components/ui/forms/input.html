@@ -1,0 +1,87 @@
+<!-- ============================== Default ============================== -->
+<!-- [START] HTML Input -->
+<!-- Input group wrapper (use .error or .success class for validation errors) -->
+<div class="input-group group">
+	<!-- Label -->
+	<label for="input" class="input-label">Email</label>
+
+	<!-- Input field -->
+	<input
+		id="input"
+		name="input"
+		type="text"
+		placeholder="Some placeholder..."
+		class="input-field"
+	/>
+
+	<!-- Error message (only visible when .error is applied on parent group) -->
+	<p class="input-error-message">Error message</p>
+</div>
+<!-- [END] HTML Input -->
+
+<!-- [START] CSS Input -->
+<style>
+	/* Input */
+	.input-group {
+		@apply relative flex w-full flex-col;
+	}
+	.input-label {
+		@apply text-primary group-[.error]:text-error group-[.success]:text-success order-1 mb-2 block text-sm font-medium;
+	}
+	.input-field {
+		@apply group-[.error]:border-error group-[.success]:border-success placeholder:text-primary/50 order-2 w-full rounded border border-gray-200 px-3 py-2 text-sm transition outline-none;
+
+		@variant disabled {
+			@apply cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400;
+		}
+		@variant enabled:hover {
+			@apply border-primary;
+		}
+		@variant enabled:focus {
+			@apply border-primary;
+		}
+	}
+	.input-error-message {
+		@apply order-3 mt-1 hidden text-xs text-red-600 group-[.error]:block;
+	}
+</style>
+<!-- [END] CSS Input -->
+
+<!-- ========================== Floating Label ========================== -->
+<!-- [START] HTML Input -->
+<!-- Input group wrapper (use .error or .success class for validation errors) -->
+<div class="group input-group relative">
+	<!-- Input field -->
+	<input
+		id="email"
+		name="email"
+		type="text"
+		placeholder=" "
+		class="peer input-field-float"
+	/>
+
+	<!-- Floating label -->
+	<label for="email" class="input-label-float">Email</label>
+
+	<!-- Error message (show when parent has .error) -->
+	<p class="input-error-message-float">Please enter a valid email</p>
+</div>
+<!-- [END] HTML Input -->
+
+<!-- [START] CSS Input -->
+<style>
+	/* Input */
+	.input-group {
+		@apply relative flex w-full flex-col;
+	}
+	.input-label-float {
+		@apply group-[.error]:peer-focus:text-error group-[.error]:text-error group-[.error]:peer-placeholder-shown:text-error peer-focus:text-primary group-hover:peer-placeholder-shown:text-primary group-hover:text-primary absolute top-[-9px] left-2 origin-[0] transform bg-white px-1 text-sm text-gray-500 transition-all peer-placeholder-shown:top-[9px] peer-placeholder-shown:text-gray-400 peer-focus:-top-[9px];
+	}
+	.input-field-float {
+		@apply group-[.error]:border-error! focus:border-primary hover:border-primary block w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm text-gray-900 transition-colors focus:ring-0 focus:outline-none;
+	}
+	.input-error-message-float {
+		@apply mt-1 hidden text-xs text-red-600 group-[.error]:block;
+	}
+</style>
+<!-- [END] CSS Input -->

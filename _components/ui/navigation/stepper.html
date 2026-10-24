@@ -1,0 +1,181 @@
+<!-- ==========================================
+  Component: Stepper
+  Category:  Navigation
+  Version:   1.0.0
+  Updated:   2025-05-11
+  ========================================== -->
+
+<!-- [HTML] -->
+<div class="stepper-wrapper">
+	<!-- Stepper header -->
+	<div class="stepper" id="stepper">
+		<!-- Step item (повторити для кожного кроку) -->
+		<div class="step active">
+			<div class="step-circle">1</div>
+			<span class="step-label">Акаунт</span>
+		</div>
+		<div class="step">
+			<div class="step-circle">2</div>
+			<span class="step-label">Профіль</span>
+		</div>
+		<div class="step">
+			<div class="step-circle">3</div>
+			<span class="step-label">Підтвердження</span>
+		</div>
+	</div>
+
+	<!-- Step content -->
+	<div class="step-content">
+		<h3 class="step-title">Заголовок кроку</h3>
+		<p class="step-desc">Опис поточного кроку.</p>
+	</div>
+
+	<!-- Actions -->
+	<div class="step-actions">
+		<span class="step-counter">Крок 1 з 3</span>
+		<div class="step-btn-row">
+			<button class="step-btn-back" disabled>Назад</button>
+			<button class="step-btn-next">Далі</button>
+		</div>
+	</div>
+</div>
+<!-- [/HTML] -->
+
+<!-- [CSS] -->
+<style>
+	.stepper {
+		@apply mb-10 flex items-start;
+	}
+	.step {
+		@apply relative flex flex-1 flex-col items-center;
+	}
+	/* Лінія між кроками */
+	.step:not(:last-child)::after {
+		content: "";
+		@apply absolute top-4 z-0 h-px bg-gray-200 transition-colors duration-300;
+		left: calc(50% + 18px);
+		right: calc(-50% + 18px);
+	}
+	.step.completed:not(:last-child)::after {
+		@apply bg-green-500;
+	}
+	.step-circle {
+		@apply relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-400 transition-all duration-200;
+	}
+	.step.completed .step-circle {
+		@apply border-green-500 bg-green-500 text-white;
+	}
+	.step.active .step-circle {
+		@apply border-blue-600 bg-blue-50 text-blue-600;
+	}
+	.step-label {
+		@apply mt-2 text-center text-xs whitespace-nowrap text-gray-400 transition-colors duration-200;
+	}
+	.step.active .step-label {
+		@apply font-medium text-gray-900;
+	}
+	.step.completed .step-label {
+		@apply text-green-700;
+	}
+
+	.step-content {
+		@apply min-h-[140px] rounded-xl border border-gray-100 bg-white p-6;
+	}
+	.step-title {
+		@apply mb-2 text-base font-medium text-gray-900;
+	}
+	.step-desc {
+		@apply text-sm leading-relaxed text-gray-500;
+	}
+
+	.step-actions {
+		@apply mt-5 flex items-center justify-between;
+	}
+	.step-counter {
+		@apply text-xs text-gray-400;
+	}
+	.step-btn-row {
+		@apply flex gap-2;
+	}
+
+	.step-btn-back {
+		@apply cursor-pointer rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-sm text-gray-500 transition-colors hover:bg-gray-50 disabled:cursor-default disabled:opacity-35;
+	}
+	.step-btn-next {
+		@apply cursor-pointer rounded-lg border-none bg-blue-600 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-800;
+	}
+	.step-btn-next.is-finish {
+		@apply bg-green-700 hover:bg-green-800;
+	}
+</style>
+<!-- [/CSS] -->
+
+<!-- [JS] -->
+<script>
+	function initializeStepper(wrapperId, stepsData) {
+		const wrapper = document.getElementById(wrapperId)
+		if (!wrapper) return
+
+		let current = 0
+
+		function render() {
+			const done = current >= stepsData.length
+
+			// Оновити кружечки
+			wrapper.querySelectorAll(".step").forEach((el, i) => {
+				el.classList.remove("active", "completed")
+				if (i < current) {
+					el.classList.add("completed")
+					el.querySelector(".step-circle").innerHTML =
+						'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>'
+				} else {
+					el.querySelector(".step-circle").textContent = i + 1
+					if (i === current) el.classList.add("active")
+				}
+			})
+
+			if (done) {
+				wrapper.querySelector(".step-content").innerHTML = `
+          <p style="text-align:center; padding: 1.5rem 0; color: var(--color-text-secondary); font-size:14px;">
+            Готово! Всі кроки завершено.
+          </p>`
+				wrapper.querySelector(".step-actions").style.display = "none"
+				return
+			}
+
+			const s = stepsData[current]
+			const isLast = current === stepsData.length - 1
+			wrapper.querySelector(".step-title").textContent = s.title
+			wrapper.querySelector(".step-desc").textContent = s.desc
+			wrapper.querySelector(".step-counter").textContent =
+				`Крок ${current + 1} з ${stepsData.length}`
+			wrapper.querySelector(".step-btn-back").disabled = current === 0
+			const nextBtn = wrapper.querySelector(".step-btn-next")
+			nextBtn.textContent = isLast ? "Завершити" : "Далі"
+			nextBtn.classList.toggle("is-finish", isLast)
+		}
+
+		wrapper.querySelector(".step-btn-next").addEventListener("click", () => {
+			if (current < stepsData.length) {
+				current++
+				render()
+			}
+		})
+		wrapper.querySelector(".step-btn-back").addEventListener("click", () => {
+			if (current > 0) {
+				current--
+				render()
+			}
+		})
+
+		render()
+	}
+
+	// Ініціалізація — передати id wrapper'а і масив кроків
+	initializeStepper("stepper-wrapper", [
+		{ title: "Створіть акаунт", desc: "Введіть email та пароль." },
+		{ title: "Заповніть профіль", desc: "Вкажіть ім'я та фото." },
+		{ title: "Підтвердження", desc: "Перевірте і підтвердіть дані." },
+	])
+</script>
+<!-- [/JS] -->

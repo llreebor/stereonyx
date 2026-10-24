@@ -1,0 +1,97 @@
+<!-- [START] HTML Toggle -->
+<div class="space-y-5">
+	<button
+		type="button"
+		class="toggle-trigger btn btn-primary"
+		data-toggle="my-block-1"
+	>
+		Show More
+	</button>
+
+	<div class="toggle-content" data-toggle-target="my-block-1">
+		<div class="overflow-hidden">
+			<p class="p-4">
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate, in?
+			</p>
+		</div>
+	</div>
+</div>
+<!-- [END] HTML Toggle -->
+
+<!-- [START] CSS Toggle -->
+<style>
+	/* Toggle */
+	.toggle-content {
+		@apply grid grid-rows-[0fr] transition-all duration-500;
+	}
+	.toggle-content.active {
+		@apply grid-rows-[1fr];
+	}
+</style>
+<!-- [END] CSS Toggle -->
+
+<!-- [START] JavaScript Toggle -->
+<script>
+	/**
+	 * Initializes toggle functionality for interactive elements (accordions, dropdowns, mobile menus, etc.).
+	 * Handles state switching, ARIA accessibility attributes, and keyboard interactions.
+	 */
+	function initializeToggles() {
+		const triggers = document.querySelectorAll("[data-toggle]")
+		if (!triggers.length) return
+
+		// Set initial ARIA accessibility attributes based on the current 'active' class status
+		triggers.forEach((trigger) => {
+			const targetId = trigger.dataset.toggle
+			const content = document.querySelector(
+				`[data-toggle-target="${targetId}"]`,
+			)
+			if (!content) return
+
+			const isActive = content.classList.contains("active")
+			trigger.setAttribute("aria-expanded", isActive)
+			content.setAttribute("aria-hidden", !isActive)
+		})
+
+		// Handle click events using event delegation
+		document.addEventListener("click", (event) => {
+			const trigger = event.target.closest("[data-toggle]")
+			if (!trigger) return
+
+			const targetId = trigger.dataset.toggle
+			const content = document.querySelector(
+				`[data-toggle-target="${targetId}"]`,
+			)
+			if (!content) return
+
+			// Determine if the target element is opening or closing
+			const isOpening = !content.classList.contains("active")
+
+			// Toggle active visual states
+			trigger.classList.toggle("active")
+			content.classList.toggle("active")
+
+			// Update ARIA accessibility attributes dynamically
+			trigger.setAttribute("aria-expanded", isOpening)
+			content.setAttribute("aria-hidden", !isOpening)
+		})
+
+		// Handle keyboard accessibility (Enter and Space keys) for non-button trigger elements
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Enter" || event.key === " ") {
+				const trigger = event.target.closest("[data-toggle]")
+				if (!trigger) return
+
+				// Prevent default page scroll behavior on Space key press
+				event.preventDefault()
+
+				// Programmatically trigger the click event
+				trigger.click()
+			}
+		})
+	}
+
+	// Initialize toggles on DOM ready
+	initializeToggles()
+</script>
+<!-- [END] JavaScript Accordion -->

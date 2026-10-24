@@ -1,0 +1,91 @@
+<!-- ============================== Default ============================== -->
+<!-- [START] HTML Copy to clipboard -->
+<div class="copy-input-wrap">
+	<input
+		class="copy-input"
+		id="share-link"
+		value="https://example.com/share/abc123"
+		readonly
+	/>
+	<button class="copy-input-btn" data-copy-from="share-link">
+		<svg
+			width="14"
+			height="14"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+		>
+			<rect x="9" y="9" width="13" height="13" rx="2" />
+			<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+		</svg>
+		Copy
+	</button>
+</div>
+<!-- [END] HTML  Copy to clipboard -->
+
+<!-- [START] CSS  Copy to clipboard -->
+<style>
+	/* Copy to clipboard */
+	.copy-input-wrap {
+		@apply flex max-w-sm overflow-hidden rounded-lg border border-gray-200;
+	}
+	.copy-input {
+		@apply flex-1 cursor-default border-none bg-white px-3 py-2 text-sm text-gray-800 outline-none;
+	}
+	.copy-input-btn {
+		@apply flex cursor-pointer items-center gap-2 border-l border-gray-200 bg-gray-50 px-3 py-2 text-sm whitespace-nowrap text-gray-500 transition-colors hover:bg-gray-100;
+	}
+	.copy-input-btn.copied {
+		@apply bg-green-50 text-green-700;
+	}
+</style>
+<!-- [END] CSS  Copy to clipboard -->
+
+<!-- [START] JavaScript  Copy to clipboard -->
+<script>
+	function initializeCopyToClipboard() {
+		const COPIED_DURATION = 2000
+
+		const checkIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`
+		const copyIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`
+
+		function markCopied(btn, originalHTML) {
+			btn.classList.add("copied")
+			btn.innerHTML = originalHTML
+				.replace(copyIcon, checkIcon)
+				.replace("Copy", "Copied")
+			setTimeout(() => {
+				btn.classList.remove("copied")
+				btn.innerHTML = originalHTML
+			}, COPIED_DURATION)
+		}
+
+		function copyText(text, btn) {
+			const originalHTML = btn.innerHTML
+			navigator.clipboard
+				.writeText(text)
+				.then(() => markCopied(btn, originalHTML))
+				.catch(() => {
+					const el = document.createElement("textarea")
+					el.value = text
+					document.body.appendChild(el)
+					el.select()
+					document.execCommand("copy")
+					document.body.removeChild(el)
+					markCopied(btn, originalHTML)
+				})
+		}
+
+		// Variant 3: data-copy-from (input id)
+		document.querySelectorAll("[data-copy-from]").forEach((btn) => {
+			btn.addEventListener("click", () => {
+				const input = document.getElementById(btn.dataset.copyFrom)
+				if (input) copyText(input.value, btn)
+			})
+		})
+	}
+
+	initializeCopyToClipboard()
+</script>
+<!-- [END] JavaScript  Copy to clipboard -->

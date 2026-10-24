@@ -1,0 +1,89 @@
+<!-- [START] HTML Dropdown -->
+<!-- Dropdown  -->
+<div class="relative mx-4 inline-block text-left">
+	<button class="dropdown-btn btn btn-primary peer">
+		Dropdown 2
+		<svg
+			class="size-4 transition-transform duration-300"
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke="currentColor"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="M19 9l-7 7-7-7"
+			/>
+		</svg>
+	</button>
+
+	<div class="dropdown-menu">
+		<a href="#" class="dropdown-menu-link">Option A</a>
+		<a href="#" class="dropdown-menu-link">Option B</a>
+	</div>
+</div>
+<!-- [END] HTML Dropdown -->
+
+<!-- [START] CSS Dropdown -->
+<style>
+	/* Dropdown Menu */
+	.dropdown-menu {
+		@apply pointer-events-auto absolute right-0 mt-2 w-full origin-top -translate-y-2 scale-95 rounded-lg border border-gray-200 bg-white opacity-0 shadow-lg transition-all duration-300 peer-[.active]:translate-y-0 peer-[.active]:scale-100 peer-[.active]:opacity-100;
+	}
+	.dropdown-menu-link {
+		@apply block px-4 py-2 text-gray-700 hover:bg-gray-100;
+	}
+</style>
+<!-- [END] CSS Dropdown -->
+
+<!-- [START] JavaScript Dropdown -->
+<script>
+	function initializeDropdowns() {
+		const dropdownButtons = document.querySelectorAll(".dropdown-btn")
+
+		// Handle click for each dropdown button
+		dropdownButtons.forEach((button) => {
+			const dropdown = button.nextElementSibling
+
+			button.addEventListener("click", (e) => {
+				e.stopPropagation() // Prevent closing when clicking inside a button
+
+				const isOpen = button.classList.contains("active")
+
+				// Close all dropdowns before opening the new one
+				closeAllDropdowns()
+
+				// If this dropdown was closed, open it
+				if (!isOpen) {
+					button.classList.add("active")
+					dropdown.classList.add("active")
+				}
+			})
+		})
+
+		// Close all dropdowns when clicking outside
+		document.addEventListener("click", closeAllDropdowns)
+
+		// Close all dropdowns when pressing Esc
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") {
+				closeAllDropdowns()
+			}
+		})
+
+		// Utility: close all dropdowns and reset buttons
+		function closeAllDropdowns() {
+			document
+				.querySelectorAll(".dropdown-btn")
+				.forEach((btn) => btn.classList.remove("active"))
+			document
+				.querySelectorAll(".dropdown-menu")
+				.forEach((menu) => menu.classList.remove("active"))
+		}
+	}
+
+	initializeDropdowns()
+</script>
+<!-- [END] JavaScript Dropdown -->
