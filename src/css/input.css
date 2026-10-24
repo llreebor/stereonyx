@@ -43,8 +43,11 @@
 	--text-small: 15px;
 
 	/* Gradients */
-	--banner-gradient: 90deg, #7426fa 0%, #2dd8a2 100%;
-	--home-hero-gradient: 76deg, #000 -7.39%, rgba(0, 0, 0, 0) 43.74%;
+	--gradient-banner: 90deg, #7426fa 0%, #2dd8a2 100%;
+	--gradient-home-hero: 76deg, #000 -7.39%, rgba(0, 0, 0, 0) 43.74%;
+	--gradient-card:
+		180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.54) 55.31%,
+		rgba(0, 0, 0, 0.95) 115.05%;
 
 	/* Animations */
 	--animate-fadeIn: fadeIn 0.3s linear;
@@ -75,6 +78,9 @@
 	}
 	h2 {
 		@apply text-xl font-medium text-white;
+	}
+	h4 {
+		@apply text-sm font-medium text-white;
 	}
 	p {
 		@apply text-white;
