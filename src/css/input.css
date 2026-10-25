@@ -31,6 +31,7 @@
 
 	/* Colors */
 	--color-primary: #7426fa;
+	--color-secondary: #232427;
 	--color-dark: #18191b;
 	--color-pink: #eb3f6a;
 	--color-gray: #797b7e;
@@ -98,7 +99,7 @@
 		}
 	}
 	.btn-small {
-		@apply px-3 py-2;
+		@apply px-4 py-1.5 text-[13px];
 	}
 	.btn-primary {
 		@apply bg-primary text-small font-medium text-white;
@@ -108,6 +109,16 @@
 		}
 		@variant active {
 			@apply bg-primary/80;
+		}
+	}
+	.btn-secondary {
+		@apply bg-secondary text-white;
+
+		@variant hover {
+			@apply bg-secondary/90;
+		}
+		@variant active {
+			@apply bg-secondary/80;
 		}
 	}
 	.btn-secondary-outline {
@@ -214,15 +225,23 @@
 }
 
 /* Swiper */
-.swiper-pagination-bullet {
+.swiper-pagination-home-hero .swiper-pagination-bullet {
 	width: 8px !important;
 	height: 8px !important;
 	background: white !important;
 	opacity: 0.3 !important;
 	transition: 0.3s width;
 }
+.swiper-pagination-home-testimonials .swiper-pagination-bullet {
+	width: 8px !important;
+	height: 8px !important;
+	background: #292c31 !important;
+	transition: 0.3s width;
+	opacity: 1;
+}
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
 	opacity: 1 !important;
 	width: 32px !important;
 	border-radius: 16px !important;
+	background: white !important;
 }

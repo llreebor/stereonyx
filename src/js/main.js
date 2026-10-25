@@ -193,4 +193,32 @@ document.addEventListener("DOMContentLoaded", () => {
 			prevEl: ".swiper-button-prev-home-hero",
 		},
 	})
+	const swiperHomeCategory = new Swiper(".swiper-category-home", {
+		// Optional parameters
+		slidesPerView: 5,
+		// slidesPerGroup: 5,
+		grid: {
+			rows: 2,
+			fill: "row",
+		},
+		spaceBetween: 20,
+		navigation: {
+			nextEl: ".swiper-button-home-category-next",
+			prevEl: ".swiper-button-home-category-prev",
+		},
+		pagination: {
+			el: ".swiper-home-category-fraction",
+			type: "fraction",
+		},
+	})
+	const swiperHomeTestimonials = new Swiper(".swiper-home-testimonials", {
+		// Optional parameters
+		loop: true,
+		spaceBetween: 20,
+		slidesPerView: 3,
+		pagination: {
+			el: ".swiper-pagination-home-testimonials",
+			clickable: true,
+		},
+	})
 })
