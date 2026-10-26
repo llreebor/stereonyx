@@ -134,6 +134,118 @@ function initExclusivePlayback(root = document) {
 	})
 }
 
+function initializeModal() {
+	const openModalButtons = document.querySelectorAll("[data-modal]")
+	const closeModalButtons = document.querySelectorAll(".modal-close-btn")
+
+	if (!openModalButtons.length || !closeModalButtons.length) return
+
+	function openModal(modalId) {
+		const modal = document.getElementById(modalId)
+		if (!modal) return
+
+		modal.classList.remove("opacity-0", "pointer-events-none")
+		modal.classList.add("opacity-100", "pointer-events-auto")
+
+		const handleOverlayClick = (e) => {
+			if (!e.target.closest(".modal")) {
+				closeModal(modalId)
+			}
+		}
+		modal.addEventListener("click", handleOverlayClick)
+
+		const handleEscapeKey = (e) => {
+			if (e.key === "Escape") {
+				closeModal(modalId)
+				document.removeEventListener("keydown", handleEscapeKey)
+			}
+		}
+		document.addEventListener("keydown", handleEscapeKey)
+	}
+
+	function closeModal(modalId) {
+		const modal = document.getElementById(modalId)
+		if (!modal) return
+
+		modal.classList.remove("opacity-100", "pointer-events-auto")
+		modal.classList.add("opacity-0", "pointer-events-none")
+
+		const modalContent = modal.querySelector(".modal")
+		if (modalContent) {
+			modalContent.classList.remove("scale-100")
+			modalContent.classList.add("scale-95")
+		}
+	}
+
+	openModalButtons.forEach((button) => {
+		if (!button.classList.contains("modal-close-btn")) {
+			button.addEventListener("click", () => {
+				const modalId = button.getAttribute("data-modal")
+				if (modalId) openModal(modalId)
+			})
+		}
+	})
+
+	closeModalButtons.forEach((button) => {
+		button.addEventListener("click", () => {
+			const modalId = button.getAttribute("data-modal")
+			if (modalId) closeModal(modalId)
+		})
+	})
+}
+
+// Toggles the visibility of password input
+function togglePasswordVisibility() {
+	// Select all password inputs and toggle buttons
+	const passwordInputs = document.querySelectorAll(".password-input")
+	const toggleButtons = document.querySelectorAll(".toggle-password-btn")
+
+	// Validate that we have matching pairs of inputs and buttons
+	if (passwordInputs.length === 0 || toggleButtons.length === 0) {
+		console.warn("No password inputs or toggle buttons found.")
+		return
+	}
+
+	if (passwordInputs.length !== toggleButtons.length) {
+		console.warn(
+			"Mismatch between number of password inputs and toggle buttons.",
+		)
+		return
+	}
+
+	// Iterate through each toggle button and attach event listener
+	toggleButtons.forEach((toggleBtn, index) => {
+		const passwordInput = passwordInputs[index]
+		const iconVisible = toggleBtn.querySelector(".pswd-icon-visible")
+		const iconHidden = toggleBtn.querySelector(".pswd-icon-hidden")
+
+		// Validate icon elements exist
+		if (!iconVisible || !iconHidden) {
+			console.warn(`Missing visibility icons for password input ${index}.`)
+			return
+		}
+
+		// Initialize icon states based on input type
+		const isPassword = passwordInput.type === "password"
+		iconVisible.style.display = isPassword ? "none" : "block"
+		iconHidden.style.display = isPassword ? "block" : "none"
+
+		// Add click event listener to toggle visibility
+		toggleBtn.addEventListener("click", (e) => {
+			e.preventDefault()
+
+			// Toggle input type between password and text
+			passwordInput.type =
+				passwordInput.type === "password" ? "text" : "password"
+
+			// Update icon visibility based on new input type
+			const isPasswordNow = passwordInput.type === "password"
+			iconVisible.style.display = isPasswordNow ? "none" : "block"
+			iconHidden.style.display = isPasswordNow ? "block" : "none"
+		})
+	})
+}
+
 // Inits
 document.addEventListener("DOMContentLoaded", () => {
 	// ============ Global
@@ -144,6 +256,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	initPlayButtons()
 	initExclusivePlayback()
 	initFavoriteButtons()
+
+	// Modals
+	initializeModal()
+
+	// Password visibility
+	togglePasswordVisibility()
 
 	// ============ Home Page
 	const swiperHomeHero = new Swiper(".swiper-home-hero", {

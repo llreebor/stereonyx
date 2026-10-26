@@ -24,7 +24,7 @@
 	</head>
 	<body>
 		<div class="wrapper flex min-h-full flex-col">
-			<div class="fixed top-0 left-0 z-10 h-auto w-full bg-black">
+			<div class="sticky top-0 left-0 z-10 h-auto w-full bg-black">
 				<!-- Banner -->
 				<div
 					class="relative flex items-center justify-center bg-linear-(--gradient-banner) py-2"
@@ -634,8 +634,15 @@
 
 							<!-- Auth Buttons -->
 							<div class="ml-8.5 flex items-center gap-2">
-								<a href="#" class="btn btn-secondary-outline">Log in</a>
-								<a href="#" class="btn btn-primary">Sign up</a>
+								<button
+									data-modal="modal-login"
+									class="btn btn-secondary-outline"
+								>
+									Log in
+								</button>
+								<button data-modal="modal-signup" class="btn btn-primary">
+									Sign up
+								</button>
 							</div>
 
 							<!-- Mobile Menu -->
@@ -1301,6 +1308,107 @@
 					</div>
 				</section>
 			</main>
+
+			<!-- Modals -->
+			<!-- Login Modal -->
+			<div id="modal-login" class="modal-root">
+				<div class="modal max-w-96.5 pt-9.5 pb-12">
+					<h2 class="text-center text-[22px]">Log in to Stereonyx</h2>
+
+					<!-- Form -->
+					<form action="#" class="mt-7 space-y-4">
+						<!-- [START] HTML Input -->
+						<!-- Input group wrapper (use .error or .success class for validation errors) -->
+						<div class="input-group group">
+							<!-- Input field -->
+							<input
+								id="input"
+								name="input"
+								type="text"
+								placeholder="Email"
+								class="input-field"
+							/>
+
+							<!-- Error message (only visible when .error is applied on parent group) -->
+							<p class="input-error-message">Error message</p>
+						</div>
+						<!-- [END] HTML Input -->
+
+						<!-- [START] HTML Input -->
+						<!-- Input group wrapper (use .error or .success class for validation errors) -->
+						<div class="input-group group">
+							<!-- Input field & Icon -->
+							<div class="relative">
+								<!-- Input -->
+								<input
+									id="input"
+									name="input"
+									type="password"
+									placeholder="Some placeholder..."
+									class="input-field password-input"
+								/>
+
+								<!-- Pswd Icons -->
+								<button
+									class="toggle-password-btn absolute top-1/2 right-3 size-4.5 -translate-y-1/2 cursor-pointer"
+								>
+									<img
+										class="pswd-icon-hidden"
+										src="./images/icons/password-hidden.svg"
+										alt="icon"
+									/>
+									<img
+										class="pswd-icon-visible hidden"
+										src="./images/icons/password-visible.svg"
+										alt="icon"
+									/>
+								</button>
+							</div>
+
+							<!-- Error message (only visible when .error is applied on parent group) -->
+							<p class="input-error-message">Error message</p>
+						</div>
+						<!-- [END] HTML Input -->
+
+						<button
+							type="submit"
+							class="btn btn-primary w-full max-w-full py-3.75 text-sm"
+						>
+							Log In
+						</button>
+					</form>
+
+					<!-- Links -->
+					<div class="mt-8 flex flex-col items-center justify-center gap-2">
+						<a href="#" class="hover:text-gray text-sm text-white">
+							Forgot password?
+						</a>
+						<p class="text-sm text-[#87898D]">
+							Don't have an account?
+							<a href="#" class="hover:text-gray text-sm text-white">Sign up</a>
+						</p>
+					</div>
+
+					<!-- Close Button -->
+					<button data-modal="modal-login" class="modal-close-btn group">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+						>
+							<path
+								d="M0.530273 0.53125L5.53027 5.53125M5.53027 5.53125L10.5303 10.5312M5.53027 5.53125L0.530273 10.5312M5.53027 5.53125L10.5303 0.53125"
+								stroke-width="1.5"
+								stroke="#73757B"
+								class="transition-colors group-hover:stroke-white"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div class="modal-overlay"></div>
+			</div>
 
 			<!-- Footer -->
 			<footer class="border-t border-t-[#181A1D] pt-11">

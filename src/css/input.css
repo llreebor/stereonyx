@@ -95,7 +95,7 @@
 @layer components {
 	/* Button */
 	.btn {
-		@apply inline-flex items-center gap-3 rounded-full border border-transparent px-4.5 py-2 transition-colors;
+		@apply inline-flex items-center justify-center gap-3 rounded-full border border-transparent px-4.5 py-2 transition-colors;
 
 		@variant disabled {
 			@apply cursor-not-allowed opacity-85;
@@ -216,6 +216,20 @@
 	}
 	.input-error-message {
 		@apply order-3 mt-1 hidden text-xs text-red-600 group-[.error]:block;
+	}
+
+	/* Modal */
+	.modal-root {
+		@apply pointer-events-none fixed inset-0 z-20 flex items-start justify-center opacity-0;
+	}
+	.modal-overlay {
+		@apply absolute inset-0 -z-10 bg-[#0d0d0d]/70 backdrop-blur-sm;
+	}
+	.modal {
+		@apply relative mt-50 w-full max-w-md transform rounded-[22px] bg-[#1D1E1F] p-8.5 transition-transform duration-500 ease-in-out;
+	}
+	.modal-close-btn {
+		@apply hover:bg-dark absolute top-3.5 right-3.5 flex size-9 items-center justify-center rounded-full;
 	}
 }
 
