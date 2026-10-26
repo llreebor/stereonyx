@@ -24,7 +24,7 @@
 	</head>
 	<body>
 		<div class="wrapper flex min-h-full flex-col">
-			<div class="sticky top-0 left-0 z-10 w-full bg-black">
+			<div class="fixed top-0 left-0 z-10 h-auto w-full bg-black">
 				<!-- Banner -->
 				<div
 					class="relative flex items-center justify-center bg-linear-(--gradient-banner) py-2"
@@ -67,9 +67,9 @@
 					</button>
 				</div>
 				<!-- Header  -->
-				<header class="z-10 border-b border-b-[#181A1D] py-5">
+				<header class="z-10 border-b border-b-[#181A1D]">
 					<div class="container">
-						<div class="relative flex items-center">
+						<div class="flex items-center">
 							<!-- Logo -->
 							<a href="#">
 								<img src="./images/global/logo.svg" alt="logo image" />
@@ -84,9 +84,7 @@
 							>
 								<ul class="flex items-center gap-8">
 									<!-- Menu Item With Submenu -->
-									<li
-										class="menu-item group/submenu submenu-trigger with-underline-animation relative"
-									>
+									<li class="menu-item group/submenu submenu-trigger">
 										<button
 											class="menu-link"
 											aria-haspopup="true"
@@ -110,36 +108,416 @@
 											</svg>
 										</button>
 										<!-- Submenu -->
-										<ul class="submenu" aria-label="More submenu">
-											<li><a class="submenu-link" href="#">Inner Link 1</a></li>
-											<li><a class="submenu-link" href="#">Inner Link 2</a></li>
-											<li><a class="submenu-link" href="#">Inner Link 3</a></li>
-										</ul>
+										<div class="submenu" aria-label="More submenu">
+											<div class="submenu-wrapper">
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Afrobeat</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Bass Music</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Bass House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Dubstep</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Future Bass</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Grime</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Moombah</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Blues</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Breaks</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Cinematic</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Action</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Filmscore</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Horror</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Sci-Fi</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Country</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Disco</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Nu Disco</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">DJ Tools</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Downtempo</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Ambient</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Chillout</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Electronica</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Trip Hop</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">
+															Drum and Bass
+														</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Halftime</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Jump Up</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Jungle</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Liquid</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Neurofunk</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Electro</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">
+																	Classic / Detroit
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Complextro</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Modern Electro
+																</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Folk Music</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">
+															Free Samples
+														</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Funk</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Garage</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">
+																	Future Garage
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Speed Garage
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">UK Bass</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Uk Garage</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Hard Dance</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Hardcore</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Hip Hop</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Boom Bap</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Classic Hip Hop
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Lo-Fi Hip Hop
+																</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">House</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Acid House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Afro House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Amapiano</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Classic House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Deep House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Deep Tech</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Electro House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Future House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Lo-Fi House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Micro House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Minimal House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Progressive House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Soulful & Funky House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Tech House</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">IDM</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Glitch</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Instruments</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Bass</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Brass & Woodwind
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Drums</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Guitars</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Keyboards</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Percussion</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Strings</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Synths</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Jazz</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Latin</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Reggaeton</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Mainstage</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">EDM</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Orchestral</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Pop</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Future Pop</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Indie Pop</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Reggae</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Dancehall</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Dub</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Ska</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">
+															Sound Archives
+														</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Synthwave</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Techno</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Dub Techno</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Industrial Techno
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Melodic Techno
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Minimal Techno
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Peak Time / Driving
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
 									</li>
 									<li class="menu-item">
-										<a href="#" class="menu-link with-underline-animation">
-											Templates
-										</a>
+										<a href="#" class="menu-link">Templates</a>
 									</li>
 									<li class="menu-item">
-										<a href="#" class="menu-link with-underline-animation">
-											Sample packs
-										</a>
+										<a href="#" class="menu-link">Sample packs</a>
 									</li>
 									<li class="menu-item">
-										<a href="#" class="menu-link with-underline-animation">
-											Presets
-										</a>
+										<a href="#" class="menu-link">Presets</a>
 									</li>
 									<li class="menu-item">
-										<a href="#" class="menu-link with-underline-animation">
-											Plugins
-										</a>
+										<a href="#" class="menu-link">Plugins</a>
 									</li>
 									<li class="menu-item">
-										<a href="#" class="menu-link with-underline-animation">
-											Blog
-										</a>
+										<a href="#" class="menu-link">Blog</a>
 									</li>
 								</ul>
 							</nav>
@@ -147,27 +525,21 @@
 							<!-- Action Buttons -->
 							<div class="ml-auto flex items-center gap-5.5">
 								<!-- Search Button -->
-								<div>
-									<button
-										type="button"
-										data-search-open
-										aria-label="Open search"
+								<button type="button" data-search-open aria-label="Open search">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="18"
+										viewBox="0 0 18 18"
+										fill="none"
 									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="18"
-											height="18"
-											viewBox="0 0 18 18"
-											fill="none"
-										>
-											<path
-												d="M12.4064 12.4064L16.7998 16.7998M12.1135 2.74093C14.7017 5.32909 14.7017 9.52533 12.1135 12.1135C9.52534 14.7017 5.32909 14.7017 2.74093 12.1135C0.152763 9.52533 0.152763 5.32909 2.74093 2.74093C5.32909 0.152764 9.52534 0.152764 12.1135 2.74093Z"
-												stroke-width="1.6"
-												stroke="white"
-											/>
-										</svg>
-									</button>
-								</div>
+										<path
+											d="M12.4064 12.4064L16.7998 16.7998M12.1135 2.74093C14.7017 5.32909 14.7017 9.52533 12.1135 12.1135C9.52534 14.7017 5.32909 14.7017 2.74093 12.1135C0.152763 9.52533 0.152763 5.32909 2.74093 2.74093C5.32909 0.152764 9.52534 0.152764 12.1135 2.74093Z"
+											stroke-width="1.6"
+											stroke="white"
+										/>
+									</svg>
+								</button>
 
 								<!-- Volume control -->
 								<div class="relative flex flex-col items-center" data-volume>
@@ -367,6 +739,95 @@
 								<span class="burger-btn-center-line"></span>
 								<span class="burger-btn-bottom-line"></span>
 							</button>
+
+							<!-- Search Popup -->
+							<div
+								data-search-popup
+								class="absolute top-full left-0 z-50 hidden h-full w-full"
+								role="dialog"
+								aria-modal="true"
+								aria-label="Search"
+							>
+								<!-- Search bar -->
+								<div class="relative z-10 border-b border-white/10 bg-black">
+									<div class="container">
+										<form
+											role="search"
+											action="/search"
+											method="get"
+											class="flex h-20 items-center gap-4 px-6 sm:px-12"
+										>
+											<div class="relative flex-1">
+												<!-- [START] HTML Input -->
+												<!-- Input group wrapper (use .error or .success class for validation errors) -->
+												<div class="input-group group">
+													<!-- Input field -->
+													<input
+														data-search-input
+														autocomplete="off"
+														id="search"
+														name="search"
+														type="search"
+														placeholder="Search..."
+														class="input-field rounded-[30px] px-6.5 text-lg [&::-webkit-search-cancel-button]:appearance-none"
+													/>
+
+													<!-- Error message (only visible when .error is applied on parent group) -->
+													<p class="input-error-message">Error message</p>
+												</div>
+												<!-- [END] HTML Input -->
+
+												<button
+													type="submit"
+													aria-label="Search"
+													class="absolute top-1/2 right-6 -translate-y-1/2 text-white"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="18"
+														height="18"
+														viewBox="0 0 18 18"
+														fill="none"
+													>
+														<path
+															d="M12.4064 12.4064L16.7998 16.7998M12.1135 2.74093C14.7017 5.32909 14.7017 9.52533 12.1135 12.1135C9.52534 14.7017 5.3291 14.7017 2.74093 12.1135C0.152763 9.52533 0.152763 5.32909 2.74093 2.74093C5.3291 0.152764 9.52534 0.152764 12.1135 2.74093Z"
+															stroke-width="1.6"
+															stroke="white"
+														/>
+													</svg>
+												</button>
+											</div>
+
+											<button
+												type="button"
+												class="btn btn-secondary-outline flex size-10 items-center justify-center rounded-full p-0"
+												data-search-close
+												aria-label="Close search"
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="14"
+													height="14"
+													viewBox="0 0 14 14"
+													fill="none"
+												>
+													<path
+														d="M12.5664 0.56543L6.56641 6.56543M6.56641 6.56543L0.566406 12.5654M6.56641 6.56543L12.5664 12.5654M6.56641 6.56543L0.566406 0.56543"
+														stroke-width="1.6"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</form>
+									</div>
+								</div>
+
+								<!-- Dimmed backdrop (click to close) -->
+								<div
+									data-search-backdrop
+									class="absolute inset-0 min-h-250 bg-[#0d0d0d]/70 backdrop-blur-[6px]"
+								></div>
+							</div>
 						</div>
 					</div>
 				</header>
@@ -374,72 +835,6 @@
 
 			<!-- Main Content -->
 			<main class="relative flex-auto">
-				<!-- Search Popup -->
-				<div
-					data-search-popup
-					class="absolute top-0 left-0 z-50 h-full w-full"
-					role="dialog"
-					aria-modal="true"
-					aria-label="Search"
-				>
-					<!-- Search bar -->
-					<div class="relative z-10 border-b border-white/10 bg-black">
-						<form
-							role="search"
-							action="/search"
-							method="get"
-							class="flex h-20 items-center gap-4 px-6 sm:px-12"
-						>
-							<div class="relative flex-1">
-								<input
-									type="search"
-									name="q"
-									data-search-input
-									placeholder="Search..."
-									autocomplete="off"
-									class="h-12 w-full rounded-full bg-[#161818] pr-14 pl-6 text-sm text-white placeholder:text-white/30 focus:ring-1 focus:ring-white/30 focus:outline-none [&::-webkit-search-cancel-button]:appearance-none"
-								/>
-								<button
-									type="submit"
-									aria-label="Search"
-									class="absolute top-1/2 right-5 -translate-y-1/2 text-white"
-								>
-									<svg
-										viewBox="0 0 24 24"
-										class="h-4 w-4"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="1.8"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-									>
-										<circle cx="11" cy="11" r="7" />
-										<path d="m20 20-3.5-3.5" />
-									</svg>
-								</button>
-							</div>
-
-							<button type="button" data-search-close aria-label="Close search">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="14"
-									height="14"
-									viewBox="0 0 14 14"
-									fill="none"
-								>
-									<path
-										d="M12.5664 0.56543L6.56641 6.56543M6.56641 6.56543L0.566406 12.5654M6.56641 6.56543L12.5664 12.5654M6.56641 6.56543L0.566406 0.56543"
-										stroke-width="1.6"
-										stroke="white"
-									/>
-								</svg>
-							</button>
-						</form>
-					</div>
-
-					<!-- Dimmed backdrop (click to close) -->
-					<div data-search-backdrop class="absolute inset-0 bg-[#555]/90"></div>
-				</div>
 				<!-- Hero -->
 				<section class="z-0 py-7.5">
 					<div class="container">

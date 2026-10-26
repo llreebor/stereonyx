@@ -95,39 +95,6 @@ function initializeMobileMenu() {
 		}
 	})
 }
-function initStickyHeader() {
-	const header = document.querySelector("header[data-sticky]")
-	if (!header) return
-
-	const mode = header.dataset.sticky
-
-	if (mode === "always") {
-		header.classList.add("fixed-header")
-		document.body.style.paddingTop = header.offsetHeight + "px"
-		return
-	}
-
-	if (mode === "smart") {
-		header.classList.add("fixed-header")
-		document.body.style.paddingTop = header.offsetHeight + "px"
-
-		let lastY = window.scrollY
-
-		window.addEventListener(
-			"scroll",
-			function () {
-				const currentY = window.scrollY
-				if (currentY > lastY && currentY > header.offsetHeight) {
-					header.classList.add("-translate-y-full")
-				} else {
-					header.classList.remove("-translate-y-full")
-				}
-				lastY = currentY
-			},
-			{ passive: true },
-		)
-	}
-}
 
 // Toggle buttons state
 function initPlayButtons(root = document) {
@@ -172,7 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	// ============ Global
 	// Mobile Menu
 	initializeMobileMenu()
-	initStickyHeader()
 
 	// Play&Pause button & Favorite Buttons
 	initPlayButtons()
