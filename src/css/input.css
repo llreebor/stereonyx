@@ -65,8 +65,11 @@
 
 /* Base Elements  */
 @layer base {
+	html {
+		@apply scrollbar-gutter-stable;
+	}
 	body {
-		@apply font-inter relative h-full bg-black;
+		@apply font-inter relative h-full scrollbar-gutter-stable bg-black;
 	}
 	a {
 		@apply cursor-pointer transition-colors;

@@ -222,3 +222,220 @@ document.addEventListener("DOMContentLoaded", () => {
 		},
 	})
 })
+
+function initVolumeControl(root) {
+	const input = root.querySelector("[data-volume-input]")
+	const toggle = root.querySelector("[data-volume-toggle]")
+	const panel = root.querySelector("[data-volume-panel]")
+	const slider = root.querySelector("[data-volume-slider]")
+	const fill = root.querySelector("[data-volume-fill]")
+	const track = fill.parentElement
+
+	const clamp = (v) => Math.min(100, Math.max(0, v))
+
+	// ----- значение (0–100), хранится в input -----
+	const getVolume = () => clamp(Number(input.value) || 0)
+
+	function setVolume(v) {
+		const value = Math.round(clamp(v))
+		input.value = value
+		fill.style.height = `${value}%`
+		slider.setAttribute("aria-valuenow", value)
+		input.dispatchEvent(new Event("change", { bubbles: true }))
+	}
+
+	const setFromPointer = (e) => {
+		const rect = track.getBoundingClientRect()
+		setVolume(100 - ((e.clientY - rect.top) / rect.height) * 100)
+	}
+
+	// ----- dropdown -----
+	const isOpen = () => toggle.getAttribute("aria-expanded") === "true"
+
+	function setOpen(open) {
+		toggle.setAttribute("aria-expanded", open)
+		panel.classList.toggle("hidden", !open)
+		panel.classList.toggle("flex", open)
+	}
+
+	toggle.addEventListener("click", () => setOpen(!isOpen()))
+
+	document.addEventListener("pointerdown", (e) => {
+		if (isOpen() && !root.contains(e.target)) setOpen(false)
+	})
+
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape" && isOpen()) {
+			setOpen(false)
+			toggle.focus()
+		}
+	})
+
+	// ----- drag -----
+	slider.addEventListener("pointerdown", (e) => {
+		slider.setPointerCapture(e.pointerId)
+		slider.focus()
+		setFromPointer(e)
+		slider.addEventListener("pointermove", setFromPointer)
+	})
+
+	const stopDrag = (e) => {
+		slider.removeEventListener("pointermove", setFromPointer)
+		if (slider.hasPointerCapture(e.pointerId))
+			slider.releasePointerCapture(e.pointerId)
+	}
+	slider.addEventListener("pointerup", stopDrag)
+	slider.addEventListener("pointercancel", stopDrag)
+
+	// ----- wheel -----
+	panel.addEventListener(
+		"wheel",
+		(e) => {
+			e.preventDefault()
+			setVolume(getVolume() + (e.deltaY < 0 ? 5 : -5))
+		},
+		{ passive: false },
+	)
+
+	// ----- keyboard -----
+	slider.addEventListener("keydown", (e) => {
+		const step = e.shiftKey ? 10 : 5
+		const actions = {
+			ArrowUp: () => setVolume(getVolume() + step),
+			ArrowRight: () => setVolume(getVolume() + step),
+			ArrowDown: () => setVolume(getVolume() - step),
+			ArrowLeft: () => setVolume(getVolume() - step),
+			Home: () => setVolume(0),
+			End: () => setVolume(100),
+		}
+		if (actions[e.key]) {
+			e.preventDefault()
+			actions[e.key]()
+		}
+	})
+
+	// начальная отрисовка из значения input
+	setVolume(getVolume())
+}
+
+// инициализация всех регуляторов на странице
+document.querySelectorAll("[data-volume]").forEach(initVolumeControl)
+
+// пример: слушаем изменения
+// document.querySelector('[data-volume-input]').addEventListener('change', (e) => {
+//   audio.volume = e.target.value / 100;
+// });
+
+function initSearchPopup(popup) {
+	const openBtns = document.querySelectorAll("[data-search-open]")
+	const closeBtn = popup.querySelector("[data-search-close]")
+	const backdrop = popup.querySelector("[data-search-backdrop]")
+	const input = popup.querySelector("[data-search-input]")
+
+	const isOpen = () => !popup.classList.contains("hidden")
+
+	function setOpen(open) {
+		popup.classList.toggle("hidden", !open)
+		document.body.classList.toggle("overflow-hidden", open)
+		if (open) input.focus()
+	}
+
+	openBtns.forEach((btn) => btn.addEventListener("click", () => setOpen(true)))
+	closeBtn.addEventListener("click", () => setOpen(false))
+	backdrop.addEventListener("click", () => setOpen(false))
+
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape" && isOpen()) setOpen(false)
+	})
+}
+
+/* ---------- Volume control ---------- */
+function initVolumeControl(root) {
+	const input = root.querySelector("[data-volume-input]")
+	const toggle = root.querySelector("[data-volume-toggle]")
+	const panel = root.querySelector("[data-volume-panel]")
+	const slider = root.querySelector("[data-volume-slider]")
+	const fill = root.querySelector("[data-volume-fill]")
+	const track = fill.parentElement
+
+	const clamp = (v) => Math.min(100, Math.max(0, v))
+	const getVolume = () => clamp(Number(input.value) || 0)
+
+	function setVolume(v) {
+		const value = Math.round(clamp(v))
+		input.value = value
+		fill.style.height = `${value}%`
+		slider.setAttribute("aria-valuenow", value)
+		input.dispatchEvent(new Event("change", { bubbles: true }))
+	}
+
+	const setFromPointer = (e) => {
+		const rect = track.getBoundingClientRect()
+		setVolume(100 - ((e.clientY - rect.top) / rect.height) * 100)
+	}
+
+	const isOpen = () => toggle.getAttribute("aria-expanded") === "true"
+
+	function setOpen(open) {
+		toggle.setAttribute("aria-expanded", open)
+		panel.classList.toggle("hidden", !open)
+		panel.classList.toggle("flex", open)
+	}
+
+	toggle.addEventListener("click", () => setOpen(!isOpen()))
+
+	document.addEventListener("pointerdown", (e) => {
+		if (isOpen() && !root.contains(e.target)) setOpen(false)
+	})
+
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape" && isOpen()) {
+			setOpen(false)
+			toggle.focus()
+		}
+	})
+
+	slider.addEventListener("pointerdown", (e) => {
+		slider.setPointerCapture(e.pointerId)
+		slider.focus()
+		setFromPointer(e)
+		slider.addEventListener("pointermove", setFromPointer)
+	})
+
+	const stopDrag = (e) => {
+		slider.removeEventListener("pointermove", setFromPointer)
+		if (slider.hasPointerCapture(e.pointerId))
+			slider.releasePointerCapture(e.pointerId)
+	}
+	slider.addEventListener("pointerup", stopDrag)
+	slider.addEventListener("pointercancel", stopDrag)
+
+	panel.addEventListener(
+		"wheel",
+		(e) => {
+			e.preventDefault()
+			setVolume(getVolume() + (e.deltaY < 0 ? 5 : -5))
+		},
+		{ passive: false },
+	)
+
+	slider.addEventListener("keydown", (e) => {
+		const step = e.shiftKey ? 10 : 5
+		const actions = {
+			ArrowUp: () => setVolume(getVolume() + step),
+			ArrowRight: () => setVolume(getVolume() + step),
+			ArrowDown: () => setVolume(getVolume() - step),
+			ArrowLeft: () => setVolume(getVolume() - step),
+			Home: () => setVolume(0),
+			End: () => setVolume(100),
+		}
+		if (actions[e.key]) {
+			e.preventDefault()
+			actions[e.key]()
+		}
+	})
+
+	setVolume(getVolume())
+}
+
+document.querySelectorAll("[data-search-popup]").forEach(initSearchPopup)
