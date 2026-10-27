@@ -24,6 +24,7 @@
 	</head>
 	<body>
 		<div class="wrapper flex min-h-full flex-col">
+			<!-- Banner & Header -->
 			<div class="sticky top-0 left-0 z-10 h-auto w-full bg-black">
 				<!-- Banner -->
 				<div
@@ -1380,17 +1381,175 @@
 
 					<!-- Links -->
 					<div class="mt-8 flex flex-col items-center justify-center gap-2">
-						<a href="#" class="hover:text-gray text-sm text-white">
+						<a href="#" class="text-sm text-white hover:underline">
 							Forgot password?
 						</a>
 						<p class="text-sm text-[#87898D]">
 							Don't have an account?
-							<a href="#" class="hover:text-gray text-sm text-white">Sign up</a>
+							<a href="#" class="text-sm text-white hover:underline">Sign up</a>
 						</p>
 					</div>
 
 					<!-- Close Button -->
 					<button data-modal="modal-login" class="modal-close-btn group">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+						>
+							<path
+								d="M0.530273 0.53125L5.53027 5.53125M5.53027 5.53125L10.5303 10.5312M5.53027 5.53125L0.530273 10.5312M5.53027 5.53125L10.5303 0.53125"
+								stroke-width="1.5"
+								stroke="#73757B"
+								class="transition-colors group-hover:stroke-white"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div class="modal-overlay"></div>
+			</div>
+
+			<!-- Sign Up Modal -->
+			<div id="modal-signup" class="modal-root">
+				<div class="modal max-w-96.5 pt-9.5 pb-12">
+					<h2 class="text-center text-[22px]">Sign up to Stereonyx</h2>
+
+					<!-- Form -->
+					<form action="#" class="mt-7 space-y-4">
+						<!-- [START] HTML Input -->
+						<!-- Input group wrapper (use .error or .success class for validation errors) -->
+						<div class="input-group group">
+							<!-- Input field -->
+							<input
+								id="input"
+								name="input"
+								type="text"
+								placeholder="Email"
+								class="input-field"
+							/>
+
+							<!-- Error message (only visible when .error is applied on parent group) -->
+							<p class="input-error-message">Error message</p>
+						</div>
+						<!-- [END] HTML Input -->
+
+						<!-- [START] HTML Input -->
+						<!-- Input group wrapper (use .error or .success class for validation errors) -->
+						<div class="input-group group">
+							<!-- Input field & Icon -->
+							<div class="relative">
+								<!-- Input -->
+								<input
+									id="input"
+									name="password-signup"
+									type="password"
+									placeholder="Password"
+									class="input-field password-input"
+								/>
+
+								<!-- Pswd Icons -->
+								<button
+									class="toggle-password-btn absolute top-1/2 right-3 size-4.5 -translate-y-1/2 cursor-pointer"
+								>
+									<img
+										class="pswd-icon-hidden"
+										src="./images/icons/password-hidden.svg"
+										alt="icon"
+									/>
+									<img
+										class="pswd-icon-visible hidden"
+										src="./images/icons/password-visible.svg"
+										alt="icon"
+									/>
+								</button>
+							</div>
+
+							<!-- Error message (only visible when .error is applied on parent group) -->
+							<p class="input-error-message">Error message</p>
+						</div>
+						<!-- [END] HTML Input -->
+
+						<!-- [START] HTML Input -->
+						<!-- Input group wrapper (use .error or .success class for validation errors) -->
+						<div class="input-group group">
+							<!-- Input field & Icon -->
+							<div class="relative">
+								<!-- Input -->
+								<input
+									id="input"
+									name="password-signup-confirm"
+									type="password"
+									placeholder="Confirm password"
+									class="input-field password-input"
+								/>
+
+								<!-- Pswd Icons -->
+								<button
+									class="toggle-password-btn absolute top-1/2 right-3 size-4.5 -translate-y-1/2 cursor-pointer"
+								>
+									<img
+										class="pswd-icon-hidden"
+										src="./images/icons/password-hidden.svg"
+										alt="icon"
+									/>
+									<img
+										class="pswd-icon-visible hidden"
+										src="./images/icons/password-visible.svg"
+										alt="icon"
+									/>
+								</button>
+							</div>
+
+							<!-- Error message (only visible when .error is applied on parent group) -->
+							<p class="input-error-message">Error message</p>
+						</div>
+						<!-- [END] HTML Input -->
+
+						<!-- Default Checkbox Input -->
+						<div class="checkbox-group group/checkbox input-group group">
+							<div class="checkbox-row">
+								<input
+									required
+									name="checkbox-input-1"
+									id="checkbox-input-1"
+									class="peer input-field sr-only"
+									type="checkbox"
+								/>
+								<div class="checkbox"></div>
+								<label
+									for="checkbox-input-1"
+									class="checkbox-label input-label text-[#87898D]"
+								>
+									I have read and accept the&nbsp;
+									<a href="#" class="text-white hover:underline">
+										Privacy Policy
+									</a>
+								</label>
+							</div>
+
+							<p class="input-error-message">Error message</p>
+						</div>
+
+						<button
+							type="submit"
+							class="btn btn-primary w-full max-w-full py-3.75 text-sm"
+						>
+							Sign up
+						</button>
+					</form>
+
+					<!-- Links -->
+					<div class="mt-8 flex flex-col items-center justify-center gap-2">
+						<p class="text-sm text-[#87898D]">
+							Already have an account?
+							<a href="#" class="text-sm text-white hover:underline"> Log in</a>
+						</p>
+					</div>
+
+					<!-- Close Button -->
+					<button data-modal="modal-signup" class="modal-close-btn group">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="12"

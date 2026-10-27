@@ -246,6 +246,54 @@ function togglePasswordVisibility() {
 	})
 }
 
+// Initialize accordion functionality
+function initializeAccordion() {
+	const accordions = document.querySelectorAll(".accordion")
+	if (!accordions.length) return
+
+	accordions.forEach((accordion) => {
+		const accordionItems = accordion.querySelectorAll(".accordion-item")
+
+		accordionItems.forEach((item) => {
+			const content = item.querySelector(".accordion-content")
+			const trigger = item.querySelector(".accordion-trigger")
+
+			if (!content || !trigger) return
+
+			trigger.setAttribute("aria-expanded", item.classList.contains("active"))
+			content.setAttribute("aria-hidden", !item.classList.contains("active"))
+		})
+
+		accordion.addEventListener("click", (event) => {
+			const trigger = event.target.closest(".accordion-trigger")
+			if (!trigger) return
+
+			const parent = trigger.closest(".accordion-item")
+			if (!parent) return
+
+			const content = parent.querySelector(".accordion-content")
+			if (!content) return
+
+			const isOpening = !parent.classList.contains("active")
+			parent.classList.toggle("active")
+			content.classList.toggle("active")
+
+			trigger.setAttribute("aria-expanded", isOpening)
+			content.setAttribute("aria-hidden", !isOpening)
+		})
+
+		accordion.addEventListener("keydown", (event) => {
+			if (event.key === "Enter" || event.key === " ") {
+				const trigger = event.target.closest(".accordion-trigger")
+				if (!trigger) return
+
+				event.preventDefault()
+				trigger.click()
+			}
+		})
+	})
+}
+
 // Inits
 document.addEventListener("DOMContentLoaded", () => {
 	// ============ Global
@@ -305,6 +353,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			clickable: true,
 		},
 	})
+
+	// ============ Contacts Page
+	// Faq Accordion
+	initializeAccordion()
 })
 
 function initVolumeControl(root) {
