@@ -139,6 +139,9 @@
 	.slider-circle-btn-small {
 		@apply bg-gray-dark hover:bg-gray-dark/80 flex size-8 items-center justify-center rounded-full disabled:bg-[#111214];
 	}
+	.filter-btn.is-active {
+		@apply border-white;
+	}
 
 	/* Header */
 	.fixed-header {

@@ -1,0 +1,1639 @@
+<!doctype html>
+<html lang="en" class="h-full">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tailwindcss v4 | Roman T.</title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="./css/output.css" />
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Libs -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+		/>
+	</head>
+	<body>
+		<div class="wrapper flex min-h-full flex-col">
+			<!-- Banner & Header -->
+			<div class="sticky top-0 left-0 z-10 h-auto w-full bg-black">
+				<!-- Banner -->
+				<div
+					class="relative flex items-center justify-center bg-linear-(--gradient-banner) py-2"
+				>
+					<a href="#" class="text-small flex items-center gap-2 text-white">
+						Ableton® Templates and Sample Packs with up to 70% Discount!
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 20 20"
+							fill="none"
+						>
+							<path d="M8 6L12 10L8 14" stroke-width="1.2" stroke="white" />
+							<circle
+								cx="10"
+								cy="10"
+								r="9.4"
+								stroke="white"
+								stroke-opacity="0.3"
+								stroke-width="1.2"
+							/>
+						</svg>
+					</a>
+
+					<button class="absolute top-1/2 right-3 z-0 -translate-y-1/2">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="14"
+							height="14"
+							viewBox="0 0 14 14"
+							fill="none"
+						>
+							<path
+								d="M12.5303 0.530273L6.53027 6.53027M6.53027 6.53027L0.530273 12.5303M6.53027 6.53027L12.5303 12.5303M6.53027 6.53027L0.530273 0.530273"
+								stroke-width="1.5"
+								stroke="white"
+							/>
+						</svg>
+					</button>
+				</div>
+				<!-- Header  -->
+				<header class="z-10 border-b border-b-[#181A1D]">
+					<div class="container">
+						<div class="flex items-center">
+							<!-- Logo -->
+							<a href="#">
+								<img src="./images/global/logo.svg" alt="logo image" />
+							</a>
+
+							<!-- Desktop menu -->
+							<nav
+								id="menu"
+								role="navigation"
+								aria-label="Main menu"
+								class="menu z-10 ml-12 flex max-md:hidden"
+							>
+								<ul class="flex items-center gap-8">
+									<!-- Menu Item With Submenu -->
+									<li class="menu-item group/submenu submenu-trigger">
+										<button
+											class="menu-link"
+											aria-haspopup="true"
+											aria-expanded="false"
+										>
+											<span>Genres</span>
+											<svg
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												width="8"
+												height="5"
+												viewBox="0 0 8 5"
+												fill="none"
+												class="transition-transform group-hover/submenu:rotate-180"
+											>
+												<path
+													d="M7.42432 0.423828L3.92432 3.92383L0.424316 0.423828"
+													stroke-width="1.2"
+													class="stroke-current"
+												/>
+											</svg>
+										</button>
+										<!-- Submenu -->
+										<div class="submenu" aria-label="More submenu">
+											<div class="submenu-wrapper">
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Afrobeat</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Bass Music</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Bass House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Dubstep</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Future Bass</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Grime</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Moombah</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Blues</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Breaks</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Cinematic</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Action</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Filmscore</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Horror</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Sci-Fi</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Country</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Disco</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Nu Disco</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">DJ Tools</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Downtempo</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Ambient</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Chillout</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Electronica</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Trip Hop</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">
+															Drum and Bass
+														</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Halftime</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Jump Up</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Jungle</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Liquid</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Neurofunk</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Electro</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">
+																	Classic / Detroit
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Complextro</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Modern Electro
+																</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Folk Music</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">
+															Free Samples
+														</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Funk</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Garage</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">
+																	Future Garage
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Speed Garage
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">UK Bass</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Uk Garage</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Hard Dance</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Hardcore</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Hip Hop</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Boom Bap</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Classic Hip Hop
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Lo-Fi Hip Hop
+																</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">House</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Acid House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Afro House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Amapiano</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Classic House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Deep House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Deep Tech</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Electro House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Future House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Lo-Fi House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Micro House</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Minimal House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Progressive House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Soulful & Funky House
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Tech House</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">IDM</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Glitch</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Instruments</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Bass</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Brass & Woodwind
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Drums</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Guitars</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Keyboards</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Percussion</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Strings</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Synths</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Jazz</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Latin</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Reggaeton</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Mainstage</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">EDM</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="flex flex-col">
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Orchestral</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Pop</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Future Pop</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Indie Pop</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Reggae</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Dancehall</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Dub</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">Ska</a>
+															</li>
+														</ul>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">
+															Sound Archives
+														</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Synthwave</a>
+													</div>
+
+													<div class="submenu-item">
+														<a href="#" class="submenu-link-top">Techno</a>
+														<ul class="submenu-list">
+															<li>
+																<a class="submenu-link" href="#">Dub Techno</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Industrial Techno
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Melodic Techno
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Minimal Techno
+																</a>
+															</li>
+															<li>
+																<a class="submenu-link" href="#">
+																	Peak Time / Driving
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="menu-item">
+										<a href="#" class="menu-link">Templates</a>
+									</li>
+									<li class="menu-item">
+										<a href="#" class="menu-link">Sample packs</a>
+									</li>
+									<li class="menu-item">
+										<a href="#" class="menu-link">Presets</a>
+									</li>
+									<li class="menu-item">
+										<a href="#" class="menu-link">Plugins</a>
+									</li>
+									<li class="menu-item">
+										<a href="#" class="menu-link">Blog</a>
+									</li>
+								</ul>
+							</nav>
+
+							<!-- Action Buttons -->
+							<div class="ml-auto flex items-center gap-5.5">
+								<!-- Search Button -->
+								<button type="button" data-search-open aria-label="Open search">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="18"
+										viewBox="0 0 18 18"
+										fill="none"
+									>
+										<path
+											d="M12.4064 12.4064L16.7998 16.7998M12.1135 2.74093C14.7017 5.32909 14.7017 9.52533 12.1135 12.1135C9.52534 14.7017 5.32909 14.7017 2.74093 12.1135C0.152763 9.52533 0.152763 5.32909 2.74093 2.74093C5.32909 0.152764 9.52534 0.152764 12.1135 2.74093Z"
+											stroke-width="1.6"
+											stroke="white"
+										/>
+									</svg>
+								</button>
+
+								<!-- Volume control -->
+								<div class="relative flex flex-col items-center" data-volume>
+									<input
+										type="hidden"
+										name="volume"
+										value="60"
+										data-volume-input
+									/>
+
+									<!-- Icon button -->
+									<button
+										type="button"
+										data-volume-toggle
+										aria-label="Volume"
+										aria-expanded="false"
+										class="text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="21"
+											height="18"
+											viewBox="0 0 21 18"
+											fill="none"
+										>
+											<path
+												d="M16.652 1.30469C20.8491 5.49869 20.8491 12.299 16.652 16.493M13.8706 4.46845C16.3173 6.91335 16.3173 10.8805 13.8706 13.3254M9.53626 16.7959L8.90815 16.8047L4.41035 12.1207H0.799805V5.48867H4.41035L8.90815 0.804688L9.53626 0.813466V16.7959Z"
+												stroke-width="1.6"
+												stroke-miterlimit="10"
+												stroke="white"
+											/>
+										</svg>
+									</button>
+
+									<!-- Dropdown with vertical slider -->
+									<div
+										data-volume-panel
+										class="absolute top-full left-1/2 z-20 mt-3 hidden h-35 w-9 -translate-x-1/2 items-stretch justify-center rounded-full border border-[#212428] bg-black px-3.5 py-3"
+									>
+										<div
+											data-volume-slider
+											role="slider"
+											tabindex="0"
+											aria-orientation="vertical"
+											aria-label="Volume"
+											aria-valuemin="0"
+											aria-valuemax="100"
+											aria-valuenow="60"
+											class="relative flex w-full cursor-pointer touch-none justify-center select-none focus:outline-none"
+										>
+											<div
+												class="relative h-full w-2 overflow-hidden rounded-full bg-[#3D3F43]"
+											>
+												<div
+													data-volume-fill
+													class="absolute bottom-0 left-0 w-full rounded-full bg-white"
+												></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<button class="relative">
+									<span
+										class="bg-primary absolute -top-2.75 -right-2.75 flex aspect-square size-5 items-center justify-center rounded-full text-[10px] tracking-[-0.2px] text-white"
+									>
+										4
+									</span>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="20"
+										height="18"
+										viewBox="0 0 20 18"
+										fill="none"
+									>
+										<path
+											d="M0 0.799805H3.17984L5.25365 12.5516H15.4318L18.1376 4.3484H3.80605"
+											stroke-width="1.6"
+											stroke-miterlimit="10"
+											stroke="white"
+										/>
+										<path
+											d="M13.772 17.8009C14.4831 17.8009 15.0596 17.2244 15.0596 16.5132C15.0596 15.8021 14.4831 15.2256 13.772 15.2256C13.0609 15.2256 12.4844 15.8021 12.4844 16.5132C12.4844 17.2244 13.0609 17.8009 13.772 17.8009Z"
+											fill="white"
+										/>
+										<path
+											d="M6.54153 17.8009C7.25266 17.8009 7.82915 17.2244 7.82915 16.5132C7.82915 15.8021 7.25266 15.2256 6.54153 15.2256C5.83039 15.2256 5.25391 15.8021 5.25391 16.5132C5.25391 17.2244 5.83039 17.8009 6.54153 17.8009Z"
+											fill="white"
+										/>
+									</svg>
+								</button>
+							</div>
+
+							<!-- Auth Buttons -->
+							<div class="ml-8.5 flex items-center gap-2">
+								<button
+									data-modal="modal-login"
+									class="btn btn-secondary-outline"
+								>
+									Log in
+								</button>
+								<button data-modal="modal-signup" class="btn btn-primary">
+									Sign up
+								</button>
+							</div>
+
+							<!-- Mobile Menu -->
+							<div class="hidden max-md:flex">
+								<div
+									id="mobile-menu"
+									aria-hidden="true"
+									class="fixed top-0 left-0 z-10 h-full w-[80%] -translate-x-full transform bg-white shadow-xl transition-transform duration-300 ease-in-out [.is-open]:translate-x-0"
+								>
+									<div class="flex h-full w-full flex-col p-6">
+										<a href="#" class="text-lg font-bold">LOGO</a>
+										<nav
+											class="w-full flex-1"
+											role="navigation"
+											aria-label="Mobile menu"
+										>
+											<ul class="divide-y divide-gray-200">
+												<li><a href="#" class="mobile-menu-link">Home</a></li>
+												<li>
+													<a href="#" class="mobile-menu-link">Pricing</a>
+												</li>
+
+												<!-- Mobile Submenu -->
+												<li class="with-submenu group relative">
+													<div class="flex w-full flex-col gap-2">
+														<!-- Trigger -->
+														<button
+															class="submenu-trigger mobile-menu-link flex w-full items-center justify-between gap-2"
+															aria-haspopup="true"
+															aria-expanded="false"
+														>
+															<span>More</span>
+															<svg
+																aria-hidden="true"
+																width="24"
+																height="24"
+																viewBox="0 0 24 24"
+																fill="none"
+																class="transition-transform group-[.active]:rotate-180"
+																xmlns="http://www.w3.org/2000/svg"
+															>
+																<path
+																	d="M7 10L12 15L17 10"
+																	stroke="#121826"
+																	stroke-width="3"
+																	stroke-linecap="round"
+																	stroke-linejoin="round"
+																/>
+															</svg>
+														</button>
+
+														<!-- Content -->
+														<div
+															class="submenu-mobile grid grid-rows-[0fr] transition-all duration-500 group-[.active]:grid-rows-[1fr]"
+														>
+															<div class="overflow-hidden">
+																<ul class="space-y-2">
+																	<li>
+																		<a href="#" class="mobile-submenu-link">
+																			Settings
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#" class="mobile-submenu-link">
+																			Profile
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#" class="mobile-submenu-link">
+																			Contacts
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+
+								<!-- Overlay -->
+								<div
+									id="mobile-menu-overlay"
+									aria-hidden="true"
+									role="presentation"
+									class="pointer-events-none fixed inset-0 z-0 bg-black/80 opacity-0 transition-opacity duration-300 ease-in-out"
+								></div>
+							</div>
+
+							<!-- Burger Button -->
+							<button
+								id="burger"
+								class="group burger-btn md:hidden"
+								aria-label="Toggle mobile menu"
+								aria-expanded="false"
+								aria-controls="mobile-menu"
+							>
+								<span class="burger-btn-top-line"></span>
+								<span class="burger-btn-center-line"></span>
+								<span class="burger-btn-bottom-line"></span>
+							</button>
+
+							<!-- Search Popup -->
+							<div
+								data-search-popup
+								class="absolute top-full left-0 z-50 hidden h-full w-full"
+								role="dialog"
+								aria-modal="true"
+								aria-label="Search"
+							>
+								<!-- Search bar -->
+								<div class="relative z-10 border-b border-white/10 bg-black">
+									<div class="container">
+										<form
+											role="search"
+											action="/search"
+											method="get"
+											class="flex h-20 items-center gap-4 px-6 sm:px-12"
+										>
+											<div class="relative flex-1">
+												<!-- [START] HTML Input -->
+												<!-- Input group wrapper (use .error or .success class for validation errors) -->
+												<div class="input-group group">
+													<!-- Input field -->
+													<input
+														data-search-input
+														autocomplete="off"
+														id="search"
+														name="search"
+														type="search"
+														placeholder="Search..."
+														class="input-field rounded-[30px] px-6.5 text-lg [&::-webkit-search-cancel-button]:appearance-none"
+													/>
+
+													<!-- Error message (only visible when .error is applied on parent group) -->
+													<p class="input-error-message">Error message</p>
+												</div>
+												<!-- [END] HTML Input -->
+
+												<button
+													type="submit"
+													aria-label="Search"
+													class="absolute top-1/2 right-6 -translate-y-1/2 text-white"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="18"
+														height="18"
+														viewBox="0 0 18 18"
+														fill="none"
+													>
+														<path
+															d="M12.4064 12.4064L16.7998 16.7998M12.1135 2.74093C14.7017 5.32909 14.7017 9.52533 12.1135 12.1135C9.52534 14.7017 5.3291 14.7017 2.74093 12.1135C0.152763 9.52533 0.152763 5.32909 2.74093 2.74093C5.3291 0.152764 9.52534 0.152764 12.1135 2.74093Z"
+															stroke-width="1.6"
+															stroke="white"
+														/>
+													</svg>
+												</button>
+											</div>
+
+											<button
+												type="button"
+												class="btn btn-secondary-outline flex size-10 items-center justify-center rounded-full p-0"
+												data-search-close
+												aria-label="Close search"
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="14"
+													height="14"
+													viewBox="0 0 14 14"
+													fill="none"
+												>
+													<path
+														d="M12.5664 0.56543L6.56641 6.56543M6.56641 6.56543L0.566406 12.5654M6.56641 6.56543L12.5664 12.5654M6.56641 6.56543L0.566406 0.56543"
+														stroke-width="1.6"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</form>
+									</div>
+								</div>
+
+								<!-- Dimmed backdrop (click to close) -->
+								<div
+									data-search-backdrop
+									class="absolute inset-0 min-h-250 bg-[#0d0d0d]/70 backdrop-blur-[6px]"
+								></div>
+							</div>
+						</div>
+					</div>
+				</header>
+			</div>
+
+			<!-- Main Content -->
+			<main class="relative flex-auto">
+				<!-- Blog -->
+				<section class="pt-11 pb-21">
+					<div class="container">
+						<div class="div">
+							<div class="flex items-end justify-between">
+								<h1>Stereonyx Blog</h1>
+								<p class="text-small text-gray-light">
+									The latest news, updates, and stories from Stereonyx.
+								</p>
+							</div>
+
+							<nav
+								class="blog-filters mt-6.5 flex gap-2"
+								aria-label="Blog categories"
+							>
+								<a
+									href="#"
+									class="btn btn-secondary-outline filter-btn is-active"
+									aria-current="page"
+								>
+									All Categories
+								</a>
+								<a href="#" class="btn btn-secondary-outline filter-btn">
+									Music Trends
+								</a>
+								<a href="#" class="btn btn-secondary-outline filter-btn">
+									Tutorials
+								</a>
+								<a href="#" class="btn btn-secondary-outline filter-btn">
+									Product News
+								</a>
+								<a href="#" class="btn btn-secondary-outline filter-btn">
+									Inspiration
+								</a>
+								<a href="#" class="btn btn-secondary-outline filter-btn">
+									Education
+								</a>
+							</nav>
+
+							<ul
+								class="mt-11 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-9.5"
+							>
+								<li>
+									<a href="#" class="group">
+										<div class="overflow-hidden rounded-[14px]">
+											<img
+												class="transition-transform duration-500 group-hover:scale-105"
+												src="./images/global/blog-post-image.png"
+												alt="blog post thumbnail"
+											/>
+										</div>
+
+										<ul class="mt-3.5 flex items-center gap-4">
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p
+													class="rounded-xl border border-[#2B2E32] px-2.5 py-0.5 text-[13px] text-white"
+												>
+													Music Trends
+												</p>
+											</li>
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p class="text-gray-light text-sm">Sep 21, 2026</p>
+											</li>
+										</ul>
+
+										<h2
+											class="group-hover:text-gray mt-3.5 line-clamp-2 transition-colors"
+										>
+											Retail music strategy: licensing, playlists and systems
+											for retail stores
+										</h2>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="group">
+										<div class="overflow-hidden rounded-[14px]">
+											<img
+												class="transition-transform duration-500 group-hover:scale-105"
+												src="./images/global/blog-post-image.png"
+												alt="blog post thumbnail"
+											/>
+										</div>
+
+										<ul class="mt-3.5 flex items-center gap-4">
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p
+													class="rounded-xl border border-[#2B2E32] px-2.5 py-0.5 text-[13px] text-white"
+												>
+													Music Trends
+												</p>
+											</li>
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p class="text-gray-light text-sm">Sep 21, 2026</p>
+											</li>
+										</ul>
+
+										<h2
+											class="group-hover:text-gray mt-3.5 line-clamp-2 transition-colors"
+										>
+											Retail music strategy: licensing, playlists and systems
+											for retail stores
+										</h2>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="group">
+										<div class="overflow-hidden rounded-[14px]">
+											<img
+												class="transition-transform duration-500 group-hover:scale-105"
+												src="./images/global/blog-post-image.png"
+												alt="blog post thumbnail"
+											/>
+										</div>
+
+										<ul class="mt-3.5 flex items-center gap-4">
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p
+													class="rounded-xl border border-[#2B2E32] px-2.5 py-0.5 text-[13px] text-white"
+												>
+													Music Trends
+												</p>
+											</li>
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p class="text-gray-light text-sm">Sep 21, 2026</p>
+											</li>
+										</ul>
+
+										<h2
+											class="group-hover:text-gray mt-3.5 line-clamp-2 transition-colors"
+										>
+											Retail music strategy: licensing, playlists and systems
+											for retail stores
+										</h2>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="group">
+										<div class="overflow-hidden rounded-[14px]">
+											<img
+												class="transition-transform duration-500 group-hover:scale-105"
+												src="./images/global/blog-post-image.png"
+												alt="blog post thumbnail"
+											/>
+										</div>
+
+										<ul class="mt-3.5 flex items-center gap-4">
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p
+													class="rounded-xl border border-[#2B2E32] px-2.5 py-0.5 text-[13px] text-white"
+												>
+													Music Trends
+												</p>
+											</li>
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p class="text-gray-light text-sm">Sep 21, 2026</p>
+											</li>
+										</ul>
+
+										<h2
+											class="group-hover:text-gray mt-3.5 line-clamp-2 transition-colors"
+										>
+											Retail music strategy: licensing, playlists and systems
+											for retail stores
+										</h2>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="group">
+										<div class="overflow-hidden rounded-[14px]">
+											<img
+												class="transition-transform duration-500 group-hover:scale-105"
+												src="./images/global/blog-post-image.png"
+												alt="blog post thumbnail"
+											/>
+										</div>
+
+										<ul class="mt-3.5 flex items-center gap-4">
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p
+													class="rounded-xl border border-[#2B2E32] px-2.5 py-0.5 text-[13px] text-white"
+												>
+													Music Trends
+												</p>
+											</li>
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p class="text-gray-light text-sm">Sep 21, 2026</p>
+											</li>
+										</ul>
+
+										<h2
+											class="group-hover:text-gray mt-3.5 line-clamp-2 transition-colors"
+										>
+											Retail music strategy: licensing, playlists and systems
+											for retail stores
+										</h2>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="group">
+										<div class="overflow-hidden rounded-[14px]">
+											<img
+												class="transition-transform duration-500 group-hover:scale-105"
+												src="./images/global/blog-post-image.png"
+												alt="blog post thumbnail"
+											/>
+										</div>
+
+										<ul class="mt-3.5 flex items-center gap-4">
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p
+													class="rounded-xl border border-[#2B2E32] px-2.5 py-0.5 text-[13px] text-white"
+												>
+													Music Trends
+												</p>
+											</li>
+											<li
+												class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+											>
+												<p class="text-gray-light text-sm">Sep 21, 2026</p>
+											</li>
+										</ul>
+
+										<h2
+											class="group-hover:text-gray mt-3.5 line-clamp-2 transition-colors"
+										>
+											Retail music strategy: licensing, playlists and systems
+											for retail stores
+										</h2>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</main>
+
+			<!-- Modals -->
+			<!-- Login Modal -->
+			<div id="modal-login" class="modal-root">
+				<div class="modal max-w-96.5 pt-9.5 pb-12">
+					<h2 class="text-center text-[22px]">Log in to Stereonyx</h2>
+
+					<!-- Form -->
+					<form action="#" class="mt-7 space-y-4">
+						<!-- [START] HTML Input -->
+						<!-- Input group wrapper (use .error or .success class for validation errors) -->
+						<div class="input-group group">
+							<!-- Input field -->
+							<input
+								id="input"
+								name="input"
+								type="text"
+								placeholder="Email"
+								class="input-field"
+							/>
+
+							<!-- Error message (only visible when .error is applied on parent group) -->
+							<p class="input-error-message">Error message</p>
+						</div>
+						<!-- [END] HTML Input -->
+
+						<!-- [START] HTML Input -->
+						<!-- Input group wrapper (use .error or .success class for validation errors) -->
+						<div class="input-group group">
+							<!-- Input field & Icon -->
+							<div class="relative">
+								<!-- Input -->
+								<input
+									id="input"
+									name="input"
+									type="password"
+									placeholder="Some placeholder..."
+									class="input-field password-input"
+								/>
+
+								<!-- Pswd Icons -->
+								<button
+									class="toggle-password-btn absolute top-1/2 right-3 size-4.5 -translate-y-1/2 cursor-pointer"
+								>
+									<img
+										class="pswd-icon-hidden"
+										src="./images/icons/password-hidden.svg"
+										alt="icon"
+									/>
+									<img
+										class="pswd-icon-visible hidden"
+										src="./images/icons/password-visible.svg"
+										alt="icon"
+									/>
+								</button>
+							</div>
+
+							<!-- Error message (only visible when .error is applied on parent group) -->
+							<p class="input-error-message">Error message</p>
+						</div>
+						<!-- [END] HTML Input -->
+
+						<button
+							type="submit"
+							class="btn btn-primary w-full max-w-full py-3.75 text-sm"
+						>
+							Log In
+						</button>
+					</form>
+
+					<!-- Links -->
+					<div class="mt-8 flex flex-col items-center justify-center gap-2">
+						<a href="#" class="text-sm text-white hover:underline">
+							Forgot password?
+						</a>
+						<p class="text-sm text-[#87898D]">
+							Don't have an account?
+							<a href="#" class="text-sm text-white hover:underline">Sign up</a>
+						</p>
+					</div>
+
+					<!-- Close Button -->
+					<button data-modal="modal-login" class="modal-close-btn group">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+						>
+							<path
+								d="M0.530273 0.53125L5.53027 5.53125M5.53027 5.53125L10.5303 10.5312M5.53027 5.53125L0.530273 10.5312M5.53027 5.53125L10.5303 0.53125"
+								stroke-width="1.5"
+								stroke="#73757B"
+								class="transition-colors group-hover:stroke-white"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div class="modal-overlay"></div>
+			</div>
+
+			<!-- Sign Up Modal -->
+			<div id="modal-signup" class="modal-root">
+				<div class="modal max-w-96.5 pt-9.5 pb-12">
+					<h2 class="text-center text-[22px]">Sign up to Stereonyx</h2>
+
+					<!-- Form -->
+					<form action="#" class="mt-7 space-y-4">
+						<!-- [START] HTML Input -->
+						<!-- Input group wrapper (use .error or .success class for validation errors) -->
+						<div class="input-group group">
+							<!-- Input field -->
+							<input
+								id="input"
+								name="input"
+								type="text"
+								placeholder="Email"
+								class="input-field"
+							/>
+
+							<!-- Error message (only visible when .error is applied on parent group) -->
+							<p class="input-error-message">Error message</p>
+						</div>
+						<!-- [END] HTML Input -->
+
+						<!-- [START] HTML Input -->
+						<!-- Input group wrapper (use .error or .success class for validation errors) -->
+						<div class="input-group group">
+							<!-- Input field & Icon -->
+							<div class="relative">
+								<!-- Input -->
+								<input
+									id="input"
+									name="password-signup"
+									type="password"
+									placeholder="Password"
+									class="input-field password-input"
+								/>
+
+								<!-- Pswd Icons -->
+								<button
+									class="toggle-password-btn absolute top-1/2 right-3 size-4.5 -translate-y-1/2 cursor-pointer"
+								>
+									<img
+										class="pswd-icon-hidden"
+										src="./images/icons/password-hidden.svg"
+										alt="icon"
+									/>
+									<img
+										class="pswd-icon-visible hidden"
+										src="./images/icons/password-visible.svg"
+										alt="icon"
+									/>
+								</button>
+							</div>
+
+							<!-- Error message (only visible when .error is applied on parent group) -->
+							<p class="input-error-message">Error message</p>
+						</div>
+						<!-- [END] HTML Input -->
+
+						<!-- [START] HTML Input -->
+						<!-- Input group wrapper (use .error or .success class for validation errors) -->
+						<div class="input-group group">
+							<!-- Input field & Icon -->
+							<div class="relative">
+								<!-- Input -->
+								<input
+									id="input"
+									name="password-signup-confirm"
+									type="password"
+									placeholder="Confirm password"
+									class="input-field password-input"
+								/>
+
+								<!-- Pswd Icons -->
+								<button
+									class="toggle-password-btn absolute top-1/2 right-3 size-4.5 -translate-y-1/2 cursor-pointer"
+								>
+									<img
+										class="pswd-icon-hidden"
+										src="./images/icons/password-hidden.svg"
+										alt="icon"
+									/>
+									<img
+										class="pswd-icon-visible hidden"
+										src="./images/icons/password-visible.svg"
+										alt="icon"
+									/>
+								</button>
+							</div>
+
+							<!-- Error message (only visible when .error is applied on parent group) -->
+							<p class="input-error-message">Error message</p>
+						</div>
+						<!-- [END] HTML Input -->
+
+						<!-- Default Checkbox Input -->
+						<div class="checkbox-group group/checkbox input-group group">
+							<div class="checkbox-row">
+								<input
+									required
+									name="checkbox-input-1"
+									id="checkbox-input-1"
+									class="peer input-field sr-only"
+									type="checkbox"
+								/>
+								<div class="checkbox"></div>
+								<label
+									for="checkbox-input-1"
+									class="checkbox-label input-label text-[#87898D]"
+								>
+									I have read and accept the&nbsp;
+									<a href="#" class="text-white hover:underline">
+										Privacy Policy
+									</a>
+								</label>
+							</div>
+
+							<p class="input-error-message">Error message</p>
+						</div>
+
+						<button
+							type="submit"
+							class="btn btn-primary w-full max-w-full py-3.75 text-sm"
+						>
+							Sign up
+						</button>
+					</form>
+
+					<!-- Links -->
+					<div class="mt-8 flex flex-col items-center justify-center gap-2">
+						<p class="text-sm text-[#87898D]">
+							Already have an account?
+							<a href="#" class="text-sm text-white hover:underline"> Log in</a>
+						</p>
+					</div>
+
+					<!-- Close Button -->
+					<button data-modal="modal-signup" class="modal-close-btn group">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+						>
+							<path
+								d="M0.530273 0.53125L5.53027 5.53125M5.53027 5.53125L10.5303 10.5312M5.53027 5.53125L0.530273 10.5312M5.53027 5.53125L10.5303 0.53125"
+								stroke-width="1.5"
+								stroke="#73757B"
+								class="transition-colors group-hover:stroke-white"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div class="modal-overlay"></div>
+			</div>
+
+			<!-- Footer -->
+			<footer class="border-t border-t-[#181A1D] pt-11">
+				<div class="container">
+					<!-- Footer Top -->
+					<div class="flex border-b border-b-[#181A1D] pb-11">
+						<div class="max-w-46.25">
+							<a href="#">
+								<img src="./images/global/logo-footer.svg" alt="logo footer" />
+							</a>
+
+							<ul class="mt-9 flex items-center gap-4.5">
+								<li>
+									<a href="#" class="group">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="44"
+											height="44"
+											viewBox="0 0 44 44"
+											fill="none"
+										>
+											<circle cx="22" cy="22" r="22" fill="#101111" />
+											<path
+												d="M27.35 23.0862L27.9458 18.6379H23.5042V15.5345C23.5042 14.6552 24.2625 13.9828 25.1292 13.9828H28V10H23.9917C21.1208 10 18.8458 12.2241 18.8458 14.9138V18.6379H15V23.0862H18.8458V34H23.5042V23.0862H27.35Z"
+												fill="#797B7E"
+												class="transition-colors group-hover:fill-white"
+											/>
+										</svg>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="group">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="44"
+											height="44"
+											viewBox="0 0 44 44"
+											fill="none"
+										>
+											<circle cx="22" cy="22" r="22" fill="#101111" />
+											<path
+												d="M26.6545 34H17.3487C13.2972 34 10 30.7036 10 26.6533V17.3499C9.99689 13.2964 13.2941 10 17.3455 10H26.6513C30.7028 10 34 13.2964 34 17.3467V26.6501C34 30.7005 30.7028 33.9969 26.6513 33.9969L26.6545 34ZM17.3455 11.7977C14.2852 11.7977 11.792 14.2872 11.792 17.3499V26.6533C11.792 29.7128 14.282 32.2054 17.3455 32.2054H26.6513C29.7117 32.2054 32.2049 29.716 32.2049 26.6533V17.3499C32.2049 14.2903 29.7148 11.7977 26.6513 11.7977H17.3455Z"
+												fill="#797B7E"
+												class="transition-colors group-hover:fill-white"
+											/>
+											<path
+												d="M21.9984 28.0709C18.6513 28.0709 15.9275 25.3478 15.9275 21.9984C15.9275 18.6491 18.6513 15.926 21.9984 15.926C25.3455 15.926 28.0693 18.6491 28.0693 21.9984C28.0693 25.3478 25.3455 28.0709 21.9984 28.0709ZM21.9984 17.7705C19.6642 17.7705 17.7663 19.6679 17.7663 22.0016C17.7663 24.3352 19.6642 26.2326 21.9984 26.2326C24.3327 26.2326 26.2306 24.3352 26.2306 22.0016C26.2306 19.6679 24.3327 17.7705 21.9984 17.7705Z"
+												fill="#797B7E"
+												class="transition-colors group-hover:fill-white"
+											/>
+											<path
+												d="M30.3132 15.2686C30.3132 16.141 29.6058 16.8482 28.7332 16.8482C27.8605 16.8482 27.1531 16.141 27.1531 15.2686C27.1531 14.3962 27.8605 13.689 28.7332 13.689C29.6058 13.689 30.3132 14.3962 30.3132 15.2686Z"
+												fill="#797B7E"
+												class="transition-colors group-hover:fill-white"
+											/>
+										</svg>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="group">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="44"
+											height="44"
+											viewBox="0 0 44 44"
+											fill="none"
+										>
+											<circle cx="22" cy="22" r="22" fill="#101111" />
+											<path
+												d="M33.4961 15.8114C33.2181 14.7029 32.4073 13.8343 31.3764 13.5371C29.5058 13 22 13 22 13C22 13 14.4942 13 12.6236 13.5371C11.5927 13.8343 10.7761 14.7029 10.5039 15.8114C10 17.8171 10 22 10 22C10 22 10 26.1829 10.5039 28.1886C10.7819 29.2971 11.5927 30.1657 12.6236 30.4629C14.4942 31 22 31 22 31C22 31 29.5058 31 31.3764 30.4629C32.4073 30.1657 33.2239 29.2971 33.4961 28.1886C34 26.1829 34 22 34 22C34 22 34 17.8171 33.4961 15.8114ZM19.4344 25.8V18.2L26.2046 22L19.4344 25.8Z"
+												fill="#797B7E"
+												class="transition-colors group-hover:fill-white"
+											/>
+										</svg>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="ml-auto flex flex-wrap gap-20">
+							<div class="space-y-2">
+								<p class="font-semibold">Popular Genres</p>
+								<nav>
+									<ul class="flex flex-col">
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Hip Hop
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												House
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Pop
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												R&B
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Soul
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Trance
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div class="space-y-2">
+								<p class="font-semibold">Sounds</p>
+								<nav>
+									<ul class="flex flex-col">
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Templates
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Sample Packs
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Presets
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Plugins
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div class="space-y-2">
+								<p class="font-semibold">Company</p>
+								<nav>
+									<ul class="flex flex-col">
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												About Stereonyx
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												FAQ
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Contact Us
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Blog
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div class="space-y-2">
+								<p class="font-semibold">Legal</p>
+								<nav>
+									<ul class="flex flex-col">
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Privacy Policy
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Copyright Notice
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												Refund Policy
+											</a>
+										</li>
+										<li>
+											<a
+												href="#"
+												class="text-gray leading-loose hover:text-white"
+											>
+												License Agreement
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+
+					<!-- Footer Policy -->
+					<div class="flex items-center justify-between pt-8 pb-10">
+						<p class="text-gray text-sm">
+							© 2026 Stereonyx. All rights reserved.
+						</p>
+
+						<ul class="flex items-center gap-8">
+							<li><img src="./images/icons/mc.svg" alt="partner logo" /></li>
+							<li><img src="./images/icons/visa.svg" alt="partner logo" /></li>
+							<li><img src="./images/icons/pp.svg" alt="partner logo" /></li>
+							<li><img src="./images/icons/az.svg" alt="partner logo" /></li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Libs -->
+		<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+		<!-- Custom JS -->
+		<script src="./js/main.js"></script>
+	</body>
+</html>

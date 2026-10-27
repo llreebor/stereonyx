@@ -34,6 +34,7 @@
     --leading-normal: 1.5;
     --leading-loose: 2;
     --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --blur-sm: 8px;
@@ -369,6 +370,9 @@
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
+  .mt-3\.5 {
+    margin-top: calc(var(--spacing) * 3.5);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -378,6 +382,9 @@
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
   }
+  .mt-6\.5 {
+    margin-top: calc(var(--spacing) * 6.5);
+  }
   .mt-7 {
     margin-top: calc(var(--spacing) * 7);
   }
@@ -386,6 +393,9 @@
   }
   .mt-9 {
     margin-top: calc(var(--spacing) * 9);
+  }
+  .mt-11 {
+    margin-top: calc(var(--spacing) * 11);
   }
   .mt-12 {
     margin-top: calc(var(--spacing) * 12);
@@ -635,6 +645,9 @@
   .items-center {
     align-items: center;
   }
+  .items-end {
+    align-items: flex-end;
+  }
   .items-start {
     align-items: flex-start;
   }
@@ -723,6 +736,9 @@
   }
   .rounded-lg {
     border-radius: var(--radius-lg);
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
   }
   .border {
     border-style: var(--tw-border-style);
@@ -840,6 +856,12 @@
   .p-9\.5 {
     padding: calc(var(--spacing) * 9.5);
   }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-2\.5 {
+    padding-inline: calc(var(--spacing) * 2.5);
+  }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
   }
@@ -855,23 +877,26 @@
   .px-6\.5 {
     padding-inline: calc(var(--spacing) * 6.5);
   }
-  .px-7 {
-    padding-inline: calc(var(--spacing) * 7);
-  }
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
   }
   .px-13 {
     padding-inline: calc(var(--spacing) * 13);
   }
+  .py-0 {
+    padding-block: 0px;
+  }
+  .py-0\.5 {
+    padding-block: calc(var(--spacing) * 0.5);
+  }
+  .py-1 {
+    padding-block: var(--spacing);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
-  }
-  .py-3\.5 {
-    padding-block: calc(var(--spacing) * 3.5);
   }
   .py-3\.75 {
     padding-block: calc(var(--spacing) * 3.75);
@@ -915,12 +940,6 @@
   .pt-35 {
     padding-top: calc(var(--spacing) * 35);
   }
-  .pt-63 {
-    padding-top: calc(var(--spacing) * 63);
-  }
-  .pt-63\.75 {
-    padding-top: calc(var(--spacing) * 63.75);
-  }
   .pb-10 {
     padding-bottom: calc(var(--spacing) * 10);
   }
@@ -929,6 +948,9 @@
   }
   .pb-12 {
     padding-bottom: calc(var(--spacing) * 12);
+  }
+  .pb-21 {
+    padding-bottom: calc(var(--spacing) * 21);
   }
   .pb-38 {
     padding-bottom: calc(var(--spacing) * 38);
@@ -1102,11 +1124,26 @@
     .group-hover\:visible:is(:where(.group):hover *) {
       visibility: visible;
     }
+    .group-hover\:scale-105:is(:where(.group):hover *) {
+      --tw-scale-x: 105%;
+      --tw-scale-y: 105%;
+      --tw-scale-z: 105%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
     .group-hover\:fill-white:is(:where(.group):hover *) {
       fill: var(--color-white);
     }
     .group-hover\:stroke-white:is(:where(.group):hover *) {
       stroke: var(--color-white);
+    }
+    .group-hover\:text-gray:is(:where(.group):hover *) {
+      color: var(--color-gray);
+    }
+    .group-hover\:text-primary:is(:where(.group):hover *) {
+      color: var(--color-primary);
+    }
+    .group-hover\:underline:is(:where(.group):hover *) {
+      text-decoration-line: underline;
     }
     .group-hover\:opacity-100:is(:where(.group):hover *) {
       opacity: 100%;
@@ -1304,8 +1341,14 @@
     }
   }
   @media (width >= 64rem) {
+    .lg\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
     .lg\:grid-cols-4 {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .lg\:gap-9\.5 {
+      gap: calc(var(--spacing) * 9.5);
     }
   }
   .\[\&\:\:-webkit-search-cancel-button\]\:appearance-none::-webkit-search-cancel-button {
@@ -1467,6 +1510,9 @@
     &:disabled {
       background-color: #111214;
     }
+  }
+  .filter-btn.is-active {
+    border-color: var(--color-white);
   }
   .fixed-header {
     position: fixed;
