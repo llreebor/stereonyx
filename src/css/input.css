@@ -273,6 +273,32 @@
 	.accordion-content-text {
 		@apply text-small text-gray-light px-6.5 pb-5.75;
 	}
+
+	/* Pagination */
+	.pagination {
+		@apply flex items-center gap-2;
+	}
+	.pagination-list {
+		@apply flex items-center gap-2;
+	}
+	.pagination-btn {
+		@apply text-small flex size-10 items-center justify-center rounded-[9px] bg-[#191B1E] text-white;
+		@variant hover {
+			@apply not-disabled:bg-dark;
+		}
+	}
+	.pagination-btn-page {
+		@apply [.active]:bg-primary block size-10 rounded-md bg-[#191B1E] text-sm font-medium text-white [.active]:text-white;
+		@variant hover {
+			@apply bg-dark [.active]:bg-primary;
+		}
+	}
+	.pagination-empty {
+		@apply text-small flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-[9px] text-[#676C77];
+		@variant hover {
+			@apply bg-dark;
+		}
+	}
 }
 
 /* Container max-width & paddings */

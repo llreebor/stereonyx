@@ -246,6 +246,17 @@ function togglePasswordVisibility() {
 	})
 }
 
+// CLose Banner
+function toggleBannerVisibility() {
+	const banner = document.querySelector(".banner")
+	const closeBannerBtn = document.querySelector(".close-banner-btn")
+	if (!banner) return
+
+	closeBannerBtn.addEventListener("click", () => {
+		banner.classList.add("hidden")
+	})
+}
+
 // Initialize accordion functionality
 function initializeAccordion() {
 	const accordions = document.querySelectorAll(".accordion")
@@ -299,6 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	// ============ Global
 	// Mobile Menu
 	initializeMobileMenu()
+	toggleBannerVisibility()
 
 	// Play&Pause button & Favorite Buttons
 	initPlayButtons()

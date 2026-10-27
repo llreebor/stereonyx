@@ -28,7 +28,7 @@
 			<div class="sticky top-0 left-0 z-10 h-auto w-full bg-black">
 				<!-- Banner -->
 				<div
-					class="relative flex items-center justify-center bg-linear-(--gradient-banner) py-2"
+					class="banner relative flex items-center justify-center bg-linear-(--gradient-banner) py-2"
 				>
 					<a href="#" class="text-small flex items-center gap-2 text-white">
 						Ableton® Templates and Sample Packs with up to 70% Discount!
@@ -51,7 +51,9 @@
 						</svg>
 					</a>
 
-					<button class="absolute top-1/2 right-3 z-0 -translate-y-1/2">
+					<button
+						class="close-banner-btn absolute top-1/2 right-3 z-0 -translate-y-1/2"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="14"
@@ -1096,6 +1098,74 @@
 									</a>
 								</li>
 							</ul>
+
+							<!-- [START] HTML Component -->
+							<!-- Pagination -->
+							<nav
+								class="pagination mx-auto mt-19 max-w-fit"
+								role="navigation"
+								aria-label="Pagination"
+							>
+								<button
+									type="button"
+									class="pagination-btn pagination-btn-prev disabled:text-[#676C77]"
+									aria-label="Previous page"
+									disabled
+								>
+									‹
+								</button>
+
+								<ul class="pagination-list" role="list">
+									<li>
+										<button
+											type="button"
+											class="pagination-btn-page active"
+											aria-current="page"
+										>
+											1
+										</button>
+									</li>
+									<li>
+										<button
+											type="button"
+											class="pagination-btn-page"
+											aria-label="Page 2"
+										>
+											2
+										</button>
+									</li>
+									<li>
+										<button
+											type="button"
+											class="pagination-btn-page"
+											aria-label="Page 3"
+										>
+											3
+										</button>
+									</li>
+									<li>
+										<span class="pagination-empty">…</span>
+									</li>
+									<li>
+										<button
+											type="button"
+											class="pagination-btn-page"
+											aria-label="Page 10"
+										>
+											10
+										</button>
+									</li>
+								</ul>
+
+								<button
+									type="button"
+									class="pagination-btn pagination-btn-next disabled:text-[#676C77]"
+									aria-label="Next page"
+								>
+									›
+								</button>
+							</nav>
+							<!-- [END] HTML Component -->
 						</div>
 					</div>
 				</section>
