@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 /* Dark Theme */
 /* @custom-variant dark (&:where(.dark, .dark *)); */
 
@@ -324,6 +323,61 @@
 	/* List Item */
 	.list-item {
 		@apply after:bg-primary relative pl-3 after:absolute after:top-1/2 after:left-0 after:size-1 after:-translate-y-1/2 after:rounded-full;
+	}
+
+	/* Article */
+	.article > h2 {
+		@apply mt-12;
+	}
+	.article > h3 {
+		@apply mt-8.5 text-xl font-medium text-white;
+	}
+	.article > h4 {
+		@apply mt-5 text-base font-semibold text-white;
+	}
+	.article > img {
+		@apply my-8;
+	}
+	.article > p {
+		@apply text-gray-light mt-5 text-base;
+	}
+	.article a {
+		@apply text-[#9B61FF] hover:text-white hover:underline;
+	}
+	.article ul {
+		@apply mt-5 space-y-2;
+	}
+	.article ul > li {
+		@apply after:bg-primary text-gray-light relative pl-3.5 text-base after:absolute after:top-2.5 after:left-0 after:size-1.5 after:rounded-full;
+	}
+	.article li p {
+		@apply text-gray-light text-base;
+	}
+
+	/* Policy page */
+	.policy > h1 {
+		@apply mb-12;
+	}
+	.policy > p {
+		@apply text-gray-light mt-4 text-base leading-[1.75];
+	}
+	.policy > h2 {
+		@apply mt-9 text-[22px];
+	}
+	.policy ul {
+		@apply mt-5 space-y-2;
+	}
+	.policy ul > li {
+		@apply after:bg-gray-light text-gray-light relative pl-3.5 text-base after:absolute after:top-2.5 after:left-0 after:size-1.5 after:rounded-full;
+	}
+	.policy li p {
+		@apply text-gray-light text-base;
+	}
+	.policy > h4 {
+		@apply text-gray-light mt-5 text-base font-semibold;
+	}
+	.policy a {
+		@apply hover:text-gray text-white underline;
 	}
 }
 
