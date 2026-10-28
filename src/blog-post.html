@@ -637,15 +637,59 @@
 
 							<!-- Auth Buttons -->
 							<div class="ml-8.5 flex items-center gap-2">
-								<button
-									data-modal="modal-login"
-									class="btn btn-secondary-outline"
-								>
-									Log in
-								</button>
-								<button data-modal="modal-signup" class="btn btn-primary">
-									Sign up
-								</button>
+								<!-- Login & SignUp -->
+								<div class="flex items-center gap-2">
+									<button
+										data-modal="modal-login"
+										class="btn btn-secondary-outline"
+									>
+										Log in
+									</button>
+									<button data-modal="modal-signup" class="btn btn-primary">
+										Sign up
+									</button>
+								</div>
+
+								<!-- Profile Button -->
+								<div class="relative hidden" data-dropdown>
+									<button
+										type="button"
+										data-dropdown-trigger
+										aria-haspopup="menu"
+										aria-expanded="false"
+										class="profile-menu-btn"
+									>
+										<div class="profile-menu-btn-inner">S</div>
+									</button>
+
+									<!-- Menu -->
+									<div
+										data-dropdown-menu
+										role="menu"
+										class="profile-dropdown-menu"
+									>
+										<a href="#" class="profile-dropdown-menu-link">
+											<img src="./images/icons/account.svg" alt="icon" />
+											My account
+										</a>
+										<a href="#" class="profile-dropdown-menu-link">
+											<img src="./images/icons/like.svg" alt="icon" />
+											Favorites
+										</a>
+										<a href="#" class="profile-dropdown-menu-link">
+											<img src="./images/icons/downloads.svg" alt="icon" />
+											My downloads
+										</a>
+										<a href="#" class="profile-dropdown-menu-link">
+											<img src="./images/icons/mail.svg" alt="icon" />
+											Contact us
+										</a>
+										<a href="#" class="profile-dropdown-menu-link">
+											<img src="./images/icons/signout.svg" alt="icon" />
+											Sign out
+										</a>
+									</div>
+								</div>
 							</div>
 
 							<!-- Mobile Menu -->

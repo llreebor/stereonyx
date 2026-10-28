@@ -134,6 +134,7 @@ function initExclusivePlayback(root = document) {
 	})
 }
 
+// Modal
 function initializeModal() {
 	const openModalButtons = document.querySelectorAll("[data-modal]")
 	const closeModalButtons = document.querySelectorAll(".modal-close-btn")
@@ -305,6 +306,61 @@ function initializeAccordion() {
 	})
 }
 
+function initDropdown(dropdown) {
+	const trigger = dropdown.querySelector("[data-dropdown-trigger]")
+	const menu = dropdown.querySelector("[data-dropdown-menu]")
+	const items = () => [...menu.querySelectorAll('[role="menuitem"]')]
+
+	const isOpen = () => menu.dataset.open === "true"
+
+	const open = () => {
+		menu.dataset.open = "true"
+		trigger.setAttribute("aria-expanded", "true")
+	}
+
+	const close = (returnFocus = false) => {
+		menu.dataset.open = "false"
+		trigger.setAttribute("aria-expanded", "false")
+		if (returnFocus) trigger.focus()
+	}
+
+	trigger.addEventListener("click", (e) => {
+		e.stopPropagation()
+		isOpen() ? close() : open()
+	})
+
+	// Close on outside click
+	document.addEventListener("click", (e) => {
+		if (isOpen() && !dropdown.contains(e.target)) close()
+	})
+
+	// Keyboard: Esc closes, arrows navigate
+	document.addEventListener("keydown", (e) => {
+		if (!isOpen()) return
+
+		if (e.key === "Escape") {
+			close(true)
+			return
+		}
+
+		if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+			e.preventDefault()
+			const list = items()
+			const idx = list.indexOf(document.activeElement)
+			const next =
+				e.key === "ArrowDown"
+					? list[(idx + 1) % list.length]
+					: list[(idx - 1 + list.length) % list.length]
+			next.focus()
+		}
+	})
+
+	// Close after selecting an item
+	menu.addEventListener("click", (e) => {
+		if (e.target.closest('[role="menuitem"]')) close()
+	})
+}
+
 // Inits
 document.addEventListener("DOMContentLoaded", () => {
 	// ============ Global
@@ -319,6 +375,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Modals
 	initializeModal()
+
+	// Dwopdown menus
+	document.querySelectorAll("[data-dropdown]").forEach(initDropdown)
 
 	// Password visibility
 	togglePasswordVisibility()
