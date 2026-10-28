@@ -138,6 +138,7 @@ function initExclusivePlayback(root = document) {
 function initializeModal() {
 	const openModalButtons = document.querySelectorAll("[data-modal]")
 	const closeModalButtons = document.querySelectorAll(".modal-close-btn")
+	const cancelModalButtons = document.querySelectorAll(".modal-cancel-btn")
 
 	if (!openModalButtons.length || !closeModalButtons.length) return
 
@@ -188,6 +189,13 @@ function initializeModal() {
 	})
 
 	closeModalButtons.forEach((button) => {
+		button.addEventListener("click", () => {
+			const modalId = button.getAttribute("data-modal")
+			if (modalId) closeModal(modalId)
+		})
+	})
+
+	cancelModalButtons.forEach((button) => {
 		button.addEventListener("click", () => {
 			const modalId = button.getAttribute("data-modal")
 			if (modalId) closeModal(modalId)
@@ -361,6 +369,28 @@ function initDropdown(dropdown) {
 	})
 }
 
+function initStickyOffset({
+	headerSelector = ".header-wrapper",
+	varName = "--header-h",
+} = {}) {
+	const header = document.querySelector(headerSelector)
+	if (!header) return () => {}
+
+	const update = () => {
+		document.documentElement.style.setProperty(
+			varName,
+			`${header.getBoundingClientRect().height}px`,
+		)
+	}
+
+	update()
+
+	const observer = new ResizeObserver(update)
+	observer.observe(header)
+
+	return () => observer.disconnect()
+}
+
 // Inits
 document.addEventListener("DOMContentLoaded", () => {
 	// ============ Global
@@ -381,6 +411,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Password visibility
 	togglePasswordVisibility()
+
+	// Offset
+	initStickyOffset()
 
 	// ============ Home Page
 	const swiperHomeHero = new Swiper(".swiper-home-hero", {

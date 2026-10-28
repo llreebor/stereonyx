@@ -25,7 +25,9 @@
 	<body>
 		<div class="wrapper flex min-h-full flex-col">
 			<!-- Banner & Header -->
-			<div class="sticky top-0 left-0 z-10 h-auto w-full bg-black">
+			<div
+				class="header-wrapper sticky top-0 left-0 z-10 h-auto w-full bg-black"
+			>
 				<!-- Banner -->
 				<div
 					class="banner relative flex items-center justify-center bg-linear-(--gradient-banner) py-2"
@@ -894,7 +896,7 @@
 						<div class="relative flex items-start gap-6.5">
 							<!-- Left Side -->
 							<div
-								class="sticky top-30 w-full max-w-58.5 rounded-2xl border border-[#202122] bg-[#141416] p-3"
+								class="sticky-top sticky w-full max-w-58.5 rounded-2xl border border-[#202122] bg-[#141416] p-3"
 							>
 								<ul class="space-y-1">
 									<li>
@@ -1173,6 +1175,31 @@
 										</form>
 									</div>
 									<!-- Delete my account -->
+									<div class="rounded-2xl border border-[#212428] p-10">
+										<div class="flex gap-10">
+											<button type="submit" class="btn btn-warning px-6 py-3">
+												Delete my account
+											</button>
+
+											<div class="flex items-start gap-2">
+												<img
+													class="mt-1"
+													src="./images/icons/warning.svg"
+													alt="warning icon"
+												/>
+
+												<div>
+													<p class="text-gray-light text-sm font-semibold">
+														Delete this account permanently
+													</p>
+													<p class="text-gray-light text-sm">
+														Permanently delete your account and all associated
+														data. This cannot be undone.
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -1420,6 +1447,159 @@
 
 					<!-- Close Button -->
 					<button data-modal="modal-signup" class="modal-close-btn group">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+						>
+							<path
+								d="M0.530273 0.53125L5.53027 5.53125M5.53027 5.53125L10.5303 10.5312M5.53027 5.53125L0.530273 10.5312M5.53027 5.53125L10.5303 0.53125"
+								stroke-width="1.5"
+								stroke="#73757B"
+								class="transition-colors group-hover:stroke-white"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div class="modal-overlay"></div>
+			</div>
+
+			<div class="bg-dark fixed bottom-5 left-5 rounded-lg p-3">
+				<button
+					class="btn btn-primary btn-small text-sm"
+					data-modal="modal-delete"
+				>
+					Popup 1
+				</button>
+				<button
+					data-modal="modal-verify"
+					class="btn btn-primary btn-small text-sm"
+				>
+					Popup 2
+				</button>
+				<button
+					data-modal="modal-credits"
+					class="btn btn-primary btn-small text-sm"
+				>
+					Popup 3
+				</button>
+			</div>
+
+			<!-- Delete Modal -->
+			<div id="modal-delete" class="modal-root">
+				<div class="modal max-w-124.5 p-9">
+					<h2 class="text-[22px]">Delete account</h2>
+					<p class="mt-4.5 text-sm leading-[1.57] text-[#87898D]">
+						Once your account is deleted there is no turning back. Are you sure
+						your want to proceed?
+					</p>
+
+					<div class="mt-10 flex items-center justify-end gap-3">
+						<button
+							data-modal="modal-delete"
+							class="btn btn-secondary modal-cancel-btn text-small static px-5.5 py-3"
+						>
+							Cancel
+						</button>
+						<button class="btn btn-red text-small px-5.5 py-3">
+							Delete account
+						</button>
+					</div>
+
+					<!-- Close Button -->
+					<button data-modal="modal-delete" class="modal-close-btn group">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+						>
+							<path
+								d="M0.530273 0.53125L5.53027 5.53125M5.53027 5.53125L10.5303 10.5312M5.53027 5.53125L0.530273 10.5312M5.53027 5.53125L10.5303 0.53125"
+								stroke-width="1.5"
+								stroke="#73757B"
+								class="transition-colors group-hover:stroke-white"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div class="modal-overlay"></div>
+			</div>
+
+			<!-- Verify Modal -->
+			<div id="modal-verify" class="modal-root">
+				<div class="modal max-w-149 p-9">
+					<h2 class="text-[22px]">Verify your email</h2>
+					<p class="mt-4.5 text-sm leading-[1.57] text-[#87898D]">
+						Please verify that you have access to email addresses before setting
+						up automated email flows. After verification you can forward
+						phishing and spam reports, and send incident email alerts to the
+						address.
+					</p>
+
+					<div class="mt-10 flex items-center justify-end gap-3">
+						<button
+							data-modal="modal-verify"
+							class="btn btn-secondary modal-cancel-btn text-small static px-5.5 py-3"
+						>
+							Cancel
+						</button>
+						<button class="btn btn-primary text-small px-5.5 py-3">
+							Send code
+						</button>
+					</div>
+
+					<!-- Close Button -->
+					<button data-modal="modal-verify" class="modal-close-btn group">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+						>
+							<path
+								d="M0.530273 0.53125L5.53027 5.53125M5.53027 5.53125L10.5303 10.5312M5.53027 5.53125L0.530273 10.5312M5.53027 5.53125L10.5303 0.53125"
+								stroke-width="1.5"
+								stroke="#73757B"
+								class="transition-colors group-hover:stroke-white"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div class="modal-overlay"></div>
+			</div>
+
+			<!-- Credits Modal -->
+			<div id="modal-credits" class="modal-root">
+				<div class="modal max-w-140.25 p-9">
+					<h2 class="text-[22px]">You don't have enough credits</h2>
+					<p class="mt-4.5 text-sm leading-[1.57] text-[#87898D]">
+						You need 87 credits to download this item, your balance
+						is 5 credits. In order to
+						<a href="#" class="text-white hover:underline">
+							download more sounds
+						</a>
+						, please renew your subscription.
+					</p>
+
+					<div class="mt-10 flex items-center justify-end gap-3">
+						<button
+							data-modal="modal-credits"
+							class="btn btn-secondary modal-cancel-btn text-small static px-5.5 py-3"
+						>
+							Cancel
+						</button>
+						<button class="btn btn-primary text-small px-5.5 py-3">
+							Add credits
+						</button>
+					</div>
+
+					<!-- Close Button -->
+					<button data-modal="modal-credits" class="modal-close-btn group">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="12"

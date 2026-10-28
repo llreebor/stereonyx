@@ -37,9 +37,9 @@
 	--color-gray-light: #abadb2;
 	--color-gray-dark: #292c31;
 
-	--color-error: oklch(63.7% 0.237 25.331);
+	--color-error: #ec5955;
 	--color-success: oklch(72.3% 0.219 149.579);
-	--color-warning: oklch(70.5% 0.213 47.604);
+	--color-warning: #230d0d;
 
 	--text-small: 15px;
 
@@ -138,6 +138,28 @@
 			@apply bg-[#2B2E32];
 		}
 	}
+	.btn-warning {
+		@apply bg-warning text-small text-error font-medium;
+
+		@variant hover {
+			@apply bg-error text-white;
+		}
+		@variant active {
+			@apply bg-error text-white;
+		}
+	}
+
+	.btn-red {
+		@apply bg-error text-small font-medium text-white;
+
+		@variant hover {
+			@apply bg-error/90;
+		}
+		@variant active {
+			@apply bg-error/80;
+		}
+	}
+
 	.slider-circle-btn-small {
 		@apply bg-gray-dark hover:bg-gray-dark/80 flex size-8 items-center justify-center rounded-full disabled:bg-[#111214];
 	}
@@ -326,6 +348,11 @@
 	/* List Item */
 	.list-item {
 		@apply after:bg-primary relative pl-3 after:absolute after:top-1/2 after:left-0 after:size-1 after:-translate-y-1/2 after:rounded-full;
+	}
+
+	/* Calculadet top position */
+	.sticky-top {
+		@apply top-[calc(var(--header-h)+24px)];
 	}
 
 	/* Article */
