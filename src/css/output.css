@@ -53,6 +53,7 @@
     --color-primary: #7426fa;
     --color-secondary: #232427;
     --color-dark: #18191b;
+    --color-pink: #eb3f6a;
     --color-gray: #797b7e;
     --color-gray-light: #abadb2;
     --color-gray-dark: #292c31;
@@ -421,6 +422,9 @@
   .mt-8 {
     margin-top: calc(var(--spacing) * 8);
   }
+  .mt-8\.5 {
+    margin-top: calc(var(--spacing) * 8.5);
+  }
   .mt-9 {
     margin-top: calc(var(--spacing) * 9);
   }
@@ -579,6 +583,12 @@
   .w-9 {
     width: calc(var(--spacing) * 9);
   }
+  .w-20 {
+    width: calc(var(--spacing) * 20);
+  }
+  .w-20\.5 {
+    width: calc(var(--spacing) * 20.5);
+  }
   .w-\[80\%\] {
     width: 80%;
   }
@@ -714,6 +724,9 @@
   }
   .resize {
     resize: both;
+  }
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .grid-rows-\[0fr\] {
     grid-template-rows: 0fr;
@@ -852,6 +865,9 @@
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
+  .rounded-bl-lg {
+    border-bottom-left-radius: var(--radius-lg);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -940,6 +956,9 @@
       background-color: color-mix(in oklab, var(--color-gray-dark) 80%, transparent);
     }
   }
+  .bg-pink {
+    background-color: var(--color-pink);
+  }
   .bg-primary {
     background-color: var(--color-primary);
   }
@@ -1013,9 +1032,6 @@
   .px-5\.5 {
     padding-inline: calc(var(--spacing) * 5.5);
   }
-  .px-5\.5\! {
-    padding-inline: calc(var(--spacing) * 5.5) !important;
-  }
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
@@ -1034,14 +1050,14 @@
   .py-0\.5 {
     padding-block: calc(var(--spacing) * 0.5);
   }
+  .py-1 {
+    padding-block: var(--spacing);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
-  }
-  .py-3\! {
-    padding-block: calc(var(--spacing) * 3) !important;
   }
   .py-3\.75 {
     padding-block: calc(var(--spacing) * 3.75);
@@ -1147,6 +1163,9 @@
   }
   .pb-42\.5 {
     padding-bottom: calc(var(--spacing) * 42.5);
+  }
+  .pl-2 {
+    padding-left: calc(var(--spacing) * 2);
   }
   .text-center {
     text-align: center;
@@ -1257,6 +1276,9 @@
   }
   .text-white {
     color: var(--color-white);
+  }
+  .uppercase {
+    text-transform: uppercase;
   }
   .underline {
     text-decoration-line: underline;
