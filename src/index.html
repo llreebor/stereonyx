@@ -815,7 +815,7 @@
 											role="search"
 											action="/search"
 											method="get"
-											class="flex py-6 lg:py-8 w-full items-center gap-4"
+											class="flex w-full items-center gap-4 py-6 lg:py-8"
 										>
 											<div class="relative flex-1">
 												<!-- [START] HTML Input -->
@@ -894,7 +894,265 @@
 			</div>
 
 			<!-- Main Content -->
-			<main class="relative flex-auto"></main>
+			<main class="relative flex-auto">
+				<!-- Hero -->
+				<section class="z-0 py-7.5">
+					<div class="container">
+						<!-- Slider main container -->
+						<div class="swiper swiper-home-hero group relative">
+							<!-- Additional required wrapper -->
+							<div class="swiper-wrapper">
+								<!-- Slides -->
+								<div class="swiper-slide z-0">
+									<div
+										class="with-image-bg overflow-hidden rounded-2xl p-9.5 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:bg-linear-(--gradient-home-hero) after:mix-blend-multiply"
+									>
+										<img
+											class="image-bg mix-blend-multiply"
+											src="./images/home/hero.png"
+											alt="hero image"
+										/>
+
+										<div class="mt-26.5">
+											<h1>Glitched Percussion</h1>
+											<ul class="mt-2 flex items-center gap-4">
+												<li
+													class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+												>
+													<p class="text-small text-white">Sample pack</p>
+												</li>
+												<li
+													class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+												>
+													<p class="text-small text-white">
+														Drum & Bass, House
+													</p>
+												</li>
+											</ul>
+										</div>
+
+										<!-- Play & Favorite buttons -->
+										<div class="relative z-10 mt-14 flex items-center gap-3">
+											<button
+												class="play-btn group bg-primary hover:bg-primary/90 paused flex size-13.25 items-center justify-center rounded-full"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button hover:bg-gray-dark/90 group flex size-13.25 items-center justify-center rounded-full"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="swiper-slide z-0">
+									<div
+										class="with-image-bg overflow-hidden rounded-2xl p-9.5 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:bg-linear-(--gradient-home-hero) after:mix-blend-multiply"
+									>
+										<img
+											class="image-bg mix-blend-multiply"
+											src="./images/home/hero.png"
+											alt="hero image"
+										/>
+
+										<div class="mt-26.5">
+											<h1>Glitched Percussion</h1>
+											<ul class="mt-2 flex items-center gap-4">
+												<li
+													class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+												>
+													<p class="text-small text-white">Sample pack</p>
+												</li>
+												<li
+													class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
+												>
+													<p class="text-small text-white">
+														Drum & Bass, House
+													</p>
+												</li>
+											</ul>
+										</div>
+
+										<!-- Play & Favorite buttons -->
+										<div class="relative z-10 mt-14 flex items-center gap-3">
+											<button
+												class="play-btn group bg-primary hover:bg-primary/90 paused flex size-13.25 items-center justify-center rounded-full"
+											>
+												<svg
+													class="ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button hover:bg-gray-dark/90 group flex size-13.25 items-center justify-center rounded-full"
+											>
+												<svg
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- If we need pagination -->
+							<div
+								class="swiper-pagination swiper-pagination-home-hero bottom-9! left-1/2! max-w-fit -translate-x-1/2!"
+							></div>
+
+							<!-- If we need navigation buttons -->
+							<div
+								class="absolute right-8 bottom-8 z-10 flex items-center gap-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+							>
+								<button
+									class="swiper-button-prev-home-hero bg-gray-dark/80 hover:bg-gray-dark flex size-13.25 items-center justify-center rounded-full text-transparent!"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="11"
+										height="19"
+										viewBox="0 0 11 19"
+										fill="none"
+										class="w-2!"
+									>
+										<path
+											d="M9.93945 17.9697L1.27279 9.30306L9.93945 0.636393"
+											stroke-width="1.8"
+											stroke="white"
+										/>
+									</svg>
+								</button>
+								<button
+									class="swiper-button-next-home-hero bg-gray-dark/80 hover:bg-gray-dark right-0! bottom-0! flex size-13.25 items-center justify-center rounded-full text-transparent!"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="11"
+										height="19"
+										viewBox="0 0 11 19"
+										fill="none"
+										class="w-2!"
+									>
+										<path
+											d="M0.636475 0.636719L9.30314 9.30339L0.636475 17.9701"
+											stroke-width="1.8"
+											stroke="white"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
 
 			<!-- Modals -->
 			<!-- Login Modal -->
@@ -1156,16 +1414,18 @@
 			</div>
 
 			<!-- Footer -->
-			<footer class="hidden border-t border-t-[#181A1D] pt-11">
+			<footer class="border-t border-t-[#181A1D] pt-11">
 				<div class="container">
 					<!-- Footer Top -->
-					<div class="flex border-b border-b-[#181A1D] pb-11">
+					<div
+						class="flex flex-col gap-10 border-b border-b-[#181A1D] pb-11 md:flex-row"
+					>
 						<div class="max-w-46.25">
 							<a href="#">
 								<img src="./images/global/logo-footer.svg" alt="logo footer" />
 							</a>
 
-							<ul class="mt-9 flex items-center gap-4.5">
+							<ul class="mt-5 flex items-center gap-4.5 md:mt-9">
 								<li>
 									<a href="#" class="group">
 										<svg
@@ -1232,7 +1492,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="ml-auto flex flex-wrap gap-20">
+						<div class="flex flex-wrap gap-10 md:ml-auto lg:gap-20">
 							<div class="space-y-2">
 								<p class="font-semibold">Popular Genres</p>
 								<nav>
@@ -1409,7 +1669,9 @@
 					</div>
 
 					<!-- Footer Policy -->
-					<div class="flex items-center justify-between pt-8 pb-10">
+					<div
+						class="flex flex-col-reverse items-center justify-between gap-6 pt-8 pb-10 md:flex-row"
+					>
 						<p class="text-gray text-sm">
 							© 2026 Stereonyx. All rights reserved.
 						</p>

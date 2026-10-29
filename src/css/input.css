@@ -274,13 +274,13 @@
 
 	/* Modal */
 	.modal-root {
-		@apply pointer-events-none fixed inset-0 z-20 flex items-start justify-center opacity-0;
+		@apply pointer-events-none fixed inset-0 z-20 flex items-center justify-center p-4 opacity-0;
 	}
 	.modal-overlay {
 		@apply absolute inset-0 -z-10 bg-[#0d0d0d]/70 backdrop-blur-sm;
 	}
 	.modal {
-		@apply relative mt-50 w-full max-w-md transform rounded-[22px] bg-[#1D1E1F] p-8.5 transition-transform duration-500 ease-in-out;
+		@apply relative w-full max-w-md transform rounded-[22px] bg-[#1D1E1F] px-5 transition-transform duration-500 ease-in-out md:p-8.5;
 	}
 	.modal-close-btn {
 		@apply hover:bg-dark absolute top-3.5 right-3.5 flex size-9 items-center justify-center rounded-full;
