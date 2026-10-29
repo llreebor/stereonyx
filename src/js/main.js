@@ -469,7 +469,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	})
 	const swiperHomeCategory = new Swiper(".swiper-category-home", {
 		// Optional parameters
-		slidesPerView: 5,
+
 		// slidesPerGroup: 5,
 		grid: {
 			rows: 2,
@@ -483,6 +483,23 @@ document.addEventListener("DOMContentLoaded", () => {
 		pagination: {
 			el: ".swiper-home-category-fraction",
 			type: "fraction",
+		},
+		breakpoints: {
+			320: {
+				slidesPerView: 1.6,
+			},
+			375: {
+				slidesPerView: 2.2,
+			},
+			600: {
+				slidesPerView: 3.2,
+			},
+			768: {
+				slidesPerView: 4.3,
+			},
+			1024: {
+				slidesPerView: 5,
+			},
 		},
 	})
 	const swiperHomeTestimonials = new Swiper(".swiper-home-testimonials", {

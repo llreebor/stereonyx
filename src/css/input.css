@@ -77,10 +77,10 @@
 		@apply cursor-pointer transition-colors disabled:cursor-not-allowed;
 	}
 	h1 {
-		@apply text-[34px] font-medium text-white;
+		@apply text-[24px] font-medium text-white md:text-[34px];
 	}
 	h2 {
-		@apply text-xl font-medium text-white;
+		@apply text-[18px] font-medium text-white md:text-xl;
 	}
 	h3 {
 		@apply text-[22px] font-medium text-white;
