@@ -30,27 +30,18 @@
 			>
 				<!-- Banner -->
 				<div
-					class="banner relative flex items-center justify-center bg-linear-(--gradient-banner) py-2"
+					class="banner relative flex items-center bg-linear-(--gradient-banner) py-2 pr-6 pl-3 sm:justify-center"
 				>
-					<a href="#" class="text-small flex items-center gap-2 text-white">
+					<a
+						href="#"
+						class="sm:text-small inline items-center gap-2 text-[13px] text-white"
+					>
 						Ableton® Templates and Sample Packs with up to 70% Discount!
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="20"
-							height="20"
-							viewBox="0 0 20 20"
-							fill="none"
-						>
-							<path d="M8 6L12 10L8 14" stroke-width="1.2" stroke="white" />
-							<circle
-								cx="10"
-								cy="10"
-								r="9.4"
-								stroke="white"
-								stroke-opacity="0.3"
-								stroke-width="1.2"
-							/>
-						</svg>
+						<img
+							class="inline"
+							src="./images/icons/banner-arrow.svg"
+							alt="banner arrow"
+						/>
 					</a>
 
 					<button
@@ -72,12 +63,16 @@
 					</button>
 				</div>
 				<!-- Header  -->
-				<header class="z-10 border-b border-b-[#181A1D]">
+				<header class="z-10 border-b border-b-[#181A1D] py-4">
 					<div class="container">
-						<div class="flex items-center">
+						<div class="flex w-full items-center">
 							<!-- Logo -->
-							<a href="#">
-								<img src="./images/global/logo.svg" alt="logo image" />
+							<a href="#" class="order-1">
+								<img
+									class="max-w-28 min-[374px]:max-w-fit min-[1170px]:max-w-38.5! lg:max-w-29"
+									src="./images/global/logo.svg"
+									alt="logo image"
+								/>
 							</a>
 
 							<!-- Desktop menu -->
@@ -85,9 +80,9 @@
 								id="menu"
 								role="navigation"
 								aria-label="Main menu"
-								class="menu z-10 ml-12 flex max-md:hidden"
+								class="menu z-10 ml-5 hidden min-[1270px]:ml-7.5 lg:order-2 lg:flex"
 							>
-								<ul class="flex items-center gap-8">
+								<ul class="flex items-center gap-5 min-[1270px]:gap-3 lg:gap-2">
 									<!-- Menu Item With Submenu -->
 									<li class="menu-item group/submenu submenu-trigger">
 										<button
@@ -103,7 +98,7 @@
 												height="5"
 												viewBox="0 0 8 5"
 												fill="none"
-												class="transition-transform group-hover/submenu:rotate-180"
+												class="transition-transform group-hover/submenu:rotate-180 group-[.is-open]/submenu:rotate-180"
 											>
 												<path
 													d="M7.42432 0.423828L3.92432 3.92383L0.424316 0.423828"
@@ -528,7 +523,9 @@
 							</nav>
 
 							<!-- Action Buttons -->
-							<div class="ml-auto flex items-center gap-5.5">
+							<div
+								class="order-3 ml-5 flex items-center gap-3 min-[374px]:gap-5.5 lg:ml-auto"
+							>
 								<!-- Search Button -->
 								<button type="button" data-search-open aria-label="Open search">
 									<svg
@@ -547,7 +544,10 @@
 								</button>
 
 								<!-- Volume control -->
-								<div class="relative flex flex-col items-center" data-volume>
+								<div
+									class="relative hidden flex-col items-center md:flex"
+									data-volume
+								>
 									<input
 										type="hidden"
 										name="volume"
@@ -606,6 +606,8 @@
 										</div>
 									</div>
 								</div>
+
+								<!-- Cart Button -->
 								<button class="relative">
 									<span
 										class="bg-primary absolute -top-2.75 -right-2.75 flex aspect-square size-5 items-center justify-center rounded-full text-[10px] tracking-[-0.2px] text-white"
@@ -638,9 +640,11 @@
 							</div>
 
 							<!-- Auth Buttons -->
-							<div class="ml-8.5 flex items-center gap-2">
+							<div
+								class="order-2 ml-auto flex items-center gap-2 lg:order-4 lg:ml-8.5"
+							>
 								<!-- Login & SignUp -->
-								<div class="flex items-center gap-2">
+								<div class="hidden items-center gap-2 lg:flex">
 									<button
 										data-modal="modal-login"
 										class="btn btn-secondary-outline"
@@ -653,7 +657,7 @@
 								</div>
 
 								<!-- Profile Button -->
-								<div class="relative hidden" data-dropdown>
+								<div class="relative lg:hidden" data-dropdown>
 									<button
 										type="button"
 										data-dropdown-trigger
@@ -695,7 +699,7 @@
 							</div>
 
 							<!-- Mobile Menu -->
-							<div class="hidden max-md:flex">
+							<div class="flex lg:hidden">
 								<div
 									id="mobile-menu"
 									aria-hidden="true"
@@ -786,7 +790,7 @@
 							<!-- Burger Button -->
 							<button
 								id="burger"
-								class="group burger-btn md:hidden"
+								class="group burger-btn order-4 lg:hidden"
 								aria-label="Toggle mobile menu"
 								aria-expanded="false"
 								aria-controls="mobile-menu"
@@ -811,7 +815,7 @@
 											role="search"
 											action="/search"
 											method="get"
-											class="flex h-20 items-center gap-4 px-6 sm:px-12"
+											class="flex py-6 lg:py-8 w-full items-center gap-4"
 										>
 											<div class="relative flex-1">
 												<!-- [START] HTML Input -->
@@ -890,844 +894,7 @@
 			</div>
 
 			<!-- Main Content -->
-			<main class="relative flex-auto">
-				<!-- Hero -->
-				<section class="z-0 py-7.5">
-					<div class="container">
-						<!-- Slider main container -->
-						<div class="swiper swiper-home-hero group relative">
-							<!-- Additional required wrapper -->
-							<div class="swiper-wrapper">
-								<!-- Slides -->
-								<div class="swiper-slide z-0">
-									<div
-										class="with-image-bg overflow-hidden rounded-2xl p-9.5 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:bg-linear-(--gradient-home-hero) after:mix-blend-multiply"
-									>
-										<img
-											class="image-bg mix-blend-multiply"
-											src="./images/home/hero.png"
-											alt="hero image"
-										/>
-
-										<div class="mt-26.5">
-											<h1>Glitched Percussion</h1>
-											<ul class="mt-2 flex items-center gap-4">
-												<li
-													class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
-												>
-													<p class="text-small text-white">Sample pack</p>
-												</li>
-												<li
-													class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
-												>
-													<p class="text-small text-white">
-														Drum & Bass, House
-													</p>
-												</li>
-											</ul>
-										</div>
-
-										<!-- Play & Favorite buttons -->
-										<div class="relative z-10 mt-14 flex items-center gap-3">
-											<button
-												class="play-btn group bg-primary hover:bg-primary/90 paused flex size-13.25 items-center justify-center rounded-full"
-											>
-												<svg
-													class="pointer-events-none ml-1 hidden group-[.paused]:block"
-													width="13"
-													height="18"
-													viewBox="0 0 13 18"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
-														fill="white"
-													/>
-												</svg>
-												<svg
-													viewBox="0 0 36 36"
-													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
-												>
-													<rect
-														class="clr-i-solid clr-i-solid-path-1"
-														x="3.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														class="clr-i-solid clr-i-solid-path-2"
-														x="20.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														x="0"
-														y="0"
-														width="36"
-														height="36"
-														fill-opacity="0"
-													></rect>
-												</svg>
-											</button>
-											<button
-												class="bg-gray-dark favorite-button hover:bg-gray-dark/90 group flex size-13.25 items-center justify-center rounded-full"
-											>
-												<svg
-													class="pointer-events-none"
-													width="19"
-													height="17"
-													viewBox="0 0 19 17"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														class="group-[.favorite]:fill-white"
-														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
-														stroke-width="1.5"
-														stroke-linecap="round"
-														stroke="white"
-													/>
-												</svg>
-											</button>
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide z-0">
-									<div
-										class="with-image-bg overflow-hidden rounded-2xl p-9.5 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:bg-linear-(--gradient-home-hero) after:mix-blend-multiply"
-									>
-										<img
-											class="image-bg mix-blend-multiply"
-											src="./images/home/hero.png"
-											alt="hero image"
-										/>
-
-										<div class="mt-26.5">
-											<h1>Glitched Percussion</h1>
-											<ul class="mt-2 flex items-center gap-4">
-												<li
-													class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
-												>
-													<p class="text-small text-white">Sample pack</p>
-												</li>
-												<li
-													class="relative after:absolute after:top-1/2 after:-right-2 after:aspect-square after:size-0.5 after:-translate-y-1/2 after:rounded-full after:bg-white last:after:hidden"
-												>
-													<p class="text-small text-white">
-														Drum & Bass, House
-													</p>
-												</li>
-											</ul>
-										</div>
-
-										<!-- Play & Favorite buttons -->
-										<div class="relative z-10 mt-14 flex items-center gap-3">
-											<button
-												class="play-btn group bg-primary hover:bg-primary/90 paused flex size-13.25 items-center justify-center rounded-full"
-											>
-												<svg
-													class="ml-1 hidden group-[.paused]:block"
-													width="13"
-													height="18"
-													viewBox="0 0 13 18"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
-														fill="white"
-													/>
-												</svg>
-												<svg
-													viewBox="0 0 36 36"
-													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
-												>
-													<rect
-														class="clr-i-solid clr-i-solid-path-1"
-														x="3.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														class="clr-i-solid clr-i-solid-path-2"
-														x="20.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														x="0"
-														y="0"
-														width="36"
-														height="36"
-														fill-opacity="0"
-													></rect>
-												</svg>
-											</button>
-											<button
-												class="bg-gray-dark favorite-button hover:bg-gray-dark/90 group flex size-13.25 items-center justify-center rounded-full"
-											>
-												<svg
-													width="19"
-													height="17"
-													viewBox="0 0 19 17"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														class="group-[.favorite]:fill-white"
-														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
-														stroke-width="1.5"
-														stroke-linecap="round"
-														stroke="white"
-													/>
-												</svg>
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- If we need pagination -->
-							<div
-								class="swiper-pagination swiper-pagination-home-hero bottom-9! left-1/2! max-w-fit -translate-x-1/2!"
-							></div>
-
-							<!-- If we need navigation buttons -->
-							<div
-								class="absolute right-8 bottom-8 z-10 flex items-center gap-3.5 opacity-0 transition-opacity group-hover:opacity-100"
-							>
-								<button
-									class="swiper-button-prev-home-hero bg-gray-dark/80 hover:bg-gray-dark flex size-13.25 items-center justify-center rounded-full text-transparent!"
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="11"
-										height="19"
-										viewBox="0 0 11 19"
-										fill="none"
-										class="w-2!"
-									>
-										<path
-											d="M9.93945 17.9697L1.27279 9.30306L9.93945 0.636393"
-											stroke-width="1.8"
-											stroke="white"
-										/>
-									</svg>
-								</button>
-								<button
-									class="swiper-button-next-home-hero bg-gray-dark/80 hover:bg-gray-dark right-0! bottom-0! flex size-13.25 items-center justify-center rounded-full text-transparent!"
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="11"
-										height="19"
-										viewBox="0 0 11 19"
-										fill="none"
-										class="w-2!"
-									>
-										<path
-											d="M0.636475 0.636719L9.30314 9.30339L0.636475 17.9701"
-											stroke-width="1.8"
-											stroke="white"
-										/>
-									</svg>
-								</button>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<!-- Categories -->
-				<section class="py-4">
-					<div class="container">
-						<div>
-							<!-- New Releases -->
-							<div>
-								<!-- Header & Controls -->
-								<div class="flex items-center justify-between">
-									<h2>New Releases</h2>
-
-									<div class="flex items-center gap-4">
-										<a href="#" class="btn btn-small btn-secondary">See all</a>
-
-										<div class="flex items-center gap-3">
-											<button
-												disabled
-												class="slider-circle-btn-small swiper-button-home-category-prev group"
-											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													width="7"
-													height="11"
-													viewBox="0 0 7 11"
-													fill="none"
-												>
-													<path
-														d="M5.91943 10.459L0.919433 5.45898L5.91943 0.458984"
-														stroke-width="1.3"
-														stroke="white"
-														class="group-disabled:stroke-[#3B3E43]"
-													/>
-												</svg>
-											</button>
-
-											<!-- <p class="text-gray text-[13px]">
-												<span>1</span>
-												/
-												<span>6</span>
-											</p> -->
-
-											<div
-												class="swiper-home-category-fraction text-gray! w-8! shrink-0 text-[13px]"
-											></div>
-
-											<button
-												class="slider-circle-btn-small swiper-button-home-category-next group"
-											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													width="7"
-													height="11"
-													viewBox="0 0 7 11"
-													fill="none"
-												>
-													<path
-														d="M0.459473 0.458984L5.45947 5.45898L0.459473 10.459"
-														stroke-width="1.3"
-														stroke="white"
-														class="group-disabled:stroke-[#3B3E43]"
-													/>
-												</svg>
-											</button>
-										</div>
-									</div>
-								</div>
-
-								<!-- Content Grid -->
-								<!-- Slider main container -->
-								<div class="swiper swiper-category-home mt-6">
-									<!-- Additional required wrapper -->
-									<div class="swiper-wrapper">
-										<!-- Slides -->
-										<div class="swiper-slide">
-											<!-- Card -->
-											<div
-												class="bg-gray-dark overflow-hidden rounded-[14px] p-4"
-											>
-												<!-- Card Content -->
-												<div>
-													<!-- Image & Price -->
-													<div
-														class="group relative z-0 overflow-hidden rounded-[14px] after:absolute after:bottom-0 after:left-0 after:z-0 after:h-2/3 after:w-full after:bg-linear-(--gradient-card)"
-													>
-														<!-- Label Promo -->
-														<div
-															class="bg-pink absolute top-0 right-0 w-20.5 rounded-bl-lg py-1 pl-2 text-[10px] text-white uppercase"
-														>
-															Promo
-														</div>
-														<!-- Image -->
-														<img
-															class="aspect-square w-full rounded-lg"
-															src="./images/global/card-image.png"
-															alt="card image"
-														/>
-
-														<div
-															class="absolute bottom-0 left-0 z-20 flex w-full items-center justify-between p-2.5"
-														>
-															<p class="text-sm font-semibold">$4.50</p>
-															<a
-																href="#"
-																class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
-															>
-																<svg
-																	width="16"
-																	height="15"
-																	viewBox="0 0 16 15"
-																	fill="none"
-																	xmlns="http://www.w3.org/2000/svg"
-																>
-																	<path
-																		d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-																		stroke-width="1.4"
-																		stroke-miterlimit="10"
-																		stroke="white"
-																	/>
-																	<path
-																		d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-																		fill="white"
-																	/>
-																	<path
-																		d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-																		fill="white"
-																	/>
-																</svg>
-															</a>
-														</div>
-
-														<!-- Overlay -->
-														<div
-															class="invisible absolute inset-0 z-10 flex items-center justify-center gap-3 bg-black/80 opacity-0 group-hover:visible group-hover:opacity-100"
-														>
-															<button
-																class="play-btn group bg-primary paused flex size-13.25 items-center justify-center rounded-full"
-															>
-																<svg
-																	class="pointer-events-none ml-1 hidden group-[.paused]:block"
-																	width="13"
-																	height="18"
-																	viewBox="0 0 13 18"
-																	fill="none"
-																	xmlns="http://www.w3.org/2000/svg"
-																>
-																	<path
-																		d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
-																		fill="white"
-																	/>
-																</svg>
-
-																<svg
-																	viewBox="0 0 36 36"
-																	class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
-																>
-																	<rect
-																		class="clr-i-solid clr-i-solid-path-1"
-																		x="3.95"
-																		y="4"
-																		width="11"
-																		height="28"
-																		rx="2.07"
-																		ry="2.07"
-																	></rect>
-																	<rect
-																		class="clr-i-solid clr-i-solid-path-2"
-																		x="20.95"
-																		y="4"
-																		width="11"
-																		height="28"
-																		rx="2.07"
-																		ry="2.07"
-																	></rect>
-																	<rect
-																		x="0"
-																		y="0"
-																		width="36"
-																		height="36"
-																		fill-opacity="0"
-																	></rect>
-																</svg>
-															</button>
-															<button
-																class="bg-gray-dark favorite-button group flex size-13.25 items-center justify-center rounded-full"
-															>
-																<svg
-																	class="pointer-events-none"
-																	width="19"
-																	height="17"
-																	viewBox="0 0 19 17"
-																	fill="none"
-																	xmlns="http://www.w3.org/2000/svg"
-																>
-																	<path
-																		class="group-[.favorite]:fill-white"
-																		d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
-																		stroke-width="1.5"
-																		stroke-linecap="round"
-																		stroke="white"
-																	/>
-																</svg>
-															</button>
-														</div>
-													</div>
-
-													<!-- Title & Text -->
-													<div class="mt-3">
-														<h4 class="line-clamp-2">
-															CamelPhat, Josh Gigante - So Good Ableton Remake
-														</h4>
-														<p class="text-gray mt-0.5 text-[13px]">
-															Sample pack
-														</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="swiper-slide">
-											<!-- Card -->
-											<div
-												class="bg-gray-dark overflow-hidden rounded-[14px] p-4"
-											>
-												<!-- Card Content -->
-												<div>
-													<!-- Image & Price -->
-													<div
-														class="group relative z-0 overflow-hidden rounded-[14px] after:absolute after:bottom-0 after:left-0 after:z-0 after:h-2/3 after:w-full after:bg-linear-(--gradient-card)"
-													>
-														<!-- Label Exclusive -->
-														<div
-															class="bg-primary absolute top-0 right-0 w-20.5 rounded-bl-lg py-1 pl-2 text-[10px] text-white uppercase"
-														>
-															Exclusive
-														</div>
-														<!-- Image -->
-														<img
-															class="aspect-square w-full rounded-lg"
-															src="./images/global/card-image.png"
-															alt="card image"
-														/>
-
-														<div
-															class="absolute bottom-0 left-0 z-20 flex w-full items-center justify-between p-2.5"
-														>
-															<p class="text-sm font-semibold">$4.50</p>
-															<a
-																href="#"
-																class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
-															>
-																<svg
-																	width="16"
-																	height="15"
-																	viewBox="0 0 16 15"
-																	fill="none"
-																	xmlns="http://www.w3.org/2000/svg"
-																>
-																	<path
-																		d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-																		stroke-width="1.4"
-																		stroke-miterlimit="10"
-																		stroke="white"
-																	/>
-																	<path
-																		d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-																		fill="white"
-																	/>
-																	<path
-																		d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-																		fill="white"
-																	/>
-																</svg>
-															</a>
-														</div>
-
-														<!-- Overlay -->
-														<div
-															class="invisible absolute inset-0 z-10 flex items-center justify-center gap-3 bg-black/80 opacity-0 group-hover:visible group-hover:opacity-100"
-														>
-															<button
-																class="play-btn group bg-primary paused flex size-13.25 items-center justify-center rounded-full"
-															>
-																<svg
-																	class="pointer-events-none ml-1 hidden group-[.paused]:block"
-																	width="13"
-																	height="18"
-																	viewBox="0 0 13 18"
-																	fill="none"
-																	xmlns="http://www.w3.org/2000/svg"
-																>
-																	<path
-																		d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
-																		fill="white"
-																	/>
-																</svg>
-
-																<svg
-																	viewBox="0 0 36 36"
-																	class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
-																>
-																	<rect
-																		class="clr-i-solid clr-i-solid-path-1"
-																		x="3.95"
-																		y="4"
-																		width="11"
-																		height="28"
-																		rx="2.07"
-																		ry="2.07"
-																	></rect>
-																	<rect
-																		class="clr-i-solid clr-i-solid-path-2"
-																		x="20.95"
-																		y="4"
-																		width="11"
-																		height="28"
-																		rx="2.07"
-																		ry="2.07"
-																	></rect>
-																	<rect
-																		x="0"
-																		y="0"
-																		width="36"
-																		height="36"
-																		fill-opacity="0"
-																	></rect>
-																</svg>
-															</button>
-															<button
-																class="bg-gray-dark favorite-button group flex size-13.25 items-center justify-center rounded-full"
-															>
-																<svg
-																	class="pointer-events-none"
-																	width="19"
-																	height="17"
-																	viewBox="0 0 19 17"
-																	fill="none"
-																	xmlns="http://www.w3.org/2000/svg"
-																>
-																	<path
-																		class="group-[.favorite]:fill-white"
-																		d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
-																		stroke-width="1.5"
-																		stroke-linecap="round"
-																		stroke="white"
-																	/>
-																</svg>
-															</button>
-														</div>
-													</div>
-
-													<!-- Title & Text -->
-													<div class="mt-3">
-														<h4 class="line-clamp-2">
-															CamelPhat, Josh Gigante - So Good Ableton Remake
-														</h4>
-														<p class="text-gray mt-0.5 text-[13px]">
-															Sample pack
-														</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- If we need navigation buttons -->
-									<div class="swiper-button-prev"></div>
-									<div class="swiper-button-next"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<!-- Stats -->
-				<section class="py-20">
-					<div class="container">
-						<div class="grid md:grid-cols-2 lg:grid-cols-4">
-							<div
-								class="flex flex-col items-center justify-center gap-3 border-r border-r-[#212428] text-center last:border-r-0"
-							>
-								<p class="text-4xl tracking-[-3.12px] md:text-[52px]">
-									10,000+
-								</p>
-								<p class="text-small text-gray">sounds & samples</p>
-							</div>
-							<div
-								class="flex flex-col items-center justify-center gap-3 border-r border-r-[#212428] text-center last:border-r-0"
-							>
-								<p class="text-4xl tracking-[-3.12px] md:text-[52px]">
-									500+ hrs
-								</p>
-								<p class="text-small text-gray">of studio-ready content</p>
-							</div>
-							<div
-								class="flex flex-col items-center justify-center gap-3 border-r border-r-[#212428] text-center last:border-r-0"
-							>
-								<p class="text-4xl tracking-[-3.12px] md:text-[52px]">100%</p>
-								<p class="text-small text-gray">Ableton Live compatible</p>
-							</div>
-							<div
-								class="flex flex-col items-center justify-center gap-3 border-r border-r-[#212428] text-center last:border-r-0"
-							>
-								<p class="text-4xl tracking-[-3.12px] md:text-[52px]">50+</p>
-								<p class="text-small text-gray">ready-to-use projects</p>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<!-- Testimonials -->
-				<section class="rounded-[45px] bg-[#0D0E0F] py-18">
-					<div class="container">
-						<div>
-							<h2 class="text-center text-[34px]">What our customers say</h2>
-
-							<!-- Slider main container -->
-							<div class="swiper swiper-home-testimonials mt-13">
-								<!-- Additional required wrapper -->
-								<div class="swiper-wrapper pb-12">
-									<!-- Slides -->
-									<div class="swiper-slide h-auto!">
-										<div
-											class="flex h-full flex-col rounded-2xl border border-[#2B2E32] bg-[#191B1E] p-8.5 pt-9.5"
-										>
-											<img
-												class="max-w-fit"
-												src="./images/icons/stars.svg"
-												alt="star icons"
-											/>
-
-											<p class="text-small mt-4 leading-[1.6]">
-												I’ve been with Stereonyx for around 3 years now. And I
-												haven’t found a single other app that compares.
-												Stereonyx stands alone without exaggeration.
-											</p>
-
-											<div class="mt-auto pt-10">
-												<p class="text-sm font-semibold">Rhys Williamson</p>
-												<p class="text-gray text-sm">Music Producer</p>
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide h-auto!">
-										<div
-											class="flex h-full flex-col rounded-2xl border border-[#2B2E32] bg-[#191B1E] p-8.5 pt-9.5"
-										>
-											<img
-												class="max-w-fit"
-												src="./images/icons/stars.svg"
-												alt="star icons"
-											/>
-
-											<p class="text-small mt-4 leading-[1.6]">
-												Got me my second template today and i love every bit,
-												these templates help me really getting the most out of
-												ableton, they are clear, well structured and versatile.
-												Can’t wait for the next batch to arrive.
-											</p>
-
-											<div class="mt-auto pt-10">
-												<p class="text-sm font-semibold">Emmerson T.</p>
-												<p class="text-gray text-sm">DJ / Producer</p>
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide h-auto!">
-										<div
-											class="flex h-full flex-col rounded-2xl border border-[#2B2E32] bg-[#191B1E] p-8.5 pt-9.5"
-										>
-											<img
-												class="max-w-fit"
-												src="./images/icons/stars.svg"
-												alt="star icons"
-											/>
-
-											<p class="text-small mt-4 leading-[1.6]">
-												Your site is absolutely amazing, can't even tell you how
-												much I have learned without having to dig for hours to
-												get to what I need.
-											</p>
-
-											<div class="mt-auto pt-10">
-												<p class="text-sm font-semibold">Furious Stylez</p>
-												<p class="text-gray text-sm">Universal Music Group</p>
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide h-auto!">
-										<div
-											class="flex h-full flex-col rounded-2xl border border-[#2B2E32] bg-[#191B1E] p-8.5 pt-9.5"
-										>
-											<img
-												class="max-w-fit"
-												src="./images/icons/stars.svg"
-												alt="star icons"
-											/>
-
-											<p class="text-small mt-4 leading-[1.6]">
-												I’ve been with Stereonyx for around 3 years now. And I
-												haven’t found a single other app that compares.
-												Stereonyx stands alone without exaggeration.
-											</p>
-
-											<div class="mt-auto pt-10">
-												<p class="text-sm font-semibold">Rhys Williamson</p>
-												<p class="text-gray text-sm">Music Producer</p>
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide h-auto!">
-										<div
-											class="flex h-full flex-col rounded-2xl border border-[#2B2E32] bg-[#191B1E] p-8.5 pt-9.5"
-										>
-											<img
-												class="max-w-fit"
-												src="./images/icons/stars.svg"
-												alt="star icons"
-											/>
-
-											<p class="text-small mt-4 leading-[1.6]">
-												I’ve been with Stereonyx for around 3 years now. And I
-												haven’t found a single other app that compares.
-												Stereonyx stands alone without exaggeration.
-											</p>
-
-											<div class="mt-auto pt-10">
-												<p class="text-sm font-semibold">Rhys Williamson</p>
-												<p class="text-gray text-sm">Music Producer</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- If we need pagination -->
-								<div
-									class="swiper-pagination swiper-pagination-home-testimonials"
-								></div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<!-- CTA -->
-				<section class="py-20">
-					<div class="container">
-						<div class="grid gap-8 md:grid-cols-2">
-							<div
-								class="with-image-bg flex flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl px-6 py-20 md:px-10 md:pt-30 md:pb-26.5"
-							>
-								<img
-									src="./images/home/cta-1.png"
-									alt="cta image 1"
-									class="image-bg"
-								/>
-								<h2
-									class="w-full max-w-86 text-center text-[30px] text-balance"
-								>
-									The future of music.
-									<br />
-									Here today
-								</h2>
-								<a href="#" class="btn btn-primary px-5 py-3">Get started</a>
-							</div>
-							<div
-								class="with-image-bg flex flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl px-6 py-20 md:px-10 md:pt-30 md:pb-26.5"
-							>
-								<img
-									src="./images/home/cta-2.png"
-									alt="cta image 1"
-									class="image-bg"
-								/>
-								<h2
-									class="w-full max-w-86 text-center text-[30px] text-balance"
-								>
-									Find the right sounds for your next hit
-								</h2>
-								<a href="#" class="btn btn-primary px-5 py-3">Explore more</a>
-							</div>
-						</div>
-					</div>
-				</section>
-			</main>
+			<main class="relative flex-auto"></main>
 
 			<!-- Modals -->
 			<!-- Login Modal -->
@@ -1989,7 +1156,7 @@
 			</div>
 
 			<!-- Footer -->
-			<footer class="border-t border-t-[#181A1D] pt-11">
+			<footer class="hidden border-t border-t-[#181A1D] pt-11">
 				<div class="container">
 					<!-- Footer Top -->
 					<div class="flex border-b border-b-[#181A1D] pb-11">

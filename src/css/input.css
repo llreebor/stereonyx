@@ -1,6 +1,4 @@
 @import "tailwindcss";
-/* Dark Theme */
-/* @custom-variant dark (&:where(.dark, .dark *)); */
 
 /* Local Font */
 /* @font-face {
@@ -66,9 +64,9 @@
 
 /* Base Elements  */
 @layer base {
-	html {
+	/* html {
 		@apply scrollbar-gutter-stable;
-	}
+	} */
 	body {
 		@apply font-inter relative h-full scrollbar-gutter-stable bg-black;
 	}
@@ -171,14 +169,27 @@
 	.fixed-header {
 		@apply fixed top-0 right-0 left-0 z-20 transition-transform duration-300;
 	}
-	.menu-link {
-		@apply text-small flex items-center gap-1.5 py-7 font-medium text-white;
+	.menu-item {
+		/* hover на li (в том числе когда курсор уже над подменю) */
 		@variant hover {
-			@apply text-gray;
+			& > .menu-link {
+				@apply bg-dark;
+			}
+		}
+
+		/* открыто по тапу (класс is-open из JS) */
+		&.is-open > .menu-link {
+			@apply bg-dark;
+		}
+	}
+	.menu-link {
+		@apply xl:text-small flex items-center gap-1.5 rounded-[45px] py-2 text-sm font-medium text-white min-[1270px]:px-4 lg:px-3;
+		@variant hover {
+			@apply bg-dark;
 		}
 	}
 	.submenu {
-		@apply max-w-max-width invisible absolute top-full left-1/2 z-20 h-auto w-full! -translate-x-1/2 overflow-hidden rounded-[18px] border border-[#1D1D1D] bg-black p-2.5 opacity-0 transition-all duration-300 group-hover/submenu:visible group-hover/submenu:grid group-hover/submenu:scale-100 group-hover/submenu:opacity-100;
+		@apply max-w-max-width invisible absolute top-full left-1/2 z-20 h-auto w-full! -translate-x-1/2 overflow-hidden rounded-[18px] border border-[#1D1D1D] bg-black p-2.5 opacity-0 transition-all duration-300 group-hover/submenu:visible group-hover/submenu:grid group-hover/submenu:scale-100 group-hover/submenu:opacity-100 group-[.is-open]/submenu:visible group-[.is-open]/submenu:grid group-[.is-open]/submenu:scale-100 group-[.is-open]/submenu:opacity-100;
 	}
 	.submenu-wrapper {
 		@apply bg-dark grid h-auto grid-cols-6 gap-10 rounded-[10px] px-5 py-6.5;
@@ -211,16 +222,16 @@
 
 	/* Burger Button */
 	.burger-btn {
-		@apply relative z-20 ml-auto block h-5 w-7.5;
+		@apply relative z-20 ml-6 block h-3.5 w-4.5;
 	}
 	.burger-btn-top-line {
-		@apply absolute top-0 left-0 h-0.5 w-full bg-black transition-transform group-[.active]:translate-y-2 group-[.active]:rotate-45 group-[.active]:bg-white;
+		@apply absolute top-0 left-0 h-0.5 w-full bg-white transition-transform group-[.active]:translate-y-1.5 group-[.active]:rotate-45 group-[.active]:bg-white;
 	}
 	.burger-btn-center-line {
-		@apply absolute top-1/2 left-0 h-0.5 w-full -translate-y-1/2 bg-black transition-transform group-[.active]:opacity-0;
+		@apply absolute top-1/2 left-0 h-0.5 w-full -translate-y-1/2 bg-white transition-transform group-[.active]:opacity-0;
 	}
 	.burger-btn-bottom-line {
-		@apply absolute bottom-0 left-0 h-0.5 w-full bg-black transition-transform group-[.active]:-translate-y-2.5 group-[.active]:-rotate-45 group-[.active]:bg-white;
+		@apply absolute bottom-0 left-0 h-0.5 w-full bg-white transition-transform group-[.active]:-translate-y-1.5 group-[.active]:-rotate-45 group-[.active]:bg-white;
 	}
 
 	/* Input */

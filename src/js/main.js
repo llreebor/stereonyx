@@ -95,6 +95,43 @@ function initializeMobileMenu() {
 		}
 	})
 }
+function initDesktopSubmenu() {
+	const triggers = document.querySelectorAll("#menu .submenu-trigger")
+	if (!triggers.length) return
+
+	// Только устройства без hover (телефоны, планшеты)
+	const noHover = window.matchMedia("(hover: none)")
+
+	const setState = (trigger, isOpen) => {
+		trigger.classList.toggle("is-open", isOpen)
+		trigger
+			.querySelector("button[aria-expanded]")
+			?.setAttribute("aria-expanded", isOpen)
+	}
+
+	triggers.forEach((trigger) => {
+		const button = trigger.querySelector("button")
+		if (!button) return
+
+		button.addEventListener("click", () => {
+			if (!noHover.matches) return // на десктопе работает обычный hover
+			// закрываем другие подменю
+			triggers.forEach((t) => t !== trigger && setState(t, false))
+			setState(trigger, !trigger.classList.contains("is-open"))
+		})
+	})
+
+	// Тап вне меню закрывает подменю
+	document.addEventListener("click", (event) => {
+		if (!event.target.closest("#menu .submenu-trigger")) {
+			triggers.forEach((t) => setState(t, false))
+		}
+	})
+
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") triggers.forEach((t) => setState(t, false))
+	})
+}
 
 // Toggle buttons state
 function initPlayButtons(root = document) {
@@ -397,6 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Mobile Menu
 	initializeMobileMenu()
 	toggleBannerVisibility()
+	initDesktopSubmenu()
 
 	// Play&Pause button & Favorite Buttons
 	initPlayButtons()
