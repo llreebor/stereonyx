@@ -506,10 +506,24 @@ document.addEventListener("DOMContentLoaded", () => {
 		// Optional parameters
 		loop: true,
 		spaceBetween: 20,
-		slidesPerView: 3,
+
 		pagination: {
 			el: ".swiper-pagination-home-testimonials",
 			clickable: true,
+		},
+		breakpoints: {
+			320: {
+				slidesPerView: 1,
+			},
+			375: {
+				slidesPerView: 1.3,
+			},
+			680: {
+				slidesPerView: 2.3,
+			},
+			1024: {
+				slidesPerView: 3,
+			},
 		},
 	})
 
