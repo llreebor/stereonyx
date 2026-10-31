@@ -1,42 +1,4 @@
-	<!-- Banner & Header -->
-			<div
-				class="header-wrapper sticky top-0 left-0 z-10 h-auto w-full bg-black"
-			>
-				<!-- Banner -->
-				<div
-					class="banner relative flex items-center bg-linear-(--gradient-banner) py-2 pr-6 pl-3 sm:justify-center"
-				>
-					<a
-						href="#"
-						class="sm:text-small inline items-center gap-2 text-[13px] text-white"
-					>
-						Ableton® Templates and Sample Packs with up to 70% Discount!
-						<img
-							class="inline"
-							src="./images/icons/banner-arrow.svg"
-							alt="banner arrow"
-						/>
-					</a>
-
-					<button
-						class="close-banner-btn absolute top-1/2 right-3 z-0 -translate-y-1/2"
-					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="14"
-							height="14"
-							viewBox="0 0 14 14"
-							fill="none"
-						>
-							<path
-								d="M12.5303 0.530273L6.53027 6.53027M6.53027 6.53027L0.530273 12.5303M6.53027 6.53027L12.5303 12.5303M6.53027 6.53027L0.530273 0.530273"
-								stroke-width="1.5"
-								stroke="white"
-							/>
-						</svg>
-					</button>
-				</div>
-				<!-- Header  -->
+<!-- Header  -->
 				<header class="z-10 border-b border-b-[#181A1D] py-4">
 					<div class="container">
 						<div class="flex w-full items-center">
@@ -618,7 +580,7 @@
 								class="order-2 ml-auto flex items-center gap-2 lg:order-4 lg:ml-8.5"
 							>
 								<!-- Login & SignUp -->
-								<div class="hidden items-center gap-2 lg:flex">
+								<div class="hidden items-center gap-2">
 									<button
 										data-modal="modal-login"
 										class="btn btn-secondary-outline"
@@ -631,9 +593,10 @@
 								</div>
 
 								<!-- Profile Button -->
-								<div class="relative lg:hidden" data-dropdown>
+								<div class="relative" data-dropdown>
 									<button
 										type="button"
+										data-sheet="profile-sheet"
 										data-dropdown-trigger
 										aria-haspopup="menu"
 										aria-expanded="false"
@@ -642,113 +605,752 @@
 										<div class="profile-menu-btn-inner">S</div>
 									</button>
 
-									<!-- Menu -->
+									<!-- Desktop: dropdown -->
+									<div data-dropdown-menu class="profile-dropdown-menu">
+										<nav
+											data-dropdown-content
+											role="menu"
+											class="flex flex-col"
+										>
+											<a
+												href="#"
+												role="menuitem"
+												class="profile-dropdown-menu-link"
+											>
+												<img src="./images/icons/account.svg" alt="" />
+												My account
+											</a>
+											<a
+												href="#"
+												role="menuitem"
+												class="profile-dropdown-menu-link"
+											>
+												<img src="./images/icons/like.svg" alt="" />
+												Favorites
+											</a>
+											<a
+												href="#"
+												role="menuitem"
+												class="profile-dropdown-menu-link"
+											>
+												<img src="./images/icons/downloads.svg" alt="" />
+												My downloads
+											</a>
+											<a
+												href="#"
+												role="menuitem"
+												class="profile-dropdown-menu-link"
+											>
+												<img src="./images/icons/mail.svg" alt="" />
+												Contact us
+											</a>
+											<a
+												href="#"
+												role="menuitem"
+												class="profile-dropdown-menu-link"
+											>
+												<img src="./images/icons/signout.svg" alt="" />
+												Sign out
+											</a>
+										</nav>
+									</div>
+
+									<!-- Mobile: sheet -->
 									<div
-										data-dropdown-menu
-										role="menu"
-										class="profile-dropdown-menu"
+										id="profile-sheet"
+										class="sheet-wrapper"
+										data-sheet-mobile-only
 									>
-										<a href="#" class="profile-dropdown-menu-link">
-											<img src="./images/icons/account.svg" alt="icon" />
-											My account
-										</a>
-										<a href="#" class="profile-dropdown-menu-link">
-											<img src="./images/icons/like.svg" alt="icon" />
-											Favorites
-										</a>
-										<a href="#" class="profile-dropdown-menu-link">
-											<img src="./images/icons/downloads.svg" alt="icon" />
-											My downloads
-										</a>
-										<a href="#" class="profile-dropdown-menu-link">
-											<img src="./images/icons/mail.svg" alt="icon" />
-											Contact us
-										</a>
-										<a href="#" class="profile-dropdown-menu-link">
-											<img src="./images/icons/signout.svg" alt="icon" />
-											Sign out
-										</a>
+										<div class="sheet-content !h-auto">
+											<button class="sheet-grabber"></button>
+
+											<div class="flex gap-3 px-4">
+												<button class="sheet-close-btn ml-auto">X</button>
+											</div>
+
+											<div class="sheet-scroll-content" data-sheet-host></div>
+										</div>
 									</div>
 								</div>
 							</div>
 
 							<!-- Mobile Menu -->
-							<div class="flex lg:hidden">
+							<div class="md:hidden">
 								<div
 									id="mobile-menu"
 									aria-hidden="true"
-									class="fixed top-0 left-0 z-10 h-full w-[80%] -translate-x-full transform bg-white shadow-xl transition-transform duration-300 ease-in-out [.is-open]:translate-x-0"
+									class="mobile-menu -translate-x-full"
 								>
-									<div class="flex h-full w-full flex-col p-6">
-										<a href="#" class="text-lg font-bold">LOGO</a>
+									<div
+										class="relative flex h-full w-full flex-col overflow-hidden"
+									>
+										<div
+											class="flex items-center justify-between border-b border-b-[#181A1D] px-4 py-5"
+										>
+											<a href="#">
+												<img
+													src="./images/global/logo.svg"
+													alt="mobile menu logo"
+												/>
+											</a>
+											<button data-menu-close aria-label="Close menu">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="16"
+													height="16"
+													viewBox="0 0 16 16"
+													fill="none"
+												>
+													<path
+														d="M0.565918 0.565674L7.56592 7.56567M7.56592 7.56567L14.5659 14.5657M7.56592 7.56567L0.565918 14.5657M7.56592 7.56567L14.5659 0.565674"
+														stroke-width="1.6"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
 										<nav
-											class="w-full flex-1"
+											class="w-full flex-1 px-4"
 											role="navigation"
 											aria-label="Mobile menu"
 										>
-											<ul class="divide-y divide-gray-200">
-												<li><a href="#" class="mobile-menu-link">Home</a></li>
-												<li>
-													<a href="#" class="mobile-menu-link">Pricing</a>
-												</li>
-
+											<ul>
 												<!-- Mobile Submenu -->
-												<li class="with-submenu group relative">
-													<div class="flex w-full flex-col gap-2">
+												<li class="with-submenu group">
+													<div class="flex w-full flex-col">
 														<!-- Trigger -->
 														<button
 															class="submenu-trigger mobile-menu-link flex w-full items-center justify-between gap-2"
 															aria-haspopup="true"
 															aria-expanded="false"
 														>
-															<span>More</span>
+															<span>Genres</span>
+
 															<svg
 																aria-hidden="true"
-																width="24"
-																height="24"
-																viewBox="0 0 24 24"
-																fill="none"
-																class="transition-transform group-[.active]:rotate-180"
+																class="transition-transform"
 																xmlns="http://www.w3.org/2000/svg"
+																width="8"
+																height="13"
+																viewBox="0 0 8 13"
+																fill="none"
 															>
 																<path
-																	d="M7 10L12 15L17 10"
-																	stroke="#121826"
-																	stroke-width="3"
-																	stroke-linecap="round"
-																	stroke-linejoin="round"
+																	d="M0.459473 0.459595L6.45947 6.45959L0.459473 12.4596"
+																	stroke-width="1.3"
+																	stroke="white"
 																/>
 															</svg>
 														</button>
 
 														<!-- Content -->
-														<div
-															class="submenu-mobile grid grid-rows-[0fr] transition-all duration-500 group-[.active]:grid-rows-[1fr]"
-														>
-															<div class="overflow-hidden">
-																<ul class="space-y-2">
-																	<li>
-																		<a href="#" class="mobile-submenu-link">
-																			Settings
+														<div class="submenu-mobile">
+															<div
+																class="flex items-center justify-between border-b border-b-[#181A1D] px-4 py-6"
+															>
+																<button
+																	class="flex items-center gap-3.5"
+																	data-submenu-back
+																	aria-label="Close menu"
+																>
+																	<svg
+																		xmlns="http://www.w3.org/2000/svg"
+																		width="9"
+																		height="16"
+																		viewBox="0 0 9 16"
+																		fill="none"
+																	>
+																		<path
+																			d="M8.13135 0.565674L1.13135 7.56567L8.13135 14.5657"
+																			stroke-width="1.6"
+																			stroke="white"
+																		/>
+																	</svg>
+																	<p class="text-sm text-white">Genres</p>
+																</button>
+																<button
+																	data-submenu-back
+																	aria-label="Close menu"
+																>
+																	<svg
+																		xmlns="http://www.w3.org/2000/svg"
+																		width="16"
+																		height="16"
+																		viewBox="0 0 16 16"
+																		fill="none"
+																	>
+																		<path
+																			d="M0.565918 0.565674L7.56592 7.56567M7.56592 7.56567L14.5659 14.5657M7.56592 7.56567L0.565918 14.5657M7.56592 7.56567L14.5659 0.565674"
+																			stroke-width="1.6"
+																			stroke="white"
+																		/>
+																	</svg>
+																</button>
+															</div>
+															<div
+																data-submenu-scroll
+																class="bg-dark mx-4 mt-4 grid min-h-0 flex-1 content-start overflow-y-auto overscroll-contain rounded-[10px] px-4 pb-4"
+															>
+																<div class="mobile-sebmenu-list flex flex-col">
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Afrobeat
 																		</a>
-																	</li>
-																	<li>
-																		<a href="#" class="mobile-submenu-link">
-																			Profile
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Bass Music
 																		</a>
-																	</li>
-																	<li>
-																		<a href="#" class="mobile-submenu-link">
-																			Contacts
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Bass House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Dubstep
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Future Bass
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Grime
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Moombah
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Blues
 																		</a>
-																	</li>
-																</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Breaks
+																		</a>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Cinematic
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Action
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Filmscore
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Horror
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Sci-Fi
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+																<div class="mobile-sebmenu-list flex flex-col">
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Country
+																		</a>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Disco
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Nu Disco
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			DJ Tools
+																		</a>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Downtempo
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Ambient
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Chillout
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Electronica
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Trip Hop
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Drum and Bass
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Halftime
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Jump Up
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Jungle
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Liquid
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Neurofunk
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+																<div class="mobile-sebmenu-list flex flex-col">
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Electro
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Classic / Detroit
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Complextro
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Modern Electro
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Folk Music
+																		</a>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Free Samples
+																		</a>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Funk
+																		</a>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Garage
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Future Garage
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Speed Garage
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					UK Bass
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Uk Garage
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Hard Dance
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Hardcore
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+																<div class="mobile-sebmenu-list flex flex-col">
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Hip Hop
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Boom Bap
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Classic Hip Hop
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Lo-Fi Hip Hop
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			House
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Acid House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Afro House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Amapiano
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Classic House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Deep House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Deep Tech
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Electro House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Future House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Lo-Fi House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Micro House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Minimal House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Progressive House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Soulful & Funky House
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Tech House
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+																<div class="mobile-sebmenu-list flex flex-col">
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">IDM</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Glitch
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Instruments
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Bass
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Brass & Woodwind
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Drums
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Guitars
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Keyboards
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Percussion
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Strings
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Synths
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Jazz
+																		</a>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Latin
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Reggaeton
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Mainstage
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">EDM</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+																<div class="mobile-sebmenu-list flex flex-col">
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Orchestral
+																		</a>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">Pop</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Future Pop
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Indie Pop
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Reggae
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Dancehall
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">Dub</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">Ska</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Sound Archives
+																		</a>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Synthwave
+																		</a>
+																	</div>
+
+																	<div class="submenu-item">
+																		<a href="#" class="submenu-link-top">
+																			Techno
+																		</a>
+																		<ul class="submenu-list">
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Dub Techno
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Industrial Techno
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Melodic Techno
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Minimal Techno
+																				</a>
+																			</li>
+																			<li>
+																				<a class="submenu-link" href="#">
+																					Peak Time / Driving
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
 															</div>
 														</div>
 													</div>
 												</li>
+												<li>
+													<a href="#" class="mobile-menu-link">Templates</a>
+												</li>
+
+												<li>
+													<a href="#" class="mobile-menu-link">Sample packs</a>
+												</li>
+												<li>
+													<a href="#" class="mobile-menu-link">Presets</a>
+												</li>
+												<li>
+													<a href="#" class="mobile-menu-link">Plugins</a>
+												</li>
+												<li>
+													<a href="#" class="mobile-menu-link">Blog</a>
+												</li>
 											</ul>
 										</nav>
+
+										<div class="mt-auto flex flex-col gap-3 px-4 pb-5">
+											<a href="#" class="btn btn-secondary-outline w-full py-3">
+												Log in
+											</a>
+											<a href="#" class="btn btn-primary w-full py-3">
+												Sign up
+											</a>
+										</div>
 									</div>
 								</div>
 
@@ -760,7 +1362,6 @@
 									class="pointer-events-none fixed inset-0 z-0 bg-black/80 opacity-0 transition-opacity duration-300 ease-in-out"
 								></div>
 							</div>
-
 							<!-- Burger Button -->
 							<button
 								id="burger"
@@ -865,4 +1466,3 @@
 						</div>
 					</div>
 				</header>
-			</div>
