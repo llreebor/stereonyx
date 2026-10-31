@@ -444,9 +444,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Modals
 	initializeModal()
 
-	// Dwopdown menus
-	document.querySelectorAll("[data-dropdown]").forEach(initDropdown)
-
 	// Password visibility
 	togglePasswordVisibility()
 
@@ -748,3 +745,297 @@ function initVolumeControl(root) {
 }
 
 document.querySelectorAll("[data-search-popup]").forEach(initSearchPopup)
+
+const DESKTOP_QUERY = "(min-width: 1024px)"
+const desktopMq = window.matchMedia(DESKTOP_QUERY)
+
+/* ============================== Sheets ============================== */
+class BottomSheet {
+	constructor() {
+		this.active = null
+		this.isClosing = false
+
+		document.addEventListener("click", (e) => {
+			const trigger = e.target.closest("[data-sheet]")
+			if (trigger) {
+				this.open(trigger.dataset.sheet)
+				return
+			}
+
+			if (e.target.closest(".sheet-close-btn")) {
+				this.close()
+				return
+			}
+
+			if (this.active && e.target.classList.contains("sheet-wrapper")) {
+				this.close()
+			}
+		})
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && this.active) this.close()
+		})
+
+		document.querySelectorAll(".sheet-wrapper").forEach((wrapper) => {
+			const grabber = wrapper.querySelector(".sheet-grabber")
+			const content = wrapper.querySelector(".sheet-content")
+			if (grabber && content) this._initDrag(grabber, content, wrapper)
+		})
+
+		// Выбор опции в sheet (например, select страны)
+		document.addEventListener("click", (e) => {
+			const option = e.target.closest(".sheet-select-option")
+			if (!option) return
+
+			const sheet = option.closest(".sheet-wrapper")
+			if (!sheet) return
+
+			const trigger = document.querySelector(`[data-sheet="${sheet.id}"]`)
+			if (!trigger) return
+
+			const wrapper = trigger.closest(".select-wrapper")
+			const img = option.querySelector(".sheet-option-image")
+			const text = option.querySelector(".sheet-option-text")
+
+			const triggerFlag = trigger.querySelector(".select-trigger-flag")
+			const triggerText = trigger.querySelector(".select-trigger-text")
+
+			if (triggerFlag && img) triggerFlag.src = img.src
+			if (triggerText && text) {
+				triggerText.textContent = text.textContent.trim()
+			}
+
+			if (wrapper) {
+				let hiddenInput = wrapper.querySelector(
+					"input[type='hidden'].select-hidden-value",
+				)
+				if (!hiddenInput) {
+					hiddenInput = document.createElement("input")
+					hiddenInput.type = "hidden"
+					hiddenInput.classList.add("select-hidden-value")
+					hiddenInput.name = wrapper.dataset.name ?? "select_value"
+					wrapper.appendChild(hiddenInput)
+				}
+				hiddenInput.value = text?.textContent.trim() ?? ""
+			}
+
+			this.close()
+		})
+	}
+
+	open(id) {
+		const wrapper = document.getElementById(id)
+		if (!wrapper) return
+
+		// Sheet только для мобильных, если указан data-sheet-mobile-only
+		if (wrapper.hasAttribute("data-sheet-mobile-only") && desktopMq.matches) {
+			return
+		}
+
+		if (this.active && this.active !== wrapper) this._hide(this.active, true)
+		this.active = wrapper
+		this._show(wrapper)
+	}
+
+	close() {
+		if (!this.active || this.isClosing) return
+		this._hide(this.active)
+		this.active = null
+	}
+
+	_show(wrapper) {
+		this.isClosing = false
+		wrapper.classList.add("is-visible")
+		document.body.style.overflow = "hidden"
+	}
+
+	_hide(wrapper, instant = false) {
+		const content = wrapper.querySelector(".sheet-content")
+		if (!content) return
+
+		if (instant) {
+			content.style.transition = "none"
+			content.style.transform = ""
+			wrapper.classList.remove("is-visible")
+			document.body.style.overflow = ""
+			return
+		}
+
+		this.isClosing = true
+
+		content.style.transition = "transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)"
+		content.style.transform = "translateY(100%)"
+
+		wrapper.style.transition = "background-color 0.35s"
+		wrapper.style.backgroundColor = "transparent"
+
+		content.addEventListener(
+			"transitionend",
+			() => {
+				content.style.transition = ""
+				content.style.transform = ""
+				wrapper.style.transition = ""
+				wrapper.style.backgroundColor = ""
+				wrapper.classList.remove("is-visible")
+				document.body.style.overflow = ""
+				this.isClosing = false
+			},
+			{ once: true },
+		)
+	}
+
+	_initDrag(grabber, content, wrapper) {
+		let startY = 0,
+			delta = 0,
+			dragging = false
+
+		const onStart = (y) => {
+			if (this.active !== wrapper) return
+			dragging = true
+			startY = y
+			delta = 0
+			content.style.transition = "none"
+		}
+
+		const onMove = (y) => {
+			if (!dragging) return
+			delta = Math.max(0, y - startY)
+			content.style.transform = `translateY(${delta}px)`
+		}
+
+		const onEnd = () => {
+			if (!dragging) return
+			dragging = false
+			if (delta > content.offsetHeight * 0.3) {
+				this.close()
+			} else {
+				content.style.transition = ""
+				content.style.transform = ""
+			}
+		}
+
+		// Pointer events (desktop)
+		grabber.addEventListener("pointerdown", (e) => {
+			if (e.pointerType === "touch") return
+			onStart(e.clientY)
+			grabber.setPointerCapture(e.pointerId)
+		})
+		grabber.addEventListener("pointermove", (e) => {
+			if (e.pointerType === "touch") return
+			onMove(e.clientY)
+		})
+		grabber.addEventListener("pointerup", (e) => {
+			if (e.pointerType === "touch") return
+			onEnd()
+		})
+
+		// Touch events (mobile)
+		grabber.addEventListener(
+			"touchstart",
+			(e) => onStart(e.touches[0].clientY),
+			{ passive: true },
+		)
+		grabber.addEventListener("touchmove", (e) => onMove(e.touches[0].clientY), {
+			passive: true,
+		})
+		grabber.addEventListener("touchend", onEnd)
+	}
+}
+
+/* ============================== Dropdown ============================== */
+function initDropdown(dropdown, sheet) {
+	const trigger = dropdown.querySelector("[data-dropdown-trigger]")
+	const menu = dropdown.querySelector("[data-dropdown-menu]")
+	if (!trigger || !menu) return
+
+	// Sheet-режим включается только если есть data-sheet + контент + контейнер в sheet
+	const sheetEl = trigger.dataset.sheet
+		? document.getElementById(trigger.dataset.sheet)
+		: null
+	const content = dropdown.querySelector("[data-dropdown-content]")
+	const mobileHost = sheetEl?.querySelector("[data-sheet-host]")
+	const hasSheet = Boolean(sheetEl && content && mobileHost)
+	const desktopHost = hasSheet ? content.parentElement : null
+
+	const isMobileSheet = () => hasSheet && !desktopMq.matches
+	const isOpen = () => menu.dataset.open === "true"
+	const getItems = () => [
+		...(content ?? menu).querySelectorAll('[role="menuitem"]'),
+	]
+	const closeSheet = () => sheet?.close?.()
+
+	const open = () => {
+		menu.dataset.open = "true"
+		trigger.setAttribute("aria-expanded", "true")
+	}
+
+	const close = (returnFocus = false) => {
+		menu.dataset.open = "false"
+		trigger.setAttribute("aria-expanded", "false")
+		if (returnFocus) trigger.focus()
+	}
+
+	// Перенос контента между dropdown (desktop) и sheet (mobile)
+	if (hasSheet) {
+		const mountContent = () => {
+			const host = desktopMq.matches ? desktopHost : mobileHost
+			if (content.parentElement !== host) host.appendChild(content)
+		}
+		mountContent()
+
+		desktopMq.addEventListener("change", () => {
+			mountContent() // сначала переносим контент
+			close()
+			closeSheet()
+		})
+	}
+
+	trigger.addEventListener("click", (e) => {
+		// На мобильных клик обработает BottomSheet (document listener)
+		if (isMobileSheet()) return
+		e.stopPropagation()
+		isOpen() ? close() : open()
+	})
+
+	// Клик вне dropdown
+	document.addEventListener("click", (e) => {
+		if (isOpen() && !dropdown.contains(e.target)) close()
+	})
+
+	// Клавиатура: Esc закрывает, стрелки навигируют
+	document.addEventListener("keydown", (e) => {
+		if (!isOpen()) return
+
+		if (e.key === "Escape") {
+			close(true)
+			return
+		}
+
+		if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+			e.preventDefault()
+			const items = getItems()
+			if (!items.length) return
+			const idx = items.indexOf(document.activeElement)
+			const next =
+				e.key === "ArrowDown"
+					? items[(idx + 1) % items.length]
+					: items[(idx - 1 + items.length) % items.length]
+			next.focus()
+		}
+	})
+
+	// Закрытие после выбора пункта
+	;(content ?? menu).addEventListener("click", (e) => {
+		if (!e.target.closest('[role="menuitem"]')) return
+		if (isMobileSheet()) closeSheet()
+		else close()
+	})
+}
+
+/* ============================== Init ============================== */
+// Создаём ровно один экземпляр и передаём его явно
+const bottomSheet = new BottomSheet()
+
+document
+	.querySelectorAll("[data-dropdown]")
+	.forEach((el) => initDropdown(el, bottomSheet))

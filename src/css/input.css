@@ -334,6 +334,26 @@
 			@apply bg-dark;
 		}
 	}
+
+	/* Sheet */
+	.sheet-wrapper {
+		@apply pointer-events-none invisible fixed inset-0 z-50 flex items-end justify-end bg-transparent transition-colors [.is-visible]:pointer-events-auto [.is-visible]:visible [.is-visible]:bg-black/50;
+	}
+	.sheet-wrapper.is-visible .sheet-content {
+		@apply translate-y-0;
+	}
+	.sheet-content {
+		@apply relative z-30 flex h-2/3 w-full translate-y-full flex-col rounded-t-lg bg-white p-4 transition-transform duration-300 ease-out;
+	}
+	.sheet-grabber {
+		@apply flex cursor-grab touch-none items-center justify-center;
+	}
+	.sheet-close-btn {
+		@apply absolute top-4 right-4 flex size-10 shrink-0 items-center justify-center rounded-lg border border-gray-100 bg-white hover:bg-gray-50;
+	}
+	.sheet-scroll-content {
+		@apply mt-2 h-full min-h-0 flex-1 overflow-auto;
+	}
 }
 
 /* Container max-width & paddings */
