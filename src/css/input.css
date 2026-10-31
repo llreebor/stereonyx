@@ -337,19 +337,19 @@
 
 	/* Sheet */
 	.sheet-wrapper {
-		@apply pointer-events-none invisible fixed inset-0 z-50 flex items-end justify-end bg-transparent transition-colors [.is-visible]:pointer-events-auto [.is-visible]:visible [.is-visible]:bg-black/50;
+		@apply pointer-events-none invisible fixed inset-0 z-50 flex items-end justify-end bg-transparent opacity-0 transition-none duration-150 [.is-visible]:pointer-events-auto [.is-visible]:visible [.is-visible]:bg-[#0d0d0d]/70 [.is-visible]:opacity-100 [.is-visible]:backdrop-blur-[6px];
 	}
 	.sheet-wrapper.is-visible .sheet-content {
 		@apply translate-y-0;
 	}
 	.sheet-content {
-		@apply relative z-30 flex h-2/3 w-full translate-y-full flex-col rounded-t-lg bg-white p-4 transition-transform duration-300 ease-out;
+		@apply relative z-30 flex h-2/3 w-full translate-y-full flex-col rounded-t-[20px] bg-[#141416] px-2.5 py-3 transition-transform duration-300 ease-out;
 	}
 	.sheet-grabber {
-		@apply flex cursor-grab touch-none items-center justify-center;
+		@apply mx-auto flex h-1 w-16 cursor-grab touch-none items-center justify-center bg-[#242426];
 	}
 	.sheet-close-btn {
-		@apply absolute top-4 right-4 flex size-10 shrink-0 items-center justify-center rounded-lg border border-gray-100 bg-white hover:bg-gray-50;
+		@apply absolute top-4 right-4 hidden size-10 shrink-0 items-center justify-center rounded-lg border border-gray-100 bg-white hover:bg-gray-50;
 	}
 	.sheet-scroll-content {
 		@apply mt-2 h-full min-h-0 flex-1 overflow-auto;

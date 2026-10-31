@@ -351,61 +351,6 @@ function initializeAccordion() {
 	})
 }
 
-function initDropdown(dropdown) {
-	const trigger = dropdown.querySelector("[data-dropdown-trigger]")
-	const menu = dropdown.querySelector("[data-dropdown-menu]")
-	const items = () => [...menu.querySelectorAll('[role="menuitem"]')]
-
-	const isOpen = () => menu.dataset.open === "true"
-
-	const open = () => {
-		menu.dataset.open = "true"
-		trigger.setAttribute("aria-expanded", "true")
-	}
-
-	const close = (returnFocus = false) => {
-		menu.dataset.open = "false"
-		trigger.setAttribute("aria-expanded", "false")
-		if (returnFocus) trigger.focus()
-	}
-
-	trigger.addEventListener("click", (e) => {
-		e.stopPropagation()
-		isOpen() ? close() : open()
-	})
-
-	// Close on outside click
-	document.addEventListener("click", (e) => {
-		if (isOpen() && !dropdown.contains(e.target)) close()
-	})
-
-	// Keyboard: Esc closes, arrows navigate
-	document.addEventListener("keydown", (e) => {
-		if (!isOpen()) return
-
-		if (e.key === "Escape") {
-			close(true)
-			return
-		}
-
-		if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-			e.preventDefault()
-			const list = items()
-			const idx = list.indexOf(document.activeElement)
-			const next =
-				e.key === "ArrowDown"
-					? list[(idx + 1) % list.length]
-					: list[(idx - 1 + list.length) % list.length]
-			next.focus()
-		}
-	})
-
-	// Close after selecting an item
-	menu.addEventListener("click", (e) => {
-		if (e.target.closest('[role="menuitem"]')) close()
-	})
-}
-
 function initStickyOffset({
 	headerSelector = ".header-wrapper",
 	varName = "--header-h",
@@ -849,39 +794,77 @@ class BottomSheet {
 		document.body.style.overflow = "hidden"
 	}
 
+	// _hide(wrapper, instant = false) {
+	// 	const content = wrapper.querySelector(".sheet-content")
+	// 	if (!content) return
+
+	// 	if (instant) {
+	// 		content.style.transition = "none"
+	// 		content.style.transform = ""
+	// 		wrapper.classList.remove("is-visible")
+	// 		document.body.style.overflow = ""
+	// 		return
+	// 	}
+
+	// 	this.isClosing = true
+
+	// 	content.style.transition = "transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)"
+	// 	content.style.transform = "translateY(100%)"
+
+	// 	wrapper.style.transition = "background-color 0.35s"
+	// 	wrapper.style.backgroundColor = "transparent"
+
+	// 	content.addEventListener(
+	// 		"transitionend",
+	// 		() => {
+	// 			content.style.transition = ""
+	// 			content.style.transform = ""
+	// 			wrapper.style.transition = ""
+	// 			wrapper.style.backgroundColor = ""
+	// 			wrapper.classList.remove("is-visible")
+	// 			document.body.style.overflow = ""
+	// 			this.isClosing = false
+	// 		},
+	// 		{ once: true },
+	// 	)
+	// }
+
 	_hide(wrapper, instant = false) {
 		const content = wrapper.querySelector(".sheet-content")
 		if (!content) return
 
+		const cleanup = () => {
+			content.style.transition = ""
+			content.style.transform = ""
+			document.body.style.overflow = ""
+			this.isClosing = false
+		}
+
 		if (instant) {
 			content.style.transition = "none"
-			content.style.transform = ""
+			wrapper.style.transition = "none"
 			wrapper.classList.remove("is-visible")
-			document.body.style.overflow = ""
+			cleanup()
+			// Возвращаем transition на следующем кадре
+			requestAnimationFrame(() => (wrapper.style.transition = ""))
 			return
 		}
 
 		this.isClosing = true
 
+		// Sheet уезжает вниз
 		content.style.transition = "transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)"
 		content.style.transform = "translateY(100%)"
 
-		wrapper.style.transition = "background-color 0.35s"
-		wrapper.style.backgroundColor = "transparent"
+		// Overlay плавно гаснет целиком (blur + затемнение) через opacity
+		wrapper.classList.remove("is-visible")
 
-		content.addEventListener(
-			"transitionend",
-			() => {
-				content.style.transition = ""
-				content.style.transform = ""
-				wrapper.style.transition = ""
-				wrapper.style.backgroundColor = ""
-				wrapper.classList.remove("is-visible")
-				document.body.style.overflow = ""
-				this.isClosing = false
-			},
-			{ once: true },
-		)
+		const onEnd = (e) => {
+			if (e.target !== content || e.propertyName !== "transform") return
+			content.removeEventListener("transitionend", onEnd)
+			cleanup()
+		}
+		content.addEventListener("transitionend", onEnd)
 	}
 
 	_initDrag(grabber, content, wrapper) {
