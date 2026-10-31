@@ -1,21 +1,34 @@
 // Initialize mobile menu and submenu functionality
 function initializeMobileMenu() {
-	// Select main DOM elements for mobile menu
 	const menu = document.querySelector("#mobile-menu")
 	const overlay = document.querySelector("#mobile-menu-overlay")
 	const burger = document.querySelector("#burger")
 	const body = document.querySelector("body")
 
-	// Define mobile breakpoint for responsive behavior
 	const MOBILE_BREAKPOINT = 992
 
-	// Exit if required elements are missing
 	if (!menu || !burger || !body || !overlay) return
 
-	// ============================
-	// MENU TOGGLE FUNCTIONALITY
-	// ============================
+	// Submenu helpers
+	const setSubmenuState = (item, isOpen) => {
+		item.classList.toggle("active", isOpen)
+		item
+			.querySelector(".submenu-trigger")
+			?.setAttribute("aria-expanded", String(isOpen))
 
+		if (isOpen) {
+			const scrollEl = item.querySelector("[data-submenu-scroll]")
+			if (scrollEl) scrollEl.scrollTop = 0
+		}
+	}
+
+	const closeAllSubmenus = () => {
+		menu
+			.querySelectorAll(".with-submenu.active")
+			.forEach((item) => setSubmenuState(item, false))
+	}
+
+	// Menu toggle
 	const updateMenuState = (isOpen) => {
 		burger.setAttribute("aria-expanded", isOpen)
 		burger.classList.toggle("active", isOpen)
@@ -30,6 +43,8 @@ function initializeMobileMenu() {
 		overlay.classList.toggle("pointer-events-auto", isOpen)
 
 		body.classList.toggle("overflow-hidden", isOpen)
+
+		if (!isOpen) closeAllSubmenus()
 	}
 
 	const handleBurgerClick = () => {
@@ -41,8 +56,14 @@ function initializeMobileMenu() {
 		if (event.target === overlay) updateMenuState(false)
 	}
 
+	// Escape closes the submenu first, then the menu
 	const handleEscapeKey = (event) => {
-		if (event.key === "Escape" && menu.classList.contains("is-open")) {
+		if (event.key !== "Escape" || !menu.classList.contains("is-open")) return
+
+		const activeSubmenu = menu.querySelector(".with-submenu.active")
+		if (activeSubmenu) {
+			setSubmenuState(activeSubmenu, false)
+		} else {
 			updateMenuState(false)
 		}
 	}
@@ -53,7 +74,6 @@ function initializeMobileMenu() {
 		}
 	}
 
-	// Add event listeners for main menu
 	burger.addEventListener("click", handleBurgerClick)
 	overlay.addEventListener("click", handleOverlayClick)
 	document.addEventListener("keydown", handleEscapeKey)
@@ -62,30 +82,30 @@ function initializeMobileMenu() {
 	burger.setAttribute("aria-expanded", "false")
 	handleWindowResize()
 
-	// ============================
-	// SUBMENU FUNCTIONALITY
-	// ============================
-
-	// Check if there are submenu triggers at all
-	const submenuTriggersExist = menu.querySelector(".submenu-trigger")
-
-	if (submenuTriggersExist) {
-		menu.addEventListener("click", (event) => {
-			const trigger = event.target.closest(".submenu-trigger")
-			if (!trigger) return
-
-			const submenuItem = trigger.closest(".with-submenu")
-			if (submenuItem) {
-				submenuItem.classList.toggle("active")
-			}
-		})
-	}
-
-	// ============================
-	// LINK CLICK CLOSE MENU
-	// ============================
-
+	// Menu clicks: open submenu, go back, close, follow links
 	menu.addEventListener("click", (event) => {
+		// Open next level
+		const trigger = event.target.closest(".submenu-trigger")
+		if (trigger) {
+			const item = trigger.closest(".with-submenu")
+			if (item) setSubmenuState(item, true)
+			return
+		}
+
+		// Back to previous level
+		if (event.target.closest("[data-submenu-back]")) {
+			const item = event.target.closest(".with-submenu")
+			if (item) setSubmenuState(item, false)
+			return
+		}
+
+		// Close whole menu
+		if (event.target.closest("[data-menu-close]")) {
+			updateMenuState(false)
+			return
+		}
+
+		// Real links close the menu
 		const link = event.target.closest("a")
 		if (!link) return
 
@@ -409,21 +429,84 @@ document.addEventListener("DOMContentLoaded", () => {
 			prevEl: ".swiper-button-prev-home-hero",
 		},
 	})
-	const swiperHomeCategory = new Swiper(".swiper-category-home", {
-		// Optional parameters
 
-		// slidesPerGroup: 5,
+	const swiperHomeCategoryNew = new Swiper(".swiper-category-home-new", {
 		grid: {
 			rows: 2,
 			fill: "row",
 		},
 		spaceBetween: 20,
 		navigation: {
-			nextEl: ".swiper-button-home-category-next",
-			prevEl: ".swiper-button-home-category-prev",
+			nextEl: ".swiper-button-home-category-new-next",
+			prevEl: ".swiper-button-home-category-new-prev",
 		},
 		pagination: {
-			el: ".swiper-home-category-fraction",
+			el: ".swiper-home-category-new-fraction",
+			type: "fraction",
+		},
+		breakpoints: {
+			320: {
+				slidesPerView: 1.6,
+			},
+			375: {
+				slidesPerView: 2.2,
+			},
+			600: {
+				slidesPerView: 3.2,
+			},
+			768: {
+				slidesPerView: 4.3,
+			},
+			1024: {
+				slidesPerView: 5,
+			},
+		},
+	})
+	const swiperHomeCategoryDrum = new Swiper(".swiper-category-home-drum", {
+		grid: {
+			rows: 2,
+			fill: "row",
+		},
+		spaceBetween: 20,
+		navigation: {
+			nextEl: ".swiper-button-home-category-drum-next",
+			prevEl: ".swiper-button-home-category-drum-prev",
+		},
+		pagination: {
+			el: ".swiper-home-category-drum-fraction",
+			type: "fraction",
+		},
+		breakpoints: {
+			320: {
+				slidesPerView: 1.6,
+			},
+			375: {
+				slidesPerView: 2.2,
+			},
+			600: {
+				slidesPerView: 3.2,
+			},
+			768: {
+				slidesPerView: 4.3,
+			},
+			1024: {
+				slidesPerView: 5,
+			},
+		},
+	})
+
+	const swiperHomeCategoryHouse = new Swiper(".swiper-category-home-house", {
+		grid: {
+			rows: 2,
+			fill: "row",
+		},
+		spaceBetween: 20,
+		navigation: {
+			nextEl: ".swiper-button-home-category-house-next",
+			prevEl: ".swiper-button-home-category-house-prev",
+		},
+		pagination: {
+			el: ".swiper-home-category-house-fraction",
 			type: "fraction",
 		},
 		breakpoints: {
