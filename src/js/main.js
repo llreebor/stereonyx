@@ -1020,6 +1020,42 @@ function initVolumeControl(root) {
 	render(getVolume())
 }
 
+// Fixed Price product page
+function initFixedMobilePrice({
+	selector = ".fixed-mobile-price",
+	className = "is-visible",
+	offset = 600,
+} = {}) {
+	const bar = document.querySelector(selector)
+	if (!bar) return
+
+	let ticking = false
+
+	const getScroll = (e) => {
+		// скроллится window или какой-то контейнер
+		const t = e && e.target
+		if (t && t !== document && t.scrollTop !== undefined) return t.scrollTop
+		return window.scrollY
+	}
+
+	const update = (e) => {
+		bar.classList.toggle(className, getScroll(e) > offset)
+		ticking = false
+	}
+
+	const onScroll = (e) => {
+		if (ticking) return
+		ticking = true
+		requestAnimationFrame(() => update(e))
+	}
+
+	document.addEventListener("scroll", onScroll, {
+		passive: true,
+		capture: true,
+	})
+	update()
+}
+
 // Inits
 document.addEventListener("DOMContentLoaded", () => {
 	// ============ Global
@@ -1051,6 +1087,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Sheet
 	const bottomSheet = new BottomSheet()
+
+	// Fixed Price
+	initFixedMobilePrice()
 
 	// Profile Dropdown & Sheet
 	document

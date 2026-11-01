@@ -48,6 +48,11 @@
 		180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.54) 55.31%,
 		rgba(0, 0, 0, 0.95) 115.05%;
 	--gradient-contacts-cta: 0deg, #000 0%, rgba(0, 0, 0, 0) 100%;
+	--gradient-product:
+		0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.32) 50%,
+		rgba(0, 0, 0, 0) 79.33%;
+
+	--gradient-product-2: 0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%;
 
 	/* Animations */
 	--animate-fadeIn: fadeIn 0.3s linear;
@@ -395,6 +400,25 @@
 	}
 	.volume-block-player {
 		@apply top-[unset] bottom-full mb-6;
+	}
+
+	/* Tag Link */
+	.tag-link {
+		@apply rounded-[5px] bg-white/15 px-1.5 py-0.5 text-xs text-white hover:bg-white/25;
+	}
+
+	/* Fixed Price */
+	.fixed-mobile-price {
+		@apply pointer-events-none fixed bottom-0 left-0 z-20 flex w-full items-center justify-between gap-5 bg-[#131415]/80 px-4 py-2.5 backdrop-blur-[35px] transition-transform duration-300 md:hidden;
+		transform: translateY(100%);
+
+		&.is-visible {
+			@apply pointer-events-auto;
+			transform: translateY(0);
+		}
+	}
+	.fixed-mobile-price {
+		@apply pointer-events-auto;
 	}
 }
 
