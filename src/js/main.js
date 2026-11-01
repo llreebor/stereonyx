@@ -903,6 +903,10 @@ function initPlayer(root) {
 	}
 
 	document.addEventListener("volume:change", (e) => applyVolume(e.detail.value))
+	// Pause when a preview starts
+	document.addEventListener("preview:play", () => ws.pause())
+	// Tell previews to stop when the sticky player starts
+	ws.on("play", () => document.dispatchEvent(new CustomEvent("player:play")))
 
 	return ws
 }
@@ -1020,6 +1024,63 @@ function initVolumeControl(root) {
 	render(getVolume())
 }
 
+const previewInstances = new Set()
+
+function initPreview(root) {
+	const playBtn = root.querySelector("[data-preview-play]")
+	const waveformEl = root.querySelector("[data-preview-waveform]")
+	const durationEl = root.querySelector("[data-preview-duration]")
+	if (!playBtn || !waveformEl || !root.dataset.src) return
+
+	const ws = WaveSurfer.create({
+		container: waveformEl,
+		url: root.dataset.src,
+		height: Number(root.dataset.waveHeight) || 46,
+		barWidth: 2,
+		barGap: 2,
+		barRadius: 2,
+		cursorWidth: 0,
+		normalize: true,
+		dragToSeek: true,
+		waveColor: "#4b4b4f",
+		progressColor: "#7c3aed",
+	})
+
+	previewInstances.add(ws)
+
+	const sync = () => {
+		const playing = ws.isPlaying()
+		playBtn.classList.toggle("paused", !playing)
+		playBtn.setAttribute("aria-pressed", String(playing))
+		playBtn.setAttribute("aria-label", playing ? "Pause" : "Play")
+		root.classList.toggle("is-active", playing)
+	}
+
+	ws.on("ready", (duration) => {
+		if (durationEl) durationEl.textContent = formatTime(duration)
+	})
+
+	ws.on("play", () => {
+		// Only one preview plays at a time
+		previewInstances.forEach((other) => other !== ws && other.pause())
+		// Tell the sticky player to stop
+		document.dispatchEvent(new CustomEvent("preview:play"))
+		sync()
+	})
+	ws.on("pause", sync)
+	ws.on("finish", () => {
+		ws.seekTo(0)
+		sync()
+	})
+
+	// Stop when the sticky player starts
+	document.addEventListener("player:play", () => ws.pause())
+
+	playBtn.addEventListener("click", () => ws.playPause())
+
+	return ws
+}
+
 // Fixed Price product page
 function initFixedMobilePrice({
 	selector = ".fixed-mobile-price",
@@ -1078,6 +1139,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Player
 	document.querySelectorAll("[data-volume]").forEach(initVolumeControl)
 	document.querySelectorAll("[data-player]").forEach(initPlayer)
+	document.querySelectorAll("[data-preview]").forEach(initPreview)
 
 	// Password visibility
 	togglePasswordVisibility()
@@ -1233,4 +1295,26 @@ document.addEventListener("DOMContentLoaded", () => {
 	// ============ Contacts Page
 	// Faq Accordion
 	initializeAccordion()
+
+	// ============ Product Page
+	const swiperProductMore = new Swiper(".swiper-product-more", {
+		spaceBetween: 20,
+		breakpoints: {
+			320: {
+				slidesPerView: 1.6,
+			},
+			375: {
+				slidesPerView: 2.2,
+			},
+			600: {
+				slidesPerView: 2.6,
+			},
+			768: {
+				slidesPerView: 3.5,
+			},
+			1024: {
+				slidesPerView: 5,
+			},
+		},
+	})
 })

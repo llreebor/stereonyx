@@ -404,12 +404,12 @@
 
 	/* Tag Link */
 	.tag-link {
-		@apply rounded-[5px] bg-white/15 px-1.5 py-0.5 text-xs text-white hover:bg-white/25;
+		@apply flex rounded-[5px] bg-white/15 px-1.5 py-0.5 text-xs text-white hover:bg-white/25;
 	}
 
 	/* Fixed Price */
 	.fixed-mobile-price {
-		@apply pointer-events-none fixed bottom-0 left-0 z-30 flex w-full items-center justify-between gap-5 bg-[#131415]/80 px-4 py-2.5 backdrop-blur-[35px] transition-transform duration-300 md:hidden;
+		@apply pointer-events-none fixed bottom-0 left-0 z-60 flex w-full items-center justify-between gap-5 bg-[#131415]/80 px-4 py-2.5 backdrop-blur-[35px] transition-transform duration-300 md:hidden;
 		transform: translateY(100%);
 
 		&.is-visible {
@@ -417,8 +417,45 @@
 			transform: translateY(0);
 		}
 	}
-	.fixed-mobile-price {
-		@apply pointer-events-auto;
+
+	/* Card */
+	.card {
+		@apply bg-dark overflow-hidden rounded-[14px] p-2.5 md:p-4;
+	}
+	.card-top {
+		@apply relative z-0 overflow-hidden rounded-[14px] after:absolute after:bottom-0 after:left-0 after:z-0 after:h-2/3 after:w-full after:bg-linear-(--gradient-card);
+	}
+	.card-label-promo {
+		@apply bg-pink absolute top-0 right-0 w-20.5 rounded-bl-lg py-1 pl-2 text-[10px] text-white uppercase;
+	}
+	.card-label-exclusive {
+		@apply bg-primary absolute top-0 right-0 w-20.5 rounded-bl-lg py-1 pl-2 text-[10px] text-white uppercase;
+	}
+	.card-image {
+		@apply aspect-square w-full rounded-lg;
+	}
+	.card-overlay {
+		@apply absolute inset-0 z-10 flex items-center justify-center gap-3 group-hover:visible group-hover:opacity-100 md:invisible md:bg-black/80 md:opacity-0;
+	}
+	.card-title {
+		@apply line-clamp-2 group-hover:underline;
+	}
+	.card-text {
+		@apply text-gray mt-0.5 text-[13px];
+	}
+	.card-price {
+		@apply text-sm font-semibold;
+	}
+
+	/* Product Main Player */
+	.preview-card {
+		@apply rounded-lg border border-transparent transition-colors;
+	}
+	/* .preview-card.is-active {
+		@apply border-white/10 bg-white/5;
+	} */
+	.preview-play-btn {
+		@apply bg-primary [.paused]:bg-gray-dark hover:bg-primary/90 flex size-13.25 items-center justify-center rounded-full;
 	}
 }
 
