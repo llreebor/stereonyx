@@ -409,7 +409,7 @@
 
 	/* Fixed Price */
 	.fixed-mobile-price {
-		@apply pointer-events-none fixed bottom-0 left-0 z-20 flex w-full items-center justify-between gap-5 bg-[#131415]/80 px-4 py-2.5 backdrop-blur-[35px] transition-transform duration-300 md:hidden;
+		@apply pointer-events-none fixed bottom-0 left-0 z-30 flex w-full items-center justify-between gap-5 bg-[#131415]/80 px-4 py-2.5 backdrop-blur-[35px] transition-transform duration-300 md:hidden;
 		transform: translateY(100%);
 
 		&.is-visible {
@@ -449,7 +449,7 @@
 
 	/* Calculadet top position */
 	.sticky-top {
-		@apply top-[calc(var(--header-h)+24px)];
+		@apply top-[calc(var(--header-h)+24px)] -z-10;
 	}
 
 	/* Article */
