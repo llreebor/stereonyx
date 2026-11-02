@@ -435,7 +435,7 @@
 		@apply aspect-square w-full rounded-lg;
 	}
 	.card-overlay {
-		@apply absolute inset-0 z-10 flex items-center justify-center gap-3 group-hover:visible group-hover:opacity-100 md:invisible md:bg-black/80 md:opacity-0;
+		@apply absolute inset-0 z-10 flex items-center justify-center gap-3 group-hover:visible group-hover:opacity-100 lg:invisible lg:bg-black/80 lg:opacity-0;
 	}
 	.card-title {
 		@apply line-clamp-2 group-hover:underline;

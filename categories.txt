@@ -181,7 +181,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -360,7 +360,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -539,7 +539,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -718,7 +718,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -897,7 +897,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -1076,7 +1076,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -1255,7 +1255,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -1434,7 +1434,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -1613,7 +1613,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -1792,7 +1792,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -1971,7 +1971,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -2150,7 +2150,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -2329,7 +2329,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -2508,7 +2508,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -2759,7 +2759,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -2938,7 +2938,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -3117,7 +3117,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -3296,7 +3296,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -3475,7 +3475,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -3654,7 +3654,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -3833,7 +3833,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -4012,7 +4012,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -4191,7 +4191,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -4370,7 +4370,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -4549,7 +4549,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -4728,7 +4728,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -4907,7 +4907,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -5086,7 +5086,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -5337,7 +5337,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -5516,7 +5516,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -5695,7 +5695,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -5874,7 +5874,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -6053,7 +6053,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -6232,7 +6232,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -6411,7 +6411,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -6590,7 +6590,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -6769,7 +6769,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -6948,7 +6948,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -7127,7 +7127,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -7306,7 +7306,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -7485,7 +7485,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
@@ -7664,7 +7664,7 @@
 																</svg>
 															</button>
 															<button
-																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+																class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 															>
 																<svg
 																	class="pointer-events-none"
