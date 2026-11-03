@@ -163,6 +163,10 @@
 		}
 	}
 
+	.btn-filter {
+		@apply [&_span]:bg-primary gap-0 px-5 py-2.75 text-sm [&_img]:ml-2.5 [&_span]:ml-1.5 [&_span]:inline-flex [&_span]:size-4.5 [&_span]:items-center [&_span]:justify-center [&_span]:rounded-full [&_span]:text-xs [&_span]:text-white;
+	}
+
 	.slider-circle-btn-small {
 		@apply bg-gray-dark hover:bg-gray-dark/80 flex size-8 items-center justify-center rounded-full disabled:bg-[#111214];
 	}
@@ -194,7 +198,7 @@
 		}
 	}
 	.submenu {
-		@apply max-w-max-width invisible absolute top-full left-1/2 z-20 h-auto w-full! -translate-x-1/2 overflow-hidden rounded-[18px] border border-[#1D1D1D] bg-black p-2.5 opacity-0 transition-all duration-300 group-hover/submenu:visible group-hover/submenu:grid group-hover/submenu:scale-100 group-hover/submenu:opacity-100 group-[.is-open]/submenu:visible group-[.is-open]/submenu:grid group-[.is-open]/submenu:scale-100 group-[.is-open]/submenu:opacity-100;
+		@apply max-w-max-width invisible absolute top-full left-1/2 z-30 h-auto w-full! -translate-x-1/2 overflow-hidden rounded-[18px] border border-[#1D1D1D] bg-black p-2.5 opacity-0 transition-all duration-300 group-hover/submenu:visible group-hover/submenu:grid group-hover/submenu:scale-100 group-hover/submenu:opacity-100 group-[.is-open]/submenu:visible group-[.is-open]/submenu:grid group-[.is-open]/submenu:scale-100 group-[.is-open]/submenu:opacity-100;
 	}
 	/* .submenu-wrapper {
 		@apply bg-dark grid h-auto grid-cols-6 gap-10 rounded-[10px] px-5 py-6.5;
@@ -293,9 +297,22 @@
 		@apply mb-0 flex cursor-pointer items-center text-sm text-white transition-colors select-none;
 	}
 	.checkbox {
-		@apply peer-checked:border-primary peer-checked:bg-primary hover:border-primary relative flex size-4 shrink-0 items-center justify-center rounded border border-[#45464C] transition-colors after:absolute after:top-1/2 after:left-1/2 after:hidden after:size-2 after:-translate-1/2 after:bg-[url(../images/icons/checkbox-arrow.svg)] peer-checked:after:block;
+		@apply peer-checked:border-primary peer-checked:bg-primary hover:border-primary relative flex size-4 shrink-0 items-center justify-center rounded border border-[#45464C] transition-colors after:absolute after:top-1/2 after:left-1/2 after:hidden after:size-2 after:-translate-1/2 after:bg-[url(../images/icons/checkbox-arrow.svg)] after:bg-no-repeat peer-checked:after:block;
 	}
 
+	/* Sort By Checkbox */
+	.checkbox-row-sort-by > .checkbox {
+		@apply hidden;
+	}
+	.checkbox-row-sort-by > .checkbox-label {
+		@apply hover:bg-gray-dark h-full w-full shrink-0 border-t border-t-[#323438] p-4 text-sm text-white peer-checked:bg-[#45464C] lg:rounded lg:border-none lg:px-3 lg:py-1.5;
+	}
+	.checkbox-row-sort-by > .checkbox-check-icon {
+		@apply pointer-events-none absolute top-1/2 right-3 hidden w-4 -translate-y-1/2 peer-checked:block lg:w-3;
+	}
+	.checkbox-row-sort-by {
+		@apply flex flex-row-reverse items-center justify-between rounded;
+	}
 	/* Modal */
 	.modal-root {
 		@apply pointer-events-none fixed inset-0 z-20 flex items-center justify-center p-4 opacity-0;
@@ -361,13 +378,13 @@
 
 	/* Sheet */
 	.sheet-wrapper {
-		@apply pointer-events-none invisible fixed inset-0 z-50 flex items-end justify-end bg-transparent opacity-0 transition-none duration-150 [.is-visible]:pointer-events-auto [.is-visible]:visible [.is-visible]:bg-[#0d0d0d]/70 [.is-visible]:opacity-100 [.is-visible]:backdrop-blur-[6px];
+		@apply pointer-events-none invisible fixed inset-0 z-50 flex items-end justify-end overflow-hidden bg-transparent opacity-0 transition-none duration-150 [.is-visible]:pointer-events-auto [.is-visible]:visible [.is-visible]:bg-[#0d0d0d]/70 [.is-visible]:opacity-100 [.is-visible]:backdrop-blur-[6px];
 	}
 	.sheet-wrapper.is-visible .sheet-content {
 		@apply translate-y-0;
 	}
 	.sheet-content {
-		@apply relative z-30 flex h-2/3 w-full translate-y-full flex-col rounded-t-[20px] bg-[#141416] px-2.5 py-3 transition-transform duration-300 ease-out;
+		@apply relative z-30 flex h-2/3 w-full translate-y-full flex-col overflow-hidden rounded-t-[20px] bg-[#141416] px-2.5 py-3 transition-transform duration-300 ease-out;
 	}
 	.sheet-grabber {
 		@apply mx-auto flex h-1 w-16 cursor-grab touch-none items-center justify-center bg-[#242426];
@@ -375,8 +392,11 @@
 	.sheet-close-btn {
 		@apply absolute top-4 right-4 hidden size-10 shrink-0 items-center justify-center rounded-lg border border-gray-100 bg-white hover:bg-gray-50;
 	}
+	.sheet-close-btn-sort-by {
+		@apply static flex items-center justify-center border-none bg-transparent p-0;
+	}
 	.sheet-scroll-content {
-		@apply mt-2 h-full min-h-0 flex-1 overflow-auto;
+		@apply mt-2 h-full min-h-0 flex-1 overflow-x-hidden overflow-y-auto;
 	}
 
 	/* Track */
@@ -553,7 +573,7 @@
 		@apply hover:text-gray text-white underline;
 	}
 
-	/* Dropdown */
+	/* Dropdowns */
 	.profile-menu-btn {
 		@apply bg-dark flex aspect-square size-10 items-center justify-center rounded-full border border-[#212428] p-1.5 hover:border-white/20;
 	}
@@ -561,10 +581,14 @@
 		@apply bg-primary flex h-full w-full items-center justify-center rounded-full text-[13px] font-medium text-[#3C1978] uppercase;
 	}
 	.profile-dropdown-menu {
-		@apply pointer-events-none invisible absolute top-full right-0 z-50 mt-3 w-45.5 origin-top-right scale-95 rounded-[18px] bg-[#141416] p-2 opacity-0 transition duration-150 ease-out data-[open=true]:pointer-events-auto data-[open=true]:visible data-[open=true]:scale-100 data-[open=true]:opacity-100;
+		@apply pointer-events-none invisible absolute top-full right-0 z-5 mt-3 w-45.5 origin-top-right rounded-[18px] bg-[#141416] p-2 opacity-0 transition duration-150 ease-out data-[open=true]:pointer-events-auto data-[open=true]:visible data-[open=true]:scale-100 data-[open=true]:opacity-100;
 	}
 	.profile-dropdown-menu-link {
 		@apply flex items-center gap-2 rounded-lg p-2.75 text-sm text-white hover:bg-[#1E1E21] [.current]:bg-[#1E1E21];
+	}
+
+	.filter-dropdown-menu {
+		@apply bg-secondary pointer-events-none invisible absolute top-full left-0 z-5 mt-1.5 w-67 origin-top-right rounded-[14px] p-3 opacity-0 transition duration-150 ease-out data-[open=true]:pointer-events-auto data-[open=true]:visible data-[open=true]:scale-100 data-[open=true]:opacity-100;
 	}
 
 	/* Profile menu */
@@ -611,4 +635,20 @@
 	transition:
 		translate 0.3s cubic-bezier(0.32, 0.72, 0, 1),
 		visibility 0s;
+}
+.custom-scrollbar::-webkit-scrollbar {
+	width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background-color: #45464c;
+	border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+	background-color: #5a5b62; /* чуть светлее при наведении (по желанию) */
 }

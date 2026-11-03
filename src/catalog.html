@@ -1522,1113 +1522,498 @@
 						<h1 class="text-[28px] md:text-[34px]">Stereonyx Blog</h1>
 
 						<!-- Filters -->
-						<section
-							data-filters
-							aria-label="Filters"
-							class="flex flex-col gap-4"
-						>
-							<div class="flex flex-wrap items-center gap-2">
-								<span aria-hidden="true" class="mr-1 text-neutral-400">
-									<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-										<path
-											d="M1 4h7M12 4h3M1 12h3M8 12h7"
-											stroke="currentColor"
-											stroke-width="1.2"
-											stroke-linecap="round"
-										/>
-										<circle
-											cx="10"
-											cy="4"
-											r="2"
-											stroke="currentColor"
-											stroke-width="1.2"
-										/>
-										<circle
-											cx="6"
-											cy="12"
-											r="2"
-											stroke="currentColor"
-											stroke-width="1.2"
-										/>
-									</svg>
-								</span>
-
+						<div class="mt-10 flex items-center justify-between">
+							<!-- Genres & Versions & Plugin & Tags -->
+							<div class="flex items-center gap-3">
+								<!-- Icon -->
+								<img src="./images/icons/filtres-icon.svg" alt="filter icon" />
 								<!-- Genres -->
-								<div class="relative" data-dropdown data-filter-group="genres">
-									<button
-										type="button"
-										data-dropdown-trigger
-										aria-haspopup="true"
-										aria-expanded="false"
-										class="group inline-flex h-10 items-center gap-2 rounded-full bg-neutral-800 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-700 aria-expanded:bg-neutral-700"
-									>
-										<span>Genres</span>
-										<span
-											data-filter-count
-											class="hidden size-4.5 items-center justify-center rounded-full bg-violet-600 text-[11px] leading-none font-semibold"
-										>
-											0
-										</span>
-										<svg
-											aria-hidden="true"
-											width="8"
-											height="5"
-											viewBox="0 0 8 5"
-											fill="none"
-											class="transition-transform group-aria-expanded:rotate-180"
-										>
-											<path
-												d="M7.42432 0.423828L3.92432 3.92383L0.424316 0.423828"
-												stroke-width="1.2"
-												class="stroke-current"
-											/>
-										</svg>
-									</button>
-
-									<div
-										data-dropdown-menu
-										data-open="false"
-										class="invisible absolute top-full left-0 z-20 mt-2 w-[250px] rounded-xl bg-neutral-800 p-2 opacity-0 shadow-xl transition-opacity data-[open=true]:visible data-[open=true]:opacity-100"
-									>
-										<input
-											type="text"
-											data-filter-search
-											autocomplete="off"
-											aria-label="Search genres"
-											placeholder="Search genres..."
-											class="w-full rounded-lg border border-white/10 bg-neutral-900 px-3 py-2 text-sm text-white placeholder:text-neutral-500 focus:border-violet-600 focus:outline-none"
-										/>
-
-										<ul
-											data-filter-list
-											class="mt-2 max-h-60 [scrollbar-width:thin] [scrollbar-color:#4b4b4f_transparent] overflow-y-auto pr-1"
-										>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="genres"
-														value="Acid House"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Acid House</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="genres"
-														value="Afro House"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Afro House</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="genres"
-														value="Amapiano"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Amapiano</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="genres"
-														value="Progressive House"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Progressive House</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="genres"
-														value="Deep House"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Deep House</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="genres"
-														value="Deep Tech"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Deep Tech</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="genres"
-														value="Electro House"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Electro House</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="genres"
-														value="Future House"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Future House</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="genres"
-														value="Micro House"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Micro House</span>
-												</label>
-											</li>
-										</ul>
-
-										<p
-											data-filter-empty
-											class="hidden px-2 py-3 text-sm text-neutral-500"
-										>
-											Nothing found
-										</p>
-									</div>
-								</div>
-
-								<!-- Versions -->
-								<div
-									class="relative"
-									data-dropdown
-									data-filter-group="versions"
-								>
-									<button
-										type="button"
-										data-dropdown-trigger
-										aria-haspopup="true"
-										aria-expanded="false"
-										class="group inline-flex h-10 items-center gap-2 rounded-full bg-neutral-800 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-700 aria-expanded:bg-neutral-700"
-									>
-										<span>Versions</span>
-										<span
-											data-filter-count
-											class="hidden size-4.5 items-center justify-center rounded-full bg-violet-600 text-[11px] leading-none font-semibold"
-										>
-											0
-										</span>
-										<svg
-											aria-hidden="true"
-											width="8"
-											height="5"
-											viewBox="0 0 8 5"
-											fill="none"
-											class="transition-transform group-aria-expanded:rotate-180"
-										>
-											<path
-												d="M7.42432 0.423828L3.92432 3.92383L0.424316 0.423828"
-												stroke-width="1.2"
-												class="stroke-current"
-											/>
-										</svg>
-									</button>
-
-									<div
-										data-dropdown-menu
-										data-open="false"
-										class="invisible absolute top-full left-0 z-20 mt-2 w-[250px] rounded-xl bg-neutral-800 p-2 opacity-0 shadow-xl transition-opacity data-[open=true]:visible data-[open=true]:opacity-100"
-									>
-										<input
-											type="text"
-											data-filter-search
-											autocomplete="off"
-											aria-label="Search versions"
-											placeholder="Search versions..."
-											class="w-full rounded-lg border border-white/10 bg-neutral-900 px-3 py-2 text-sm text-white placeholder:text-neutral-500 focus:border-violet-600 focus:outline-none"
-										/>
-
-										<ul
-											data-filter-list
-											class="mt-2 max-h-60 [scrollbar-width:thin] [scrollbar-color:#4b4b4f_transparent] overflow-y-auto pr-1"
-										>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="versions"
-														value="Serum 1"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Serum 1</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="versions"
-														value="Serum 2"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Serum 2</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="versions"
-														value="Vital"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Vital</span>
-												</label>
-											</li>
-										</ul>
-
-										<p
-											data-filter-empty
-											class="hidden px-2 py-3 text-sm text-neutral-500"
-										>
-											Nothing found
-										</p>
-									</div>
-								</div>
-
-								<!-- Plugins -->
-								<div class="relative" data-dropdown data-filter-group="plugins">
-									<button
-										type="button"
-										data-dropdown-trigger
-										aria-haspopup="true"
-										aria-expanded="false"
-										class="group inline-flex h-10 items-center gap-2 rounded-full bg-neutral-800 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-700 aria-expanded:bg-neutral-700"
-									>
-										<span>Plugins</span>
-										<span
-											data-filter-count
-											class="hidden size-4.5 items-center justify-center rounded-full bg-violet-600 text-[11px] leading-none font-semibold"
-										>
-											0
-										</span>
-										<svg
-											aria-hidden="true"
-											width="8"
-											height="5"
-											viewBox="0 0 8 5"
-											fill="none"
-											class="transition-transform group-aria-expanded:rotate-180"
-										>
-											<path
-												d="M7.42432 0.423828L3.92432 3.92383L0.424316 0.423828"
-												stroke-width="1.2"
-												class="stroke-current"
-											/>
-										</svg>
-									</button>
-
-									<div
-										data-dropdown-menu
-										data-open="false"
-										class="invisible absolute top-full left-0 z-20 mt-2 w-[250px] rounded-xl bg-neutral-800 p-2 opacity-0 shadow-xl transition-opacity data-[open=true]:visible data-[open=true]:opacity-100"
-									>
-										<input
-											type="text"
-											data-filter-search
-											autocomplete="off"
-											aria-label="Search plugins"
-											placeholder="Search plugins..."
-											class="w-full rounded-lg border border-white/10 bg-neutral-900 px-3 py-2 text-sm text-white placeholder:text-neutral-500 focus:border-violet-600 focus:outline-none"
-										/>
-
-										<ul
-											data-filter-list
-											class="mt-2 max-h-60 [scrollbar-width:thin] [scrollbar-color:#4b4b4f_transparent] overflow-y-auto pr-1"
-										>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="plugins"
-														value="Serum"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Serum</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="plugins"
-														value="Massive"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Massive</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="plugins"
-														value="Sylenth1"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Sylenth1</span>
-												</label>
-											</li>
-										</ul>
-
-										<p
-											data-filter-empty
-											class="hidden px-2 py-3 text-sm text-neutral-500"
-										>
-											Nothing found
-										</p>
-									</div>
-								</div>
-
-								<!-- Tags -->
-								<div class="relative" data-dropdown data-filter-group="tags">
-									<button
-										type="button"
-										data-dropdown-trigger
-										aria-haspopup="true"
-										aria-expanded="false"
-										class="group inline-flex h-10 items-center gap-2 rounded-full bg-neutral-800 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-700 aria-expanded:bg-neutral-700"
-									>
-										<span>Tags</span>
-										<span
-											data-filter-count
-											class="hidden size-4.5 items-center justify-center rounded-full bg-violet-600 text-[11px] leading-none font-semibold"
-										>
-											0
-										</span>
-										<svg
-											aria-hidden="true"
-											width="8"
-											height="5"
-											viewBox="0 0 8 5"
-											fill="none"
-											class="transition-transform group-aria-expanded:rotate-180"
-										>
-											<path
-												d="M7.42432 0.423828L3.92432 3.92383L0.424316 0.423828"
-												stroke-width="1.2"
-												class="stroke-current"
-											/>
-										</svg>
-									</button>
-
-									<div
-										data-dropdown-menu
-										data-open="false"
-										class="invisible absolute top-full left-0 z-20 mt-2 w-[250px] rounded-xl bg-neutral-800 p-2 opacity-0 shadow-xl transition-opacity data-[open=true]:visible data-[open=true]:opacity-100"
-									>
-										<input
-											type="text"
-											data-filter-search
-											autocomplete="off"
-											aria-label="Search tags"
-											placeholder="Search tags..."
-											class="w-full rounded-lg border border-white/10 bg-neutral-900 px-3 py-2 text-sm text-white placeholder:text-neutral-500 focus:border-violet-600 focus:outline-none"
-										/>
-
-										<ul
-											data-filter-list
-											class="mt-2 max-h-60 [scrollbar-width:thin] [scrollbar-color:#4b4b4f_transparent] overflow-y-auto pr-1"
-										>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="tags"
-														value="Bass"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Bass</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="tags"
-														value="Pluck"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Pluck</span>
-												</label>
-											</li>
-											<li data-filter-item>
-												<label
-													class="flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm text-neutral-200 hover:bg-white/5"
-												>
-													<input
-														type="checkbox"
-														name="tags"
-														value="Lead"
-														data-filter-input
-														class="peer sr-only"
-													/>
-													<span
-														aria-hidden="true"
-														class="flex size-4 shrink-0 items-center justify-center rounded border border-neutral-500 text-white peer-checked:border-violet-600 peer-checked:bg-violet-600 peer-focus-visible:ring-2 peer-focus-visible:ring-violet-400 [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100"
-													>
-														<svg
-															width="10"
-															height="8"
-															viewBox="0 0 10 8"
-															fill="none"
-														>
-															<path
-																d="M1 4l2.5 2.5L9 1"
-																stroke="currentColor"
-																stroke-width="1.6"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															/>
-														</svg>
-													</span>
-													<span>Lead</span>
-												</label>
-											</li>
-										</ul>
-
-										<p
-											data-filter-empty
-											class="hidden px-2 py-3 text-sm text-neutral-500"
-										>
-											Nothing found
-										</p>
-									</div>
-								</div>
-
-								<!-- Sort -->
-								<div class="relative ml-auto" data-dropdown data-filter-sort>
+								<div class="relative" data-dropdown>
 									<button
 										type="button"
 										data-dropdown-trigger
 										aria-haspopup="menu"
 										aria-expanded="false"
-										class="group inline-flex h-10 items-center gap-2 rounded-full bg-neutral-800 px-4 text-sm font-medium text-white transition-colors hover:bg-neutral-700 aria-expanded:bg-neutral-700"
+										class="btn btn-secondary btn-filter"
 									>
-										<span data-sort-label>Most popular</span>
-										<svg
-											aria-hidden="true"
-											width="8"
-											height="10"
-											viewBox="0 0 8 10"
-											fill="none"
-										>
-											<path
-												d="M1 3.5L4 0.5L7 3.5M1 6.5L4 9.5L7 6.5"
-												stroke="currentColor"
-												stroke-width="1.2"
-											/>
-										</svg>
+										Genres
+										<span>4</span>
+										<img
+											src="./images/icons/filter-dropdown-icon.svg"
+											alt="icon"
+										/>
 									</button>
 
-									<div
-										data-dropdown-menu
-										data-open="false"
-										role="menu"
-										class="invisible absolute top-full right-0 z-20 mt-2 w-[200px] rounded-xl bg-neutral-800 p-2 opacity-0 shadow-xl transition-opacity data-[open=true]:visible data-[open=true]:opacity-100"
-									>
-										<p
-											role="presentation"
-											class="px-2 pt-1 pb-1 text-xs text-neutral-500"
-										>
-											Sort by
-										</p>
+									<!-- Desktop: dropdown -->
+									<div data-dropdown-menu class="filter-dropdown-menu">
+										<div data-dropdown-content class="flex flex-col lg:gap-px">
+											<!-- Search Input -->
+											<div class="input-group group">
+												<!-- Input field -->
+												<input
+													data-search-input
+													autocomplete="off"
+													id="search-genres"
+													name="search-genres"
+													type="text"
+													placeholder="Search genres"
+													class="input-field focus:border-primary hover:border-primary border-[#45464C] px-2 py-1.5 text-[13px]"
+												/>
 
-										<button
-											type="button"
-											role="menuitem"
-											data-sort-value="latest"
-											data-selected="false"
-											class="group/opt flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm text-neutral-200 hover:bg-white/5 data-[selected=true]:bg-white/10 data-[selected=true]:text-white"
-										>
-											<span>Latest</span>
-											<svg
-												aria-hidden="true"
-												width="12"
-												height="10"
-												viewBox="0 0 12 10"
-												fill="none"
-												class="hidden group-data-[selected=true]/opt:block"
+												<!-- Error message (only visible when .error is applied on parent group) -->
+												<p class="input-error-message">Error message</p>
+											</div>
+
+											<!-- Checkboxes -->
+											<div
+												class="custom-scrollbar mt-1.75 h-full max-h-75 overflow-auto"
 											>
-												<path
-													d="M1 5l3.5 3.5L11 1.5"
-													stroke="currentColor"
-													stroke-width="1.4"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-												/>
-											</svg>
-										</button>
-										<button
-											type="button"
-											role="menuitem"
-											data-sort-value="popular"
-											data-selected="true"
-											aria-current="true"
-											class="group/opt flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm text-neutral-200 hover:bg-white/5 data-[selected=true]:bg-white/10 data-[selected=true]:text-white"
-										>
-											<span>Most popular</span>
-											<svg
-												aria-hidden="true"
-												width="12"
-												height="10"
-												viewBox="0 0 12 10"
-												fill="none"
-												class="hidden group-data-[selected=true]/opt:block"
-											>
-												<path
-													d="M1 5l3.5 3.5L11 1.5"
-													stroke="currentColor"
-													stroke-width="1.4"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-												/>
-											</svg>
-										</button>
-										<button
-											type="button"
-											role="menuitem"
-											data-sort-value="recent"
-											data-selected="false"
-											class="group/opt flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm text-neutral-200 hover:bg-white/5 data-[selected=true]:bg-white/10 data-[selected=true]:text-white"
-										>
-											<span>Most recent</span>
-											<svg
-												aria-hidden="true"
-												width="12"
-												height="10"
-												viewBox="0 0 12 10"
-												fill="none"
-												class="hidden group-data-[selected=true]/opt:block"
-											>
-												<path
-													d="M1 5l3.5 3.5L11 1.5"
-													stroke="currentColor"
-													stroke-width="1.4"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-												/>
-											</svg>
-										</button>
-										<button
-											type="button"
-											role="menuitem"
-											data-sort-value="price-asc"
-											data-selected="false"
-											class="group/opt flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm text-neutral-200 hover:bg-white/5 data-[selected=true]:bg-white/10 data-[selected=true]:text-white"
-										>
-											<span>Price (low first)</span>
-											<svg
-												aria-hidden="true"
-												width="12"
-												height="10"
-												viewBox="0 0 12 10"
-												fill="none"
-												class="hidden group-data-[selected=true]/opt:block"
-											>
-												<path
-													d="M1 5l3.5 3.5L11 1.5"
-													stroke="currentColor"
-													stroke-width="1.4"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-												/>
-											</svg>
-										</button>
-										<button
-											type="button"
-											role="menuitem"
-											data-sort-value="price-desc"
-											data-selected="false"
-											class="group/opt flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm text-neutral-200 hover:bg-white/5 data-[selected=true]:bg-white/10 data-[selected=true]:text-white"
-										>
-											<span>Price (high first)</span>
-											<svg
-												aria-hidden="true"
-												width="12"
-												height="10"
-												viewBox="0 0 12 10"
-												fill="none"
-												class="hidden group-data-[selected=true]/opt:block"
-											>
-												<path
-													d="M1 5l3.5 3.5L11 1.5"
-													stroke="currentColor"
-													stroke-width="1.4"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-												/>
-											</svg>
-										</button>
+												<div class="custom-scrollbar h-auto">
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-1"
+																id="ganre-1"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-1"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 1
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-2"
+																id="ganre-2"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-2"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 2
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-3"
+																id="ganre-3"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-3"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 3
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-4"
+																id="ganre-4"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-4"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 4
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-5"
+																id="ganre-5"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-5"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 5
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-6"
+																id="ganre-6"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-6"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 6
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-7"
+																id="ganre-7"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-7"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 7
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-8"
+																id="ganre-8"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-8"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 8
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-9"
+																id="ganre-9"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-9"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 9
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-10"
+																id="ganre-10"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-10"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 10
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-11"
+																id="ganre-11"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-11"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 11
+															</label>
+														</div>
+													</div>
+													<div
+														class="checkbox-group group/checkbox input-group group"
+													>
+														<div class="checkbox-row">
+															<input
+																required
+																name="ganre-12"
+																id="ganre-12"
+																class="peer input-field sr-only"
+																type="checkbox"
+															/>
+															<div class="checkbox"></div>
+															<label
+																for="ganre-12"
+																class="checkbox-label input-label py-1.75 text-white"
+															>
+																Ganre 12
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-
-							<!-- Selected tags (shown only when something is selected) -->
-							<div
-								data-filter-selected
-								class="hidden flex-wrap items-center gap-2"
-							>
-								<div data-filter-tags class="contents"></div>
-
-								<button
-									type="button"
-									data-filter-clear
-									class="inline-flex items-center gap-1.5 text-xs text-neutral-500 transition-colors hover:text-white"
-								>
-									<svg
-										aria-hidden="true"
-										width="12"
-										height="12"
-										viewBox="0 0 12 12"
-										fill="none"
-									>
-										<circle
-											cx="6"
-											cy="6"
-											r="5.4"
-											stroke="currentColor"
-											stroke-width="1.2"
-										/>
-										<path
-											d="M4 4l4 4M8 4L4 8"
-											stroke="currentColor"
-											stroke-width="1.2"
-											stroke-linecap="round"
-										/>
-									</svg>
-									Clear filters
-								</button>
-							</div>
-
-							<!-- Tag template (cloned by initFilters) -->
-							<template data-filter-tag-template>
-								<span
-									class="inline-flex items-center gap-2 rounded-full bg-neutral-800 py-1.5 pr-2.5 pl-3 text-xs font-medium text-white"
-								>
-									<span data-filter-tag-label></span>
+							<!-- Sort By -->
+							<div>
+								<div class="relative" data-dropdown>
 									<button
 										type="button"
-										data-filter-tag-remove
-										class="text-neutral-400 transition-colors hover:text-white"
+										data-sheet="sort-by-sheet"
+										data-dropdown-trigger
+										aria-haspopup="menu"
+										aria-expanded="false"
+										class="btn btn-secondary btn-filter"
 									>
-										<svg
-											aria-hidden="true"
-											width="8"
-											height="8"
-											viewBox="0 0 8 8"
-											fill="none"
-										>
-											<path
-												d="M1 1l6 6M7 1L1 7"
-												stroke="currentColor"
-												stroke-width="1.2"
-												stroke-linecap="round"
-											/>
-										</svg>
+										Most Popular
+										<img src="./images/icons/sort-by-icon.png" alt="icon" />
 									</button>
-								</span>
-							</template>
-						</section>
+
+									<!-- Desktop: dropdown -->
+									<div
+										data-dropdown-menu
+										class="profile-dropdown-menu bg-secondary rounded-[14px] px-1 py-2"
+									>
+										<p class="text-gray mb-1 px-2.5 pt-2 text-xs">Sort by</p>
+										<div
+											data-dropdown-content
+											role="menu"
+											class="flex flex-col lg:gap-px"
+										>
+											<!-- Sort By Radio Inputs -->
+											<div
+												class="checkbox-group group/checkbox input-group group"
+											>
+												<div class="checkbox-row checkbox-row-sort-by">
+													<input
+														required
+														name="sort-by"
+														id="sort-by-latest"
+														class="peer input-field sr-only"
+														type="radio"
+													/>
+													<img
+														class="checkbox-check-icon"
+														src="./images/icons/sort-by-check.svg"
+														alt="check icon"
+													/>
+													<label
+														for="sort-by-latest"
+														class="checkbox-label input-label"
+													>
+														Latest
+													</label>
+												</div>
+
+												<p class="input-error-message">Error message</p>
+											</div>
+
+											<div
+												class="checkbox-group group/checkbox input-group group"
+											>
+												<div class="checkbox-row checkbox-row-sort-by">
+													<input
+														required
+														name="sort-by"
+														id="sort-by-most-popular"
+														class="peer input-field sr-only"
+														type="radio"
+														checked
+													/>
+													<img
+														class="checkbox-check-icon"
+														src="./images/icons/sort-by-check.svg"
+														alt="check icon"
+													/>
+													<label
+														for="sort-by-most-popular"
+														class="checkbox-label input-label"
+													>
+														Most Popular
+													</label>
+												</div>
+
+												<p class="input-error-message">Error message</p>
+											</div>
+
+											<div
+												class="checkbox-group group/checkbox input-group group"
+											>
+												<div class="checkbox-row checkbox-row-sort-by">
+													<input
+														required
+														name="sort-by"
+														id="sort-by-most-recent"
+														class="peer input-field sr-only"
+														type="radio"
+													/>
+													<img
+														class="checkbox-check-icon"
+														src="./images/icons/sort-by-check.svg"
+														alt="check icon"
+													/>
+													<label
+														for="sort-by-most-recent"
+														class="checkbox-label input-label"
+													>
+														Most Recent
+													</label>
+												</div>
+
+												<p class="input-error-message">Error message</p>
+											</div>
+
+											<div
+												class="checkbox-group group/checkbox input-group group"
+											>
+												<div class="checkbox-row checkbox-row-sort-by">
+													<input
+														required
+														name="sort-by"
+														id="sort-by-price-low"
+														class="peer input-field sr-only"
+														type="radio"
+													/>
+													<img
+														class="checkbox-check-icon"
+														src="./images/icons/sort-by-check.svg"
+														alt="check icon"
+													/>
+													<label
+														for="sort-by-price-low"
+														class="checkbox-label input-label"
+													>
+														Price: Low to High
+													</label>
+												</div>
+
+												<p class="input-error-message">Error message</p>
+											</div>
+
+											<div
+												class="checkbox-group group/checkbox input-group group"
+											>
+												<div class="checkbox-row checkbox-row-sort-by">
+													<input
+														required
+														name="sort-by"
+														id="sort-by-price-high"
+														class="peer input-field sr-only"
+														type="radio"
+													/>
+													<img
+														class="checkbox-check-icon"
+														src="./images/icons/sort-by-check.svg"
+														alt="check icon"
+													/>
+													<label
+														for="sort-by-price-high"
+														class="checkbox-label input-label"
+													>
+														Price: High to Low
+													</label>
+												</div>
+
+												<p class="input-error-message">Error message</p>
+											</div>
+										</div>
+									</div>
+
+									<!-- Mobile: sheet -->
+									<div
+										id="sort-by-sheet"
+										class="sheet-wrapper"
+										data-sheet-mobile-only
+									>
+										<div class="sheet-content h-auto px-0">
+											<div
+												class="flex items-center justify-between px-4 py-1 pr-1"
+											>
+												<p class="text-lg font-medium text-white">Sort by</p>
+												<button class="sheet-close-btn sheet-close-btn-sort-by">
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="16"
+														height="16"
+														viewBox="0 0 16 16"
+														fill="none"
+													>
+														<path
+															d="M0.565918 0.565674L7.56592 7.56567M7.56592 7.56567L14.5659 14.5657M7.56592 7.56567L0.565918 14.5657M7.56592 7.56567L14.5659 0.565674"
+															stroke-width="1.6"
+															stroke="white"
+														/>
+													</svg>
+												</button>
+											</div>
+
+											<div class="sheet-scroll-content" data-sheet-host></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 
 						<ul
 							class="mt-8 grid grid-cols-2 gap-5 md:mt-11 md:grid-cols-3 lg:grid-cols-5 lg:gap-9.5"
