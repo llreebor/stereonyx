@@ -439,9 +439,6 @@
   .mt-9 {
     margin-top: calc(var(--spacing) * 9);
   }
-  .mt-12 {
-    margin-top: calc(var(--spacing) * 12);
-  }
   .mt-19 {
     margin-top: calc(var(--spacing) * 19);
   }
@@ -802,6 +799,9 @@
   .gap-8 {
     gap: calc(var(--spacing) * 8);
   }
+  .gap-9 {
+    gap: calc(var(--spacing) * 9);
+  }
   .gap-9\.5 {
     gap: calc(var(--spacing) * 9.5);
   }
@@ -810,9 +810,6 @@
   }
   .gap-20 {
     gap: calc(var(--spacing) * 20);
-  }
-  .gap-30 {
-    gap: calc(var(--spacing) * 30);
   }
   :where(.space-y-0\.5 > :not(:last-child)) {
     --tw-space-y-reverse: 0;
@@ -1083,9 +1080,6 @@
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
   }
-  .px-13 {
-    padding-inline: calc(var(--spacing) * 13);
-  }
   .py-0\.5 {
     padding-block: calc(var(--spacing) * 0.5);
   }
@@ -1118,6 +1112,9 @@
   }
   .py-7\.5 {
     padding-block: calc(var(--spacing) * 7.5);
+  }
+  .py-8 {
+    padding-block: calc(var(--spacing) * 8);
   }
   .py-8\.5 {
     padding-block: calc(var(--spacing) * 8.5);
@@ -1275,14 +1272,8 @@
   .text-\[28px\] {
     font-size: 28px;
   }
-  .text-\[34px\] {
-    font-size: 34px;
-  }
   .text-\[35px\] {
     font-size: 35px;
-  }
-  .text-\[36px\] {
-    font-size: 36px;
   }
   .text-small {
     font-size: var(--text-small);
@@ -1440,9 +1431,6 @@
     }
     .group-hover\:stroke-white:is(:where(.group):hover *) {
       stroke: var(--color-white);
-    }
-    .group-hover\:text-gray:is(:where(.group):hover *) {
-      color: var(--color-gray);
     }
     .group-hover\:underline:is(:where(.group):hover *) {
       text-decoration-line: underline;
@@ -1749,6 +1737,9 @@
     .md\:mt-11 {
       margin-top: calc(var(--spacing) * 11);
     }
+    .md\:mt-12 {
+      margin-top: calc(var(--spacing) * 12);
+    }
     .md\:mt-13 {
       margin-top: calc(var(--spacing) * 13);
     }
@@ -1831,6 +1822,9 @@
     .md\:items-end {
       align-items: flex-end;
     }
+    .md\:items-start {
+      align-items: flex-start;
+    }
     .md\:justify-between {
       justify-content: space-between;
     }
@@ -1851,6 +1845,9 @@
     }
     .md\:gap-10 {
       gap: calc(var(--spacing) * 10);
+    }
+    .md\:gap-20 {
+      gap: calc(var(--spacing) * 20);
     }
     :where(.md\:space-y-6 > :not(:last-child)) {
       --tw-space-y-reverse: 0;
@@ -1900,8 +1897,17 @@
     .md\:px-10 {
       padding-inline: calc(var(--spacing) * 10);
     }
+    .md\:px-13 {
+      padding-inline: calc(var(--spacing) * 13);
+    }
     .md\:py-8 {
       padding-block: calc(var(--spacing) * 8);
+    }
+    .md\:py-10 {
+      padding-block: calc(var(--spacing) * 10);
+    }
+    .md\:py-12 {
+      padding-block: calc(var(--spacing) * 12);
     }
     .md\:pt-5\.5 {
       padding-top: calc(var(--spacing) * 5.5);
@@ -1941,6 +1947,10 @@
       font-size: var(--text-base);
       line-height: var(--tw-leading, var(--text-base--line-height));
     }
+    .md\:text-lg {
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
     .md\:text-sm {
       font-size: var(--text-sm);
       line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -1960,6 +1970,9 @@
     }
     .md\:text-\[34px\] {
       font-size: 34px;
+    }
+    .md\:text-\[36px\] {
+      font-size: 36px;
     }
     .md\:text-\[52px\] {
       font-size: 52px;
@@ -2024,6 +2037,9 @@
     }
     .lg\:gap-20 {
       gap: calc(var(--spacing) * 20);
+    }
+    .lg\:gap-30 {
+      gap: calc(var(--spacing) * 30);
     }
     .lg\:border-r {
       border-right-style: var(--tw-border-style);
@@ -2753,10 +2769,16 @@
     cursor: pointer;
     align-items: center;
     justify-content: space-between;
-    padding-inline: calc(var(--spacing) * 6.5);
-    padding-block: calc(var(--spacing) * 5.75);
+    padding: calc(var(--spacing) * 5);
+    @media (width >= 48rem) {
+      padding-inline: calc(var(--spacing) * 6.5);
+    }
+    @media (width >= 48rem) {
+      padding-block: calc(var(--spacing) * 5.75);
+    }
   }
   .accordion-trigger-text {
+    text-align: left;
     color: var(--color-white);
   }
   .accordion-icon-img {
