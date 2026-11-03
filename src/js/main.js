@@ -33,6 +33,7 @@ function initializeMobileMenu() {
 
 	// Menu toggle
 	const updateMenuState = (isOpen) => {
+		if (isOpen) announcePopupOpen(menu)
 		burger.setAttribute("aria-expanded", isOpen)
 		burger.classList.toggle("active", isOpen)
 
@@ -122,10 +123,10 @@ function initDesktopSubmenu() {
 	const triggers = document.querySelectorAll("#menu .submenu-trigger")
 	if (!triggers.length) return
 
-	// Только устройства без hover (телефоны, планшеты)
 	const noHover = window.matchMedia("(hover: none)")
 
 	const setState = (trigger, isOpen) => {
+		if (isOpen) announcePopupOpen(trigger)
 		trigger.classList.toggle("is-open", isOpen)
 		trigger
 			.querySelector("button[aria-expanded]")
@@ -136,15 +137,18 @@ function initDesktopSubmenu() {
 		const button = trigger.querySelector("button")
 		if (!button) return
 
+		trigger.addEventListener("mouseenter", () => {
+			if (!noHover.matches) announcePopupOpen(trigger)
+		})
+
 		button.addEventListener("click", () => {
-			if (!noHover.matches) return // на десктопе работает обычный hover
-			// закрываем другие подменю
+			if (!noHover.matches) return
+
 			triggers.forEach((t) => t !== trigger && setState(t, false))
 			setState(trigger, !trigger.classList.contains("is-open"))
 		})
 	})
 
-	// Тап вне меню закрывает подменю
 	document.addEventListener("click", (event) => {
 		if (!event.target.closest("#menu .submenu-trigger")) {
 			triggers.forEach((t) => setState(t, false))
@@ -216,6 +220,7 @@ function initDropdown(dropdown, sheet) {
 	const closeSheet = () => sheet?.close?.()
 
 	const open = () => {
+		announcePopupOpen(dropdown)
 		menu.dataset.open = "true"
 		trigger.setAttribute("aria-expanded", "true")
 	}
@@ -361,10 +366,11 @@ class BottomSheet {
 		const wrapper = document.getElementById(id)
 		if (!wrapper) return
 
-		// Sheet только для мобильных, если указан data-sheet-mobile-only
 		if (wrapper.hasAttribute("data-sheet-mobile-only") && desktopMq.matches) {
 			return
 		}
+
+		announcePopupOpen(wrapper)
 
 		if (this.active && this.active !== wrapper) this._hide(this.active, true)
 		this.active = wrapper
@@ -525,7 +531,7 @@ function initializeModal() {
 	function openModal(modalId) {
 		const modal = document.getElementById(modalId)
 		if (!modal) return
-
+		announcePopupOpen(modal)
 		modal.classList.remove("opacity-0", "pointer-events-none")
 		modal.classList.add("opacity-100", "pointer-events-auto")
 
@@ -605,6 +611,13 @@ function initSearchPopup(popup) {
 	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape" && isOpen()) setOpen(false)
 	})
+
+	document.addEventListener("popup:open", (e) => {
+		if (e.detail.source !== popup && isOpen()) setOpen(false)
+	})
+}
+function announcePopupOpen(source) {
+	document.dispatchEvent(new CustomEvent("popup:open", { detail: { source } }))
 }
 
 // Toggles the visibility of password input
@@ -958,6 +971,7 @@ function initVolumeControl(root) {
 	const isOpen = () => toggle.getAttribute("aria-expanded") === "true"
 
 	function setOpen(open) {
+		if (open) announcePopupOpen(root)
 		toggle.setAttribute("aria-expanded", open)
 		panel.classList.toggle("hidden", !open)
 		panel.classList.toggle("flex", open)
@@ -1317,4 +1331,191 @@ document.addEventListener("DOMContentLoaded", () => {
 			},
 		},
 	})
+
+	// ============ Catalog Page
+	document.querySelectorAll("[data-filters]").forEach(initFilters)
 })
+
+// Filters: multi-select dropdowns (count badge, search, tags) + sort.
+// Open/close of every dropdown is handled by the existing initDropdown,
+// this function only adds the filter logic on top of it.
+function initFilters(root) {
+	const groups = [...root.querySelectorAll("[data-filter-group]")]
+	const selectedBar = root.querySelector("[data-filter-selected]")
+	const tagsWrap = root.querySelector("[data-filter-tags]")
+	const tagTemplate = root.querySelector("[data-filter-tag-template]")
+	const clearBtn = root.querySelector("[data-filter-clear]")
+	const sortEl = root.querySelector("[data-filter-sort]")
+
+	if (!groups.length || !selectedBar || !tagsWrap || !tagTemplate) {
+		console.warn("Filters: missing required elements", root)
+		return
+	}
+
+	const getInputs = (group) => [
+		...group.querySelectorAll("[data-filter-input]"),
+	]
+	const getChecked = () =>
+		groups.flatMap((g) => getInputs(g).filter((i) => i.checked))
+
+	let sortValue =
+		sortEl?.querySelector('[data-selected="true"]')?.dataset.sortValue ?? null
+
+	// State + event for the outside world (AJAX, WordPress, etc.)
+	const getState = () => {
+		const filters = {}
+		groups.forEach((g) => {
+			filters[g.dataset.filterGroup] = getInputs(g)
+				.filter((i) => i.checked)
+				.map((i) => i.value)
+		})
+		return { filters, sort: sortValue }
+	}
+
+	const notify = () =>
+		root.dispatchEvent(
+			new CustomEvent("filters:change", { bubbles: true, detail: getState() }),
+		)
+
+	// Rendering (derived from checkbox state, which is the single source of truth)
+	const renderCounts = () => {
+		groups.forEach((g) => {
+			const badge = g.querySelector("[data-filter-count]")
+			if (!badge) return
+			const count = getInputs(g).filter((i) => i.checked).length
+			badge.textContent = count
+			badge.classList.toggle("hidden", count === 0)
+			badge.classList.toggle("inline-flex", count > 0)
+		})
+	}
+
+	const renderTags = () => {
+		const checked = getChecked()
+
+		tagsWrap.replaceChildren(
+			...checked.map((input) => {
+				const tag = tagTemplate.content.firstElementChild.cloneNode(true)
+				tag.querySelector("[data-filter-tag-label]").textContent = input.value
+
+				const remove = tag.querySelector("[data-filter-tag-remove]")
+				remove.setAttribute("aria-label", `Remove ${input.value}`)
+				remove.addEventListener("click", () => {
+					input.checked = false
+					sync()
+				})
+
+				return tag
+			}),
+		)
+
+		selectedBar.classList.toggle("hidden", checked.length === 0)
+		selectedBar.classList.toggle("flex", checked.length > 0)
+	}
+
+	const render = () => {
+		renderCounts()
+		renderTags()
+	}
+
+	function sync() {
+		render()
+		notify()
+	}
+
+	// Checkbox changes
+	root.addEventListener("change", (e) => {
+		if (e.target.matches("[data-filter-input]")) sync()
+	})
+
+	// Clear filters
+	clearBtn?.addEventListener("click", () => {
+		groups.forEach((g) => getInputs(g).forEach((i) => (i.checked = false)))
+		sync()
+	})
+
+	// Search inside each list
+	groups.forEach((group) => {
+		const search = group.querySelector("[data-filter-search]")
+		const empty = group.querySelector("[data-filter-empty]")
+		const items = [...group.querySelectorAll("[data-filter-item]")]
+		const menu = group.querySelector("[data-dropdown-menu]")
+		if (!search) return
+
+		const applySearch = () => {
+			const query = search.value.trim().toLowerCase()
+			let visible = 0
+
+			items.forEach((item) => {
+				const match = item.textContent.trim().toLowerCase().includes(query)
+				item.classList.toggle("hidden", !match)
+				if (match) visible++
+			})
+
+			empty?.classList.toggle("hidden", visible > 0)
+		}
+
+		search.addEventListener("input", applySearch)
+
+		// Enter must not submit a surrounding form
+		search.addEventListener("keydown", (e) => {
+			if (e.key === "Enter") e.preventDefault()
+		})
+
+		// Reset the search when the dropdown closes
+		if (menu) {
+			new MutationObserver(() => {
+				if (menu.dataset.open !== "true" && search.value) {
+					search.value = ""
+					applySearch()
+				}
+			}).observe(menu, { attributes: true, attributeFilter: ["data-open"] })
+		}
+	})
+
+	// Only one filter dropdown open at a time.
+	// initDropdown stops click propagation on its trigger, so the other
+	// dropdowns never see the click and have to be closed from here.
+	const dropdowns = [...root.querySelectorAll("[data-dropdown]")]
+
+	const closeDropdown = (dropdown) => {
+		const menu = dropdown.querySelector("[data-dropdown-menu]")
+		const trigger = dropdown.querySelector("[data-dropdown-trigger]")
+		if (menu?.dataset.open !== "true") return
+		menu.dataset.open = "false"
+		trigger?.setAttribute("aria-expanded", "false")
+	}
+
+	dropdowns.forEach((dropdown) => {
+		dropdown
+			.querySelector("[data-dropdown-trigger]")
+			?.addEventListener("click", () => {
+				dropdowns.forEach((other) => other !== dropdown && closeDropdown(other))
+			})
+	})
+
+	// Sort (single choice). The options have role="menuitem", so
+	// initDropdown closes the menu after a pick on its own.
+	if (sortEl) {
+		const label = sortEl.querySelector("[data-sort-label]")
+		const options = [...sortEl.querySelectorAll("[data-sort-value]")]
+
+		sortEl.addEventListener("click", (e) => {
+			const option = e.target.closest("[data-sort-value]")
+			if (!option) return
+
+			sortValue = option.dataset.sortValue
+			options.forEach((o) => {
+				o.dataset.selected = String(o === option)
+				o.setAttribute("aria-current", String(o === option))
+			})
+			if (label) label.textContent = option.textContent.trim()
+
+			notify()
+		})
+	}
+
+	// Initial render (e.g. inputs that are pre-checked by the server)
+	render()
+}
+
+// Add inside DOMContentLoaded, after the dropdowns are initialized:
