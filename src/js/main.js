@@ -288,6 +288,26 @@ function initDropdown(dropdown, sheet) {
 	})
 }
 
+function initCheckboxes() {
+	document.querySelectorAll(".checkbox-row").forEach((row) => {
+		const input = row.querySelector(
+			'input[type="checkbox"], input[type="radio"]',
+		)
+		const box = row.querySelector(".checkbox, .checkbox-check-icon")
+		if (!input || !box) return
+
+		box.addEventListener("click", (e) => {
+			e.preventDefault()
+			if (input.type === "radio") {
+				input.checked = true
+			} else {
+				input.checked = !input.checked
+			}
+			input.dispatchEvent(new Event("change", { bubbles: true }))
+		})
+	})
+}
+
 // Sheets
 class BottomSheet {
 	constructor() {
@@ -1131,6 +1151,433 @@ function initFixedMobilePrice({
 	update()
 }
 
+// Catalog Filters
+function initCatalogFilters() {
+	const tagsContainer = document.querySelector("[data-filter-tags]")
+	const clearBtn = document.querySelector(".filter-tag-clear-btn")
+	const tagsWrap = document.querySelector("[data-filter-tags-wrap]")
+	const mobileMenu = document.querySelector(".filters-mobile-menu")
+	const mobileOpenBtn = document.querySelector(".btn-mobile-filters")
+	const mobileCloseBtn = document.querySelector(".close-mobile-filters")
+	const mobileClearBtn = document.querySelector(".clear-mobile-filters")
+	const mobileShowBtn = document.querySelector(".show-result-mobile-filters")
+	const mobileCountSpan = document.querySelector(".mobile-filters-button-num")
+
+	if (!tagsContainer) return
+
+	// Map filter group name -> desktop btn + mobile accordion num
+	const groups = {
+		genres: {
+			desktopBtn: null,
+			mobileNum: null,
+			desktopRoot: null,
+			mobileRoot: null,
+		},
+		versions: {
+			desktopBtn: null,
+			mobileNum: null,
+			desktopRoot: null,
+			mobileRoot: null,
+		},
+		plugins: {
+			desktopBtn: null,
+			mobileNum: null,
+			desktopRoot: null,
+			mobileRoot: null,
+		},
+		tags: {
+			desktopBtn: null,
+			mobileNum: null,
+			desktopRoot: null,
+			mobileRoot: null,
+		},
+	}
+
+	// Discover desktop dropdowns by button text
+	document.querySelectorAll(".btn-filter").forEach((btn) => {
+		const label = (btn.childNodes[0]?.textContent || btn.textContent || "")
+			.trim()
+			.toLowerCase()
+		const dropdown = btn.closest("[data-dropdown]")
+		if (label.startsWith("genre")) {
+			groups.genres.desktopBtn = btn
+			groups.genres.desktopRoot = dropdown
+		} else if (label.startsWith("version")) {
+			groups.versions.desktopBtn = btn
+			groups.versions.desktopRoot = dropdown
+		} else if (label.startsWith("plugin")) {
+			groups.plugins.desktopBtn = btn
+			groups.plugins.desktopRoot = dropdown
+		} else if (label.startsWith("tag")) {
+			groups.tags.desktopBtn = btn
+			groups.tags.desktopRoot = dropdown
+		}
+	})
+
+	// Discover mobile accordion items
+	document
+		.querySelectorAll(".accordion-item-mobile-filters")
+		.forEach((item) => {
+			const t = (
+				item.querySelector(".accordion-trigger-text")?.textContent || ""
+			)
+				.trim()
+				.toLowerCase()
+			const numEl = item.querySelector(".accordion-mobile-filters-num")
+			if (t.startsWith("genre")) {
+				groups.genres.mobileNum = numEl
+				groups.genres.mobileRoot = item
+			} else if (t.startsWith("version")) {
+				groups.versions.mobileNum = numEl
+				groups.versions.mobileRoot = item
+			} else if (t.startsWith("plugin")) {
+				groups.plugins.mobileNum = numEl
+				groups.plugins.mobileRoot = item
+			} else if (t.startsWith("tag")) {
+				groups.tags.mobileNum = numEl
+				groups.tags.mobileRoot = item
+			}
+		})
+
+	// Selected state: Map key -> { label, group }
+	// key = group + ":" + normalized label
+	const selected = new Map()
+
+	const normalize = (s) => s.trim().toLowerCase()
+
+	function makeKey(group, label) {
+		return group + ":" + normalize(label)
+	}
+
+	function getCheckboxLabel(input) {
+		const lab = input.closest(".checkbox-group")?.querySelector("label")
+		return lab ? lab.textContent.trim() : input.id
+	}
+
+	function getGroupFromInput(input) {
+		const id = input.id || ""
+		const name = input.name || ""
+		if (
+			id.startsWith("m-genre") ||
+			name.startsWith("ganre") ||
+			name.startsWith("m-genre")
+		)
+			return "genres"
+		if (
+			id.startsWith("m-version") ||
+			name.startsWith("version") ||
+			name.startsWith("m-version")
+		)
+			return "versions"
+		if (
+			id.startsWith("m-plugin") ||
+			name.startsWith("plugin") ||
+			name.startsWith("m-plugin")
+		)
+			return "plugins"
+		if (
+			id.startsWith("m-tag") ||
+			name.startsWith("tag") ||
+			name.startsWith("Tag") ||
+			name.startsWith("m-tag")
+		)
+			return "tags"
+		// fallback by closest dropdown / accordion text
+		const dd = input.closest("[data-dropdown]")
+		if (dd) {
+			const btn = dd.querySelector("[data-dropdown-trigger]")
+			const t = (btn?.textContent || "").toLowerCase()
+			if (t.includes("genre")) return "genres"
+			if (t.includes("version")) return "versions"
+			if (t.includes("plugin")) return "plugins"
+			if (t.includes("tag")) return "tags"
+		}
+		const acc = input.closest(".accordion-item-mobile-filters")
+		if (acc) {
+			const t = (
+				acc.querySelector(".accordion-trigger-text")?.textContent || ""
+			).toLowerCase()
+			if (t.includes("genre")) return "genres"
+			if (t.includes("version")) return "versions"
+			if (t.includes("plugin")) return "plugins"
+			if (t.includes("tag")) return "tags"
+		}
+		return "genres"
+	}
+
+	function setCountEl(el, count) {
+		if (!el) return
+		if (count > 0) {
+			el.textContent = String(count)
+			el.hidden = false
+			el.removeAttribute("hidden")
+			el.style.display = ""
+		} else {
+			el.textContent = ""
+			el.hidden = true
+			el.setAttribute("hidden", "")
+		}
+	}
+
+	function updateCounts() {
+		const byGroup = { genres: 0, versions: 0, plugins: 0, tags: 0 }
+		selected.forEach((v) => {
+			byGroup[v.group] = (byGroup[v.group] || 0) + 1
+		})
+
+		Object.keys(groups).forEach((g) => {
+			const count = byGroup[g] || 0
+			const btn = groups[g].desktopBtn
+			if (btn) {
+				let span = btn.querySelector(".filter-count, span")
+				if (span && !span.classList.contains("filter-count")) {
+					// ensure class
+					span.classList.add("filter-count")
+				}
+				setCountEl(span, count)
+			}
+			setCountEl(groups[g].mobileNum, count)
+		})
+
+		const total = selected.size
+		setCountEl(mobileCountSpan, total)
+
+		if (clearBtn) {
+			clearBtn.hidden = total === 0
+		}
+		if (tagsWrap) {
+			tagsWrap.style.display = total === 0 ? "none" : ""
+		}
+	}
+
+	function renderTags() {
+		tagsContainer.innerHTML = ""
+		selected.forEach((item, key) => {
+			const tag = document.createElement("div")
+			tag.className = "filter-tag"
+			tag.dataset.filterKey = key
+			tag.innerHTML = `${item.label}<button type="button" class="filter-tag-close-btn" aria-label="Remove filter"><img src="./images/icons/remove-tag.svg" alt="remove tag" /></button>`
+			tagsContainer.appendChild(tag)
+		})
+		updateCounts()
+	}
+
+	function syncCheckboxes(key, checked) {
+		const item = selected.get(key) || {
+			label: key.split(":").slice(1).join(":"),
+			group: key.split(":")[0],
+		}
+		const labelNorm = normalize(item.label)
+		document
+			.querySelectorAll('.checkbox-group input[type="checkbox"]')
+			.forEach((input) => {
+				const lab = getCheckboxLabel(input)
+				const g = getGroupFromInput(input)
+				if (makeKey(g, lab) === key) {
+					input.checked = checked
+				}
+			})
+	}
+
+	function selectFilter(group, label, checked) {
+		const key = makeKey(group, label)
+		if (checked) {
+			selected.set(key, { group, label })
+		} else {
+			selected.delete(key)
+		}
+		syncCheckboxes(key, checked)
+		renderTags()
+	}
+
+	function clearAllFilters() {
+		selected.clear()
+		document
+			.querySelectorAll('.checkbox-group input[type="checkbox"]')
+			.forEach((input) => {
+				input.checked = false
+			})
+		renderTags()
+	}
+
+	// Checkbox change (desktop + mobile)
+	document.addEventListener("change", (e) => {
+		const input = e.target
+		if (!(input instanceof HTMLInputElement) || input.type !== "checkbox")
+			return
+		if (!input.closest(".checkbox-group")) return
+		// skip sort-by radios handled elsewhere
+		const group = getGroupFromInput(input)
+		const label = getCheckboxLabel(input)
+		selectFilter(group, label, input.checked)
+	})
+
+	// Remove single tag
+	tagsContainer.addEventListener("click", (e) => {
+		const btn = e.target.closest(".filter-tag-close-btn")
+		if (!btn) return
+		const tag = btn.closest(".filter-tag")
+		const key = tag?.dataset.filterKey
+		if (!key) return
+		selected.delete(key)
+		syncCheckboxes(key, false)
+		renderTags()
+	})
+
+	// Clear all (desktop)
+	clearBtn?.addEventListener("click", (e) => {
+		e.preventDefault()
+		clearAllFilters()
+	})
+
+	// Clear mobile
+	mobileClearBtn?.addEventListener("click", (e) => {
+		e.preventDefault()
+		clearAllFilters()
+	})
+
+	// ---- Search inside dropdown / accordion ----
+	function initSearch(root) {
+		const input = root.querySelector("[data-search-input]")
+		if (!input) return
+
+		// Ensure not-found element exists
+		let notFound = root.querySelector(".filter-not-found")
+		if (!notFound) {
+			notFound = document.createElement("p")
+			notFound.className = "filter-not-found"
+			notFound.textContent = "Not found"
+			const list =
+				root.querySelector(".custom-scrollbar") ||
+				root.querySelector(".mt-1\\.75") ||
+				input.closest(".flex.flex-col")
+			if (list) list.appendChild(notFound)
+		}
+
+		input.addEventListener("input", () => {
+			const q = normalize(input.value)
+			const groupsEls = root.querySelectorAll(".checkbox-group")
+			let visible = 0
+			groupsEls.forEach((g) => {
+				const lab = g.querySelector("label")?.textContent || ""
+				const match = !q || normalize(lab).includes(q)
+				g.style.display = match ? "" : "none"
+				if (match) visible++
+			})
+			notFound.classList.toggle("is-visible", visible === 0 && q.length > 0)
+		})
+	}
+
+	document.querySelectorAll("[data-dropdown]").forEach((dd) => {
+		if (dd.querySelector("[data-search-input]")) initSearch(dd)
+	})
+	document
+		.querySelectorAll(".accordion-item-mobile-filters")
+		.forEach((item) => initSearch(item))
+
+	// ---- Mobile menu open/close ----
+	function openMobileFilters() {
+		if (!mobileMenu) return
+		mobileMenu.classList.remove("hidden!")
+		// force reflow
+		void mobileMenu.offsetWidth
+		mobileMenu.classList.add("is-open")
+		document.body.style.overflow = "hidden"
+	}
+
+	function closeMobileFilters() {
+		if (!mobileMenu) return
+		mobileMenu.classList.remove("is-open")
+		const onEnd = () => {
+			mobileMenu.classList.add("hidden!")
+			mobileMenu.removeEventListener("transitionend", onEnd)
+		}
+		mobileMenu.addEventListener("transitionend", onEnd)
+		// fallback
+		setTimeout(() => {
+			if (!mobileMenu.classList.contains("is-open")) {
+				mobileMenu.classList.add("hidden!")
+			}
+		}, 350)
+		document.body.style.overflow = ""
+	}
+
+	mobileOpenBtn?.addEventListener("click", (e) => {
+		e.preventDefault()
+		openMobileFilters()
+	})
+	mobileCloseBtn?.addEventListener("click", (e) => {
+		e.preventDefault()
+		closeMobileFilters()
+	})
+	mobileShowBtn?.addEventListener("click", (e) => {
+		e.preventDefault()
+		closeMobileFilters()
+		// results already reflect selected state via tags / checkboxes
+	})
+
+	// ---- Desktop: close other filter dropdowns when opening one ----
+	// Enhance existing dropdowns that have .btn-filter
+	document.querySelectorAll("[data-dropdown]").forEach((dropdown) => {
+		const trigger = dropdown.querySelector("[data-dropdown-trigger]")
+		const menu = dropdown.querySelector("[data-dropdown-menu]")
+		if (!trigger || !menu || !trigger.classList.contains("btn-filter")) return
+
+		trigger.addEventListener(
+			"click",
+			() => {
+				// close siblings
+				document.querySelectorAll("[data-dropdown]").forEach((other) => {
+					if (other === dropdown) return
+					const otherMenu = other.querySelector("[data-dropdown-menu]")
+					const otherTrigger = other.querySelector("[data-dropdown-trigger]")
+					if (otherMenu?.dataset.open === "true") {
+						otherMenu.dataset.open = "false"
+						otherTrigger?.setAttribute("aria-expanded", "false")
+					}
+				})
+			},
+			true,
+		)
+	})
+
+	// ---- Sort by: update button text + close ----
+	document.querySelectorAll('input[name="sort-by"]').forEach((radio) => {
+		radio.addEventListener("change", () => {
+			if (!radio.checked) return
+			const label =
+				radio
+					.closest(".checkbox-row")
+					?.querySelector("label")
+					?.textContent?.trim() || ""
+			const sortDropdown = radio.closest("[data-dropdown]")
+			const sortBtn = sortDropdown?.querySelector("[data-dropdown-trigger]")
+			if (sortBtn && label) {
+				// keep icon
+				const img = sortBtn.querySelector("img")
+				sortBtn.childNodes.forEach((n) => {
+					if (n.nodeType === Node.TEXT_NODE) n.textContent = ""
+				})
+				// rebuild text + img
+				const textNode = document.createTextNode(label + " ")
+				sortBtn.insertBefore(textNode, img || null)
+			}
+			// close dropdown
+			const menu = sortDropdown?.querySelector("[data-dropdown-menu]")
+			if (menu) {
+				menu.dataset.open = "false"
+				sortBtn?.setAttribute("aria-expanded", "false")
+			}
+
+			// close mobile sheet
+			document.querySelector("#sort-by-sheet .sheet-close-btn")?.click()
+		})
+	})
+
+	// initial UI
+	renderTags()
+}
+
 // Inits
 document.addEventListener("DOMContentLoaded", () => {
 	// ============ Global
@@ -1149,6 +1596,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Modals
 	initializeModal()
+
+	// Checkboxes
+	initCheckboxes()
 
 	// Player
 	document.querySelectorAll("[data-volume]").forEach(initVolumeControl)
@@ -1333,4 +1783,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	})
 
 	// ============ Catalog Page
+	initCatalogFilters()
 })

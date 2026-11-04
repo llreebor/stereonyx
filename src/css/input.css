@@ -167,7 +167,7 @@
 		@apply [&_span]:bg-primary gap-0 px-5 py-2.75 text-sm [&_img]:ml-2.5 [&_span]:ml-1.5 [&_span]:inline-flex [&_span]:size-4.5 [&_span]:items-center [&_span]:justify-center [&_span]:rounded-full [&_span]:text-xs [&_span]:text-white;
 	}
 	.btn-sort-by {
-		@apply lg:bg-secondary w-full flex-row-reverse gap-3 border border-[#2B2E32] px-5 py-2.75 text-sm text-white lg:flex-row [&_img]:ml-0;
+		@apply lg:bg-secondary w-full flex-row-reverse gap-3 border border-[#2B2E32] px-5 py-2.75 text-xs text-white sm:text-sm lg:flex-row [&_img]:ml-0;
 		@variant hover {
 			@apply bg-secondary/90 bg-[#2B2E32];
 		}
@@ -515,36 +515,41 @@
 	.filter-tag-clear-btn {
 		@apply text-gray flex items-center gap-2 py-1.75 text-xs hover:text-white;
 	}
-}
 
-/* Container max-width & paddings */
-@utility container {
-	@apply max-w-max-width mx-auto px-(--container-side-padding);
-}
-
-/* Utility Classes */
-@layer utilities {
-	/* Image Background */
-	.with-image-bg {
-		@apply relative z-0;
-	}
-	.image-bg {
-		@apply absolute inset-0 -z-10 h-full w-full max-w-full object-cover;
+	/* Filters Mobile */
+	.mobile-filters-button-num {
+		@apply bg-primary flex aspect-square size-5 items-center justify-center rounded-full text-[10px] tracking-[-0.2px] text-white;
 	}
 
-	/* After underline hover animation */
-	.with-underline-animation {
-		@apply relative cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:scale-0 after:bg-white after:transition-transform hover:after:scale-100;
+	/* Filters: not found */
+	.filter-not-found {
+		display: none;
+		padding: 0.75rem 0.5rem;
+		color: #9ca3af;
+		font-size: 13px;
+		text-align: center;
+	}
+	.filter-not-found.is-visible {
+		display: block;
 	}
 
-	/* List Item */
-	.list-item {
-		@apply after:bg-primary relative pl-3 after:absolute after:top-1/2 after:left-0 after:size-1 after:-translate-y-1/2 after:rounded-full;
+	/* Mobile filters menu animation */
+	.filters-mobile-menu {
+		transform: translateX(100%);
+		transition:
+			transform 0.3s cubic-bezier(0.32, 0.72, 0, 1),
+			visibility 0.3s;
+		visibility: hidden;
+		pointer-events: none;
+		overflow: hidden;
 	}
 
-	/* Calculadet top position */
-	.sticky-top {
-		@apply top-[calc(var(--header-h)+24px)];
+	.filters-mobile-menu.is-open {
+		transform: translateX(0);
+		visibility: visible;
+		pointer-events: auto;
+		display: flex !important; /* было block — из‑за этого не работал scroll */
+		flex-direction: column;
 	}
 
 	/* Article */
@@ -629,6 +634,37 @@
 	}
 	.profile-menu-link-icon {
 		@apply border-secondary flex aspect-square size-9 items-center justify-center rounded border bg-[#141416] group-hover:bg-[#2F3033] group-[.current]:bg-[#2F3033];
+	}
+}
+
+/* Container max-width & paddings */
+@utility container {
+	@apply max-w-max-width mx-auto px-(--container-side-padding);
+}
+
+/* Utility Classes */
+@layer utilities {
+	/* Image Background */
+	.with-image-bg {
+		@apply relative z-0;
+	}
+	.image-bg {
+		@apply absolute inset-0 -z-10 h-full w-full max-w-full object-cover;
+	}
+
+	/* After underline hover animation */
+	.with-underline-animation {
+		@apply relative cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:scale-0 after:bg-white after:transition-transform hover:after:scale-100;
+	}
+
+	/* List Item */
+	.list-item {
+		@apply after:bg-primary relative pl-3 after:absolute after:top-1/2 after:left-0 after:size-1 after:-translate-y-1/2 after:rounded-full;
+	}
+
+	/* Calculadet top position */
+	.sticky-top {
+		@apply top-[calc(var(--header-h)+24px)];
 	}
 }
 

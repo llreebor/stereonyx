@@ -1523,7 +1523,7 @@
 
 						<!-- Filters -->
 						<div
-							class="mt-10 grid grid-cols-2 gap-6 lg:flex lg:items-center lg:justify-between"
+							class="mt-10 grid grid-cols-2 gap-2 sm:gap-6 lg:flex lg:items-center lg:justify-between"
 						>
 							<!-- Genres & Versions & Plugin & Tags -->
 							<div class="w-full">
@@ -1544,7 +1544,7 @@
 											class="btn btn-secondary btn-filter"
 										>
 											Genres
-											<span>4</span>
+											<span class="filter-count" hidden></span>
 											<img
 												src="./images/icons/filter-dropdown-icon.svg"
 												alt="icon"
@@ -1835,7 +1835,7 @@
 											class="btn btn-secondary btn-filter"
 										>
 											Versions
-											<span>4</span>
+											<span class="filter-count" hidden></span>
 											<img
 												src="./images/icons/filter-dropdown-icon.svg"
 												alt="icon"
@@ -1946,7 +1946,7 @@
 											class="btn btn-secondary btn-filter"
 										>
 											Plugins
-											<span>1</span>
+											<span class="filter-count" hidden></span>
 											<img
 												src="./images/icons/filter-dropdown-icon.svg"
 												alt="icon"
@@ -2037,7 +2037,7 @@
 											class="btn btn-secondary btn-filter"
 										>
 											Tags
-											<span>1</span>
+											<span class="filter-count" hidden></span>
 											<img
 												src="./images/icons/filter-dropdown-icon.svg"
 												alt="icon"
@@ -2088,7 +2088,7 @@
 																	for="tag-1"
 																	class="checkbox-label input-label py-1.75 text-white"
 																>
-																	Plugin 1
+																	Tag 1
 																</label>
 															</div>
 														</div>
@@ -2121,41 +2121,44 @@
 
 								<!-- Mobile Filters -->
 								<div class="filters-mobile overflow-auto lg:hidden">
-									<button class="btn btn-sort-by btn-mobile-filters">
-										Filters
-										<div class="flex items-center gap-2">
-											<span class="mobile-filters-button-num">1</span>
-											<img
-												src="./images/icons/filters-mobile.svg"
-												alt="filters icon"
-											/>
-										</div>
+									<button class="btn btn-sort-by btn-mobile-filters flex-row!">
+										<span class="order-2">Filters</span>
+
+										<img
+											class="order-1"
+											src="./images/icons/filters-mobile.svg"
+											alt="filters icon"
+										/>
+
+										<span
+											class="mobile-filters-button-num order-3"
+											hidden
+										></span>
 									</button>
 
 									<div
 										class="filters-mobile-menu bg-secondary fixed inset-0 z-10 hidden!"
 									>
-										<div class="overflow-auto pb-20">
-											<!-- Header -->
-											<div
-												class="flex items-center justify-between gap-5 border-b border-[#323438] py-4.5 pr-2 pl-4"
+										<!-- Header -->
+										<div
+											class="flex shrink-0 items-center justify-between gap-5 border-b border-[#323438] py-4.5 pr-2 pl-4"
+										>
+											<p>Filters</p>
+											<button
+												class="close-mobile-filters flex size-8 items-center justify-center"
 											>
-												<p>Filters</p>
-												<button
-													class="close-mobile-filters flex size-8 items-center justify-center"
-												>
-													<img
-														src="./images/icons/close.svg"
-														alt="close icon"
-													/>
-												</button>
-											</div>
+												<img src="./images/icons/close.svg" alt="close icon" />
+											</button>
+										</div>
 
-											<!-- Accordion -->
+										<!-- Scrollable content -->
+										<div
+											class="filters-mobile-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain"
+										>
 											<div class="accordion accordion-mobile-filters">
 												<!-- Accrodion Item -->
 												<div
-													class="accordion-item accordion-item-mobile-filters group"
+													class="accordion-item accordion-item-mobile-filters group active"
 												>
 													<!-- Accrodion Trigger -->
 													<button
@@ -2164,7 +2167,10 @@
 													>
 														<span class="accordion-trigger-text">Genre</span>
 														<div class="flex items-center gap-4">
-															<p class="accordion-mobile-filters-num">3</p>
+															<p
+																class="accordion-mobile-filters-num"
+																hidden
+															></p>
 															<!-- Icon -->
 															<img
 																class="accordion-icon-img"
@@ -2175,7 +2181,7 @@
 													</button>
 
 													<!-- Accrodion Content -->
-													<div class="accordion-content">
+													<div class="accordion-content active">
 														<div class="overflow-hidden">
 															<div class="flex flex-col px-5">
 																<!-- Search Input -->
@@ -2184,8 +2190,8 @@
 																	<input
 																		data-search-input
 																		autocomplete="off"
-																		id="search-genres"
-																		name="search-genres"
+																		id="search-genres-mobile"
+																		name="search-genres-mobile"
 																		type="text"
 																		placeholder="Search genres"
 																		class="input-field placeholder:text-gray-light focus:border-primary hover:border-primary bg-secondary border-[#45464C] px-2 py-1.5 text-[13px]"
@@ -2205,14 +2211,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-1"
-																				id="ganre-1"
+																				name="m-genre-1"
+																				id="m-genre-1"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-1"
+																				for="m-genre-1"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 1
@@ -2225,14 +2231,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-2"
-																				id="ganre-2"
+																				name="m-genre-2"
+																				id="m-genre-2"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-2"
+																				for="m-genre-2"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 2
@@ -2245,14 +2251,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-3"
-																				id="ganre-3"
+																				name="m-genre-3"
+																				id="m-genre-3"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-3"
+																				for="m-genre-3"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 3
@@ -2265,14 +2271,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-4"
-																				id="ganre-4"
+																				name="m-genre-4"
+																				id="m-genre-4"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-4"
+																				for="m-genre-4"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 4
@@ -2285,14 +2291,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-5"
-																				id="ganre-5"
+																				name="m-genre-5"
+																				id="m-genre-5"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-5"
+																				for="m-genre-5"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 5
@@ -2305,14 +2311,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-6"
-																				id="ganre-6"
+																				name="m-genre-6"
+																				id="m-genre-6"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-6"
+																				for="m-genre-6"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 6
@@ -2325,14 +2331,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-7"
-																				id="ganre-7"
+																				name="m-genre-7"
+																				id="m-genre-7"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-7"
+																				for="m-genre-7"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 7
@@ -2345,14 +2351,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-8"
-																				id="ganre-8"
+																				name="m-genre-8"
+																				id="m-genre-8"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-8"
+																				for="m-genre-8"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 8
@@ -2365,14 +2371,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-9"
-																				id="ganre-9"
+																				name="m-genre-9"
+																				id="m-genre-9"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-9"
+																				for="m-genre-9"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 9
@@ -2385,14 +2391,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-10"
-																				id="ganre-10"
+																				name="m-genre-10"
+																				id="m-genre-10"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-10"
+																				for="m-genre-10"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 10
@@ -2405,14 +2411,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-11"
-																				id="ganre-11"
+																				name="m-genre-11"
+																				id="m-genre-11"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-11"
+																				for="m-genre-11"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 11
@@ -2425,14 +2431,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-12"
-																				id="ganre-12"
+																				name="m-genre-12"
+																				id="m-genre-12"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-12"
+																				for="m-genre-12"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 12
@@ -2455,7 +2461,10 @@
 													>
 														<span class="accordion-trigger-text">Versions</span>
 														<div class="flex items-center gap-4">
-															<p class="accordion-mobile-filters-num">3</p>
+															<p
+																class="accordion-mobile-filters-num"
+																hidden
+															></p>
 															<!-- Icon -->
 															<img
 																class="accordion-icon-img"
@@ -2475,10 +2484,10 @@
 																	<input
 																		data-search-input
 																		autocomplete="off"
-																		id="search-genres"
-																		name="search-genres"
+																		id="search-versions-mobile"
+																		name="search-versions-mobile"
 																		type="text"
-																		placeholder="Search genres"
+																		placeholder="Search versions"
 																		class="input-field placeholder:text-gray-light focus:border-primary hover:border-primary bg-secondary border-[#45464C] px-2 py-1.5 text-[13px]"
 																	/>
 
@@ -2496,14 +2505,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-1"
-																				id="ganre-1"
+																				name="m-version-1"
+																				id="m-version-1"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-1"
+																				for="m-version-1"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 1
@@ -2516,14 +2525,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-2"
-																				id="ganre-2"
+																				name="m-version-2"
+																				id="m-version-2"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-2"
+																				for="m-version-2"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 2
@@ -2536,14 +2545,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-3"
-																				id="ganre-3"
+																				name="m-version-3"
+																				id="m-version-3"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-3"
+																				for="m-version-3"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 3
@@ -2556,14 +2565,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-4"
-																				id="ganre-4"
+																				name="m-version-4"
+																				id="m-version-4"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-4"
+																				for="m-version-4"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 4
@@ -2576,14 +2585,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-5"
-																				id="ganre-5"
+																				name="m-version-5"
+																				id="m-version-5"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-5"
+																				for="m-version-5"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 5
@@ -2596,14 +2605,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-6"
-																				id="ganre-6"
+																				name="m-version-6"
+																				id="m-version-6"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-6"
+																				for="m-version-6"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 6
@@ -2616,14 +2625,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-7"
-																				id="ganre-7"
+																				name="m-version-7"
+																				id="m-version-7"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-7"
+																				for="m-version-7"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 7
@@ -2636,14 +2645,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-8"
-																				id="ganre-8"
+																				name="m-version-8"
+																				id="m-version-8"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-8"
+																				for="m-version-8"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 8
@@ -2656,14 +2665,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-9"
-																				id="ganre-9"
+																				name="m-version-9"
+																				id="m-version-9"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-9"
+																				for="m-version-9"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 9
@@ -2676,14 +2685,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-10"
-																				id="ganre-10"
+																				name="m-version-10"
+																				id="m-version-10"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-10"
+																				for="m-version-10"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 10
@@ -2696,14 +2705,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-11"
-																				id="ganre-11"
+																				name="m-version-11"
+																				id="m-version-11"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-11"
+																				for="m-version-11"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 11
@@ -2716,14 +2725,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-12"
-																				id="ganre-12"
+																				name="m-version-12"
+																				id="m-version-12"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-12"
+																				for="m-version-12"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 12
@@ -2746,7 +2755,10 @@
 													>
 														<span class="accordion-trigger-text">Plugins</span>
 														<div class="flex items-center gap-4">
-															<p class="accordion-mobile-filters-num">3</p>
+															<p
+																class="accordion-mobile-filters-num"
+																hidden
+															></p>
 															<!-- Icon -->
 															<img
 																class="accordion-icon-img"
@@ -2766,10 +2778,10 @@
 																	<input
 																		data-search-input
 																		autocomplete="off"
-																		id="search-genres"
-																		name="search-genres"
+																		id="search-plugins-mobile"
+																		name="search-plugins-mobile"
 																		type="text"
-																		placeholder="Search genres"
+																		placeholder="Search plugins"
 																		class="input-field placeholder:text-gray-light focus:border-primary hover:border-primary bg-secondary border-[#45464C] px-2 py-1.5 text-[13px]"
 																	/>
 
@@ -2787,14 +2799,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-1"
-																				id="ganre-1"
+																				name="m-plugin-1"
+																				id="m-plugin-1"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-1"
+																				for="m-plugin-1"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 1
@@ -2807,14 +2819,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-2"
-																				id="ganre-2"
+																				name="m-plugin-2"
+																				id="m-plugin-2"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-2"
+																				for="m-plugin-2"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 2
@@ -2827,14 +2839,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-3"
-																				id="ganre-3"
+																				name="m-plugin-3"
+																				id="m-plugin-3"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-3"
+																				for="m-plugin-3"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 3
@@ -2847,14 +2859,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-4"
-																				id="ganre-4"
+																				name="m-plugin-4"
+																				id="m-plugin-4"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-4"
+																				for="m-plugin-4"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 4
@@ -2867,14 +2879,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-5"
-																				id="ganre-5"
+																				name="m-plugin-5"
+																				id="m-plugin-5"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-5"
+																				for="m-plugin-5"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 5
@@ -2887,14 +2899,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-6"
-																				id="ganre-6"
+																				name="m-plugin-6"
+																				id="m-plugin-6"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-6"
+																				for="m-plugin-6"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 6
@@ -2907,14 +2919,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-7"
-																				id="ganre-7"
+																				name="m-plugin-7"
+																				id="m-plugin-7"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-7"
+																				for="m-plugin-7"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 7
@@ -2927,14 +2939,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-8"
-																				id="ganre-8"
+																				name="m-plugin-8"
+																				id="m-plugin-8"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-8"
+																				for="m-plugin-8"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 8
@@ -2947,14 +2959,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-9"
-																				id="ganre-9"
+																				name="m-plugin-9"
+																				id="m-plugin-9"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-9"
+																				for="m-plugin-9"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 9
@@ -2967,14 +2979,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-10"
-																				id="ganre-10"
+																				name="m-plugin-10"
+																				id="m-plugin-10"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-10"
+																				for="m-plugin-10"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 10
@@ -2987,14 +2999,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-11"
-																				id="ganre-11"
+																				name="m-plugin-11"
+																				id="m-plugin-11"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-11"
+																				for="m-plugin-11"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 11
@@ -3007,14 +3019,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-12"
-																				id="ganre-12"
+																				name="m-plugin-12"
+																				id="m-plugin-12"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-12"
+																				for="m-plugin-12"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 12
@@ -3037,7 +3049,10 @@
 													>
 														<span class="accordion-trigger-text">Tags</span>
 														<div class="flex items-center gap-4">
-															<p class="accordion-mobile-filters-num">3</p>
+															<p
+																class="accordion-mobile-filters-num"
+																hidden
+															></p>
 															<!-- Icon -->
 															<img
 																class="accordion-icon-img"
@@ -3057,10 +3072,10 @@
 																	<input
 																		data-search-input
 																		autocomplete="off"
-																		id="search-genres"
-																		name="search-genres"
+																		id="search-tags-mobile"
+																		name="search-tags-mobile"
 																		type="text"
-																		placeholder="Search genres"
+																		placeholder="Search tags"
 																		class="input-field placeholder:text-gray-light focus:border-primary hover:border-primary bg-secondary border-[#45464C] px-2 py-1.5 text-[13px]"
 																	/>
 
@@ -3078,14 +3093,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-1"
-																				id="ganre-1"
+																				name="m-tag-1"
+																				id="m-tag-1"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-1"
+																				for="m-tag-1"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 1
@@ -3098,14 +3113,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-2"
-																				id="ganre-2"
+																				name="m-tag-2"
+																				id="m-tag-2"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-2"
+																				for="m-tag-2"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 2
@@ -3118,14 +3133,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-3"
-																				id="ganre-3"
+																				name="m-tag-3"
+																				id="m-tag-3"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-3"
+																				for="m-tag-3"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 3
@@ -3138,14 +3153,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-4"
-																				id="ganre-4"
+																				name="m-tag-4"
+																				id="m-tag-4"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-4"
+																				for="m-tag-4"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 4
@@ -3158,14 +3173,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-5"
-																				id="ganre-5"
+																				name="m-tag-5"
+																				id="m-tag-5"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-5"
+																				for="m-tag-5"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 5
@@ -3178,14 +3193,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-6"
-																				id="ganre-6"
+																				name="m-tag-6"
+																				id="m-tag-6"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-6"
+																				for="m-tag-6"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 6
@@ -3198,14 +3213,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-7"
-																				id="ganre-7"
+																				name="m-tag-7"
+																				id="m-tag-7"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-7"
+																				for="m-tag-7"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 7
@@ -3218,14 +3233,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-8"
-																				id="ganre-8"
+																				name="m-tag-8"
+																				id="m-tag-8"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-8"
+																				for="m-tag-8"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 8
@@ -3238,14 +3253,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-9"
-																				id="ganre-9"
+																				name="m-tag-9"
+																				id="m-tag-9"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-9"
+																				for="m-tag-9"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 9
@@ -3258,14 +3273,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-10"
-																				id="ganre-10"
+																				name="m-tag-10"
+																				id="m-tag-10"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-10"
+																				for="m-tag-10"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 10
@@ -3278,14 +3293,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-11"
-																				id="ganre-11"
+																				name="m-tag-11"
+																				id="m-tag-11"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-11"
+																				for="m-tag-11"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 11
@@ -3298,14 +3313,14 @@
 																		<div class="checkbox-row">
 																			<input
 																				required
-																				name="ganre-12"
-																				id="ganre-12"
+																				name="m-tag-12"
+																				id="m-tag-12"
 																				class="peer input-field sr-only"
 																				type="checkbox"
 																			/>
 																			<div class="checkbox"></div>
 																			<label
-																				for="ganre-12"
+																				for="m-tag-12"
 																				class="checkbox-label input-label py-1.75 text-white"
 																			>
 																				Ganre 12
@@ -3318,22 +3333,22 @@
 													</div>
 												</div>
 											</div>
+										</div>
 
-											<!-- Action Buttons -->
-											<div
-												class="bg-secondary absolute bottom-0 left-0 grid w-full grid-cols-2 gap-4 p-4"
+										<!-- Footer -->
+										<div
+											class="bg-secondary grid shrink-0 grid-cols-2 gap-4 p-4"
+										>
+											<button
+												class="btn btn-secondary clear-mobile-filters bg-[#343538]"
 											>
-												<button
-													class="btn btn-secondary clear-mobile-filters bg-[#343538]"
-												>
-													Clear all
-												</button>
-												<button
-													class="btn btn-primary show-result-mobile-filters"
-												>
-													Show results
-												</button>
-											</div>
+												Clear all
+											</button>
+											<button
+												class="btn btn-primary show-result-mobile-filters"
+											>
+												Show results
+											</button>
 										</div>
 									</div>
 								</div>
@@ -3347,7 +3362,7 @@
 										data-dropdown-trigger
 										aria-haspopup="menu"
 										aria-expanded="false"
-										class="btn btn-sort-by"
+										class="btn btn-sort-by shrink-0"
 									>
 										Most Popular
 										<img src="./images/icons/sort-by-icon.png" alt="icon" />
@@ -3540,23 +3555,16 @@
 
 						<!-- Tags -->
 						<!-- Tags wrap -->
-						<div class="mt-5 flex flex-wrap items-center gap-2.5">
-							<div class="flex flex-wrap items-center gap-2.5">
-								<div class="filter-tag">
-									Progressive House
-									<button class="filter-tag-close-btn">
-										<img src="./images/icons/remove-tag.svg" alt="remove tag" />
-									</button>
-								</div>
-								<div class="filter-tag">
-									Electro House
-									<button class="filter-tag-close-btn">
-										<img src="./images/icons/remove-tag.svg" alt="remove tag" />
-									</button>
-								</div>
-							</div>
+						<div
+							class="mt-5 flex flex-wrap items-center gap-2.5"
+							data-filter-tags-wrap
+						>
+							<div
+								class="flex flex-wrap items-center gap-2.5"
+								data-filter-tags
+							></div>
 
-							<button class="filter-tag-clear-btn">
+							<button class="filter-tag-clear-btn" type="button" hidden>
 								<img
 									src="./images/icons/clear-filters.svg"
 									alt="clear filters"
@@ -3735,9 +3743,2179 @@
 									</div>
 								</div>
 							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-exclusive">Exclusive</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-promo">Promo</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-exclusive">Exclusive</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-promo">Promo</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-exclusive">Exclusive</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-promo">Promo</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-exclusive">Exclusive</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-promo">Promo</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-exclusive">Exclusive</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-promo">Promo</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-exclusive">Exclusive</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-promo">Promo</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<div class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-exclusive">Exclusive</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</div>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
 						</ul>
 
-						<!-- [START] HTML Component -->
 						<!-- Pagination -->
 						<nav
 							class="pagination mx-auto mt-19 max-w-fit"
@@ -3803,7 +5981,20 @@
 								›
 							</button>
 						</nav>
-						<!-- [END] HTML Component -->
+
+						<div
+							class="mt-12 space-y-3 rounded-[15px] border border-[#212428] p-5 md:mt-22.5 md:p-7"
+						>
+							<p class="font-semibold text-white">Progressive House</p>
+							<p class="text-small text-gray-light">
+								Explore Progressive House sample packs from independent
+								producers and sound designers. Preview each release, compare the
+								contents and choose what suits your workflow, whether you need
+								loops, one-shots, MIDI, presets or a complete construction kit.
+								Each product page shows what is included before you download.
+								All sample packs are 100% Royalty-Free.
+							</p>
+						</div>
 					</div>
 				</section>
 			</main>
