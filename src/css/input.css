@@ -166,6 +166,15 @@
 	.btn-filter {
 		@apply [&_span]:bg-primary gap-0 px-5 py-2.75 text-sm [&_img]:ml-2.5 [&_span]:ml-1.5 [&_span]:inline-flex [&_span]:size-4.5 [&_span]:items-center [&_span]:justify-center [&_span]:rounded-full [&_span]:text-xs [&_span]:text-white;
 	}
+	.btn-sort-by {
+		@apply lg:bg-secondary w-full flex-row-reverse gap-3 border border-[#2B2E32] px-5 py-2.75 text-sm text-white lg:flex-row [&_img]:ml-0;
+		@variant hover {
+			@apply bg-secondary/90 bg-[#2B2E32];
+		}
+		@variant active {
+			@apply bg-secondary/80 bg-[#2B2E32];
+		}
+	}
 
 	.slider-circle-btn-small {
 		@apply bg-gray-dark hover:bg-gray-dark/80 flex size-8 items-center justify-center rounded-full disabled:bg-[#111214];
@@ -477,11 +486,19 @@
 	.preview-card {
 		@apply rounded-lg border border-transparent transition-colors;
 	}
-	/* .preview-card.is-active {
-		@apply border-white/10 bg-white/5;
-	} */
 	.preview-play-btn {
 		@apply bg-primary [.paused]:bg-gray-dark hover:bg-primary/90 flex size-13.25 items-center justify-center rounded-full;
+	}
+
+	/* Filter Tags */
+	.filter-tag {
+		@apply flex items-center gap-1 rounded-md bg-[#141416] py-1.75 pr-1.5 pl-2.5 text-xs font-medium text-white;
+	}
+	.filter-tag-close-btn {
+		@apply flex size-4.5 shrink-0 items-center justify-center;
+	}
+	.filter-tag-clear-btn {
+		@apply text-gray flex items-center gap-2 py-1.75 text-xs hover:text-white;
 	}
 }
 
