@@ -358,7 +358,22 @@
 	.accordion-content-text {
 		@apply text-small text-gray-light px-6.5 pb-5.75;
 	}
-
+	.accordion-mobile-filters {
+		@apply gap-0;
+	}
+	.accordion-item-mobile-filters {
+		@apply rounded-none border-0 border-b border-b-[#323438];
+	}
+	.accordion-trigger-mobile-filters {
+		@apply border-b border-none border-b-[#323438];
+	}
+	.accordion-trigger-text-mobile-filters {
+	}
+	.accordion-content-text-mobile-filters {
+	}
+	.accordion-mobile-filters-num {
+		@apply bg-primary flex aspect-square size-5 items-center justify-center rounded-full text-xs text-white;
+	}
 	/* Pagination */
 	.pagination {
 		@apply flex items-center gap-2;

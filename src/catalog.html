@@ -2120,14 +2120,1222 @@
 								</div>
 
 								<!-- Mobile Filters -->
-								<div class="lg:hidden">
-									<button class="btn btn-sort-by">
+								<div class="filters-mobile overflow-auto lg:hidden">
+									<button class="btn btn-sort-by btn-mobile-filters">
 										Filters
-										<img
-											src="./images/icons/filters-mobile.svg"
-											alt="filters icon"
-										/>
+										<div class="flex items-center gap-2">
+											<span class="mobile-filters-button-num">1</span>
+											<img
+												src="./images/icons/filters-mobile.svg"
+												alt="filters icon"
+											/>
+										</div>
 									</button>
+
+									<div
+										class="filters-mobile-menu bg-secondary fixed inset-0 z-10 hidden!"
+									>
+										<div class="overflow-auto pb-20">
+											<!-- Header -->
+											<div
+												class="flex items-center justify-between gap-5 border-b border-[#323438] py-4.5 pr-2 pl-4"
+											>
+												<p>Filters</p>
+												<button
+													class="close-mobile-filters flex size-8 items-center justify-center"
+												>
+													<img
+														src="./images/icons/close.svg"
+														alt="close icon"
+													/>
+												</button>
+											</div>
+
+											<!-- Accordion -->
+											<div class="accordion accordion-mobile-filters">
+												<!-- Accrodion Item -->
+												<div
+													class="accordion-item accordion-item-mobile-filters group"
+												>
+													<!-- Accrodion Trigger -->
+													<button
+														type="button"
+														class="accordion-trigger accordion-trigger-mobile-filters"
+													>
+														<span class="accordion-trigger-text">Genre</span>
+														<div class="flex items-center gap-4">
+															<p class="accordion-mobile-filters-num">3</p>
+															<!-- Icon -->
+															<img
+																class="accordion-icon-img"
+																src="./images/icons/accordion-icon.svg"
+																alt="accordion arrow icon"
+															/>
+														</div>
+													</button>
+
+													<!-- Accrodion Content -->
+													<div class="accordion-content">
+														<div class="overflow-hidden">
+															<div class="flex flex-col px-5">
+																<!-- Search Input -->
+																<div class="input-group group">
+																	<!-- Input field -->
+																	<input
+																		data-search-input
+																		autocomplete="off"
+																		id="search-genres"
+																		name="search-genres"
+																		type="text"
+																		placeholder="Search genres"
+																		class="input-field placeholder:text-gray-light focus:border-primary hover:border-primary bg-secondary border-[#45464C] px-2 py-1.5 text-[13px]"
+																	/>
+
+																	<!-- Error message (only visible when .error is applied on parent group) -->
+																	<p class="input-error-message">
+																		Error message
+																	</p>
+																</div>
+
+																<!-- Checkboxes -->
+																<div class="mt-1.75">
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-1"
+																				id="ganre-1"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-1"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 1
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-2"
+																				id="ganre-2"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-2"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 2
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-3"
+																				id="ganre-3"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-3"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 3
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-4"
+																				id="ganre-4"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-4"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 4
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-5"
+																				id="ganre-5"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-5"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 5
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-6"
+																				id="ganre-6"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-6"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 6
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-7"
+																				id="ganre-7"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-7"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 7
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-8"
+																				id="ganre-8"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-8"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 8
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-9"
+																				id="ganre-9"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-9"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 9
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-10"
+																				id="ganre-10"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-10"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 10
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-11"
+																				id="ganre-11"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-11"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 11
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-12"
+																				id="ganre-12"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-12"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 12
+																			</label>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- Accrodion Item -->
+												<div
+													class="accordion-item accordion-item-mobile-filters group"
+												>
+													<!-- Accrodion Trigger -->
+													<button
+														type="button"
+														class="accordion-trigger accordion-trigger-mobile-filters"
+													>
+														<span class="accordion-trigger-text">Versions</span>
+														<div class="flex items-center gap-4">
+															<p class="accordion-mobile-filters-num">3</p>
+															<!-- Icon -->
+															<img
+																class="accordion-icon-img"
+																src="./images/icons/accordion-icon.svg"
+																alt="accordion arrow icon"
+															/>
+														</div>
+													</button>
+
+													<!-- Accrodion Content -->
+													<div class="accordion-content">
+														<div class="overflow-hidden">
+															<div class="flex flex-col px-5">
+																<!-- Search Input -->
+																<div class="input-group group">
+																	<!-- Input field -->
+																	<input
+																		data-search-input
+																		autocomplete="off"
+																		id="search-genres"
+																		name="search-genres"
+																		type="text"
+																		placeholder="Search genres"
+																		class="input-field placeholder:text-gray-light focus:border-primary hover:border-primary bg-secondary border-[#45464C] px-2 py-1.5 text-[13px]"
+																	/>
+
+																	<!-- Error message (only visible when .error is applied on parent group) -->
+																	<p class="input-error-message">
+																		Error message
+																	</p>
+																</div>
+
+																<!-- Checkboxes -->
+																<div class="mt-1.75">
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-1"
+																				id="ganre-1"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-1"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 1
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-2"
+																				id="ganre-2"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-2"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 2
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-3"
+																				id="ganre-3"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-3"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 3
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-4"
+																				id="ganre-4"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-4"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 4
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-5"
+																				id="ganre-5"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-5"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 5
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-6"
+																				id="ganre-6"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-6"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 6
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-7"
+																				id="ganre-7"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-7"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 7
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-8"
+																				id="ganre-8"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-8"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 8
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-9"
+																				id="ganre-9"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-9"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 9
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-10"
+																				id="ganre-10"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-10"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 10
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-11"
+																				id="ganre-11"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-11"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 11
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-12"
+																				id="ganre-12"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-12"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 12
+																			</label>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- Accrodion Item -->
+												<div
+													class="accordion-item accordion-item-mobile-filters group"
+												>
+													<!-- Accrodion Trigger -->
+													<button
+														type="button"
+														class="accordion-trigger accordion-trigger-mobile-filters"
+													>
+														<span class="accordion-trigger-text">Plugins</span>
+														<div class="flex items-center gap-4">
+															<p class="accordion-mobile-filters-num">3</p>
+															<!-- Icon -->
+															<img
+																class="accordion-icon-img"
+																src="./images/icons/accordion-icon.svg"
+																alt="accordion arrow icon"
+															/>
+														</div>
+													</button>
+
+													<!-- Accrodion Content -->
+													<div class="accordion-content">
+														<div class="overflow-hidden">
+															<div class="flex flex-col px-5">
+																<!-- Search Input -->
+																<div class="input-group group">
+																	<!-- Input field -->
+																	<input
+																		data-search-input
+																		autocomplete="off"
+																		id="search-genres"
+																		name="search-genres"
+																		type="text"
+																		placeholder="Search genres"
+																		class="input-field placeholder:text-gray-light focus:border-primary hover:border-primary bg-secondary border-[#45464C] px-2 py-1.5 text-[13px]"
+																	/>
+
+																	<!-- Error message (only visible when .error is applied on parent group) -->
+																	<p class="input-error-message">
+																		Error message
+																	</p>
+																</div>
+
+																<!-- Checkboxes -->
+																<div class="mt-1.75">
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-1"
+																				id="ganre-1"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-1"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 1
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-2"
+																				id="ganre-2"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-2"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 2
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-3"
+																				id="ganre-3"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-3"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 3
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-4"
+																				id="ganre-4"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-4"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 4
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-5"
+																				id="ganre-5"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-5"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 5
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-6"
+																				id="ganre-6"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-6"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 6
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-7"
+																				id="ganre-7"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-7"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 7
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-8"
+																				id="ganre-8"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-8"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 8
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-9"
+																				id="ganre-9"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-9"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 9
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-10"
+																				id="ganre-10"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-10"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 10
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-11"
+																				id="ganre-11"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-11"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 11
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-12"
+																				id="ganre-12"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-12"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 12
+																			</label>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- Accrodion Item -->
+												<div
+													class="accordion-item accordion-item-mobile-filters group"
+												>
+													<!-- Accrodion Trigger -->
+													<button
+														type="button"
+														class="accordion-trigger accordion-trigger-mobile-filters"
+													>
+														<span class="accordion-trigger-text">Tags</span>
+														<div class="flex items-center gap-4">
+															<p class="accordion-mobile-filters-num">3</p>
+															<!-- Icon -->
+															<img
+																class="accordion-icon-img"
+																src="./images/icons/accordion-icon.svg"
+																alt="accordion arrow icon"
+															/>
+														</div>
+													</button>
+
+													<!-- Accrodion Content -->
+													<div class="accordion-content">
+														<div class="overflow-hidden">
+															<div class="flex flex-col px-5">
+																<!-- Search Input -->
+																<div class="input-group group">
+																	<!-- Input field -->
+																	<input
+																		data-search-input
+																		autocomplete="off"
+																		id="search-genres"
+																		name="search-genres"
+																		type="text"
+																		placeholder="Search genres"
+																		class="input-field placeholder:text-gray-light focus:border-primary hover:border-primary bg-secondary border-[#45464C] px-2 py-1.5 text-[13px]"
+																	/>
+
+																	<!-- Error message (only visible when .error is applied on parent group) -->
+																	<p class="input-error-message">
+																		Error message
+																	</p>
+																</div>
+
+																<!-- Checkboxes -->
+																<div class="mt-1.75">
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-1"
+																				id="ganre-1"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-1"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 1
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-2"
+																				id="ganre-2"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-2"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 2
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-3"
+																				id="ganre-3"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-3"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 3
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-4"
+																				id="ganre-4"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-4"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 4
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-5"
+																				id="ganre-5"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-5"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 5
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-6"
+																				id="ganre-6"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-6"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 6
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-7"
+																				id="ganre-7"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-7"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 7
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-8"
+																				id="ganre-8"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-8"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 8
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-9"
+																				id="ganre-9"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-9"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 9
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-10"
+																				id="ganre-10"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-10"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 10
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-11"
+																				id="ganre-11"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-11"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 11
+																			</label>
+																		</div>
+																	</div>
+																	<div
+																		class="checkbox-group group/checkbox input-group group"
+																	>
+																		<div class="checkbox-row">
+																			<input
+																				required
+																				name="ganre-12"
+																				id="ganre-12"
+																				class="peer input-field sr-only"
+																				type="checkbox"
+																			/>
+																			<div class="checkbox"></div>
+																			<label
+																				for="ganre-12"
+																				class="checkbox-label input-label py-1.75 text-white"
+																			>
+																				Ganre 12
+																			</label>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!-- Action Buttons -->
+											<div
+												class="bg-secondary absolute bottom-0 left-0 grid w-full grid-cols-2 gap-4 p-4"
+											>
+												<button
+													class="btn btn-secondary clear-mobile-filters bg-[#343538]"
+												>
+													Clear all
+												</button>
+												<button
+													class="btn btn-primary show-result-mobile-filters"
+												>
+													Show results
+												</button>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 							<!-- Sort By -->
