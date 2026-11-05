@@ -586,13 +586,13 @@
 
 	/* Policy page */
 	.policy > h1 {
-		@apply mb-12;
+		@apply mb-6 text-[28px] leading-[1.14] md:mb-8 md:text-[34px] md:leading-normal lg:mb-12;
 	}
 	.policy > p {
-		@apply text-gray-light mt-4 text-base leading-[1.75];
+		@apply text-gray-light text-small mt-3 leading-[1.75] md:mt-4 md:text-base;
 	}
 	.policy > h2 {
-		@apply mt-9 text-[22px];
+		@apply mt-9 text-lg md:text-[22px];
 	}
 	.policy ul {
 		@apply mt-5 space-y-2;
@@ -607,7 +607,7 @@
 		@apply text-gray-light mt-5 text-base font-semibold;
 	}
 	.policy a {
-		@apply hover:text-gray text-white underline;
+		@apply hover:text-gray break-all text-white underline;
 	}
 
 	/* Dropdowns */

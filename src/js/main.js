@@ -808,7 +808,7 @@ function initPlayer(root) {
 		normalize: true,
 		dragToSeek: true,
 		waveColor: "#4b4b4f",
-		progressColor: "#7c3aed",
+		progressColor: "#ffffff",
 	})
 
 	const trackButtons = () =>
@@ -1064,6 +1064,7 @@ function initPreview(root) {
 	const playBtn = root.querySelector("[data-preview-play]")
 	const waveformEl = root.querySelector("[data-preview-waveform]")
 	const durationEl = root.querySelector("[data-preview-duration]")
+	const textEl = root.querySelector(".preview-card-text")
 	if (!playBtn || !waveformEl || !root.dataset.src) return
 
 	const ws = WaveSurfer.create({
@@ -1077,7 +1078,7 @@ function initPreview(root) {
 		normalize: true,
 		dragToSeek: true,
 		waveColor: "#4b4b4f",
-		progressColor: "#7c3aed",
+		progressColor: "#ffffff",
 	})
 
 	previewInstances.add(ws)
@@ -1088,6 +1089,7 @@ function initPreview(root) {
 		playBtn.setAttribute("aria-pressed", String(playing))
 		playBtn.setAttribute("aria-label", playing ? "Pause" : "Play")
 		root.classList.toggle("is-active", playing)
+		textEl?.classList.toggle("is-active", playing)
 	}
 
 	ws.on("ready", (duration) => {
