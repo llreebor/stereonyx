@@ -209,6 +209,10 @@
 	.submenu {
 		@apply max-w-max-width invisible absolute top-full left-1/2 z-30 h-auto w-full! -translate-x-1/2 overflow-hidden rounded-[18px] border border-[#1D1D1D] bg-black p-2.5 opacity-0 transition-all duration-300 group-hover/submenu:visible group-hover/submenu:grid group-hover/submenu:scale-100 group-hover/submenu:opacity-100 group-[.is-open]/submenu:visible group-[.is-open]/submenu:grid group-[.is-open]/submenu:scale-100 group-[.is-open]/submenu:opacity-100;
 	}
+	.submenu-trigger.is-closed .submenu {
+		visibility: hidden !important;
+		opacity: 0 !important;
+	}
 	/* .submenu-wrapper {
 		@apply bg-dark grid h-auto grid-cols-6 gap-10 rounded-[10px] px-5 py-6.5;
 	} */

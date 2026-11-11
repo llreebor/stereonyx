@@ -158,6 +158,25 @@ function initDesktopSubmenu() {
 	document.addEventListener("keydown", (event) => {
 		if (event.key === "Escape") triggers.forEach((t) => setState(t, false))
 	})
+
+	document.addEventListener("click", (event) => {
+		const link = event.target.closest("#menu .submenu a")
+		if (!link) return
+
+		const trigger = link.closest(".submenu-trigger")
+		if (!trigger) return
+
+		setState(trigger, false)
+
+		if (!noHover.matches) {
+			trigger.classList.add("is-closed")
+			trigger.addEventListener(
+				"mouseleave",
+				() => trigger.classList.remove("is-closed"),
+				{ once: true },
+			)
+		}
+	})
 }
 
 // Toggle buttons state
