@@ -159,6 +159,7 @@ function initDesktopSubmenu() {
 		if (event.key === "Escape") triggers.forEach((t) => setState(t, false))
 	})
 
+	// New code
 	document.addEventListener("click", (event) => {
 		const link = event.target.closest("#menu .submenu a")
 		if (!link) return
