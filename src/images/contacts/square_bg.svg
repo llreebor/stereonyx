@@ -1,0 +1,35 @@
+<svg width="460" height="460" viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+svg { overflow: visible; }
+@keyframes kf_Vector_stroke_0 {
+  0% {
+    stroke: #24272A;
+  }
+  50% {
+    stroke: #312750;
+  }
+  100% {
+    stroke: #24272A;
+  }
+}
+#Vector {
+  animation: kf_Vector_stroke_0 6s linear infinite;
+}
+</style>
+<g id="square_bg">
+<g id="square_bg_2">
+<mask id="mask0_331_2089" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="460" height="460">
+<circle id="Ellipse_72" cx="230" cy="230" r="230" fill="url(#paint0_radial_331_2089)"/>
+</mask>
+<g mask="url(#mask0_331_2089)">
+<path id="Vector" transform="translate(10.3886 2.13953)" d="M0 0H460M0.341112 459.42V0.358922M0 57.4279L460 57.383M57.7535 459.42V0.358922M0 114.855L460 114.765M115.166 459.42V0.358922M0 172.283L460 172.148M172.578 459.42V0.358922M0 229.71L460 229.531M229.991 459.42V0.358922M0 287.138L460 286.913M287.404 459.42V0.358922M0 344.565L460 344.296M344.816 459.42V0.358922M0 401.993L460 401.679M402.229 459.42V0.358922M0 459.42L460 459.061M459.641 459.42V0.358922" stroke="#24272A"/>
+</g>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_331_2089" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(230 230) rotate(90) scale(230)">
+<stop stop-color="#737373"/>
+<stop offset="1" stop-color="#737373" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

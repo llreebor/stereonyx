@@ -356,9 +356,8 @@ class BottomSheet {
 		})
 
 		document.querySelectorAll(".sheet-wrapper").forEach((wrapper) => {
-			const grabber = wrapper.querySelector(".sheet-grabber")
 			const content = wrapper.querySelector(".sheet-content")
-			if (grabber && content) this._initDrag(grabber, content, wrapper)
+			if (content) this._initDrag(content, wrapper)
 		})
 
 		// Выбор опции в sheet (например, select страны)
@@ -480,18 +479,15 @@ class BottomSheet {
 			wrapper.style.transition = "none"
 			wrapper.classList.remove("is-visible")
 			cleanup()
-			// Возвращаем transition на следующем кадре
 			requestAnimationFrame(() => (wrapper.style.transition = ""))
 			return
 		}
 
 		this.isClosing = true
 
-		// Sheet уезжает вниз
 		content.style.transition = "transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)"
 		content.style.transform = "translateY(100%)"
 
-		// Overlay плавно гаснет целиком (blur + затемнение) через opacity
 		wrapper.classList.remove("is-visible")
 
 		const onEnd = (e) => {
@@ -502,29 +498,70 @@ class BottomSheet {
 		content.addEventListener("transitionend", onEnd)
 	}
 
-	_initDrag(grabber, content, wrapper) {
-		let startY = 0,
+	_initDrag(content, wrapper) {
+		const THRESHOLD = 6
+		let startX = 0,
+			startY = 0,
 			delta = 0,
-			dragging = false
+			startTime = 0,
+			tracking = false,
+			dragging = false,
+			scrollEl = null
 
-		const onStart = (y) => {
-			if (this.active !== wrapper) return
-			dragging = true
-			startY = y
-			delta = 0
-			content.style.transition = "none"
+		// Ближайший прокручиваемый родитель внутри sheet
+		const getScrollParent = (el) => {
+			while (el && el !== content.parentElement) {
+				if (el.scrollHeight > el.clientHeight) {
+					const oy = getComputedStyle(el).overflowY
+					if (oy === "auto" || oy === "scroll") return el
+				}
+				el = el.parentElement
+			}
+			return null
 		}
 
-		const onMove = (y) => {
-			if (!dragging) return
+		const onStart = (target, x, y) => {
+			if (this.active !== wrapper || this.isClosing) return
+			tracking = true
+			dragging = false
+			startX = x
+			startY = y
+			delta = 0
+			startTime = Date.now()
+			scrollEl = getScrollParent(target)
+		}
+
+		const onMove = (x, y, e) => {
+			if (!tracking) return
+			const dy = y - startY
+			const dx = x - startX
+
+			if (!dragging) {
+				// горизонтальный жест — не наш
+				if (Math.abs(dx) > Math.abs(dy)) return void (tracking = false)
+				// ждём порог вниз (свайп вверх — просто скролл)
+				if (dy < THRESHOLD) return
+				// внутри списка, который прокручен не до верха — отдаём скроллу
+				if (scrollEl && scrollEl.scrollTop > 0) return void (tracking = false)
+
+				dragging = true
+				startY = y // чтобы не было скачка на величину порога
+				content.style.transition = "none"
+			}
+
 			delta = Math.max(0, y - startY)
 			content.style.transform = `translateY(${delta}px)`
+			if (e.cancelable) e.preventDefault()
 		}
 
 		const onEnd = () => {
+			if (!tracking) return
+			tracking = false
 			if (!dragging) return
 			dragging = false
-			if (delta > content.offsetHeight * 0.3) {
+
+			const velocity = delta / Math.max(Date.now() - startTime, 1) // px/ms
+			if (delta > content.offsetHeight * 0.3 || velocity > 0.5) {
 				this.close()
 			} else {
 				content.style.transition = ""
@@ -532,31 +569,39 @@ class BottomSheet {
 			}
 		}
 
-		// Pointer events (desktop)
-		grabber.addEventListener("pointerdown", (e) => {
-			if (e.pointerType === "touch") return
-			onStart(e.clientY)
-			grabber.setPointerCapture(e.pointerId)
-		})
-		grabber.addEventListener("pointermove", (e) => {
-			if (e.pointerType === "touch") return
-			onMove(e.clientY)
-		})
-		grabber.addEventListener("pointerup", (e) => {
-			if (e.pointerType === "touch") return
-			onEnd()
-		})
-
-		// Touch events (mobile)
-		grabber.addEventListener(
+		content.addEventListener(
 			"touchstart",
-			(e) => onStart(e.touches[0].clientY),
+			(e) => onStart(e.target, e.touches[0].clientX, e.touches[0].clientY),
 			{ passive: true },
 		)
-		grabber.addEventListener("touchmove", (e) => onMove(e.touches[0].clientY), {
-			passive: true,
+		content.addEventListener(
+			"touchmove",
+			(e) => onMove(e.touches[0].clientX, e.touches[0].clientY, e),
+			{ passive: false },
+		)
+		content.addEventListener("touchend", onEnd)
+		content.addEventListener("touchcancel", onEnd)
+
+		content.addEventListener("mousedown", (e) => {
+			if (e.button !== 0) return
+			if (e.target.closest("input, textarea, select, a, button")) return
+			onStart(e.target, e.clientX, e.clientY)
+
+			const move = (ev) => onMove(ev.clientX, ev.clientY, ev)
+			const up = () => {
+				document.removeEventListener("mousemove", move)
+				document.removeEventListener("mouseup", up)
+				if (dragging) {
+					document.addEventListener("click", (c) => c.stopPropagation(), {
+						capture: true,
+						once: true,
+					})
+				}
+				onEnd()
+			}
+			document.addEventListener("mousemove", move)
+			document.addEventListener("mouseup", up)
 		})
-		grabber.addEventListener("touchend", onEnd)
 	}
 }
 
@@ -574,7 +619,7 @@ function initializeModal() {
 		announcePopupOpen(modal)
 		modal.classList.remove("opacity-0", "pointer-events-none")
 		modal.classList.add("opacity-100", "pointer-events-auto")
-
+		document.body.classList.add("overflow-hidden")
 		const handleOverlayClick = (e) => {
 			if (!e.target.closest(".modal")) {
 				closeModal(modalId)
@@ -597,7 +642,7 @@ function initializeModal() {
 
 		modal.classList.remove("opacity-100", "pointer-events-auto")
 		modal.classList.add("opacity-0", "pointer-events-none")
-
+		document.body.classList.add("overflow-auto")
 		const modalContent = modal.querySelector(".modal")
 		if (modalContent) {
 			modalContent.classList.remove("scale-100")

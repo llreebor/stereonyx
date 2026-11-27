@@ -64,7 +64,7 @@
 				</div>
 
 				<!-- Header  -->
-				<header class="z-10 border-b border-b-[#181A1D] py-4">
+				<header class="z-10 border-b border-b-[#181A1D] py-4 md:py-5">
 					<div class="container">
 						<div class="flex w-full items-center">
 							<!-- Logo -->
@@ -1517,7 +1517,13 @@
 			<!-- Main Content -->
 			<main class="relative flex-auto">
 				<!-- Contacts -->
-				<section class="py-8 md:py-10 lg:py-20">
+				<section class="relative z-0 py-8 md:py-10 lg:py-20">
+					<!-- Image Vector -->
+					<img
+						class="absolute top-0 left-1/2 -z-10 hidden -translate-x-1/2 lg:block"
+						src="./images/contacts/square_bg.svg"
+						alt="vector"
+					/>
 					<div class="container">
 						<div class="relative z-0 grid gap-5 md:grid-cols-2">
 							<img
@@ -1548,7 +1554,7 @@
 							</div>
 
 							<div
-								class="rounded-[27px] border border-[#212428] bg-black px-5 py-6 md:px-13 md:py-12"
+								class="mt-11 rounded-[27px] border border-[#212428] bg-black px-5 py-6 md:mt-0 md:px-13 md:py-12"
 							>
 								<!-- Form -->
 								<form action="#" class="flex flex-col gap-5">
@@ -1614,9 +1620,9 @@
 									By clicking submit I agree to receive updates about Stereonyx
 									products and services, and our
 									<a href="#" class="text-white hover:underline">
-										Privacy Policy
+										Privacy Policy.
 									</a>
-									. You can opt-out at any time.
+									You can opt-out at any time.
 								</p>
 							</div>
 						</div>
@@ -1624,13 +1630,13 @@
 				</section>
 
 				<!-- FAQ -->
-				<section class="rounded-[45px] bg-[#101111] py-22">
+				<section class="rounded-[45px] bg-[#101111] py-13 md:py-22">
 					<div class="container">
 						<div
 							class="flex flex-col gap-9 md:flex-row md:items-start md:gap-20 lg:gap-30"
 						>
 							<div class="max-w-86">
-								<h2 class="text-[28px] md:text-[34px]">
+								<h2 class="text-[28px] leading-8.5 md:text-[34px]">
 									Frequently asked questions
 								</h2>
 								<p class="text-small text-gray-light mt-4.5">
@@ -1944,7 +1950,7 @@
 								name="input"
 								type="text"
 								placeholder="Email"
-								class="input-field"
+								class="input-field auth-input"
 							/>
 
 							<!-- Error message (only visible when .error is applied on parent group) -->
@@ -1963,7 +1969,7 @@
 									name="input"
 									type="password"
 									placeholder="Some placeholder..."
-									class="input-field password-input"
+									class="input-field password-input auth-input"
 								/>
 
 								<!-- Pswd Icons -->
@@ -2044,7 +2050,7 @@
 								name="input"
 								type="text"
 								placeholder="Email"
-								class="input-field"
+								class="input-field auth-input"
 							/>
 
 							<!-- Error message (only visible when .error is applied on parent group) -->
@@ -2063,7 +2069,7 @@
 									name="password-signup"
 									type="password"
 									placeholder="Password"
-									class="input-field password-input"
+									class="input-field password-input auth-input"
 								/>
 
 								<!-- Pswd Icons -->
@@ -2099,266 +2105,7 @@
 									name="password-signup-confirm"
 									type="password"
 									placeholder="Confirm password"
-									class="input-field password-input"
-								/>
-
-								<!-- Pswd Icons -->
-								<button
-									class="toggle-password-btn absolute top-1/2 right-3 size-4.5 -translate-y-1/2 cursor-pointer"
-								>
-									<img
-										class="pswd-icon-hidden"
-										src="./images/icons/password-hidden.svg"
-										alt="icon"
-									/>
-									<img
-										class="pswd-icon-visible hidden"
-										src="./images/icons/password-visible.svg"
-										alt="icon"
-									/>
-								</button>
-							</div>
-
-							<!-- Error message (only visible when .error is applied on parent group) -->
-							<p class="input-error-message">Error message</p>
-						</div>
-						<!-- [END] HTML Input -->
-
-						<!-- Default Checkbox Input -->
-						<div class="checkbox-group group/checkbox input-group group">
-							<div class="checkbox-row">
-								<input
-									required
-									name="checkbox-input-1"
-									id="checkbox-input-1"
-									class="peer input-field sr-only"
-									type="checkbox"
-								/>
-								<div class="checkbox"></div>
-								<label
-									for="checkbox-input-1"
-									class="checkbox-label input-label text-[#87898D]"
-								>
-									I have read and accept the&nbsp;
-									<a href="#" class="text-white hover:underline">
-										Privacy Policy
-									</a>
-								</label>
-							</div>
-
-							<p class="input-error-message">Error message</p>
-						</div>
-
-						<button
-							type="submit"
-							class="btn btn-primary w-full max-w-full py-3.75 text-sm"
-						>
-							Sign up
-						</button>
-					</form>
-
-					<!-- Links -->
-					<div class="mt-8 flex flex-col items-center justify-center gap-2">
-						<p class="text-sm text-[#87898D]">
-							Already have an account?
-							<a href="#" class="text-sm text-white hover:underline"> Log in</a>
-						</p>
-					</div>
-
-					<!-- Close Button -->
-					<button data-modal="modal-signup" class="modal-close-btn group">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="12"
-							height="12"
-							viewBox="0 0 12 12"
-							fill="none"
-						>
-							<path
-								d="M0.530273 0.53125L5.53027 5.53125M5.53027 5.53125L10.5303 10.5312M5.53027 5.53125L0.530273 10.5312M5.53027 5.53125L10.5303 0.53125"
-								stroke-width="1.5"
-								stroke="#73757B"
-								class="transition-colors group-hover:stroke-white"
-							/>
-						</svg>
-					</button>
-				</div>
-				<div class="modal-overlay"></div>
-			</div>
-
-			<!-- Modals -->
-			<!-- Login Modal -->
-			<div id="modal-login" class="modal-root">
-				<div class="modal max-w-96.5 pt-9.5 pb-12">
-					<h2 class="text-center text-[22px]">Log in to Stereonyx</h2>
-
-					<!-- Form -->
-					<form action="#" class="mt-7 space-y-4">
-						<!-- [START] HTML Input -->
-						<!-- Input group wrapper (use .error or .success class for validation errors) -->
-						<div class="input-group group">
-							<!-- Input field -->
-							<input
-								id="input"
-								name="input"
-								type="text"
-								placeholder="Email"
-								class="input-field"
-							/>
-
-							<!-- Error message (only visible when .error is applied on parent group) -->
-							<p class="input-error-message">Error message</p>
-						</div>
-						<!-- [END] HTML Input -->
-
-						<!-- [START] HTML Input -->
-						<!-- Input group wrapper (use .error or .success class for validation errors) -->
-						<div class="input-group group">
-							<!-- Input field & Icon -->
-							<div class="relative">
-								<!-- Input -->
-								<input
-									id="input"
-									name="input"
-									type="password"
-									placeholder="Some placeholder..."
-									class="input-field password-input"
-								/>
-
-								<!-- Pswd Icons -->
-								<button
-									class="toggle-password-btn absolute top-1/2 right-3 size-4.5 -translate-y-1/2 cursor-pointer"
-								>
-									<img
-										class="pswd-icon-hidden"
-										src="./images/icons/password-hidden.svg"
-										alt="icon"
-									/>
-									<img
-										class="pswd-icon-visible hidden"
-										src="./images/icons/password-visible.svg"
-										alt="icon"
-									/>
-								</button>
-							</div>
-
-							<!-- Error message (only visible when .error is applied on parent group) -->
-							<p class="input-error-message">Error message</p>
-						</div>
-						<!-- [END] HTML Input -->
-
-						<button
-							type="submit"
-							class="btn btn-primary w-full max-w-full py-3.75 text-sm"
-						>
-							Log In
-						</button>
-					</form>
-
-					<!-- Links -->
-					<div class="mt-8 flex flex-col items-center justify-center gap-2">
-						<a href="#" class="text-sm text-white hover:underline">
-							Forgot password?
-						</a>
-						<p class="text-sm text-[#87898D]">
-							Don't have an account?
-							<a href="#" class="text-sm text-white hover:underline">Sign up</a>
-						</p>
-					</div>
-
-					<!-- Close Button -->
-					<button data-modal="modal-login" class="modal-close-btn group">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="12"
-							height="12"
-							viewBox="0 0 12 12"
-							fill="none"
-						>
-							<path
-								d="M0.530273 0.53125L5.53027 5.53125M5.53027 5.53125L10.5303 10.5312M5.53027 5.53125L0.530273 10.5312M5.53027 5.53125L10.5303 0.53125"
-								stroke-width="1.5"
-								stroke="#73757B"
-								class="transition-colors group-hover:stroke-white"
-							/>
-						</svg>
-					</button>
-				</div>
-				<div class="modal-overlay"></div>
-			</div>
-
-			<!-- Sign Up Modal -->
-			<div id="modal-signup" class="modal-root">
-				<div class="modal max-w-96.5 pt-9.5 pb-12">
-					<h2 class="text-center text-[22px]">Sign up to Stereonyx</h2>
-
-					<!-- Form -->
-					<form action="#" class="mt-7 space-y-4">
-						<!-- [START] HTML Input -->
-						<!-- Input group wrapper (use .error or .success class for validation errors) -->
-						<div class="input-group group">
-							<!-- Input field -->
-							<input
-								id="input"
-								name="input"
-								type="text"
-								placeholder="Email"
-								class="input-field"
-							/>
-
-							<!-- Error message (only visible when .error is applied on parent group) -->
-							<p class="input-error-message">Error message</p>
-						</div>
-						<!-- [END] HTML Input -->
-
-						<!-- [START] HTML Input -->
-						<!-- Input group wrapper (use .error or .success class for validation errors) -->
-						<div class="input-group group">
-							<!-- Input field & Icon -->
-							<div class="relative">
-								<!-- Input -->
-								<input
-									id="input"
-									name="password-signup"
-									type="password"
-									placeholder="Password"
-									class="input-field password-input"
-								/>
-
-								<!-- Pswd Icons -->
-								<button
-									class="toggle-password-btn absolute top-1/2 right-3 size-4.5 -translate-y-1/2 cursor-pointer"
-								>
-									<img
-										class="pswd-icon-hidden"
-										src="./images/icons/password-hidden.svg"
-										alt="icon"
-									/>
-									<img
-										class="pswd-icon-visible hidden"
-										src="./images/icons/password-visible.svg"
-										alt="icon"
-									/>
-								</button>
-							</div>
-
-							<!-- Error message (only visible when .error is applied on parent group) -->
-							<p class="input-error-message">Error message</p>
-						</div>
-						<!-- [END] HTML Input -->
-
-						<!-- [START] HTML Input -->
-						<!-- Input group wrapper (use .error or .success class for validation errors) -->
-						<div class="input-group group">
-							<!-- Input field & Icon -->
-							<div class="relative">
-								<!-- Input -->
-								<input
-									id="input"
-									name="password-signup-confirm"
-									type="password"
-									placeholder="Confirm password"
-									class="input-field password-input"
+									class="input-field password-input auth-input"
 								/>
 
 								<!-- Pswd Icons -->

@@ -179,6 +179,11 @@
 	.slider-circle-btn-small {
 		@apply bg-gray-dark hover:bg-gray-dark/80 flex size-8 items-center justify-center rounded-full disabled:bg-[#111214];
 	}
+	.filter-btn {
+		@variant hover {
+			@apply border-white bg-transparent;
+		}
+	}
 	.filter-btn.is-active {
 		@apply border-white;
 	}
@@ -204,7 +209,7 @@
 		}
 	}
 	.submenu {
-		@apply max-w-max-width invisible absolute top-full left-1/2 z-30 h-auto w-full! -translate-x-1/2 overflow-hidden rounded-[18px] border border-[#1D1D1D] bg-black p-2.5 opacity-0 transition-all duration-300 group-hover/submenu:visible group-hover/submenu:grid group-hover/submenu:scale-100 group-hover/submenu:opacity-100 group-[.is-open]/submenu:visible group-[.is-open]/submenu:grid group-[.is-open]/submenu:scale-100 group-[.is-open]/submenu:opacity-100;
+		@apply invisible absolute top-full left-1/2 z-30 -mt-2 h-auto w-full! max-w-[1276px] -translate-x-1/2 overflow-hidden rounded-[18px] border border-[#1D1D1D] bg-black p-2 opacity-0 transition-all duration-300 group-hover/submenu:visible group-hover/submenu:grid group-hover/submenu:scale-100 group-hover/submenu:opacity-100 group-[.is-open]/submenu:visible group-[.is-open]/submenu:grid group-[.is-open]/submenu:scale-100 group-[.is-open]/submenu:opacity-100;
 	}
 	.submenu-trigger.is-closed .submenu {
 		visibility: hidden !important;
@@ -220,29 +225,29 @@
 		@apply break-inside-avoid pb-6;
 	}
 	.submenu-item {
-		@apply border-t-gray break-inside-avoid border-t py-3.25;
+		@apply break-inside-avoid border-t border-t-[#262728] py-3.25;
 	}
 	.submenu-list {
 		@apply mt-1;
 	}
 	.submenu-link-top {
-		@apply text-small font-semibold text-white;
+		@apply lg:text-small text-base font-medium text-white lg:font-semibold;
 		@variant hover {
-			@apply text-gray;
+			@apply text-white;
 		}
 	}
 	.submenu-link {
-		@apply text-gray-light text-sm;
+		@apply text-gray-light text-small lg:text-sm;
 
 		@variant hover {
-			@apply text-gray;
+			@apply text-white;
 		}
 	}
 	.mobile-menu {
 		@apply fixed top-0 left-0 z-30 h-full w-full transform bg-black shadow-xl transition-transform duration-300 ease-in-out [.is-open]:translate-x-0;
 	}
 	.mobile-menu-link {
-		@apply flex items-center gap-3 border-b border-b-[#181A1D] py-6.5 text-base text-white;
+		@apply flex items-center gap-3 border-b border-b-[#181A1D] py-5 text-base text-white;
 	}
 	.mobile-submenu-link {
 		@apply flex text-base text-white;
@@ -295,6 +300,9 @@
 	.input-error-message {
 		@apply order-3 mt-1 hidden text-xs text-red-600 group-[.error]:block;
 	}
+	.auth-input {
+		@apply hover:border-primary border-[#26282A] bg-[#26282A];
+	}
 
 	/* Checkbox */
 	.checkbox-group {
@@ -315,7 +323,7 @@
 		@apply hidden;
 	}
 	.checkbox-row-sort-by > .checkbox-label {
-		@apply hover:bg-gray-dark h-full w-full shrink-0 border-t border-t-[#323438] p-4 text-sm text-white peer-checked:bg-[#45464C] lg:rounded lg:border-none lg:px-3 lg:py-1.5;
+		@apply h-full min-h-[66px] w-full shrink-0 border-t border-t-[#2B2C30] p-4 text-sm text-white peer-checked:bg-[#2B2C30] hover:bg-[#343539] lg:min-h-auto lg:rounded-lg lg:border-none lg:border-t-[#323438] lg:px-3 lg:py-1.5 lg:peer-checked:bg-[#343539];
 	}
 	.checkbox-row-sort-by > .checkbox-check-icon {
 		@apply pointer-events-none absolute top-1/2 right-3 hidden w-4 -translate-y-1/2 peer-checked:block lg:w-3;
@@ -334,7 +342,7 @@
 		@apply relative w-full max-w-md transform rounded-[22px] bg-[#1D1E1F] px-5 transition-transform duration-500 ease-in-out md:p-8.5;
 	}
 	.modal-close-btn {
-		@apply hover:bg-dark absolute top-3.5 right-3.5 flex size-9 items-center justify-center rounded-full;
+		@apply absolute top-3.5 right-3.5 flex size-9 items-center justify-center rounded-full hover:bg-[#26282A];
 	}
 
 	/* Accordion */
@@ -357,7 +365,7 @@
 		@apply grid grid-rows-[0fr] transition-all duration-500 group-[.active]:grid-rows-[1fr];
 	}
 	.accordion-content-text {
-		@apply text-small text-gray-light px-6.5 pb-5.75;
+		@apply text-small text-gray-light px-5 pb-5 md:px-6.5 md:pb-5.75;
 	}
 	.accordion-mobile-filters {
 		@apply gap-0;
@@ -366,7 +374,7 @@
 		@apply rounded-none border-0 border-b border-b-[#323438];
 	}
 	.accordion-trigger-mobile-filters {
-		@apply border-b border-none border-b-[#323438];
+		@apply border-b border-none border-b-[#323438] px-4;
 	}
 	.accordion-mobile-filters-num {
 		@apply bg-primary flex aspect-square size-5 items-center justify-center rounded-full text-xs text-white;
@@ -615,10 +623,10 @@
 		@apply bg-primary flex h-full w-full items-center justify-center rounded-full text-[13px] font-medium text-[#3C1978] uppercase;
 	}
 	.profile-dropdown-menu {
-		@apply pointer-events-none invisible absolute top-full right-0 z-5 mt-3 w-45.5 origin-top-right rounded-[18px] bg-[#141416] p-2 opacity-0 transition duration-150 ease-out data-[open=true]:pointer-events-auto data-[open=true]:visible data-[open=true]:scale-100 data-[open=true]:opacity-100;
+		@apply pointer-events-none invisible absolute top-full right-0 z-5 mt-3 w-45.5 origin-top-right rounded-[14px] bg-[#141416] p-2 opacity-0 transition duration-150 ease-out data-[open=true]:pointer-events-auto data-[open=true]:visible data-[open=true]:scale-100 data-[open=true]:opacity-100;
 	}
 	.profile-dropdown-menu-link {
-		@apply flex items-center gap-2 rounded-lg p-2.75 text-sm text-white hover:bg-[#1E1E21] [.current]:bg-[#1E1E21];
+		@apply text-small flex items-center gap-3.5 rounded-lg p-2.75 text-white hover:bg-[#1E1E21] [.current]:bg-[#1E1E21];
 	}
 
 	.filter-dropdown-menu {
@@ -627,10 +635,10 @@
 
 	/* Profile menu */
 	.profile-menu-link {
-		@apply text-small flex items-center gap-3 rounded-lg p-2.5 font-medium text-white hover:bg-[#1D1E20] [.current]:bg-[#1D1E20];
+		@apply text-small flex items-center gap-3 rounded-[10px] p-2.5 font-medium text-white hover:bg-[#1D1E20] [.current]:bg-[#1D1E20];
 	}
 	.profile-menu-link-icon {
-		@apply border-secondary flex aspect-square size-9 items-center justify-center rounded border bg-[#141416] group-hover:bg-[#2F3033] group-[.current]:bg-[#2F3033];
+		@apply border-secondary flex aspect-square size-9 items-center justify-center rounded-md border bg-[#141416] group-hover:bg-[#2F3033] group-[.current]:border-[#2F3033] group-[.current]:bg-[#2F3033];
 	}
 }
 
@@ -715,5 +723,21 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-	background-color: #5a5b62; /* чуть светлее при наведении (по желанию) */
+	background-color: #5a5b62;
+}
+.sheet-content {
+	overscroll-behavior: contain;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.sheet-scroll {
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	touch-action: pan-y;
+}
+
+.sheet-content input,
+.sheet-content textarea {
+	user-select: text;
 }

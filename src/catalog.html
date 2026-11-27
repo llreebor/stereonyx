@@ -1517,13 +1517,13 @@
 			<!-- Main Content -->
 			<main class="relative flex-auto">
 				<!-- Catalog -->
-				<section class="pt-11 pb-21">
+				<section class="pt-9 pb-14 md:pt-11 md:pb-21">
 					<div class="container">
 						<h1 class="text-[28px] md:text-[34px]">Stereonyx Blog</h1>
 
 						<!-- Filters -->
 						<div
-							class="mt-10 grid grid-cols-2 gap-2 sm:gap-6 lg:flex lg:items-center lg:justify-between"
+							class="mt-6 grid grid-cols-2 gap-4 sm:gap-6 lg:flex lg:items-center lg:justify-between"
 						>
 							<!-- Genres & Versions & Plugin & Tags -->
 							<div class="w-full">
@@ -1531,6 +1531,7 @@
 								<div class="hidden items-center gap-3 lg:flex">
 									<!-- Icon -->
 									<img
+										class="mr-1"
 										src="./images/icons/filtres-icon.svg"
 										alt="filter icon"
 									/>
@@ -1567,7 +1568,7 @@
 														name="search-genres"
 														type="text"
 														placeholder="Search genres"
-														class="input-field focus:border-primary hover:border-primary border-[#45464C] px-2 py-1.5 text-[13px]"
+														class="input-field focus:border-primary border-[#45464C] bg-[#232426] px-2 py-1.5 text-[13px]"
 													/>
 
 													<!-- Error message (only visible when .error is applied on parent group) -->
@@ -1858,7 +1859,7 @@
 														name="search-versions"
 														type="text"
 														placeholder="Search versions"
-														class="input-field focus:border-primary hover:border-primary border-[#45464C] px-2 py-1.5 text-[13px]"
+														class="input-field focus:border-primary border-[#45464C] bg-[#232426] px-2 py-1.5 text-[13px]"
 													/>
 
 													<!-- Error message (only visible when .error is applied on parent group) -->
@@ -1969,7 +1970,7 @@
 														name="search-plugins"
 														type="text"
 														placeholder="Search plugins"
-														class="input-field focus:border-primary hover:border-primary border-[#45464C] px-2 py-1.5 text-[13px]"
+														class="input-field focus:border-primary border-[#45464C] bg-[#232426] px-2 py-1.5 text-[13px]"
 													/>
 
 													<!-- Error message (only visible when .error is applied on parent group) -->
@@ -2060,7 +2061,7 @@
 														name="search-tags"
 														type="text"
 														placeholder="Search tags"
-														class="input-field focus:border-primary hover:border-primary border-[#45464C] px-2 py-1.5 text-[13px]"
+														class="input-field focus:border-primary border-[#45464C] bg-[#232426] px-2 py-1.5 text-[13px]"
 													/>
 
 													<!-- Error message (only visible when .error is applied on parent group) -->
@@ -2121,7 +2122,9 @@
 
 								<!-- Mobile Filters -->
 								<div class="filters-mobile overflow-auto lg:hidden">
-									<button class="btn btn-sort-by btn-mobile-filters flex-row!">
+									<button
+										class="btn btn-sort-by btn-mobile-filters min-h-11 flex-row! md:min-h-auto"
+									>
 										<span class="order-2">Filters</span>
 
 										<img
@@ -2143,7 +2146,7 @@
 										<div
 											class="flex shrink-0 items-center justify-between gap-5 border-b border-[#323438] py-4.5 pr-2 pl-4"
 										>
-											<p>Filters</p>
+											<p class="text-lg font-medium">Filters</p>
 											<button
 												class="close-mobile-filters flex size-8 items-center justify-center"
 											>
@@ -2183,7 +2186,7 @@
 													<!-- Accrodion Content -->
 													<div class="accordion-content active">
 														<div class="overflow-hidden">
-															<div class="flex flex-col px-5">
+															<div class="flex flex-col px-4">
 																<!-- Search Input -->
 																<div class="input-group group">
 																	<!-- Input field -->
@@ -2194,7 +2197,7 @@
 																		name="search-genres-mobile"
 																		type="text"
 																		placeholder="Search genres"
-																		class="input-field placeholder:text-gray-light focus:border-primary hover:border-primary bg-secondary border-[#45464C] px-2 py-1.5 text-[13px]"
+																		class="input-field placeholder:text-gray focus:border-primary hover:border-primary bg-secondary border-[#45464C] px-3.25 py-1.75 text-[13px]"
 																	/>
 
 																	<!-- Error message (only visible when .error is applied on parent group) -->
@@ -2204,7 +2207,7 @@
 																</div>
 
 																<!-- Checkboxes -->
-																<div class="mt-1.75">
+																<div class="mt-1.75 pb-5">
 																	<div
 																		class="checkbox-group group/checkbox input-group group"
 																	>
@@ -2477,7 +2480,7 @@
 													<!-- Accrodion Content -->
 													<div class="accordion-content">
 														<div class="overflow-hidden">
-															<div class="flex flex-col px-5">
+															<div class="flex flex-col px-4">
 																<!-- Search Input -->
 																<div class="input-group group">
 																	<!-- Input field -->
@@ -2498,7 +2501,7 @@
 																</div>
 
 																<!-- Checkboxes -->
-																<div class="mt-1.75">
+																<div class="mt-1.75 pb-5">
 																	<div
 																		class="checkbox-group group/checkbox input-group group"
 																	>
@@ -2771,7 +2774,7 @@
 													<!-- Accrodion Content -->
 													<div class="accordion-content">
 														<div class="overflow-hidden">
-															<div class="flex flex-col px-5">
+															<div class="flex flex-col px-4">
 																<!-- Search Input -->
 																<div class="input-group group">
 																	<!-- Input field -->
@@ -2792,7 +2795,7 @@
 																</div>
 
 																<!-- Checkboxes -->
-																<div class="mt-1.75">
+																<div class="mt-1.75 pb-5">
 																	<div
 																		class="checkbox-group group/checkbox input-group group"
 																	>
@@ -3065,7 +3068,7 @@
 													<!-- Accrodion Content -->
 													<div class="accordion-content">
 														<div class="overflow-hidden">
-															<div class="flex flex-col px-5">
+															<div class="flex flex-col px-4">
 																<!-- Search Input -->
 																<div class="input-group group">
 																	<!-- Input field -->
@@ -3086,7 +3089,7 @@
 																</div>
 
 																<!-- Checkboxes -->
-																<div class="mt-1.75">
+																<div class="mt-1.75 pb-5">
 																	<div
 																		class="checkbox-group group/checkbox input-group group"
 																	>
@@ -3337,15 +3340,15 @@
 
 										<!-- Footer -->
 										<div
-											class="bg-secondary grid shrink-0 grid-cols-2 gap-4 p-4"
+											class="bg-secondary grid shrink-0 grid-cols-2 gap-4 border-t border-t-[#323438] p-4"
 										>
 											<button
-												class="btn btn-secondary clear-mobile-filters bg-[#343538]"
+												class="btn btn-secondary text-small clear-mobile-filters min-h-12 bg-[#343538]"
 											>
 												Clear all
 											</button>
 											<button
-												class="btn btn-primary show-result-mobile-filters"
+												class="btn btn-primary text-small show-result-mobile-filters min-h-12"
 											>
 												Show results
 											</button>
@@ -3362,16 +3365,25 @@
 										data-dropdown-trigger
 										aria-haspopup="menu"
 										aria-expanded="false"
-										class="btn btn-sort-by shrink-0"
+										class="btn btn-sort-by min-h-11 shrink-0 md:min-h-auto"
 									>
 										Most Popular
-										<img src="./images/icons/sort-by-icon.png" alt="icon" />
+										<img
+											class="hidden md:block"
+											src="./images/icons/sort-by-icon.svg"
+											alt="icon"
+										/>
+										<img
+											class="md:hidden"
+											src="./images/icons/sort-by-arrows.svg"
+											alt="icon"
+										/>
 									</button>
 
 									<!-- Desktop: dropdown -->
 									<div
 										data-dropdown-menu
-										class="profile-dropdown-menu bg-secondary rounded-[14px] px-1 py-2"
+										class="profile-dropdown-menu bg-secondary mt-1.5 rounded-[14px] px-1.75 py-2"
 									>
 										<p class="text-gray mb-1 px-2.5 pt-2 text-xs">Sort by</p>
 										<div
@@ -3524,7 +3536,7 @@
 										class="sheet-wrapper"
 										data-sheet-mobile-only
 									>
-										<div class="sheet-content h-auto px-0">
+										<div class="sheet-content bg-secondary h-auto px-0 pb-0">
 											<div
 												class="flex items-center justify-between px-4 py-1 pr-1"
 											>
@@ -3574,7 +3586,7 @@
 						</div>
 
 						<ul
-							class="mt-8 grid grid-cols-2 gap-5 md:mt-11 md:grid-cols-3 lg:grid-cols-5 lg:gap-9.5"
+							class="mt-4 grid grid-cols-2 gap-5 md:mt-7 md:grid-cols-3 lg:grid-cols-5 lg:gap-6"
 						>
 							<li>
 								<!-- Card -->
@@ -5918,7 +5930,7 @@
 
 						<!-- Pagination -->
 						<nav
-							class="pagination mx-auto mt-19 max-w-fit"
+							class="pagination mx-auto mt-12 max-w-fit lg:mt-19"
 							role="navigation"
 							aria-label="Pagination"
 						>
