@@ -3435,7 +3435,7 @@
     overflow-y: auto;
   }
   .sticky-track {
-    position: sticky;
+    position: fixed;
     bottom: 0px;
     left: 0px;
     z-index: 5;
