@@ -64,13 +64,13 @@
 				</div>
 
 				<!-- Header  -->
-				<header class="z-10 border-b border-b-[#181A1D] py-4">
+				<header class="z-10 border-b border-b-[#181A1D] py-4 md:py-5">
 					<div class="container">
 						<div class="flex w-full items-center">
 							<!-- Logo -->
 							<a href="#" class="order-1">
 								<img
-									class="max-w-28 min-[374px]:max-w-fit min-[1170px]:max-w-38.5! lg:max-w-29"
+									class="max-w-30 min-[374px]:max-w-fit min-[1170px]:max-w-38.5! lg:max-w-29"
 									src="./images/global/logo.svg"
 									alt="logo image"
 								/>
@@ -500,7 +500,7 @@
 
 							<!-- Action Buttons -->
 							<div
-								class="order-3 ml-5 flex items-center gap-3 min-[374px]:gap-5.5 lg:ml-auto"
+								class="order-3 ml-3 flex items-center gap-3 min-[374px]:gap-5.5 md:ml-5 lg:ml-auto"
 							>
 								<!-- Search Button -->
 								<button type="button" data-search-open aria-label="Open search">
@@ -620,7 +620,7 @@
 								class="order-2 ml-auto flex items-center gap-2 lg:order-4 lg:ml-8.5"
 							>
 								<!-- Login & SignUp -->
-								<div class="hidden items-center gap-2">
+								<div class="items-center gap-2">
 									<button
 										data-modal="modal-login"
 										class="btn btn-secondary-outline"
@@ -633,7 +633,7 @@
 								</div>
 
 								<!-- Profile Button -->
-								<div class="relative" data-dropdown>
+								<div class="relative hidden" data-dropdown>
 									<button
 										type="button"
 										data-sheet="profile-sheet"
@@ -3640,7 +3640,7 @@
 								<div class="card">
 									<!-- Card Content -->
 									<!-- Image & Price -->
-									<div class="card-top group">
+									<a href="#" class="card-top group">
 										<!-- Label Promo -->
 										<div class="card-label-promo">Promo</div>
 										<!-- Image -->
@@ -3738,7 +3738,7 @@
 												</svg>
 											</button>
 											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 											>
 												<svg
 													class="pointer-events-none"
@@ -3758,7 +3758,7 @@
 												</svg>
 											</button>
 										</div>
-									</div>
+									</a>
 
 									<!-- Title & Text -->
 									<a href="./product.html" class="group mt-3 flex flex-col">
@@ -3770,7 +3770,7 @@
 
 									<!-- Price & Buy mobile -->
 									<div
-										class="flex w-full items-center justify-between md:hidden"
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
 									>
 										<p class="card-price">$4.50</p>
 										<button
@@ -3807,174 +3807,7 @@
 								<div class="card">
 									<!-- Card Content -->
 									<!-- Image & Price -->
-									<div class="card-top group">
-										<!-- Label Promo -->
-										<div class="card-label-exclusive">Exclusive</div>
-										<!-- Image -->
-										<img
-											class="card-image"
-											src="./images/global/card-image.png"
-											alt="card image"
-										/>
-
-										<!-- Price & Buy desktop -->
-										<div
-											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
-										>
-											<p class="card-price">$4.50</p>
-											<button
-												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
-											>
-												<svg
-													width="16"
-													height="15"
-													viewBox="0 0 16 15"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-														stroke-width="1.4"
-														stroke-miterlimit="10"
-														stroke="white"
-													/>
-													<path
-														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-														fill="white"
-													/>
-													<path
-														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-														fill="white"
-													/>
-												</svg>
-											</button>
-										</div>
-
-										<!-- Overlay -->
-										<div class="card-overlay">
-											<button
-												class="play-btn group paused"
-												data-track-src="./audio/audio.mp3"
-												data-track-title="CamelPhat, Josh Gigante..."
-												data-track-subtitle="Sample pack"
-												aria-pressed="false"
-											>
-												<svg
-													class="pointer-events-none ml-1 hidden group-[.paused]:block"
-													width="13"
-													height="18"
-													viewBox="0 0 13 18"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
-														fill="white"
-													/>
-												</svg>
-
-												<svg
-													viewBox="0 0 36 36"
-													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
-												>
-													<rect
-														class="clr-i-solid clr-i-solid-path-1"
-														x="3.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														class="clr-i-solid clr-i-solid-path-2"
-														x="20.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														x="0"
-														y="0"
-														width="36"
-														height="36"
-														fill-opacity="0"
-													></rect>
-												</svg>
-											</button>
-											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
-											>
-												<svg
-													class="pointer-events-none"
-													width="19"
-													height="17"
-													viewBox="0 0 19 17"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														class="group-[.favorite]:fill-white"
-														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
-														stroke-width="1.5"
-														stroke-linecap="round"
-														stroke="white"
-													/>
-												</svg>
-											</button>
-										</div>
-									</div>
-
-									<!-- Title & Text -->
-									<a href="./product.html" class="group mt-3 flex flex-col">
-										<h4 class="card-title">
-											CamelPhat, Josh Gigante - So Good Ableton Remake
-										</h4>
-										<p class="card-text">Sample pack</p>
-									</a>
-
-									<!-- Price & Buy mobile -->
-									<div
-										class="flex w-full items-center justify-between md:hidden"
-									>
-										<p class="card-price">$4.50</p>
-										<button
-											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
-										>
-											<svg
-												width="16"
-												height="15"
-												viewBox="0 0 16 15"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-													stroke-width="1.4"
-													stroke-miterlimit="10"
-													stroke="white"
-												/>
-												<path
-													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-													fill="white"
-												/>
-												<path
-													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-													fill="white"
-												/>
-											</svg>
-										</button>
-									</div>
-								</div>
-							</li>
-							<li>
-								<!-- Card -->
-								<div class="card">
-									<!-- Card Content -->
-									<!-- Image & Price -->
-									<div class="card-top group">
+									<a href="#" class="card-top group">
 										<!-- Label Promo -->
 										<div class="card-label-promo">Promo</div>
 										<!-- Image -->
@@ -4072,7 +3905,7 @@
 												</svg>
 											</button>
 											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 											>
 												<svg
 													class="pointer-events-none"
@@ -4092,7 +3925,7 @@
 												</svg>
 											</button>
 										</div>
-									</div>
+									</a>
 
 									<!-- Title & Text -->
 									<a href="./product.html" class="group mt-3 flex flex-col">
@@ -4104,7 +3937,7 @@
 
 									<!-- Price & Buy mobile -->
 									<div
-										class="flex w-full items-center justify-between md:hidden"
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
 									>
 										<p class="card-price">$4.50</p>
 										<button
@@ -4141,174 +3974,7 @@
 								<div class="card">
 									<!-- Card Content -->
 									<!-- Image & Price -->
-									<div class="card-top group">
-										<!-- Label Promo -->
-										<div class="card-label-exclusive">Exclusive</div>
-										<!-- Image -->
-										<img
-											class="card-image"
-											src="./images/global/card-image.png"
-											alt="card image"
-										/>
-
-										<!-- Price & Buy desktop -->
-										<div
-											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
-										>
-											<p class="card-price">$4.50</p>
-											<button
-												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
-											>
-												<svg
-													width="16"
-													height="15"
-													viewBox="0 0 16 15"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-														stroke-width="1.4"
-														stroke-miterlimit="10"
-														stroke="white"
-													/>
-													<path
-														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-														fill="white"
-													/>
-													<path
-														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-														fill="white"
-													/>
-												</svg>
-											</button>
-										</div>
-
-										<!-- Overlay -->
-										<div class="card-overlay">
-											<button
-												class="play-btn group paused"
-												data-track-src="./audio/audio.mp3"
-												data-track-title="CamelPhat, Josh Gigante..."
-												data-track-subtitle="Sample pack"
-												aria-pressed="false"
-											>
-												<svg
-													class="pointer-events-none ml-1 hidden group-[.paused]:block"
-													width="13"
-													height="18"
-													viewBox="0 0 13 18"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
-														fill="white"
-													/>
-												</svg>
-
-												<svg
-													viewBox="0 0 36 36"
-													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
-												>
-													<rect
-														class="clr-i-solid clr-i-solid-path-1"
-														x="3.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														class="clr-i-solid clr-i-solid-path-2"
-														x="20.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														x="0"
-														y="0"
-														width="36"
-														height="36"
-														fill-opacity="0"
-													></rect>
-												</svg>
-											</button>
-											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
-											>
-												<svg
-													class="pointer-events-none"
-													width="19"
-													height="17"
-													viewBox="0 0 19 17"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														class="group-[.favorite]:fill-white"
-														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
-														stroke-width="1.5"
-														stroke-linecap="round"
-														stroke="white"
-													/>
-												</svg>
-											</button>
-										</div>
-									</div>
-
-									<!-- Title & Text -->
-									<a href="./product.html" class="group mt-3 flex flex-col">
-										<h4 class="card-title">
-											CamelPhat, Josh Gigante - So Good Ableton Remake
-										</h4>
-										<p class="card-text">Sample pack</p>
-									</a>
-
-									<!-- Price & Buy mobile -->
-									<div
-										class="flex w-full items-center justify-between md:hidden"
-									>
-										<p class="card-price">$4.50</p>
-										<button
-											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
-										>
-											<svg
-												width="16"
-												height="15"
-												viewBox="0 0 16 15"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-													stroke-width="1.4"
-													stroke-miterlimit="10"
-													stroke="white"
-												/>
-												<path
-													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-													fill="white"
-												/>
-												<path
-													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-													fill="white"
-												/>
-											</svg>
-										</button>
-									</div>
-								</div>
-							</li>
-							<li>
-								<!-- Card -->
-								<div class="card">
-									<!-- Card Content -->
-									<!-- Image & Price -->
-									<div class="card-top group">
+									<a href="#" class="card-top group">
 										<!-- Label Promo -->
 										<div class="card-label-promo">Promo</div>
 										<!-- Image -->
@@ -4406,7 +4072,7 @@
 												</svg>
 											</button>
 											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 											>
 												<svg
 													class="pointer-events-none"
@@ -4426,7 +4092,7 @@
 												</svg>
 											</button>
 										</div>
-									</div>
+									</a>
 
 									<!-- Title & Text -->
 									<a href="./product.html" class="group mt-3 flex flex-col">
@@ -4438,7 +4104,7 @@
 
 									<!-- Price & Buy mobile -->
 									<div
-										class="flex w-full items-center justify-between md:hidden"
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
 									>
 										<p class="card-price">$4.50</p>
 										<button
@@ -4475,174 +4141,7 @@
 								<div class="card">
 									<!-- Card Content -->
 									<!-- Image & Price -->
-									<div class="card-top group">
-										<!-- Label Promo -->
-										<div class="card-label-exclusive">Exclusive</div>
-										<!-- Image -->
-										<img
-											class="card-image"
-											src="./images/global/card-image.png"
-											alt="card image"
-										/>
-
-										<!-- Price & Buy desktop -->
-										<div
-											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
-										>
-											<p class="card-price">$4.50</p>
-											<button
-												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
-											>
-												<svg
-													width="16"
-													height="15"
-													viewBox="0 0 16 15"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-														stroke-width="1.4"
-														stroke-miterlimit="10"
-														stroke="white"
-													/>
-													<path
-														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-														fill="white"
-													/>
-													<path
-														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-														fill="white"
-													/>
-												</svg>
-											</button>
-										</div>
-
-										<!-- Overlay -->
-										<div class="card-overlay">
-											<button
-												class="play-btn group paused"
-												data-track-src="./audio/audio.mp3"
-												data-track-title="CamelPhat, Josh Gigante..."
-												data-track-subtitle="Sample pack"
-												aria-pressed="false"
-											>
-												<svg
-													class="pointer-events-none ml-1 hidden group-[.paused]:block"
-													width="13"
-													height="18"
-													viewBox="0 0 13 18"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
-														fill="white"
-													/>
-												</svg>
-
-												<svg
-													viewBox="0 0 36 36"
-													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
-												>
-													<rect
-														class="clr-i-solid clr-i-solid-path-1"
-														x="3.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														class="clr-i-solid clr-i-solid-path-2"
-														x="20.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														x="0"
-														y="0"
-														width="36"
-														height="36"
-														fill-opacity="0"
-													></rect>
-												</svg>
-											</button>
-											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
-											>
-												<svg
-													class="pointer-events-none"
-													width="19"
-													height="17"
-													viewBox="0 0 19 17"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														class="group-[.favorite]:fill-white"
-														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
-														stroke-width="1.5"
-														stroke-linecap="round"
-														stroke="white"
-													/>
-												</svg>
-											</button>
-										</div>
-									</div>
-
-									<!-- Title & Text -->
-									<a href="./product.html" class="group mt-3 flex flex-col">
-										<h4 class="card-title">
-											CamelPhat, Josh Gigante - So Good Ableton Remake
-										</h4>
-										<p class="card-text">Sample pack</p>
-									</a>
-
-									<!-- Price & Buy mobile -->
-									<div
-										class="flex w-full items-center justify-between md:hidden"
-									>
-										<p class="card-price">$4.50</p>
-										<button
-											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
-										>
-											<svg
-												width="16"
-												height="15"
-												viewBox="0 0 16 15"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-													stroke-width="1.4"
-													stroke-miterlimit="10"
-													stroke="white"
-												/>
-												<path
-													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-													fill="white"
-												/>
-												<path
-													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-													fill="white"
-												/>
-											</svg>
-										</button>
-									</div>
-								</div>
-							</li>
-							<li>
-								<!-- Card -->
-								<div class="card">
-									<!-- Card Content -->
-									<!-- Image & Price -->
-									<div class="card-top group">
+									<a href="#" class="card-top group">
 										<!-- Label Promo -->
 										<div class="card-label-promo">Promo</div>
 										<!-- Image -->
@@ -4740,7 +4239,7 @@
 												</svg>
 											</button>
 											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 											>
 												<svg
 													class="pointer-events-none"
@@ -4760,7 +4259,7 @@
 												</svg>
 											</button>
 										</div>
-									</div>
+									</a>
 
 									<!-- Title & Text -->
 									<a href="./product.html" class="group mt-3 flex flex-col">
@@ -4772,7 +4271,7 @@
 
 									<!-- Price & Buy mobile -->
 									<div
-										class="flex w-full items-center justify-between md:hidden"
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
 									>
 										<p class="card-price">$4.50</p>
 										<button
@@ -4809,174 +4308,7 @@
 								<div class="card">
 									<!-- Card Content -->
 									<!-- Image & Price -->
-									<div class="card-top group">
-										<!-- Label Promo -->
-										<div class="card-label-exclusive">Exclusive</div>
-										<!-- Image -->
-										<img
-											class="card-image"
-											src="./images/global/card-image.png"
-											alt="card image"
-										/>
-
-										<!-- Price & Buy desktop -->
-										<div
-											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
-										>
-											<p class="card-price">$4.50</p>
-											<button
-												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
-											>
-												<svg
-													width="16"
-													height="15"
-													viewBox="0 0 16 15"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-														stroke-width="1.4"
-														stroke-miterlimit="10"
-														stroke="white"
-													/>
-													<path
-														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-														fill="white"
-													/>
-													<path
-														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-														fill="white"
-													/>
-												</svg>
-											</button>
-										</div>
-
-										<!-- Overlay -->
-										<div class="card-overlay">
-											<button
-												class="play-btn group paused"
-												data-track-src="./audio/audio.mp3"
-												data-track-title="CamelPhat, Josh Gigante..."
-												data-track-subtitle="Sample pack"
-												aria-pressed="false"
-											>
-												<svg
-													class="pointer-events-none ml-1 hidden group-[.paused]:block"
-													width="13"
-													height="18"
-													viewBox="0 0 13 18"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
-														fill="white"
-													/>
-												</svg>
-
-												<svg
-													viewBox="0 0 36 36"
-													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
-												>
-													<rect
-														class="clr-i-solid clr-i-solid-path-1"
-														x="3.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														class="clr-i-solid clr-i-solid-path-2"
-														x="20.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														x="0"
-														y="0"
-														width="36"
-														height="36"
-														fill-opacity="0"
-													></rect>
-												</svg>
-											</button>
-											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
-											>
-												<svg
-													class="pointer-events-none"
-													width="19"
-													height="17"
-													viewBox="0 0 19 17"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														class="group-[.favorite]:fill-white"
-														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
-														stroke-width="1.5"
-														stroke-linecap="round"
-														stroke="white"
-													/>
-												</svg>
-											</button>
-										</div>
-									</div>
-
-									<!-- Title & Text -->
-									<a href="./product.html" class="group mt-3 flex flex-col">
-										<h4 class="card-title">
-											CamelPhat, Josh Gigante - So Good Ableton Remake
-										</h4>
-										<p class="card-text">Sample pack</p>
-									</a>
-
-									<!-- Price & Buy mobile -->
-									<div
-										class="flex w-full items-center justify-between md:hidden"
-									>
-										<p class="card-price">$4.50</p>
-										<button
-											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
-										>
-											<svg
-												width="16"
-												height="15"
-												viewBox="0 0 16 15"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-													stroke-width="1.4"
-													stroke-miterlimit="10"
-													stroke="white"
-												/>
-												<path
-													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-													fill="white"
-												/>
-												<path
-													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-													fill="white"
-												/>
-											</svg>
-										</button>
-									</div>
-								</div>
-							</li>
-							<li>
-								<!-- Card -->
-								<div class="card">
-									<!-- Card Content -->
-									<!-- Image & Price -->
-									<div class="card-top group">
+									<a href="#" class="card-top group">
 										<!-- Label Promo -->
 										<div class="card-label-promo">Promo</div>
 										<!-- Image -->
@@ -5074,7 +4406,7 @@
 												</svg>
 											</button>
 											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 											>
 												<svg
 													class="pointer-events-none"
@@ -5094,7 +4426,7 @@
 												</svg>
 											</button>
 										</div>
-									</div>
+									</a>
 
 									<!-- Title & Text -->
 									<a href="./product.html" class="group mt-3 flex flex-col">
@@ -5106,7 +4438,7 @@
 
 									<!-- Price & Buy mobile -->
 									<div
-										class="flex w-full items-center justify-between md:hidden"
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
 									>
 										<p class="card-price">$4.50</p>
 										<button
@@ -5143,174 +4475,7 @@
 								<div class="card">
 									<!-- Card Content -->
 									<!-- Image & Price -->
-									<div class="card-top group">
-										<!-- Label Promo -->
-										<div class="card-label-exclusive">Exclusive</div>
-										<!-- Image -->
-										<img
-											class="card-image"
-											src="./images/global/card-image.png"
-											alt="card image"
-										/>
-
-										<!-- Price & Buy desktop -->
-										<div
-											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
-										>
-											<p class="card-price">$4.50</p>
-											<button
-												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
-											>
-												<svg
-													width="16"
-													height="15"
-													viewBox="0 0 16 15"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-														stroke-width="1.4"
-														stroke-miterlimit="10"
-														stroke="white"
-													/>
-													<path
-														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-														fill="white"
-													/>
-													<path
-														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-														fill="white"
-													/>
-												</svg>
-											</button>
-										</div>
-
-										<!-- Overlay -->
-										<div class="card-overlay">
-											<button
-												class="play-btn group paused"
-												data-track-src="./audio/audio.mp3"
-												data-track-title="CamelPhat, Josh Gigante..."
-												data-track-subtitle="Sample pack"
-												aria-pressed="false"
-											>
-												<svg
-													class="pointer-events-none ml-1 hidden group-[.paused]:block"
-													width="13"
-													height="18"
-													viewBox="0 0 13 18"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
-														fill="white"
-													/>
-												</svg>
-
-												<svg
-													viewBox="0 0 36 36"
-													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
-												>
-													<rect
-														class="clr-i-solid clr-i-solid-path-1"
-														x="3.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														class="clr-i-solid clr-i-solid-path-2"
-														x="20.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														x="0"
-														y="0"
-														width="36"
-														height="36"
-														fill-opacity="0"
-													></rect>
-												</svg>
-											</button>
-											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
-											>
-												<svg
-													class="pointer-events-none"
-													width="19"
-													height="17"
-													viewBox="0 0 19 17"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														class="group-[.favorite]:fill-white"
-														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
-														stroke-width="1.5"
-														stroke-linecap="round"
-														stroke="white"
-													/>
-												</svg>
-											</button>
-										</div>
-									</div>
-
-									<!-- Title & Text -->
-									<a href="./product.html" class="group mt-3 flex flex-col">
-										<h4 class="card-title">
-											CamelPhat, Josh Gigante - So Good Ableton Remake
-										</h4>
-										<p class="card-text">Sample pack</p>
-									</a>
-
-									<!-- Price & Buy mobile -->
-									<div
-										class="flex w-full items-center justify-between md:hidden"
-									>
-										<p class="card-price">$4.50</p>
-										<button
-											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
-										>
-											<svg
-												width="16"
-												height="15"
-												viewBox="0 0 16 15"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-													stroke-width="1.4"
-													stroke-miterlimit="10"
-													stroke="white"
-												/>
-												<path
-													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-													fill="white"
-												/>
-												<path
-													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-													fill="white"
-												/>
-											</svg>
-										</button>
-									</div>
-								</div>
-							</li>
-							<li>
-								<!-- Card -->
-								<div class="card">
-									<!-- Card Content -->
-									<!-- Image & Price -->
-									<div class="card-top group">
+									<a href="#" class="card-top group">
 										<!-- Label Promo -->
 										<div class="card-label-promo">Promo</div>
 										<!-- Image -->
@@ -5408,7 +4573,7 @@
 												</svg>
 											</button>
 											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 											>
 												<svg
 													class="pointer-events-none"
@@ -5428,7 +4593,7 @@
 												</svg>
 											</button>
 										</div>
-									</div>
+									</a>
 
 									<!-- Title & Text -->
 									<a href="./product.html" class="group mt-3 flex flex-col">
@@ -5440,7 +4605,7 @@
 
 									<!-- Price & Buy mobile -->
 									<div
-										class="flex w-full items-center justify-between md:hidden"
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
 									>
 										<p class="card-price">$4.50</p>
 										<button
@@ -5477,174 +4642,7 @@
 								<div class="card">
 									<!-- Card Content -->
 									<!-- Image & Price -->
-									<div class="card-top group">
-										<!-- Label Promo -->
-										<div class="card-label-exclusive">Exclusive</div>
-										<!-- Image -->
-										<img
-											class="card-image"
-											src="./images/global/card-image.png"
-											alt="card image"
-										/>
-
-										<!-- Price & Buy desktop -->
-										<div
-											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
-										>
-											<p class="card-price">$4.50</p>
-											<button
-												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
-											>
-												<svg
-													width="16"
-													height="15"
-													viewBox="0 0 16 15"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-														stroke-width="1.4"
-														stroke-miterlimit="10"
-														stroke="white"
-													/>
-													<path
-														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-														fill="white"
-													/>
-													<path
-														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-														fill="white"
-													/>
-												</svg>
-											</button>
-										</div>
-
-										<!-- Overlay -->
-										<div class="card-overlay">
-											<button
-												class="play-btn group paused"
-												data-track-src="./audio/audio.mp3"
-												data-track-title="CamelPhat, Josh Gigante..."
-												data-track-subtitle="Sample pack"
-												aria-pressed="false"
-											>
-												<svg
-													class="pointer-events-none ml-1 hidden group-[.paused]:block"
-													width="13"
-													height="18"
-													viewBox="0 0 13 18"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
-														fill="white"
-													/>
-												</svg>
-
-												<svg
-													viewBox="0 0 36 36"
-													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
-												>
-													<rect
-														class="clr-i-solid clr-i-solid-path-1"
-														x="3.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														class="clr-i-solid clr-i-solid-path-2"
-														x="20.95"
-														y="4"
-														width="11"
-														height="28"
-														rx="2.07"
-														ry="2.07"
-													></rect>
-													<rect
-														x="0"
-														y="0"
-														width="36"
-														height="36"
-														fill-opacity="0"
-													></rect>
-												</svg>
-											</button>
-											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
-											>
-												<svg
-													class="pointer-events-none"
-													width="19"
-													height="17"
-													viewBox="0 0 19 17"
-													fill="none"
-													xmlns="http://www.w3.org/2000/svg"
-												>
-													<path
-														class="group-[.favorite]:fill-white"
-														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
-														stroke-width="1.5"
-														stroke-linecap="round"
-														stroke="white"
-													/>
-												</svg>
-											</button>
-										</div>
-									</div>
-
-									<!-- Title & Text -->
-									<a href="./product.html" class="group mt-3 flex flex-col">
-										<h4 class="card-title">
-											CamelPhat, Josh Gigante - So Good Ableton Remake
-										</h4>
-										<p class="card-text">Sample pack</p>
-									</a>
-
-									<!-- Price & Buy mobile -->
-									<div
-										class="flex w-full items-center justify-between md:hidden"
-									>
-										<p class="card-price">$4.50</p>
-										<button
-											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
-										>
-											<svg
-												width="16"
-												height="15"
-												viewBox="0 0 16 15"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
-													stroke-width="1.4"
-													stroke-miterlimit="10"
-													stroke="white"
-												/>
-												<path
-													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
-													fill="white"
-												/>
-												<path
-													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
-													fill="white"
-												/>
-											</svg>
-										</button>
-									</div>
-								</div>
-							</li>
-							<li>
-								<!-- Card -->
-								<div class="card">
-									<!-- Card Content -->
-									<!-- Image & Price -->
-									<div class="card-top group">
+									<a href="#" class="card-top group">
 										<!-- Label Promo -->
 										<div class="card-label-promo">Promo</div>
 										<!-- Image -->
@@ -5742,7 +4740,7 @@
 												</svg>
 											</button>
 											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 											>
 												<svg
 													class="pointer-events-none"
@@ -5762,7 +4760,7 @@
 												</svg>
 											</button>
 										</div>
-									</div>
+									</a>
 
 									<!-- Title & Text -->
 									<a href="./product.html" class="group mt-3 flex flex-col">
@@ -5774,7 +4772,7 @@
 
 									<!-- Price & Buy mobile -->
 									<div
-										class="flex w-full items-center justify-between md:hidden"
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
 									>
 										<p class="card-price">$4.50</p>
 										<button
@@ -5811,9 +4809,9 @@
 								<div class="card">
 									<!-- Card Content -->
 									<!-- Image & Price -->
-									<div class="card-top group">
+									<a href="#" class="card-top group">
 										<!-- Label Promo -->
-										<div class="card-label-exclusive">Exclusive</div>
+										<div class="card-label-promo">Promo</div>
 										<!-- Image -->
 										<img
 											class="card-image"
@@ -5909,7 +4907,7 @@
 												</svg>
 											</button>
 											<button
-												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full md:flex md:size-13.25"
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
 											>
 												<svg
 													class="pointer-events-none"
@@ -5929,7 +4927,7 @@
 												</svg>
 											</button>
 										</div>
-									</div>
+									</a>
 
 									<!-- Title & Text -->
 									<a href="./product.html" class="group mt-3 flex flex-col">
@@ -5941,7 +4939,675 @@
 
 									<!-- Price & Buy mobile -->
 									<div
-										class="flex w-full items-center justify-between md:hidden"
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<a href="#" class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-promo">Promo</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</a>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<a href="#" class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-promo">Promo</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</a>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<a href="#" class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-promo">Promo</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</a>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
+									>
+										<p class="card-price">$4.50</p>
+										<button
+											class="hover:bg-gray-dark/80 bg-gray-dark flex aspect-square size-8 items-center justify-center rounded-full"
+										>
+											<svg
+												width="16"
+												height="15"
+												viewBox="0 0 16 15"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+													stroke-width="1.4"
+													stroke-miterlimit="10"
+													stroke="white"
+												/>
+												<path
+													d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+													fill="white"
+												/>
+												<path
+													d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- Card -->
+								<div class="card">
+									<!-- Card Content -->
+									<!-- Image & Price -->
+									<a href="#" class="card-top group">
+										<!-- Label Promo -->
+										<div class="card-label-promo">Promo</div>
+										<!-- Image -->
+										<img
+											class="card-image"
+											src="./images/global/card-image.png"
+											alt="card image"
+										/>
+
+										<!-- Price & Buy desktop -->
+										<div
+											class="absolute bottom-0 left-0 z-20 hidden w-full items-center justify-between p-3 md:flex"
+										>
+											<p class="card-price">$4.50</p>
+											<button
+												class="bg-gray-dark hover:bg-gray-dark/80 flex aspect-square size-8 items-center justify-center rounded-full"
+											>
+												<svg
+													width="16"
+													height="15"
+													viewBox="0 0 16 15"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M0 0.700195H2.54211L4.2 10.0949H12.3368L14.5 3.53704H3.04273"
+														stroke-width="1.4"
+														stroke-miterlimit="10"
+														stroke="white"
+													/>
+													<path
+														d="M11.2127 14.6999C11.8944 14.6999 12.4469 14.1473 12.4469 13.4657C12.4469 12.784 11.8944 12.2314 11.2127 12.2314C10.5311 12.2314 9.97852 12.784 9.97852 13.4657C9.97852 14.1473 10.5311 14.6999 11.2127 14.6999Z"
+														fill="white"
+													/>
+													<path
+														d="M5.43343 14.6999C6.11507 14.6999 6.66764 14.1473 6.66764 13.4657C6.66764 12.784 6.11507 12.2314 5.43343 12.2314C4.75179 12.2314 4.19922 12.784 4.19922 13.4657C4.19922 14.1473 4.75179 14.6999 5.43343 14.6999Z"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</div>
+
+										<!-- Overlay -->
+										<div class="card-overlay">
+											<button
+												class="play-btn group paused"
+												data-track-src="./audio/audio.mp3"
+												data-track-title="CamelPhat, Josh Gigante..."
+												data-track-subtitle="Sample pack"
+												aria-pressed="false"
+											>
+												<svg
+													class="pointer-events-none ml-1 hidden group-[.paused]:block"
+													width="13"
+													height="18"
+													viewBox="0 0 13 18"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M12.5806 8.71588L-7.90222e-05 17.432L-7.82602e-05 -0.000243737L12.5806 8.71588Z"
+														fill="white"
+													/>
+												</svg>
+
+												<svg
+													viewBox="0 0 36 36"
+													class="pointer-events-none block w-4.5 fill-white group-[.paused]:hidden"
+												>
+													<rect
+														class="clr-i-solid clr-i-solid-path-1"
+														x="3.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														class="clr-i-solid clr-i-solid-path-2"
+														x="20.95"
+														y="4"
+														width="11"
+														height="28"
+														rx="2.07"
+														ry="2.07"
+													></rect>
+													<rect
+														x="0"
+														y="0"
+														width="36"
+														height="36"
+														fill-opacity="0"
+													></rect>
+												</svg>
+											</button>
+											<button
+												class="bg-gray-dark favorite-button group hidden size-9 items-center justify-center rounded-full lg:flex lg:size-13.25"
+											>
+												<svg
+													class="pointer-events-none"
+													width="19"
+													height="17"
+													viewBox="0 0 19 17"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														class="group-[.favorite]:fill-white"
+														d="M16.5126 2.02286C14.8074 0.325713 11.9655 0.325713 10.1792 2.02286L9.28602 2.91184L8.39286 2.02286C6.68772 0.325713 3.84582 0.325713 2.05948 2.02286C0.273144 3.72001 0.354341 6.54859 2.05948 8.32655L2.95265 9.21554L9.28602 15.5192L15.6194 9.21554L16.5126 8.32655C18.2177 6.54859 18.2177 3.80083 16.5126 2.02286Z"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke="white"
+													/>
+												</svg>
+											</button>
+										</div>
+									</a>
+
+									<!-- Title & Text -->
+									<a href="./product.html" class="group mt-3 flex flex-col">
+										<h4 class="card-title">
+											CamelPhat, Josh Gigante - So Good Ableton Remake
+										</h4>
+										<p class="card-text">Sample pack</p>
+									</a>
+
+									<!-- Price & Buy mobile -->
+									<div
+										class="mt-1.25 flex w-full items-center justify-between md:hidden"
 									>
 										<p class="card-price">$4.50</p>
 										<button
@@ -6066,16 +5732,20 @@
 
 					<!-- Form -->
 					<form action="#" class="mt-7 space-y-4">
+						<!-- Alert -->
+						<div class="alert">
+							<p class="alert-text">Incorrect email or password</p>
+						</div>
 						<!-- [START] HTML Input -->
 						<!-- Input group wrapper (use .error or .success class for validation errors) -->
-						<div class="input-group group">
+						<div class="input-group group error">
 							<!-- Input field -->
 							<input
 								id="input"
 								name="input"
 								type="text"
 								placeholder="Email"
-								class="input-field"
+								class="input-field auth-input"
 							/>
 
 							<!-- Error message (only visible when .error is applied on parent group) -->
@@ -6094,7 +5764,7 @@
 									name="input"
 									type="password"
 									placeholder="Some placeholder..."
-									class="input-field password-input"
+									class="input-field password-input auth-input"
 								/>
 
 								<!-- Pswd Icons -->
@@ -6466,7 +6136,7 @@
 				<div class="container">
 					<!-- Footer Top -->
 					<div
-						class="flex flex-col gap-10 border-b border-b-[#181A1D] pb-11 md:flex-row"
+						class="flex flex-col gap-9 border-b border-b-[#181A1D] pb-11 md:flex-row"
 					>
 						<div class="max-w-46.25">
 							<a href="#">

@@ -642,7 +642,7 @@ function initializeModal() {
 
 		modal.classList.remove("opacity-100", "pointer-events-auto")
 		modal.classList.add("opacity-0", "pointer-events-none")
-		document.body.classList.add("overflow-auto")
+		document.body.classList.remove("overflow-hidden")
 		const modalContent = modal.querySelector(".modal")
 		if (modalContent) {
 			modalContent.classList.remove("scale-100")
@@ -1186,7 +1186,7 @@ function initPreview(root) {
 function initFixedMobilePrice({
 	selector = ".fixed-mobile-price",
 	className = "is-visible",
-	offset = 600,
+	offset = 100,
 } = {}) {
 	const bar = document.querySelector(selector)
 	if (!bar) return
@@ -1675,6 +1675,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Password visibility
 	togglePasswordVisibility()
 
+	// Card Top Buttons click
+	document.querySelectorAll(".card-top button").forEach((btn) => {
+		btn.addEventListener("click", (e) => {
+			e.preventDefault()
+		})
+	})
+
 	// Offset
 	initStickyOffset()
 
@@ -1707,7 +1714,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			rows: 2,
 			fill: "row",
 		},
-		spaceBetween: 20,
+
 		navigation: {
 			nextEl: ".swiper-button-home-category-new-next",
 			prevEl: ".swiper-button-home-category-new-prev",
@@ -1718,19 +1725,25 @@ document.addEventListener("DOMContentLoaded", () => {
 		},
 		breakpoints: {
 			320: {
-				slidesPerView: 1.6,
+				slidesPerView: 2.1,
+				spaceBetween: 16,
 			},
 			375: {
-				slidesPerView: 2.2,
+				slidesPerView: 2.1,
+				spaceBetween: 16,
 			},
 			600: {
 				slidesPerView: 3.2,
+				spaceBetween: 16,
 			},
 			768: {
 				slidesPerView: 4.3,
+				spaceBetween: 24,
 			},
 			1024: {
 				slidesPerView: 5,
+				spaceBetween: 24,
+				slidesPerGroup: 5,
 			},
 		},
 	})
@@ -1739,7 +1752,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			rows: 2,
 			fill: "row",
 		},
-		spaceBetween: 20,
+		spaceBetween: 24,
 		navigation: {
 			nextEl: ".swiper-button-home-category-house-next",
 			prevEl: ".swiper-button-home-category-house-prev",
@@ -1780,10 +1793,10 @@ document.addEventListener("DOMContentLoaded", () => {
 				slidesPerView: 1,
 			},
 			375: {
-				slidesPerView: 1.3,
+				slidesPerView: 1,
 			},
 			680: {
-				slidesPerView: 2.3,
+				slidesPerView: 2,
 			},
 			1024: {
 				slidesPerView: 3,

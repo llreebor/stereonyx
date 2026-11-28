@@ -1,0 +1,14 @@
+<svg width="363" height="460" viewBox="0 0 363 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_300_1075" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="460" height="460">
+<circle cx="230" cy="230" r="230" fill="url(#paint0_radial_300_1075)"/>
+</mask>
+<g mask="url(#mask0_300_1075)">
+<path d="M10.3887 2.13965H470.389M10.7298 461.07V2.49819M10.3887 59.5063L470.389 59.4614M68.1422 461.07V2.49819M10.3887 116.872L470.389 116.783M125.555 461.07V2.49819M10.3887 174.239L470.389 174.104M182.967 461.07V2.49819M10.3887 231.605L470.389 231.425M240.379 461.07V2.49819M10.3887 288.971L470.389 288.747M297.793 461.07V2.49819M10.3887 346.337L470.389 346.068M355.205 461.07V2.49819M10.3887 403.704L470.389 403.39M412.617 461.07V2.49819M10.3887 461.07L470.389 460.711M470.03 461.07V2.49819" stroke="#24272A"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_300_1075" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(230 230) rotate(90) scale(230)">
+<stop stop-color="#737373"/>
+<stop offset="1" stop-color="#737373" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

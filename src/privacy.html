@@ -64,13 +64,13 @@
 				</div>
 
 				<!-- Header  -->
-				<header class="z-10 border-b border-b-[#181A1D] py-4">
+				<header class="z-10 border-b border-b-[#181A1D] py-4 md:py-5">
 					<div class="container">
 						<div class="flex w-full items-center">
 							<!-- Logo -->
 							<a href="#" class="order-1">
 								<img
-									class="max-w-28 min-[374px]:max-w-fit min-[1170px]:max-w-38.5! lg:max-w-29"
+									class="max-w-30 min-[374px]:max-w-fit min-[1170px]:max-w-38.5! lg:max-w-29"
 									src="./images/global/logo.svg"
 									alt="logo image"
 								/>
@@ -500,7 +500,7 @@
 
 							<!-- Action Buttons -->
 							<div
-								class="order-3 ml-5 flex items-center gap-3 min-[374px]:gap-5.5 lg:ml-auto"
+								class="order-3 ml-3 flex items-center gap-3 min-[374px]:gap-5.5 md:ml-5 lg:ml-auto"
 							>
 								<!-- Search Button -->
 								<button type="button" data-search-open aria-label="Open search">
@@ -620,7 +620,7 @@
 								class="order-2 ml-auto flex items-center gap-2 lg:order-4 lg:ml-8.5"
 							>
 								<!-- Login & SignUp -->
-								<div class="hidden items-center gap-2">
+								<div class="items-center gap-2">
 									<button
 										data-modal="modal-login"
 										class="btn btn-secondary-outline"
@@ -633,7 +633,7 @@
 								</div>
 
 								<!-- Profile Button -->
-								<div class="relative" data-dropdown>
+								<div class="relative hidden" data-dropdown>
 									<button
 										type="button"
 										data-sheet="profile-sheet"
@@ -1744,16 +1744,20 @@
 
 					<!-- Form -->
 					<form action="#" class="mt-7 space-y-4">
+						<!-- Alert -->
+						<div class="alert">
+							<p class="alert-text">Incorrect email or password</p>
+						</div>
 						<!-- [START] HTML Input -->
 						<!-- Input group wrapper (use .error or .success class for validation errors) -->
-						<div class="input-group group">
+						<div class="input-group group error">
 							<!-- Input field -->
 							<input
 								id="input"
 								name="input"
 								type="text"
 								placeholder="Email"
-								class="input-field"
+								class="input-field auth-input"
 							/>
 
 							<!-- Error message (only visible when .error is applied on parent group) -->
@@ -1772,7 +1776,7 @@
 									name="input"
 									type="password"
 									placeholder="Some placeholder..."
-									class="input-field password-input"
+									class="input-field password-input auth-input"
 								/>
 
 								<!-- Pswd Icons -->
@@ -2348,7 +2352,7 @@
 				<div class="container">
 					<!-- Footer Top -->
 					<div
-						class="flex flex-col gap-10 border-b border-b-[#181A1D] pb-11 md:flex-row"
+						class="flex flex-col gap-9 border-b border-b-[#181A1D] pb-11 md:flex-row"
 					>
 						<div class="max-w-46.25">
 							<a href="#">

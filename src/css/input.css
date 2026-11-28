@@ -28,7 +28,9 @@
 
 	/* Colors */
 	--color-primary: #7426fa;
+	--color-primary-hover: #8155ec;
 	--color-secondary: #232427;
+	--color-secondary-hover: #35383e;
 	--color-dark: #18191b;
 	--color-pink: #eb3f6a;
 	--color-gray: #797b7e;
@@ -115,20 +117,20 @@
 		@apply bg-primary text-small font-medium text-white;
 
 		@variant hover {
-			@apply bg-primary/90;
+			@apply bg-primary-hover;
 		}
 		@variant active {
-			@apply bg-primary/80;
+			@apply bg-primary-hover;
 		}
 	}
 	.btn-secondary {
 		@apply bg-secondary text-white;
 
 		@variant hover {
-			@apply bg-secondary/90;
+			@apply bg-secondary-hover;
 		}
 		@variant active {
-			@apply bg-secondary/80;
+			@apply bg-secondary-hover;
 		}
 	}
 	.btn-secondary-outline {
@@ -169,15 +171,15 @@
 	.btn-sort-by {
 		@apply lg:bg-secondary w-full flex-row-reverse gap-3 border border-[#2B2E32] px-5 py-2.75 text-xs text-white sm:text-sm lg:flex-row [&_img]:ml-0;
 		@variant hover {
-			@apply bg-secondary/90 bg-[#2B2E32];
+			@apply bg-[#2B2E32];
 		}
 		@variant active {
-			@apply bg-secondary/80 bg-[#2B2E32];
+			@apply bg-[#2B2E32];
 		}
 	}
 
 	.slider-circle-btn-small {
-		@apply bg-gray-dark hover:bg-gray-dark/80 flex size-8 items-center justify-center rounded-full disabled:bg-[#111214];
+		@apply bg-secondary hover:bg-secondary-hover flex size-8 items-center justify-center rounded-full disabled:bg-[#111214];
 	}
 	.filter-btn {
 		@variant hover {
@@ -298,10 +300,18 @@
 		}
 	}
 	.input-error-message {
-		@apply order-3 mt-1 hidden text-xs text-red-600 group-[.error]:block;
+		@apply text-error order-3 mt-1.75 hidden text-xs group-[.error]:block;
 	}
 	.auth-input {
 		@apply hover:border-primary border-[#26282A] bg-[#26282A];
+	}
+
+	/* Alert */
+	.alert {
+		@apply rounded-lg border border-[#4E302E] bg-[#302524] px-4.25 py-3.75;
+	}
+	.alert-text {
+		@apply text-error text-[13px];
 	}
 
 	/* Checkbox */
@@ -430,16 +440,16 @@
 
 	/* Track */
 	.sticky-track {
-		@apply sticky bottom-0 left-0 z-5 w-full items-center bg-black px-3 py-4 backdrop-blur-[35px];
+		@apply sticky bottom-0 left-0 z-5 w-full items-center bg-black/80 px-3 py-4 backdrop-blur-[35px];
 	}
 	.sticky-track[hidden] {
 		display: none;
 	}
 	.play-btn {
-		@apply bg-primary hover:bg-primary/90 flex size-9 items-center justify-center rounded-full md:size-13.25;
+		@apply bg-primary hover:bg-primary-hover flex size-9 items-center justify-center rounded-full md:size-13.25;
 	}
 	.play-btn-hero {
-		@apply bg-primary hover:bg-primary/90 flex size-13.25 items-center justify-center rounded-full;
+		@apply bg-primary hover:bg-primary-hover flex size-13.25 items-center justify-center rounded-full;
 	}
 	.play-btn-track {
 		@apply bg-primary [.paused]:bg-secondary flex size-10 shrink-0 items-center justify-center rounded-full;
@@ -475,10 +485,10 @@
 
 	/* Card */
 	.card {
-		@apply bg-dark overflow-hidden rounded-[14px] p-2.5 md:p-4;
+		@apply bg-dark flex h-full flex-col overflow-hidden rounded-[14px] p-2.5 md:p-4;
 	}
 	.card-top {
-		@apply relative z-0 overflow-hidden rounded-[14px] after:absolute after:bottom-0 after:left-0 after:z-0 after:h-2/3 after:w-full after:bg-linear-(--gradient-card);
+		@apply relative z-0 overflow-hidden rounded-lg after:absolute after:bottom-0 after:left-0 after:z-0 after:hidden after:h-2/3 after:w-full after:bg-linear-(--gradient-card) md:after:block;
 	}
 	.card-label-promo {
 		@apply bg-pink absolute top-0 right-0 w-20.5 rounded-bl-lg py-1 pl-2 text-[10px] text-white uppercase;
@@ -487,19 +497,19 @@
 		@apply bg-primary absolute top-0 right-0 w-20.5 rounded-bl-lg py-1 pl-2 text-[10px] text-white uppercase;
 	}
 	.card-image {
-		@apply aspect-square w-full rounded-lg;
+		@apply aspect-square w-full overflow-hidden rounded-lg;
 	}
 	.card-overlay {
-		@apply absolute inset-0 z-10 flex items-center justify-center gap-3 group-hover:visible group-hover:opacity-100 lg:invisible lg:bg-black/80 lg:opacity-0;
+		@apply absolute inset-0 z-10 flex items-center justify-center gap-3 group-hover:visible group-hover:opacity-100 lg:invisible lg:bg-black/60 lg:opacity-0;
 	}
 	.card-title {
-		@apply line-clamp-2 group-hover:underline;
+		@apply line-clamp-2 font-medium group-hover:underline;
 	}
 	.card-text {
 		@apply text-gray mt-0.5 text-[13px];
 	}
 	.card-price {
-		@apply text-sm font-semibold;
+		@apply text-sm font-medium;
 	}
 
 	/* Product Main Player */
@@ -507,7 +517,7 @@
 		@apply rounded-lg border border-transparent transition-colors;
 	}
 	.preview-play-btn {
-		@apply bg-primary [.paused]:bg-gray-dark hover:bg-primary/90 flex size-13.25 items-center justify-center rounded-full;
+		@apply bg-primary [.paused]:bg-gray-dark hover:bg-primary-hover flex size-13.25 items-center justify-center rounded-full;
 	}
 
 	/* Filter Tags */
@@ -700,6 +710,9 @@
 	transition:
 		translate 0.3s cubic-bezier(0.32, 0.72, 0, 1),
 		visibility 0s linear 0.3s;
+}
+.swiper-home-category-new-fraction {
+	@apply flex items-center justify-center;
 }
 
 .with-submenu.active .submenu-mobile {
